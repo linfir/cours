@@ -1,0 +1,986 @@
+\documentclass{yann}
+%\yann{layout=onecolumn}
+\newcommand{\myop}{\mathop{\square}}
+
+\begin{document}
+\title{Algèbre linéaire 1}
+\maketitle
+
+\section{Espace vectoriel}
+
+\subsection{Loi de composition interne}
+
+\Para{Définitions}
+
+Soit $E$ un ensemble. Une \emph{loi de composition interne} $\myop$ sur $E$ est une application
+$$ \Fonction{\myop}{E×E}{E}{(x,y)}{x \myop y} $$
+\begin{enumerate}
+\item
+  On dit que $\myop$ est \emph{associative} si $∀(x,y,z)∈E^3$, $x \myop (y \myop z) = (x \myop y) \myop z$.
+  On ne considèrera que des loi associatives.
+\item
+  On dit que $\myop$ est \emph{commutative} si $∀(x,y)∈E^2$, $x \myop y = y \myop x$;
+\item
+  On dit que $\myop$ \emph{admet un neutre} si $∃e∈E$ tel que $∀x∈E$, $x \myop e = e \myop x = x$.
+  Il existe au plus un élément $e$ vérifiant cette propriété, et on l'appelle \emph{le} neutre de la loi $\myop$.
+\item
+  Si $\myop$ est une loi associative qui admet un neutre $e$, et si $x∈E$, on appelle \emph{symétrique} (ou \emph{inverse}) de $x$ pour la loi $\myop$ tout élément $x'∈E$ tel que $x \myop x' = x' \myop x = e$.
+  Si $\myop$ est également associative, il existe au plus un élément $x'$ vérifiant cette propriété, et on l'appelle \emph{le} symétrique de $x$ pour la loi $\myop$.
+\end{enumerate}
+
+\Para{Proposition}
+
+Soit $E$ un ensemble muni d'une loi de composition interne associative $\myop$.
+Soit $(x,y)∈E^2$.
+Si $x$ et $y$ sont symétrisables pour $\myop$, de symétriques $x'$ et $y'$ respectivement,
+alors $x \myop y$ est également symétrisable et son symétrique est $y' \myop x'$.
+
+\subsection{Groupe}
+
+\Para{Définitions}
+
+Un \emph{groupe} est un couple $(G,\myop)$ où $G$ est un ensemble et $\myop$ une loi de composition interne sur $G$ associative, admettant un neutre et pour laquelle tout élément de $G$ admet un symétrique pour la loi $\myop$.
+Un groupe est dit \emph{abélien} ou \emph{commutatif} si la loi $\myop$ est de plus commutative.
+
+\subsection{Corps}
+
+\Para{Définition}
+
+Un \emph{corps} est un triplet $(𝕂,+,×)$ où
+\begin{enumerate}
+\item
+  $𝕂$ est un ensemble;
+\item
+  $+$ et $×$ sont des lois de composition internes sur $𝕂$;
+\item
+  $(𝕂,+)$ est un groupe abélien, £cad.
+  $+$ est associative, commutative, admet un neutre et tout élément de $𝕂$ admet un symétrique pour $+$.
+  On note $0_𝕂$ le neutre de $+$;
+\item
+  $×$ est associative, commutative, admet un neutre et tout élément de $𝕂∖\acco{0_𝕂}$ admet un symétrique pour $×$.
+  On note $1_𝕂$ le neutre de $×$;
+\item
+  La loi $\times$ est distributive sur la loi $+$, £cad.
+  $∀(x,y,z)∈𝕂^3$, $x×(y+z) = (x×y)+(x×z)$;
+\item
+  $0_𝕂 ≠ 1_𝕂$.
+\end{enumerate}
+
+\Para{Remarque}
+
+Lorsque le contexte est clair, on écrit souvent $𝕂$ au lieu de $(𝕂,+,×)$.
+
+\Para{Exemples}
+\begin{itemize}
+\item le corps des réels $ℝ$, des complexes $ℂ$, des rationnels $ℚ$;
+\item si $𝕂$ est un corps, le corps des fractions rationnelles à coefficients dans $𝕂$, noté $𝕂(X)$;
+\item $ℚ[i] = \Ensemble{a+ib}{(a,b)∈ℚ^2}$;
+\item le corps des entiers modulo un nombre premier $p$, noté $ℤ/pℤ$.
+\end{itemize}
+Tous ces corps sont munis des \enquote{lois usuelles}.
+
+\subsection{Espace vectoriel}
+
+\Para{Définition}
+
+Soit $𝕂$ un corps.
+Un $𝕂$-espace vectoriel est un triplet $(E,+,\bullet)$ où
+$+$ est une loi de composition interne sur $E$ et
+$\bullet$ est une loi de composition externe sur $E$, £cad. une application
+\[ \Fonction{\bullet}{𝕂×E}{E}{(λ,x)}{λ\bullet x} \]
+vérifiant les axiomes suivants:
+\begin{enumerate}
+\item $(E, +)$ est un groupe abélien;
+\item la loi $\bullet$ est compatible avec la structure de groupe $(E, +)$, £cad.
+  \begin{enumerate}
+  \item $∀(λ,μ)∈𝕂^2$, $∀x∈E$, $(λ+μ) \bullet x = (λ\bullet x) + (μ\bullet x)$;
+  \item $∀λ∈𝕂$, $∀(x,y)∈E^2$, $λ\bullet (x+y) = (λ\bullet x) + (λ\bullet y)$;
+  \item $∀x∈E$, $1_𝕂\bullet x = x$;
+  \item $∀(λ,μ)∈𝕂^2$, $∀x∈E$, $λ\bullet (μ\bullet x) = (λμ) \bullet x$.
+  \end{enumerate}
+\end{enumerate}
+
+\Para{Exemples}
+
+\begin{itemize}
+\item
+  $(𝕂^n, \tilde +, \bullet)$
+  où $\nUplet x1n \tilde + \nUplet y1n = \pa{x_1+y_1, x_2+y_2, \dots, x_n+y_n}$
+  et $λ\bullet \nUplet x1n = \pa{λx_1, λx_2, \dots, λx_n}$.
+\item
+  les matrices $\M{M}{n,p}{𝕂}$ muni des lois usuelles (les expliciter!),
+\item
+  si $X$ est un ensemble et $E$ un $𝕂$-espace vectoriel, l'ensemble des fonctions $\mathcal{F}(X,E)$ muni des lois usuelles.
+\end{itemize}
+
+\subsection{Espace vectoriel produit}
+
+\Para{Définition}
+
+Soit $(E_1, +_1, \bullet_1)$, $(E_2, +_2, \bullet_2)$, ..., $(E_p, +_p, \bullet_p)$ des $𝕂$-espaces vectoriels.
+On pose \[ E = ∏_{k=1}^p E_k = \Ensemble{\nUplet x1p}{ x_1∈E_1, \dots, x_p∈E_p }. \]
+$E$ est le produit cartésien des ensembles $E_1, \dots, E_n$.
+On définit la loi de composition interne $+$ sur $E$ par:
+$∀\nUplet x1p∈E$, $∀\nUplet y1p∈E$,
+\[ \nUplet x1p + \nUplet y1p = \nUplet z1p \]
+où $z_k = x_k +_k y_k$ pour $k∈\Dcro{1,p}$.
+De même, on définit la loi de composition externe $\bullet$ sur $E$ par:
+$∀λ∈𝕂\+∀\nUplet x1p∈E$
+\[ λ\bullet \nUplet x1p = \nUplet y1p \]
+où $y_k = λ\bullet_k x_k$ pour $k∈\Dcro{1,p}$.
+
+Alors $(E, +, \bullet)$ est un espace vectoriel, appelé espace vectoriel produit des espaces vectoriels $(E_1, +_1, \bullet_1)$, ..., $(E_p, +_p, \bullet_p)$ et noté \[ E = ∏_{k=1}^p E_k. \]
+
+\Para{Remarque}
+
+Pour $p∈\Ns$ et $E$ un $𝕂$-espace vectoriel, on définit $E^p$ par \[ E^p = ∏_{k=1}^p E. \]
+Notez le cas particulier $E = 𝕂$.
+
+\subsection{Famille finie}
+
+\Para{Définition}
+
+Soit $E$ un $𝕂$-espace vectoriel.
+Une \emph{famille finie} de vecteurs de $E$ est un $p$-uplet $\mathcal{F} = \nUplet x1p$ formée d'éléments de $E$, où $p∈ℕ$.
+Dans le cas $p=0$, on notera $∅$ l'unique famille de $0$~élément.
+
+\Para{Définitions}
+Avec les mêmes notations, une \emph{combinaison linéaire} de la famille $\mathcal{F}$ est un vecteur $x ∈E$ de la forme $x = ∑_{i=1}^p α_i x_i$ où $\nUplet α1p ∈ 𝕂^p$.
+On note $\Vect \mathcal{F}$ l'ensemble des combinaison linéaires de la famille $\nUplet x1p$.
+Par convention, $\Vect ∅= \acco{0_E}$.
+
+\Para{Définitions}
+
+Avec les mêmes notations, on dit que la famille $\mathcal{F}$ est \emph{libre} \ssi{} la seule combinaison linéaire de $\mathcal{F}$ nulle est triviale, \cad{} \ssi
+\begin{multline*}
+  ∀\nUplet λ1p ∈𝕂^p, \\
+  \Pa{ ∑_{i=1}^p λ_i x_i = 0_E \implies ∀i ∈\ccro{1,p} \+ λ_i = 0_𝕂 }.
+\end{multline*}
+
+On dit que la famille $\mathcal{F}$ est \emph{génératrice} £ssi. tout vecteur de $E$ est combinaison linéaire de $\mathcal{F}$, \cad{} \ssi{} $\Vect \mathcal{F} = E$, \cad{} \ssi
+\[ ∀x ∈𝔼\+ ∃\nUplet α1p ∈𝕂^p \+ x = ∑_{i=1}^p α_i x_i. \]
+
+On dit que la famille $\mathcal{F}$ est une \emph{base} de $E$ £ssi. elle est libre et génératrice.
+De façon équivalente, la famille $\nUplet x1n$ est une base de $E$ £ssi.
+\[ \forall x\in E \+ \exists!\nUplet\alpha1p \+ x = \sum_{i=1}^p \alpha_i x_i. \]
+
+\Para{Proposition}
+Avec les mêmes notations, les conditions suivantes sont équivalentes:
+\begin{enumerate}
+\item
+  $\mathcal{F}$ est une base de $E$;
+\item
+  $\mathcal{F}$ est libre et maximale:
+  $\mathcal{F}$ est libre et pour tout $x ∈E$, la famille $\mathcal{F}$ augmentée du vecteur $x$ n'est pas libre;
+\item
+  $\mathcal{F}$ est génératrice et minimale:
+  $\mathcal{F}$ est génératrice, mais si l'on enlève un vecteur quelconque de $\mathcal{F}$, la famille résultante n'est pas génératrice.
+\end{enumerate}
+
+\subsection{Sous-espace vectoriel}
+
+\Para{Définition}
+
+Soit $(E,+,⋅)$ un $𝕂$-espace vectoriel et $F$ une partie de $E$.
+On dit que $F$ est un \emph{£sev.} de $E$ £ssi.
+\begin{enumerate}
+\item
+  $F$ est non vide;
+\item
+  $F$ est stable par $+$, £cad. $∀(x,y) ∈F^2$, $x+y∈F$;
+\item
+  $F$ est stable par $⋅$, £cad. $∀λ∈𝕂$, $∀x ∈F$, $λx∈F$.
+\end{enumerate}
+
+\Para{Critère}
+
+Soit $E$ un $𝕂$-espace vectoriel et $F⊂E$.
+$F$ est un £sev. de $E$ £ssi.
+\begin{enumerate}
+\item
+  $0_E∈F$;
+\item
+  $∀(λ,μ)∈𝕂^2$, $∀(x,y) ∈F^2$, $λx + μy ∈ F$.
+\end{enumerate}
+
+\Para{Proposition}
+Soit $E$ un $𝕂$-espace vectoriel, $F_1, \dots, F_p$ des £sevs..
+Alors l'intersection $⋂_{i=1}^p F_i$ est également un £sev..
+
+\Para{Attention}
+
+En revanche, l'union $⋃_{i=1}^p F_i$ n'est presque jamais un £sev..
+
+\Para{Proposition-Définition}
+
+Soit $E$ un $𝕂$-£ev. et $\nUplet x1p$ une famille de vecteurs de $E$.
+L'ensemble $\Vect\nUplet x1p$ est un £sev. de $E$, appelé \emph{espace engendré} par la famille $\nUplet x1p$.
+Il s'agit du plus petit (pour l'inclusion) £sev. de $E$ contenant $\Uplet{x_1}{x_p}$.
+
+\subsection{Somme de sous-espaces vectoriels}
+
+\Para{Proposition-Définition}
+
+Soit $E$ un $𝕂$-espace vectoriel et $\Uplet{F_1}{F_p}$ des sous-espaces vectoriels de $E$.
+On appelle \emph{somme} de $\Uplet{F_1}{F_p}$ l'ensemble $S$ des vecteurs de la forme $f_1 + \dots + f_p$
+où $f_1∈F_1$, $f_2∈F_2$, ..., $F_p∈F_p$;
+autrement dit,
+\[ S = \BiggEnsemble{x ∈E}{ ∃\nUplet f1p ∈ ∏_{i=1}^p F_i \+ x = ∑_{i=1}^p f_i }. \]
+On le note $S = ∑_{k=1}^p F_k$.
+Il s'agit d'un £sev. de $E$;
+plus précisément $S$ est le plus petit (au sens de l'inclusion) £sev. de $E$ contenant $\Uplet{F_1}{F_p}$.
+
+\Para{Définition}
+Avec les mêmes notations, on dit que la somme $∑_{i=1}^p F_i$ est \emph{directe} £ssi. tout vecteur de la somme se décompose \emph{de façon unique} sous la forme $f_1 + \dots + f_p$ où $f_1∈F_1$, $f_2∈F_2$, ..., $F_p∈F_p$.
+On note alors la somme $⨁_{k=1}^p F_k = ∑_{k=1}^p F_k$.
+
+\Para{Cas de deux sous-espaces vectoriels}
+Soit $E$ un $𝕂$-espace vectoriel, $F$ et $G$ deux sous-espaces vectoriels.
+Alors la somme $F+G$ est directe £ssi. $F∩G = \acco{0_E}$.
+
+\Para{Attention}
+
+Ce critère ne se généralise pas (simplement) pour $n > 2$.
+
+Contre-exemple: $E = ℝ^2$, $e_1 = (1,0)$, $e_2 = (0,1)$ et $e_3 = (1,1)$.
+Vérifiez que $ℝe_1 ∩ ℝe_2 = ℝe_1 ∩ ℝe_3 = ℝe_2 ∩ ℝe_3 = \Acco{(0,0)}$ mais que la somme $ℝe_1 + ℝe_2 + ℝe_3$ n'est pas directe.
+
+\Para{Critère}
+
+Soit $E$ un $𝕂$-espace vectoriel et $\Uplet{F_1}{F_p}$ des sous-espaces vectoriels de $E$. La somme $∑_{i=1}^p F_i$ est directe £ssi.
+\begin{multline*}
+  ∀x_1 ∈F_1 \+ ∀x_2 ∈F_2 \+ \dots \+ ∀x_p ∈F_p, \\
+  ∑_{k=1}^p x_k = 0 \implies x_1 = \dots = x_p = 0.
+\end{multline*}
+
+\Para{Définition}
+
+Soit $E$ un $𝕂$-espace vectoriel et $\Uplet{F_1}{F_p}$ des sous-espaces vectoriels de $E$.
+Si la somme $∑_{k=1}^p F_k$ est directe et égale à $E$,
+on dit que $\Uplet{F_1}{F_p}$ sont \emph{supplémentaires}, et on note
+\[ E = ⨁_{k=1}^p F_k. \]
+
+\subsection{Application linéaire}
+
+\Para{Définition}
+
+Soit $E$ et $F$ deux $𝕂$-espaces vectoriels.
+Une application $\Fn{f}{E}{F}$ est dite \emph{linéaire} £ssi.
+\begin{enumerate}
+\item
+  $∀(x,y)∈E^2$, $f(x+y) = f(x) + f(y)$;
+\item
+  $∀λ∈𝕂$, $∀x∈E$, $f(λx) = λf(x)$.
+\end{enumerate}
+Ces deux conditions sont équivalentes à
+\begin{enumerate}[resume]
+\item $∀(λ,μ)∈𝕂^2$, $∀(x,y)∈E^2$, $f(λx + μy) = λf(x) + μf(y)$.
+\end{enumerate}
+
+\Para{Définitions}
+
+\begin{itemize}
+\item
+  Une application linéaire est appelée également \emph{morphisme} d'espaces vectoriels.
+\item
+  Une application linéaire dont l'espace de départ est le même que celui d'arrivée est un \emph{endomorphisme}.
+\item
+  Un \emph{isomorphisme} est une application linéaire bijective.
+\item
+  Un \emph{automorphisme} est un endomorphisme bijectif.
+\end{itemize}
+
+\Para{Proposition-Définition}
+
+Soit $E$ et $F$ deux $𝕂$-espaces vectoriels, $E'$ un £sev. de $E$, $F'$ un £sev. de $F$ et $\Fn uEF$ une application linéaire.
+\begin{itemize}
+\item
+  L'ensemble $\Ensemble{u(x)}{x ∈E'}$ est un £sev. de $F$, appelé \emph{image directe} de $E'$ par $u$ et noté $u(E')$.
+\item
+  L'ensemble $\Ensemble{x ∈E}{u(x) ∈F'}$ est un £sev. de $E$, appelé \emph{image réciproque} de $F'$ par $u$ et noté $u^{-1}(F')$. Notez que ceci est bien défini que $u$ soit bijectif ou non.
+\end{itemize}
+
+\Para{Définitions}
+
+Soit $E$ et $F$ deux $𝕂$-espaces vectoriels, et $\Fn uEF$ une application linéaire.
+\begin{itemize}
+\item
+  Le \emph{noyau} de $u$ est le £sev. $f^{-1}\pa{\acco{0_F}} = \Ensemble{x∈E}{f(x) = 0_F}$;
+  on le note $\Ker u$.
+\item
+  L'\emph{image} de $u$ est le £sev. $f(E) = \Ensemble{f(x)}{x∈E}$;
+  on le note $\Ima u$.
+\end{itemize}
+
+\Para{Proposition-Définition}
+
+Soit $E$ et $F$ deux $𝕂$-espaces vectoriels.
+L'ensemble des applications linéaires de $E$ dans $F$ est noté $\mathscr{L}(E,F)$;
+il s'agit d'un £sev. de l'espace des fonctions de $E$ dans $F$ muni des lois usuelles.
+L'£ev. des endomorphismes de $E$ se note $\LE = \mathscr{L}\pa{E,E}$.
+
+\Para{Proposition}
+Soit $E$ et $F$ deux $𝕂$-£evs. et $\Fn fEF$ une application linéaire.
+\begin{itemize}
+\item
+  $f$ est injective £ssi. $\Ker f = \acco{0_E}$;
+\item
+  $f$ est surjective £ssi. $\Ima f = F$;
+\item
+  si $f$ est bijective, alors $f^{-1}$ est également linéaire.
+\end{itemize}
+
+\Para{Proposition}
+
+Soit $E$ un $𝕂$-£evdf., $\nUplet e1n$ une base de $E$.
+Soit $F$ un $𝕂$-£ev. et $\Fn uEF$ une application linéaire.
+Alors $u$ est bijective £ssi. la famille $\bigPa{u(e_1),\dots,u(e_n)}$ est une base de $F$.
+
+% -----------------------------------------------------------------------------
+\section{Dimension}
+
+\subsection{Espace vectoriel de dimension finie}
+
+\Para{Définition}
+
+Soit $E$ un $𝕂$-£ev..
+On dit que $E$ est \emph{de dimension finie} s'il existe une famille finie génératrice de $E$,
+et \emph{de dimension infinie} sinon.
+
+\Para{Théorème de la base incomplète}
+
+Soit $E$ un £evdf., et $\nUplet e1p$ une famille libre de $E$.
+Alors il existe un entier $n≥p$ et des vecteurs $\Uplet{e_{p+1}}{e_n}$ tels que $\nUplet e1n$ soit une base de $E$.
+
+\Para{Corollaire}
+
+Tout £evdf. admet une base.
+
+\Para{Théorème de la base extraite}
+
+Soit $E$ un £ev. et $\nUplet e1q$ une famille génératrice.
+Alors il existe $I ⊂\ccro{1,q}$ tel que la famille $(e_i)_{i∈I}$ soit une base de $E$.
+
+\Para{Lemme de Steinitz}
+
+Soit $E$ un £ev., $\nUplet e1n$ une base de $E$ et $\nUplet v1p$ une famille libre de $E$.
+Alors $p ≤n$ et il existe une permutation $\pa{\Uplet{e'_1}{e'_n}}$ de $\nUplet e1n$ telle que
+la famille $(v_1,\dots,v_p,e'_{p+1},\dots,e'_n)$ soit une base de $E$.
+
+\Para{Corollaire}
+
+Soit $E$ un £evdf. et $\nUplet e1p$ et $\nUplet f1q$ deux bases de $E$.
+Alors $p=q$.
+
+\Para{Définition}
+
+La \emph{dimension} d'un £evdf. est égale au cardinal d'une base quelconque de $E$.
+
+\Para{Corollaire}
+
+Si $E$ est un £evdf. de dimension $n$, alors toute famille de $n+1$ vecteurs est liée.
+
+\subsection{Applications}
+
+\Para{Proposition}
+
+Soit $E$ un £evdf. et $F$ un £sev. de $E$.
+Alors $F$ est également de dimension finie et $\dim F ≤ \dim E$, avec égalité £ssi. $F = E$.
+
+\Para{Proposition}
+Dans un £evdf., tout £sev. admet un supplémentaire.
+
+Autrement dit, si $E$ est un £evdf. et $F$ un £sev. de $E$,
+alors il existe un £sev. $G$ de $E$ tel que $E = F \oplus G$.
+
+\Para{Proposition}
+
+Soit $\Uplet{E_1}{E_p}$ des $𝕂$-espaces vectoriels.
+L'espace vectoriel produit $∏_{k=1}^p E_k$ est de dimension finie £ssi. $∀k∈\Dcro{1,p}$, $E_k$ est de dimension finie.
+De plus, dans ce cas, \[ \dim \Pa{ ∏_{k=1}^p E_k } = ∑_{k=1}^p \dim E_k. \]
+
+\Para{Corollaire}
+
+Pour $p∈\Ns$ et $E$ un $𝕂$-espace vectoriel.
+L'£ev. $E^p$ est de dimension finie £ssi. $E$ l'est;
+dans ce cas, on a $\dim(E^p) = p\dim E$.
+
+\Para{Proposition}
+
+Soit $E$ et $F$ deux $𝕂$-£evdf..
+Alors $\mathscr{L}(E,F)$ est également de dimension finie
+et $\dim \mathscr{L}(E,F) = \dim(E) ×\dim(F)$.
+
+\subsection{Théorème du rang}
+
+\Para{Théorème}
+
+Soit $E$ et $F$ deux $𝕂$-£evs. et $\Fn uEF$ une application linéaire.
+Si $S$ est un supplémentaire de $\Ker u$, alors $u$ induit un isomorphisme de $S$ sur $\Ima u$,
+£cad. que l'application linéaire
+\[ \Fonction{v}{S}{\Ima u}{x}{u(x)} \]
+est bijective.
+
+\Para{Corollaire}[théorème du rang]
+
+Soit $E$ et $F$ deux $𝕂$-£evs. et $\Fn uEF$ une application linéaire.
+On suppose que $E$ est de dimension finie.
+Alors $\Ima u$ est de dimension finie et
+\[ \dim E = \Rang u + \dim \Ker u. \]
+
+\Para{Corollaire important}
+
+Soit $E$ et $F$ deux $𝕂$-£evdfs. et $\Fn uEF$ une application linéaire.
+On suppose que $\dim E = \dim F$.
+Les conditions suivantes sont équivalentes:
+\begin{enumerate}
+\item
+  $u$ est injective;
+\item
+  $u$ est surjective;
+\item
+  $u$ est bijective.
+\end{enumerate}
+Notez que ceci s'applique en particulier au cas des endomorphismes.
+
+\subsection{Somme directe}
+
+\Para{Proposition}
+
+Soit $E$ un $𝕂$-espace vectoriel et $\Uplet{F_1}{F_p}$ des sous-espaces vectoriels de dimension finie de $E$.
+Alors la somme $∑_{k=1}^p F_k$ est également de dimension finie, et
+\[ \dim\Pa{ ∑_{k=1}^p F_k } ≤ ∑_{k=1}^p \dim(F_k). \]
+De plus, il y a égalité si et seulement si la somme $∑_{k=1}^p F_k$ est directe.
+
+\Para{Proposition}
+
+Soit $E$ un $𝕂$-£evdf. et $F_1, \dots, F_p$ des £sevs. de $E$.
+On suppose que \[ ∑_{k=1}^p \dim F_k = \dim E. \]
+Les conditions suivantes sont alors équivalentes:
+\begin{enumerate}
+\item
+  les £sevs. $F_1, \dots, F_p$ sont supplémentaires;
+\item
+  les £sevs. $F_1, \dots, F_p$ sont en somme directe;
+\item
+  $∑_{k=1}^p F_k = E$;
+\item
+  tout vecteur $x∈E$ se décompose sous la forme
+  $x = ∑_{k=1}^p f_k$
+  où $f_1∈F_1$, $\dots$, $f_p∈F_p$,
+\item pour tous $f_1∈F_1$, $f_2∈F_2$, $\dots$, $f_p∈F_p$,
+  si $∑_{k=1}^p f_k = 0$, alors $f_1 = \dots = f_p = 0$.
+\end{enumerate}
+
+
+% -----------------------------------------------------------------------------
+\section{Forme linéaire et hyperplan}
+
+\Para{Définitions}
+
+Soit $E$ un $𝕂$-espace vectoriel.
+\begin{itemize}
+\item
+  Une \emph{forme linéaire} sur $E$ est une application linéaire $\FnφE𝕂$.
+\item
+  L'ensemble des formes linéaires sur $E$ s'appelle le \emph{dual} de $E$
+  et se note $E^* = \mathscr{L}(E,𝕂)$.
+\item
+  Une \emph{droite} de $E$ est un £sev. de dimension $1$.
+  Autrement dit, $D$ est une droite (vectorielle) £ssi. $∃x∈E∖\Acco{0_E}$, $D =𝕂x$.
+\item
+  Un \emph{hyperplan} de $E$ est un £sev. $H$
+  qui admet une droite comme supplémentaire.
+  Autrement dit, si $H$ est un £sev. de $E$,
+  $H$ est un hyperplan £ssi. $∃x∈E∖\Acco{0_E}$, $E = H⊕𝕂x$.
+\end{itemize}
+
+\Para{Proposition}
+
+Si $E$ est un $𝕂$-£evdf., alors $\dim E^* = \dim E$.
+
+\Para{Théorème}
+
+Soit $E$ un $𝕂$-£ev. de dimension $n∈\Ns$ et $H$ un £sev. de $E$.
+Les conditions suivantes sont équivalentes:
+\begin{enumerate}
+\item $H$ est un hyperplan, £cad. qu'il existe une droite $D$ telle que $E = H ⊕ D$;
+\item $\dim H = n - 1$;
+\item il existe une forme linéaire non nulle $φ$ telle que $H = \Ker φ$.
+\end{enumerate}
+
+\Para{Remarque}
+
+En dimension quelconque, on a encore l'équivalence entre~1 et~3.
+
+\Para{Exemple}
+
+On se place dans $E = ℝ^3$.
+\begin{itemize}
+\item
+  Soit $P = \Ensemble{(x,y,z)∈ℝ^3}{x+y+z=0}$.
+  $P$ est un £sev. de $E$ de dimension $2$, donc un hyperplan.
+\item
+  Soit $x = (1,0,0)$ et $D = 𝕂x$. On a $E = P ⊕D$.
+\item Soit \[ \Fonction{φ}{E}{ℝ}{(x,y,z)}{x+y+z.} \]
+  $φ$ est une forme linéaire.
+\item On a $P = \Ker φ$.
+\end{itemize}
+
+\Para{Proposition}
+
+Soit $E$ un $𝕂$-espace vectoriel, $φ$ et $ψ$ deux formes linéaires non nulles sur $E$.
+Alors \[ \Ker φ = \Ker ψ \iff ∃λ∈\Ks \+ φ = λψ. \]
+Autrement dit, deux formes linéaires non nulles définissent le même hyperplan £ssi. elles sont proportionnelles.
+
+\Para{Remarque}
+
+Soit $E$ un $𝕂$-£evdf..  On a une correspondance bijective entre:
+\begin{itemize}
+\item les hyperplans sur $E$, et
+\item les formes linéaires non nulles sur $E$, à multiplication par un scalaire non nul près.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Divers}
+
+\subsection{Sous-espace vectoriel stable}
+
+\Para{Définitions}
+
+Soit $F$ un £sev. de $E$ et $u∈\LE$.
+\begin{itemize}
+\item
+  On dit que $F$ est \emph{$u$-stable}, ou \emph{stable par $u$}, si et seulement si $u(F)⊂F$.
+\item
+  Si $F$ est $u$-stable, il existe un unique endomorphisme $v∈\mathscr{L}(F)$ tel que $∀x∈F$, $u(x) = v(x)$.
+  $v$ s'appelle l'\emph{endomorphisme induit} par $u$ sur $F$.
+\end{itemize}
+
+\Para{Lemme}
+
+Si $f$ et $g$ sont des endomorphismes de $E$ \emph{qui commutent},
+alors $\Ker g$ et $\Ima g$ sont stables par $f$.
+
+\subsection{Polynôme d'endomorphisme}
+
+\Para{Définitions}
+
+Soit $E$ un $𝕂$-espace vectoriel et $u∈\LE$.
+On définit par récurrence $u^n$ pour $n∈ℕ$ par $u^0 = \Id_E$ et $∀n∈ℕ$, $u^{n+1} = u◦u^n$.
+Pour $P = ∑_{k=0}^d a_k X^k$, on pose $P(u) = ∑_{k=0}^d a_k u^k$.
+
+\Para{Théorème}
+
+Soit $E$ un $𝕂$-espace vectoriel et $u∈\LE$.
+L'application \[ \Fonction{ϕ_u}{𝕂[X]}{\LE}{P}{P(u)} \]
+est un morphisme d'algèbre.
+Autrement dit, si $P$ et $Q$ sont deux polynômes et $λ$ un scalaire, on a
+\begin{enumerate}
+\item $(λP)(u) = λP(u)$
+\item $(P+Q)(u) = P(u) + Q(u)$
+\item $(PQ)(u) = P(u)◦Q(u)$
+\end{enumerate}
+
+
+\subsection{Base adaptée}
+
+\Para{Définition}
+
+Soit $E$ un $𝕂$-£evdf. $n$ et $F$ un £sev. de $E$.
+La base $\B = \nUplet e1n$ est dite \emph{adaptée} à $F$
+si et seulement s'il existe $p∈\Dcro{0,n}$
+tel que $\nUplet e1p$ soit une base de $F$.
+
+\Para{Définition}
+
+Soit $E$ un $𝕂$-£evdf., $\Uplet{F_1}{F_p}$ des sous-espaces vectoriels supplémentaires de $E$ et $\B$ une base de $E$.
+La base $\B$ est dite \emph{adaptée} à la décomposition $E =⨁_{k=1}^p F_k$ si et seulement si $\B$ peut s'écrire comme la concaténation de $\Uplet{\B_1}{\B_p}$ où $\B_k$ est une base de $F_k$ pour tout $k∈\Dcro{1,p}$.
+
+\Para{Proposition}
+
+Soit $E$ un $𝕂$-£evdf. et $\B$ une base de $E$.
+On suppose que $\B$ s'écrit comme la concaténation de $\Uplet{\B_1}{\B_p}$.
+Pour $k∈\Dcro{1,p}$, notons $F_k$ le £sev. engendré par $\B_k$.
+Alors les sous-espaces vectoriels $\Uplet{F_1}{F_p}$ sont supplémentaires.
+
+\Para{Proposition}
+
+Soit $E$, $F$ deux $𝕂$-espaces vectoriels.
+Soit $\Uplet{E_1}{E_p}$ des sous-espaces vectoriels de $E$ qui sont supplémentaires.
+L'application \[ \Fonction{φ}{\mathscr{L}(E,F)}{∏_{k=1}^p \mathscr{L}(E_k,F)}{u}{(u_{\vert E_1}, ..., u_{\vert E_p})} \] est alors un isomorphisme.
+
+Autrement dit, si l'on se donne des applications linéaires $\Fn{u_k}{E_k}{F}$ pour $1≤k≤p$, il existe une unique application $\Fn{u}{E}{F}$ telle que sa restriction à $E_k$ soit $u_k$ pour tout $1≤k≤p$.
+
+Autrement dit, la donnée d'une application linéaire $E \to F$
+est équivalente à la donnée d'applications linéaires $E_k \to F$ pour tout $1≤k≤p$.
+
+% -----------------------------------------------------------------------------
+\section{Exercices}
+
+\Exercice
+
+Soit $(𝕂,+,⋅)$ un corps.
+Pour tout $x∈𝕂$, on note $-x$ le symétrique de $x$ pour la loi $+$.
+Montrer que les relations suivantes vraies pour tous $(x,y,z)∈𝕂^3$:
+\begin{enumerate}
+\item $0 x = 0$;
+\item $(-1) x = -x$;
+\item $(-x)y = x(-y) = -(xy)$;
+\item $(x-y)z = xz - yz$.
+\end{enumerate}
+
+\Exercice
+
+Soit $(E,+,⋅)$ un $𝕂$-espace vectoriel.
+Pour tout $x∈E$, on note $-x$ le symétrique de $x$ pour la loi $+$.
+Pour $(λ,μ)∈𝕂^2$ et $(x,y)∈E^2$, montrer que:
+\begin{enumerate}
+\item $λx = 0_E$ £ssi. $λ= 0_𝕂$ ou $x = 0_E$;
+\item $(-λ) x = λ(-x) = -(λx)$;
+\item $(λ- μ)x = λx - μx$;
+\item $λ(x-y) = λx - λy$.
+\end{enumerate}
+
+\Exercice
+
+Les ensembles suivants sont-ils des $ℝ$-espaces vectoriels?
+\begin{enumerate}
+\item L'ensemble des suites réelles convergentes.
+\item L'ensemble des suites réelles convergentes vers $0$.
+\item L'ensemble des suites réelles convergentes vers $1$.
+\item L'ensemble des suites réelles bornées.
+\item L'ensemble des suites réelles croissantes.
+\item L'ensemble des suites réelles monotones.
+\item L'ensemble des suites réelles non convergentes.
+\item L'ensemble des suites réelles périodiques à partir d'un certain rang.
+\item L'ensemble des fonctions lipschitziennes de $ℝ$ dans $ℝ$.
+\item L'ensemble des fonctions paires de $ℝ$ dans $ℝ$.
+\item L'ensemble des fonctions de $ℝ$ dans $ℝ$ qui prennent la valeur $β$ en $α$.
+\end{enumerate}
+
+\Exercice
+
+Soit $E$, $F$, $G$ trois $𝕂$-espaces vectoriels, $f∈\mathscr{L}(E,F)$ et $g∈\mathscr{L}(F,G)$.
+
+Montrer que $g◦f = \tilde 0$ £ssi. $\Ima f⊂\Ker g$.
+
+\Exercice
+
+Soit $E$ un $𝕂$-espace vectoriel et $(f,g)∈\LE^2$.
+
+Montrer que $f \bigl( \Ker(g◦f) \bigr) = \Ker g∩\Ima f$.
+
+\Exercice
+
+Soit $E = \mathcal{F}(ℝ,ℝ)$.
+Pour $n∈\Ns$, on définit $\Fn{f_n}{ℝ}{ℝ}$ par $f_n(x) = \sin(nx)$.
+\begin{enumerate}
+\item Les trois fonctions $f_1$, $f_2$ et $f_3$ sont-elles linéairement indépendantes?
+\item Généraliser.
+\end{enumerate}
+
+\Exercice
+
+Soit $E$ le $ℝ$-espace vectoriel des suites réelles convergentes.
+On note $F$ le £sev. des suites qui convergent vers $0$ et $G$ le £sev. des suites constantes.
+
+Montrer que $F$ et $G$ sont supplémentaires dans $E$.
+
+\Exercice
+
+\begin{enumerate}
+\item Déterminer une base des espaces vectoriels suivants:
+  \begin{enumerate}
+  \item $\Vect(e_1,e_2,e_3,e_4) ⊂ℝ^3$
+    où $e_1 = (5,-3,-2)$, $e_2 = (17,-12,-5)$, $e_3 = (8,-12,4)$, $e_4 = (-91,46,45)$.
+  \item $\Ensemble{P∈ℝ_3[X]}{P(1) = P'(1) = P''(1) = 0}$
+  \item $\Ensemble{(x,y,z,t)∈ℝ^4}{ x+y+z+t = 2x+3y+4z+5t = 0 }$.
+  \end{enumerate}
+\item Déterminer un système d'équations cartésiennes des sous-espaces vectoriels suivants:
+  \begin{enumerate}
+  \item $\Vect(e_1,e_2,e_3,e_4) ⊂ℝ^3$
+    où $e_1 = (5,4,9)$, $e_2 = (17,-12,5)$, $e_3 = (8,-12,-4)$, $e_4 = (-91,46,-45)$.
+  \item $\Vect\bigl( (1,2,3,4), (5,6,7,8) \bigr)⊂ℝ^4$.
+  \end{enumerate}
+\end{enumerate}
+
+\Exercice
+
+On pose $Ω=ℝ^ℕ$ l'espace vectoriel des suites réelles et
+\begin{align*}
+  E   &= \Ensemble{u∈Ω}{∀n∈ℕ\+ u_{n+3} - u_{n+2} - u_{n+1} + u_n = 0}, \\
+  E_1 &= \Ensemble{u∈Ω}{∀n∈ℕ\+ u_{n+1} + u_n = 0}, \\
+  E_2 &= \Ensemble{u∈Ω}{∀n∈ℕ\+ u_{n+2} - 2u_{n+1} + u_n = 0}.
+\end{align*}
+\begin{enumerate}
+\item Montrer que $E$ est un $ℝ$-espace vectoriel et que $E_1$ et $E_2$ sont deux sous-espaces vectoriels de $E$.
+\item Montrer que $E = E_1⊕E_2$. \emph{Indication:} pour montrer que tout $u∈E$ se décompose en $u = v + w$ où $v∈E_1$ et $w∈E_2$, vérifier que l'on peut prendre $v_n = \frac14 \pa{ u_{n+2} - 2u_{n+1} + u_n }$.
+\item Donner une base de $E_1$ et de $E_2$ et en déduire une base de $E$.
+\end{enumerate}
+
+\Exercice
+
+Soit $E$ un $𝕂$-espace vectoriel de dimension $n∈\Ns$ et $f∈\LE$ un endomorphisme nilpotent.
+On rappelle qu'un endomorphisme $f$ est dit \emph{nilpotent}
+s'il existe $m∈\Ns$ tel que $f^m = \tilde0$.
+
+On note $q$ \emph{l'indice de nilpotence} de $f$, £cad.
+\[ q = \min \Ensemble{k∈\Ns}{f^k = \tilde 0}. \]
+\begin{enumerate}
+\item Montrer que $\Ker(f^{q-1})≠E$.
+\item Soit $x∈E∖\Ker(f^{q-1})$.
+  Montrer que la famille
+  \[ \bigl( x,f(x),\dots,f^{q-1}(x) \bigr) \] est libre.
+\item En déduire $q≤n$.
+\end{enumerate}
+
+\Exercice
+
+Soit $E$ un $𝕂$-£evdf. et $\nUplet e1n$ une base de $E$.
+On pose:
+\[ ∀i∈\Dcro{1,n}\+ f_i = ∑_{\substack{j=1 \\ j≠i}}^n e_j. \]
+Que peut-on dire de la famille $\nUplet f1n$?
+
+\Exercice
+
+Soit $E$ un $𝕂$-espace vectoriel et $u∈\LE$.
+On suppose que $u^2 - 2 u - 15 \Id_E = 0$.
+\begin{enumerate}
+\item Montrer que $E = \Ker(u+3\Id_E)⊕\Ker(u-5\Id_E)$.
+\item \emph{(pour les 5/2)}
+  Reprendre l'exercice en supposant $E$ de dimension finie et en utilisant les résultats du cours sur la réduction.
+\end{enumerate}
+
+\Exercice
+
+Soit $E$ un $𝕂$-espace vectoriel et $F$, $G$, $H$ des sous-espaces vectoriels de $E$.
+\begin{enumerate}
+\item Comparer (au sens de l'inclusion) $F+(G∩H)$ et $(F+G)∩(F+H)$.
+\item Comparer de même $F∩(G+H)$ et $(F∩G)+(F∩H)$.
+\item Montrer que, si $F⊂G$, on a $F+(G∩H) = (F+G)∩(F+H)$.
+  Contre-exemple si $F \not⊂G$?
+\item Montrer que, si $F⊂G$, $F+H=G+H$ et $F∩H=G∩H$, alors $F=G$.
+\end{enumerate}
+
+\Exercice
+
+Soit $E$ le $ℝ$-espace vectoriel des fonctions de classe $\CC∞$ et $2π$-périodiques de $ℝ$ dans $ℝ$.
+Soit $\FonctionφE E f {f''}$
+\begin{enumerate}
+\item Montrer que $\Kerφ= \Ensemble{f∈E}{f \text{ est constante}}$.
+\item Montrer que $\Imaφ= \Ensemble{f∈E}{∫_0^{2π} f = 0 }$.
+\item En déduire que $E = \Kerφ⊕\Imaφ$.
+\end{enumerate}
+
+\Exercice
+
+Soit $E$ un $𝕂$-£evdf. et $u$ un endomorphisme de $E$.
+On note $u^2$ l'endomorphisme $u◦u$.
+Montrer que les conditions suivantes sont équivalentes:
+\begin{enumerate}
+\item $\Ima u = \Ima u^2$
+\item $\Rang u = \Rang u^2$
+\item $\dim \Ker u = \dim \Ker u^2$
+\item $\Ker u = \Ker u^2$
+\item $\Ima u∩\Ker u = \Acco{0}$
+\item $E = \Ima u⊕\Ker u$
+\item $E = \Ima u + \Ker u$
+\end{enumerate}
+
+\Exercice
+
+Soit $E$ un $𝕂$-espace vectoriel et $f∈\LE$ tel que $∀x∈E$, la famille $(x, f(x))$ est liée.
+
+Montrer que $f$ est une homothétie.
+
+\Exercice
+
+Soit $E$ un $𝕂$-espace vectoriel et $A⊂\LE$.
+On appelle \emph{centre} de $A$ l'ensemble
+\[ \mathcal{Z}(A) = \Ensemble{f∈\LE} {∀g∈A \+ f◦g = g◦f}. \]
+Déterminer $\mathcal{Z}\bigl(\LE\bigr)$.
+
+\Exercice[projecteur et projection]
+
+Soit $E$ un $𝕂$-espace vectoriel.
+\begin{itemize}
+\item On appelle \emph{projecteur} de $E$ tout endomorphisme $u∈E$ tel que $u◦u = u$.
+\item Soit $F$ et $G$ sont deux sous-espaces vectoriels supplémentaires de $E$.
+  On appelle \emph{projection} sur $F$ parallèlement à $G$ l'application $\Fn vEE$ qui à tout vecteur $x∈E$ associe le vecteur $y$ tel que $x = y + z$ où $y∈F$ et $z∈G$.
+\end{itemize}
+
+On va montrer l'équivalence entre ces deux notions.
+\begin{enumerate}
+\item Montrer que la projection $v$ sur $F$ parallèlement à $G$ est linéaire, puis que c'est un projecteur.
+\item Soit $u$ un projecteur.
+  Montrer que $\Ima(u)$ et $\Ker(u)$ sont supplémentaires,
+  puis que $u$ est la projection sur $\Ima(u)$ parallèlement à $\Ker(u)$.
+\end{enumerate}
+
+\Exercice[à connaître]
+
+Soit $E$ un $𝕂$-espace vectoriel et $p$ un projecteur de $E$.
+\begin{enumerate}
+\item Montrer que $\Ima p = \Ensemble{x∈E}{p(x) = x} = \Ker(p - \Id_E)$.
+\item Montrer que $E = \Ker p⊕\Ima p$.
+\end{enumerate}
+
+\Exercice
+
+Soit $E$ un $𝕂$-£evdf. et $p$ un projecteur de $E$.
+Montrer que $\Tr p = \Rang p$.
+
+\Exercice
+
+Soit $E$ un $𝕂$-espace vectoriel, $p$ un projecteur de $E$ et $u∈\LE$.
+Montrer que $p$ et $u$ commutent £ssi. $\Ima p$ et $\Ker p$ sont stables par $u$.
+
+\Exercice
+
+Soit $E$ un $𝕂$-espace vectoriel, $p$ et $q$ deux projecteurs de $E$.
+\begin{enumerate}
+\item Montrer que $p+q$ est un projecteur de $E$ £ssi. $p◦q = q◦p = \tilde 0$.
+\item Montrer que, dans ce cas, $\Ima(p+q) = \Ima p⊕\Ima q$ et que $\Ker(p+q) = \Ker(p)∩\Ker q$.
+\end{enumerate}
+
+\Exercice
+
+Soit $E$ un $𝕂$-espace vectoriel, $p$ et $q$ deux projecteurs de $E$ qui commutent.
+\begin{enumerate}
+\item Montrer que $p◦q$ est un projecteur.
+\item Montrer que, dans ce cas, $\Ima(p◦q) = \Ima p∩\Ima q$ et $\Ker(p◦q) = \Ker p + \Ker q$.
+\end{enumerate}
+
+\Exercice
+
+Soit $E$ un $𝕂$-espace vectoriel, $p$ et $q$ deux projecteurs de $E$ tels que $p◦q = \tilde 0$.
+Soit $r = p + q - q◦p$.
+\begin{enumerate}
+\item Montrer que $r$ est un projecteur.
+\item Montrer que $\Ima r = \Ima p⊕\Ima q$ et $\Ker r = \Ker p∩\Ker q$.
+\end{enumerate}
+
+\Exercice
+
+Soit $E$ le $ℝ$-espace vectoriel des applications de $ℝ$ dans $ℝ$.
+
+Étudier l'indépendance des familles de fonctions suivantes:
+\begin{enumerate}
+\item $\bigl( x \mapsto \sin^n x \bigr)_{n∈\Dcro{0,N}}$ où $N∈ℕ$ fixé
+\item $\bigl( x \mapsto \ch^n x \bigr)_{n∈\Dcro{0,N}}$ où $N∈ℕ$ fixé
+\item $\bigl( x \mapsto \Abs{x-a} \bigr)_{a∈A}$ où $A⊂ℝ$ est une partie finie de $ℝ$.
+\end{enumerate}
+
+\Exercice
+
+Soit $E$ l'espace vectoriel des applications de $ℝ$ dans $ℝ$
+et $F = \Ensemble{f∈E}{f(0)=f(1)=0}$.
+
+Montrer que $F$ est un £sev. de $E$
+et en donner un supplémentaire.
+
+\Exercice
+
+Soit $E$ le $ℝ$-espace vectoriel des applications de classe $\CC∞$ de $ℝ$ dans $ℝ$.
+
+On considère la famille de fonctions $(f_n)_{n∈ℕ}$
+définie par
+\[ ∀n∈ℕ\+ f_{2n}(x) = \cos(nx) \text{ et } f_{2n+1}(x) = \sin\bigl( (n+1)x \bigr). \]
+
+On pose alors $F_0 = \Vect(f_0)$, et $∀p∈\Ns$, $F_p = \Vect(f_{2p-1}, f_{2p})$.
+Soit $\Fonction ΦE E f {f''}$
+\begin{enumerate}
+\item Montrer que $∀p∈ℕ^*$, $F_p = \Ker(Φ+ p^2 \Id_E)$
+\item En déduire que la somme $∑_{k=0}^p F_k$ est directe.
+\item En déduire que la famille $(f_n)_{0≤n≤N}$ est libre.
+\end{enumerate}
+
+\Exercice[£sev. engendré par une partie]
+
+Soit $E$ un $𝕂$-espace vectoriel et $X⊂E$ une partie non vide de $E$.
+On note $V$ l'ensemble des vecteurs $v∈E$ tels qu'il existe $n∈ℕ^*$, $\nUplet x1n ∈X^n$ et $\nUpletα1n ∈𝕂^n$ tels que
+\[ v = ∑_{i=1}^n α_i x_i. \]
+\begin{enumerate}
+\item Dans cette question seulement, on suppose que l'ensemble $X = \{y_1,\dots,y_p\}$ est fini. Montrer que $X = \Vect(y_1,\dots,y_p)$.
+\item Montrer que $V$ est un £sev. de $E$ et que $X⊂V$.
+\item Soit $F$ un £sev. de $E$ tel que $X⊂V$.
+  Montrer que $V⊂F$.
+\item En déduire que $V$ est, au sens de l'inclusion, le plus petit £sev. de $E$ contenant la partie $X$.
+\end{enumerate}
+
+Le £sev. $V$ s'appelle le £sev. engendré par $X$ et noté $V = \Vect(X)$.
+
+\Exercice[l'union de sous-espaces vectoriels n'est pas un £sev.]
+
+Soit $E$ un $𝕂$-espace vectoriel.
+\begin{enumerate}
+\item On suppose que $F$ et $G$ sont deux sous-espaces vectoriels de $E$ tels que $H = F∪G$ est également un sous-espace vectoriel. Montrer que $F⊂G$ ou $G⊂F$.
+\item Plus généralement, si $𝕂$ est infini, en supposant que $\Uplet{F_1}{F_n}$ sont des sous-espaces vectoriels de $E$ tels que $H = ⋃_{i=1}^n F_i$ est également un sous-espace vectoriel, montrer qu'il existe un $i_0∈\Dcro{1,n}$ tel que $∀i∈\Dcro{1,n}$, $F_i⊂F_{i_0}$.
+\end{enumerate}
+
+\Exercice[existence d'un supplémentaire commun]
+
+Soit $E$ un $𝕂$-£evdf., $F$ et $G$ deux sous-espaces vectoriels de $E$ de même dimension $r$.
+Montrer qu'il existe un sous-espace vectoriel $H$ tel que $E = F⊕H = G⊕H$.
+On pourra procéder par récurrence descendante sur $r$.
+
+\Exercice[polynômes de Lagrange]
+
+Soit $\nUplet a0n ∈𝕂^{n+1}$ des nombres deux à deux distincts.
+\begin{enumerate}
+\item Soit $\nUplet b0n ∈𝕂^{n+1}$.
+  Montrer qu'il existe un unique polynôme $P∈𝕂_n[X]$ tel que
+  \[ ∀i∈\Dcro{0,n} \+ P(a_i) = b_i. \]
+  Il s'agit du polynôme interpolateur de Lagrange.
+  On pourra faire apparaître une matrice de Vandermonde.
+\item On définit l'application
+  \[ \Fonction{φ}{𝕂_n[X]}{𝕂^{n+1}}{P}{\bigl(P(a_0),\dots,P(a_n)\bigr).} \]
+  \begin{enumerate}
+  \item Montrer que $φ$ est un isomorphisme.
+  \item On note $(e_0,\dots,e_n)$ la base canonique de $𝕂^{n+1}$.
+    Déterminer explicitement l'unique polynôme $L_i$ tel que $φ(L_i) = e_i$.
+  \item En déduire une expression du polynôme interpolateur de Lagrange.
+  \end{enumerate}
+\end{enumerate}
+
+\Exercice
+
+Soit $E$, $F$ et $G$ des $𝕂$-espaces vectoriels de dimensions finies, $\Fn uEF$ et $\Fn vFG$ des applications linéaires.
+\begin{enumerate}
+\item Montrer que $\Ima(v◦u)⊂\Ima(v)$. En déduire que $\Rang(v◦u)≤\Rang(v)$.
+\item Montrer que $\Ker(v◦u)⊃\Ker(u)$. En déduire que $\Rang(v◦u)≤\Rang(u)$.
+\item On appelle $w$ la restriction de $v$ à $\Ima(u)$.
+  \begin{enumerate}
+  \item Déterminer l'image et le noyau de $w$.
+  \item Appliquer le théorème du rang à $w$.
+  \item En remarquant que $\Ker(w) ⊂ \Ker(v)$, montrer que
+    $ \Rang(u) + \Rang(v)≤\Rang(v◦u) + \dim(F) $.
+  \end{enumerate}
+\item Montrer que
+  $ \Rang(u) + \Rang(v) - \dim(F) ≤ \Rang(v◦u) ≤ \min(\Rang u, \Rang v)$,
+  et $ \dim \Ker(v◦u)≤\dim \Ker(u) + \dim \Ker(v) $.
+\end{enumerate}
+
+
+\Exercice
+
+\begin{enumerate}
+\item
+  Soit $E$ et $F$ deux $𝕂$-£evdfs., $\Fn uEF$ et $\Fn vFE$ deux applications linéaires telles que $u◦v = \Id_F$.
+  \begin{enumerate}
+  \item
+    On suppose $\dim E = \dim F$; montrer que $v◦u = \Id_E$.
+  \item
+    Trouver un contre-exemple dans le cas où $\dim E ≠\dim F$.
+  \end{enumerate}
+\item Soit $E$ un $𝕂$-£ev., $u$ et $v$ deux endomorphismes de $E$ tels que $u◦v = \Id_E$.
+  A-t-on nécessairement $v◦u = \Id_E$?
+\end{enumerate}
+
+
+\Exercice
+
+Soit $E$ un $𝕂$-£evdf., $f$ et $g$ deux endomorphismes de $E$ tels que $f^2 + f◦g = \Id_E$. Montrer que $f$ et $g$ commutent.
+
+\end{document}

@@ -1,0 +1,322 @@
+\documentclass{yann}
+\yann{displaystyle}
+
+\newcommand\me{e}
+\newcommand\I{i}
+\newcommand\Ei[1]{\me^{#1\I\pi}}
+\DeclareMathOperator\Signe{signe}
+
+\begin{document}
+\title{Formulaire de trigonométrie}
+\maketitle
+
+\section{Relations entre les fonctions trigonométriques}
+
+\begin{itemize}
+\item
+$\cos^2 x + \sin^2 x = 1$
+\item
+$\tan x   = \frac{\sin x}{\cos x}$
+\item
+$\cotan x = \frac{\cos x}{\sin x}$
+\item
+$1 + \tan^2 x   = \frac{1}{\cos^2 x}$
+\item
+$1 + \cotan^2 x = \frac{1}{\sin^2 x}$
+\end{itemize}
+
+\section{Formules d'Euler}
+
+\begin{itemize}
+\item
+$\cos x     = \frac{\me^{\I x} + \me^{-\I x}}{2}$
+\item
+$\sin x     = \frac{\me^{\I x} - \me^{-\I x}}{2\I}$
+\item
+$\me^{\I x} = \cos x + \I \sin x$
+\end{itemize}
+
+Exemple d'utilisation: linéariser $\cos^2 (x) \sin^4 (x)$.
+\[ \begin{aligned}
+  & \cos^2 (x) \sin^4 (x) \\
+  & \quad = \Pafrac{\Ei{}+\Ei{-}}{2}^2\cdot\Pafrac{\Ei{}-\Ei{-}}{2\I}^4 \\
+  & \begin{split}
+    \quad ={} &\frac{1}{2^6} \Pa{\Ei{2} + 2 +\Ei{-2} } \\
+    &\quad \cdot \Pa{\Ei{4} - 4\Ei{2} + 6 - 4\Ei{-2} +\Ei{-4} } \end{split} \\
+  & \begin{split}
+    \quad ={} & \frac{1}{2^6} \Bigl( \Ei{6} - 2\Ei{4} -\Ei{2} + 4 \\
+    &\qquad -\Ei{-2} - 2\Ei{-4} +\Ei{-6} \Bigr) \end{split} \\
+  & \quad = \frac{\cos 6x - 2 \cos 4x - \cos 2x + 2}{32}
+\end{aligned} \]
+
+\section{Symétries}
+
+\begin{itemize}
+\item
+$\cos(-x)          = \cos x$
+\item
+$\sin(-x)          = -\sin x$
+\item
+$\tan(-x)          = -\tan x$
+\item
+$\cos(\pi+x)         = -\cos x$
+\item
+$\sin(\pi+x)         = -\sin x$
+\item
+$\tan(\pi+x)         = \tan x$
+\item
+$\cos(x+n\pi)        = (-1)^n \cos x$
+\item
+$\cos(n\pi)          = (-1)^n$
+\item
+$\sin(x+n\pi)        = (-1)^n \sin x$
+\item
+$\sin(n\pi)          = 0$
+\item
+$\cos(\pi-x)         = -\cos x$
+\item
+$\sin(\pi-x)         = \sin x$
+\item
+$\cos\BigPa{\frac\pi2 - x} = \sin x$
+\item
+$\sin\BigPa{\frac\pi2 - x} = \cos x$
+\item
+$\tan\BigPa{\frac\pi2 - x} = \frac{1}{\tan x} = \cotan x$
+\item
+$\cos\BigPa{\frac\pi2 + x} = -\sin x = \cos'(x)$
+\item
+$\sin\BigPa{\frac\pi2 + x} = \cos x = \sin'(x)$
+\item
+$\tan\BigPa{\frac\pi2 + x} = -\frac{1}{\tan x} = -\cotan x$
+\end{itemize}
+
+\section{Formules de duplication}
+
+\begin{itemize}
+\item
+$\cos 2\theta= \cos^2\theta- \sin^2\theta= 2\cos^2\theta- 1 = 1 - 2\sin^2\theta$
+\item
+$\sin 2\theta= 2 \cos\theta\sin\theta$
+\item
+$\tan 2\theta= \frac{2\tan\theta}{1-\tan^2\theta}$
+\item
+$\cos^2\theta= \frac{1+\cos 2\theta}{2}$
+\item
+$\sin^2\theta= \frac{1-\cos 2\theta}{2}$
+\item
+$1 + \cos\theta= 2 \cos^2 \BigPa{\frac{\theta}{2}}$
+\item
+$1 - \cos\theta= 2 \sin^2 \BigPa{\frac{\theta}{2}}$
+\end{itemize}
+
+\section{Formules d'addition}
+
+\begin{itemize}
+\item
+$\cos(a+b)       = \cos a \cos b - \sin a \sin b$
+\item
+$\cos(a-b)       = \cos a \cos b + \sin a \sin b$
+\item
+$\sin(a+b)       = \sin a \cos b + \cos a \sin b$
+\item
+$\sin(a-b)       = \sin a \cos b - \cos a \sin b$
+\item
+$\tan(a+b)       = \frac{\tan a + \tan b}{1 - \tan(a)\tan(b)}$
+\item
+$\tan(a-b)       = \frac{\tan a - \tan b}{1 + \tan(a)\tan(b)}$
+\item
+$\sin p + \sin q =  2 \sin\BigPa{\frac{p+q}{2}} \cos\BigPa{\frac{p-q}{2}}$
+\item
+$\sin p - \sin q =  2 \cos\BigPa{\frac{p+q}{2}} \sin\BigPa{\frac{p-q}{2}}$
+\item
+$\cos p + \cos q =  2 \cos\BigPa{\frac{p+q}{2}} \cos\BigPa{\frac{p-q}{2}}$
+\item
+$\cos p - \cos q = -2 \sin\BigPa{\frac{p+q}{2}} \sin\BigPa{\frac{p-q}{2}}$
+\end{itemize}
+
+\section{Tangente de l'arc moitié}
+
+\begin{itemize}
+\item
+$t     = \tan\BigPa{\frac{\theta}{2}}$
+\item
+$\cos\theta = \frac{1-t^2}{1+t^2}$
+\item
+$\sin\theta = \frac{2t}{1+t^2}$
+\item
+$\tan\theta = \frac{2t}{1-t^2}$
+\end{itemize}
+
+\section{Valeurs remarquables}
+
+\begin{itemize}
+\item
+$\sin 0 = 0$, $\cos 0 = 1$, $\tan 0 = 0$
+\item
+$\sin\BigPa{\frac\pi6} = \frac12$, $\cos\BigPa{\frac\pi6} = \frac{\sqrt3}{2}$, $\tan\BigPa{\frac\pi6} = \frac{1}{\sqrt3}$
+\item
+$\sin\BigPa{\frac\pi4} = \frac{\sqrt2}2$, $\cos\BigPa{\frac\pi4} = \frac{\sqrt2}{2}$, $\tan\BigPa{\frac\pi4} = 1$
+\item
+$\sin\BigPa{\frac\pi3} = \frac{\sqrt3}{2}$, $\cos\BigPa{\frac\pi3} = \frac12$, $\tan\BigPa{\frac\pi3} = \sqrt3$
+\item
+$\sin\BigPa{\frac\pi2} = 1$, $\cos\BigPa{\frac\pi2} = 0$, $\tan\BigPa{\frac\pi2} = \infty$
+\end{itemize}
+
+Bonus:
+
+\begin{itemize}
+\item
+$\cos\BigPa{\frac{2\pi}{5}} = \frac{\sqrt5-1}{4}$
+\item
+La valeur de $\cos\BigPa{\frac{2\pi}{17}}$ que Gauß a trouvée à 19 ans:
+\end{itemize}
+\[ \begin{aligned}
+      & 16\cos\Pafrac{2\pi}{17} = -1 +\sqrt{17} +\sqrt{34-2\sqrt{17}} \\
+      & \qquad + 2\sqrt{17 + 3\sqrt{17} -\sqrt{34-2\sqrt{17}} - 2\sqrt{34+2\sqrt{17}}}
+            \end{aligned} \]
+
+\section{Équations trigonométriques}
+
+\begin{itemize}
+\item
+$\cos x = \cos y$
+si et seulement si $(\exists k\in\Z\+ x = y + 2k\pi)$ ou $(\exists l\in\Z\+ x = -y + 2l\pi)$.
+\item
+$\sin x = \sin y$
+si et seulement si $(\exists k\in\Z\+ x = y + 2k\pi)$ ou $(\exists l\in\Z\+ x =\pi-y + 2l\pi)$
+\end{itemize}
+
+\section{Fonctions réciproques}
+
+\subsection{Arc cosinus}
+
+Soit $\Fonction{c}{\intF{0,\pi}}{\intF{-1,1}}{x}{\cos x.}$
+
+La fonction $c$ est bijective, on note $\arccos$ sa réciproque.
+
+\begin{itemize}
+\item
+$\arccos$ est une fonction continue sur $\intF{-1,1}$
+et de classe $\CC\infty$ sur $\intO{-1,1}$;
+\item
+$\forall x\in\intF{-1,1}$, $\cos\bigl(\arccos(x)\bigr) = x$;
+\item
+$\forall x\in\intF{0,\pi}$, $\arccos\bigl(\cos(x)\bigr) = x$,
+mais ce n'est pas vrai pour $x\in\R\setminus\intF{0,\pi}$.
+\end{itemize}
+
+\subsection{Arc sinus}
+
+Soit $\Fonction{s}{\left[ -\frac\pi2,\frac\pi2 \right]}{\intF{-1,1}}{x}{\sin x.}$
+
+La fonction $s$ est bijective, on note $\arcsin$ sa réciproque.
+
+\begin{itemize}
+\item
+$\arcsin$ est une fonction continue sur $\intF{-1,1}$
+et de classe $\CC\infty$ sur $\intO{-1,1}$;
+\item
+$\forall x\in\intF{-1,1}$, $\sin\bigl( \arcsin(x) \bigr) = x$;
+\item
+$\forall x\in\intF{-\pi/2,\pi/2}$, $\arcsin\bigl( \sin(x) \bigr) = x$,
+mais ce n'est pas vrai pour $x\in\R\setminus\intF{-\pi/2,\pi/2}$.
+\end{itemize}
+
+\subsection{Arc tangente}
+
+Soit $\Fonction{t}{\left] -\frac\pi2,\frac\pi2 \right[}{\R}{x}{\tan x.}$
+
+La fonction $t$ est bijective, on note $\arctan$ sa réciproque.
+
+\begin{itemize}
+\item
+$\arctan$ est une fonction de classe $\CC\infty$ sur $\R$;
+\item
+$\forall x\in\R$, $\tan\bigl( \arctan(x) \bigr) = x$;
+\item
+$\forall x\in\intO{-\pi/2,\pi/2}$, $\arctan\bigl( \tan(x) \bigr) = x$,
+mais ce n'est pas vrai pour $x\in\R\setminus\intO{-\pi/2,\pi/2}$.
+\end{itemize}
+
+\subsection{Identités}
+
+\begin{itemize}
+\item
+$\arccos(x) + \arcsin(x)       =  \frac\pi2$
+\item
+$\arctan(x) + \arctan\BigPa{\frac1x} =  \Signe(x)\frac\pi2$
+\end{itemize}
+
+\section{Dérivées}
+
+\begin{itemize}
+\item
+$\cos'(x)    = -\sin x$
+\item
+$\sin'(x)    = \cos x$
+\item
+$\tan'(x)    = 1 + \tan^2 x = \frac{1}{\cos^2 x}$
+\item
+$\cotan'(x)  = -1 - \cotan^2 x = -\frac{1}{\sin^2 x}$
+\item
+$\arccos'(x) = \frac{-1}{\sqrt{1-x^2}}$
+\item
+$\arcsin'(x) = \frac{1}{\sqrt{1-x^2}}$
+\item
+$\arctan'(x) = \frac{1}{1+x^2}$
+\end{itemize}
+
+\section{Trigonométrie hyperbolique}
+
+Il faut connaître: $\ch^2 x - \sh^2 x = 1$.
+Les autres identités se déduisent de
+$\cos(\I z) = \ch z$ et $\sin(\I z) = \I \sh z$.
+
+Par exemple,
+\[ \begin{aligned} \ch 2\theta &= \cos(2\I\theta)
+  = 1 - 2\sin^2(\I\theta)
+  = 1 + 2\sh^2\theta \\
+ \th 2\theta &= -\I\tan(2\I\theta)
+  = -\I\cdot\frac{2\tan(\I\theta)}{1 - \tan^2(\I\theta)}
+  = \frac{2\th\theta}{1 + \th^2\theta}
+  \end{aligned} \]
+
+\section{Polynômes de Tchebychev}
+
+\subsection{Polynômes de première espèce}
+
+\begin{itemize}
+\item
+$T_0(X)      = 1$
+\item
+$T_1(X)      = X$
+\item
+$T_{n+2}(X)  = 2X \, T_{n+1}(X) - T_n(X)$
+\item
+$T_n(X)$ est un polynôme de degré $n$ et de coefficient dominant $2^{n-1}$.
+\item
+$T_n(\cos\theta)  = \cos(n\theta)$
+\item
+$T_n(\ch\theta) = \ch(n\theta)$
+\end{itemize}
+
+Par exemple, $T_3(X) = 4X^3 - 3X$ donc \[ \cos 3x = 4\cos^3 x - 3 \cos x. \]
+
+\subsection{Polynômes de seconde espèce}
+
+\begin{itemize}
+\item
+$U_0(X)      = 1$
+\item
+$U_1(X)      = 2X$
+\item
+$U_{n+2}(X)  = 2X \, U_{n+1}(X) - U_n(X)$
+\item
+$U_n(X)$ est un polynôme de degré $n$ et de coefficient dominant $2^n$.
+\item
+$U_n(\cos\theta)  \sin\theta  = \sin\bigl((n+1)\theta\bigr)$
+\item
+$U_n(\ch\theta) \sh\theta = \sh\bigl((n+1)\theta\bigr)$
+\end{itemize}
+
+\end{document}

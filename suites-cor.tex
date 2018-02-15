@@ -1,0 +1,71 @@
+\documentclass{yann}
+
+\newcommand\Exo[1]{\paragraph{Exercice #1}}
+
+\begin{document}
+\title{Suites numériques: corrigés}
+\maketitle
+
+\Exo{1}
+\begin{enumerate}
+\setcounter{enumi}{17}
+\item
+% 18
+  C'est une forme indéterminée du type $1^\infty$.
+  On applique la formule de Taylor-Young à la fonction tangente en $\pi/4$:
+  $\tan(\pi/4+x) = \tan(\pi/4) + x \tan'(\pi/4) + o(x)$ quand $x \to 0$.
+  Or $\tan(\pi/4) = 1$ et $\tan'(\pi/4) = 1+\tan^2(\pi/4) = 2$, ainsi
+  $\tan(\pi/4+\alpha/n) = 1+2\alpha/n + o(1/n)$ quand $n\to\infty$.
+
+  Ainsi, $\ln u_n = n \ln(1+2\alpha/n + o(1/n)) = n(2\alpha/n + o(1/n)) \to 2\alpha$,
+  donc $u_n \to e^{2\alpha}$ quand $n\to\infty$.
+
+  Remarquons également que $1+2\alpha/n+o(1/n)$ est positif à partir d'un certain rang, ce qui justifie l'utilisation du logarithme.
+
+\item
+% 19
+  On a $\ln(n+1) = \ln(n) + \ln(1+1/n) = \ln(n) + 1/n + o(1/n)$,
+  d'où
+  \begin{align*}
+    \ln(u_n) &= n\ln(n) \ln \biggPa{\frac{\ln(n+1)}{\ln(n)}} \\
+             &= n\ln(n) \ln \biggPa{ 1 + \frac{1}{n\ln(n)} + o\BigPa{\frac{1}{n\ln(n)}} } \\
+             &= n\ln(n) \biggPa{ \frac{1}{n\ln(n)} + o\BigPa{\frac{1}{n\ln(n)}} } \\
+             &= 1 + o(1)
+  \end{align*}
+  Ainsi, $\ln u_n \to 1$, donc $u_n \to e$ quand $n \to +\infty$
+
+\item
+% 20
+  On a besoin d'un équivalent de $\ln\bigPa{\frac{\arctan(n+1)}{\arctan(n)}}$.
+
+  On a une formule de trigonométrie bien pratique:
+  \[ \forall x > 0, \arctan(x) + \arctan(1/x) = \frac\pi2, \]
+  d'où $\arctan(n) = \pi/2 - \arctan(1/n) = \pi/2 - 1/n + o(1/n^2)$
+  puis $\ln(\arctan(n)) = \ln(\pi/2) + \ln(1-2/(\pi n) + o(1/n^2)
+  = \ln(\pi/2) - 2/(\pi n) + o(1/n^2)$.
+  Ainsi,
+  \begin{align*}
+  \ln\Pa{\frac{\arctan(n+1)}{\arctan(n)}}
+     &= \ln(\arctan(n+1)) - \ln(\arctan(n)) \\
+     &= \frac{2}{\pi} \pa{ \frac{1}{n} - \frac{1}{n+1} } + o\BigPa{\frac{1}{n^2}} \\
+     &= \frac{2}{\pi} \cdot \frac{1}{n(n+1)} + o\BigPa{\frac{1}{n^2}} \\
+     &\sim \frac{2}{\pi n^2}
+  \end{align*}
+
+  Ceci nous fournit immédiatement un équivalent de $\ln(u_n)$, d'où $\ln(u_n) \to 2/\pi$,
+  et $u_n \to e^{2/\pi}$ quand $n\to\infty$.
+
+\item
+% 21
+  Le cosinus étant pair, on a
+  \begin{align*}
+  u_n &= \cos\bigPa{\pi n^2 \cdot \bigCro{ -\ln(1-1/n) }} \\
+      &= \cos\bigPa{\pi n^2 \cdot \bigCro{ 1/n + 1/(2n^2) + o(1/n^2)}} \\
+      &= \cos\bigPa{\pi n + \pi/2 + o(1)} \\
+      &= (-1)^n \cos(\pi/2 + o(1)) \\
+      &\to 0
+  \end{align*}
+  car $\cos(x+n\pi) = (-1)^n \cos(x)$ et $\cos(\pi/2) = 0$.
+\end{enumerate}
+
+\end{document}

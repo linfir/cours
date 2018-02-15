@@ -1,0 +1,504 @@
+\documentclass{yann}
+\usepackage{numprint}
+
+\newcommand\Exo[1]{\paragraph{Exercice #1}}
+
+\begin{document}
+\title{Séries numériques: corrigés}
+\setlength{\columnsep}{1cm}
+\maketitle
+
+\Exo{6}
+\begin{enumerate}
+  \setcounter{enumi}{1}
+\item
+Soit $v_n = \arctan(n)$.
+  On a $0 ≤v_n < v_{n+1} < π/2$ et
+  \[ \tan(v_{n+1}-v_n) = \frac{\tan(v_{n+1})-\tan(v_n)}{1+\tan(v_{n+1})\tan(v_n)} = \frac{1}{n^2+n+1}, \]
+  d'où $u_n = v_{n+1} - v_n$.
+  Ainsi, $S_n = ∑_{k=0}^n u_k = v_{n+1} - v_0 \to π/2$,
+  d'où la convergence et \[ ∑_{n≥1} u_n = \fracπ2. \]
+
+\item
+$u_n = \ln\pa{\frac{n-1}{n}} + \ln\pa{\frac{n+1}{n}}$,
+  d'où \[ S_n = ∑_{k=2}^n \BigCro{ \ln(k-1)-\ln(k) } + ∑_{k=2}^n \BigCro{ \ln(k+1) - \ln(k) }. \]
+  On conclut par télescopage:
+  \[ ∑_{n≥2} u_n = -\ln(2). \]
+
+\item
+Si $x ∈\intO{0,π/2}$, on a \[ \cos(x) = \frac{\sin(2x)}{2\sin(x)} > 0, \]
+  d'où $u_n = v_{n-1} - v_n - \ln(2)$ où $v_n = \ln(\sin(θ/2^n))$.
+  Ainsi,
+  \begin{align*}
+    S_n &= ∑_{k=0}^n u_k = v_{-1} - v_n - (n+1)\ln(2) \\
+    &= \ln(\sin(2θ)) - \ln(\underbrace{2^n\sin(θ/2^n)}_{\to θ}) - \ln(2).
+  \end{align*}
+  D'où la convergence et
+  \[ ∑_{n≥0} u_n = \ln\Pa{\frac{\sin(2θ)}{2θ}}. \]
+
+\item
+On développe $\cos(3x)$ comme $\cos(2x+x)$, puis on utilise les formules pour $\cos(2x)$ et $\sin(2x)$,
+  d'où
+  \[ \cos(3x) = 4\cos^3(x) - 3\cos(x). \]
+  Autrement dit, $4\cos^3(x) = \cos(3x) + 3\cos(x)$.
+  En prenant $x=3^n θ$, il vient
+  $u_n = v_{n+1} - v_n$ où $v_n = (-1/3)^{n-1} \cos(3^n θ)$.
+  Ainsi par télescopage, $4 S_n = v_{n+1} - v_0$,
+  d'où la convergence et
+  \[ ∑_{n≥0} u_n  = \frac{3}{4} \cos(θ). \]
+
+\item
+On a $u_n = v_{n+1} - v_n + 1/2^{n+1}$ où $v_n = √{n} / 2^n$,
+  d'où \[ S_n = ∑_{k=0}^n u_k = v_{n+1} - v_0 + \frac12 ⋅\frac{1-(1/2)^{n+1}}{1-1/2}, \]
+  d'où la convergence et $\DS ∑_{n≥0} u_n = 1$.
+
+\item
+Astuce (polynômes dits \enquote{bicarrés}):
+  $n^4+2n^2+9 = (n^4+6n^2+9) - (4n^2) = (n^2+3)^2 - (2n)^2 = (n^2-2n+3)(n^2+2n+3)$.
+  Une décomposition en éléments simples donne $u_n = v_n - v_{n+2}$
+  où $v_n = 1/(n^2-2n+3)$.
+  On se ramène à deux télescopages classiques en écrivant $u_n = (v_n-v_{n+1})-(v_{n+1}-v_{n+2})$,
+  d'où la convergence et
+  \[ ∑_{n≥0} u_n = v_0 + v_1 = \frac56. \]
+
+\item
+Une décomposition en élements simples donne
+  \[ u_n = \frac{a}{n+2} + \frac{b}{n} + \frac{c}{n-2} \]
+  où $a = -11/8$, $b = 3/4$ et $c = 5/8$.
+  Comme $b = -a-c$, on a
+  \[ u_n = a\Pa{ \frac{1}{n+2} - \frac{1}{n} } + c \Pa{ \frac{1}{n-2} - \frac{1}{n} } \]
+  On se ramène à deux télescopages \enquote{à deux crans}, donc quatre télescopages.
+  Finalement,
+  \[ ∑_{n≥3} u_n = \frac{167}{96}. \]
+
+  \setcounter{enumi}{10}
+\item
+On effectue une décomposition en éléments simples, d'où
+  \[ u_n = \frac{1}{(n+1)^2} - \frac{2}{n+1} + \frac{1}{(n+2)^2} + \frac{2}{n+2}. \]
+  Notons $σ_n = ∑_{k=1}^n 1/k^2$ et $σ = ∑_{n≥1} 1/n^2$.
+  On a
+  \begin{align*}
+    S_n &= ∑_{k=0}^n u_k = ∑_{k=0}^n \frac{1}{(k+1)^2} + ∑_{k=0}^n \frac{1}{(k+2)^2} \\
+    &\qquad + 2 ∑_{k=0}^n \Cro{ \frac{1}{k+2} - \frac{1}{k+1} } \\
+  &= σ_{n+1} + (σ_{n+2} - 1) + 2 \Cro{\frac{1}{n+2} - 1} \\
+  &\to 2σ-3.
+  \end{align*}
+  Remarque: $σ=π^2/6$.
+
+\item
+Bien que cela ne soit pas strictement nécessaire, commençons par le changement de variables $y=1/x$;
+  on trouve \[ u_n = ∫_n^{n+1} e^{y^{-1/2}} y^{-3/2} \D y. \]
+  Ainsi, \[ S_n = ∑_{k=1}^n u_k = ∫_1^{n+1} e^{y^{-1/2}} y^{-3/2} \D y. \]
+  On effectue le changement de variables $u=y^{-1/2}$, d'où
+  \[ S_n = 2 ∫_{1/√{n+1}}^1 e^u \D u = 2(e-e^{1/√{n+1}}), \]
+  d'où la convergence et \[ ∑_{n≥1} u_n = 2(e-1). \]
+\end{enumerate}
+
+\Exo{8}
+\begin{enumerate}
+\item
+cf. cours.
+
+\item
+On a pour $k ≥2$,
+  \[ ∫_k^{k+1} \frac{\D x}{x} ≤ \frac{1}{k} ≤ ∫_{k-1}^n \frac{\D x}{x} \]
+  d'où, en sommant pour $k ∈ \ccro{2,n}$:
+  \[ ∫_2^{n+1} \frac{\D x}{x} ≤ H_n - 1 ≤ ∫_1^n \frac{\D x}{x}, \]
+  puis
+  \[ \frac{\ln(n+1) - \ln 2 + 1}{\ln n} ≤ \frac{H_n}{\ln n} ≤ 1 + \frac{1}{\ln n}. \]
+  Comme $\ln(n+1) = \ln(n) + o(1)$, il vient d'après le théorème des gendarmes
+  que $H_n / \ln n \to 1$
+  d'où le résultat.
+
+\item
+  \emph{Analyse:}
+  Pour $n=1$, l'hypothèse donne $u_1 = H_1 - \ln 1 = 1$.
+  Pour $n≥2$, on a $u_n = ∑_{k=1}^n u_k - ∑_{k=1}^{n-1} u_k$,
+  d'où $u_n = \frac1n - \ln n + \ln(n-1)$.
+
+  \emph{Synthèse:}
+  Posons $u_1 = 1$ et pour $n ≥2$, $u_n = \frac1n - \ln n + \ln(n-1)$.
+  Pour tout $n≥1$, on a
+  \[ ∑_{k=1}^n u_k = \BiggCro{ u_1 + ∑_{k=2}^n \frac1k } + ∑_{k=2}^n \BigCro{\ln(k-1)-\ln(k)} \]
+  Le premier terme étant $H_n$ et le second se télescopant en $\ln(1) - \ln(n)$, la formule est bien vérifiée.
+
+\item
+  $u_n = \frac1n + \ln(1-\frac1n) \sim -\frac{1}{2n^2}$,
+  d'où la convergence de la série $∑u_n$
+  par théorème de comparaison à une série absolument convergente.
+
+\item
+  Notons $γ=∑_{n≥1} u_n$.
+  Par définition de la convergence d'une série, on a $∑_{k=1}^n u_k \to γ$,
+  £cad. $H_n - \ln n \to γ$.
+
+\item
+  Pour tout $k≥2$, on a
+  \[ ∫_k^{k+1} \frac{\D x}{x^α} ≤ \frac{1}{k^α} ≤ ∫_{k-1}^k \frac{\D x}{x^α}, \]
+  d'où en sommant de $n+1$ à $N$:
+  \[ ∫_{n+1}^{N+1} \frac{\D x}{x^α} ≤ ∑_{k=n+1}^N \frac{1}{k^α} ≤ ∫_n^N \frac{\D x}{x^α}. \]
+  On calcule les intégrales, puis quand $N \to +∞$,
+  \[ \frac1{(α-1)(n+1)^{α-1}} ≤ ∑_{k>n} \frac{1}{k^α} ≤ \frac1{(α-1)n^{α-1}}. \]
+  On multiplie par $n^{α-1}$ et on utilise le théorème des gendarmes quand $n\to+∞$, d'où le résultat.
+
+\item
+  On utilise le théorème sur les restes de deux SATP convergentes de terme général équivalent (cf. exercice~5):
+  comme $-2u_n \sim 1/n^2$, la série à termes positifs $∑(-u_n)$ converge
+  et les restes $∑_{k>n} (-2u_k)$ et $∑_{k>n} \frac{1}{n^2}$ sont équivalents.
+  D'après la question précédente, on a donc $R_n \sim -\frac{1}{2n}$.
+
+\item
+  C'est immédiat: $∑_{k=1}^n u_k + R_n = γ$, £cad. $H_n - \ln n + R_n = γ$.
+  Or on vient de montrer que $R_n = -\frac{1}{2n} + \o\pa{\frac1n}$, d'où le résultat.
+
+\item
+  On fait une analyse-synthèse comme dans la question~3,
+  et l'on trouve que $v_1 = \frac12$ et $v_n = u_n + \frac12\pa{ \frac{1}{n-1} - \frac{1}{n}  }$
+  pour $n≥2$.
+
+\item
+Pour $n ≥2$, on a
+  $v_n = \frac1n + \ln\pa{1-\frac1n} + \frac{1}{2n}\cro{ \pa{1-\frac1n}^{-1} - 1 }$,
+  d'où en faisant un développement limité, $v_n \sim \frac{1}{6n^3}$.
+
+\item
+On procède comme à la question~7, et l'on trouve $T_n \sim \frac{1}{12n^2}$.
+
+\item
+Comme $∑_{k=1}^n v_k = H_n - \ln n - \frac{1}{2n} \to γ$,
+  on a $∑_{k=1}^n v_k + T_n = γ$, d'où le résultat.
+
+\end{enumerate}
+
+\Exo{10}
+
+\begin{enumerate}
+\item
+  Dans le cas $β=0$, l'énoncé se réduit à montrer que
+  la série $∑\frac{1}{n^α}$ converge pour $α>1$, diverge pour $α<1$ et diverge également pour $α=1$.
+  Ceci est bien confirmé par la règle de Riemann.
+
+\item
+  Soit $γ$ tel que $1<γ<α$.
+  On a $n^γ u_n = \frac{1}{n^{α-γ} \ln^β n} \to 0$ car $α-γ>0$, d'où $u_n=o\pa{\frac{1}{n^γ}}$.
+  Comme $γ>1$, la série $∑ \frac{1}{n^γ}$ converge (absolument), donc $∑ u_n$ aussi.
+  On a donc démontré le cas $α>1$.
+
+\item
+  Soit $γ$tel que $α<γ<1$.
+  On a $n^γ u_n = \frac{n^{γ-α}}{\ln^β n} \to +∞$ car $γ-α>0$, d'où $\frac{1}{n^γ u_n} \to 0$,
+  d'où $\frac{1}{n^γ} = o(u_n)$.
+  Comme $γ<1$, la série $∑\frac{1}{n^γ}$ diverge donc $∑ u_n$ aussi.
+  On a donc démontré la cas $α<1$.
+
+\item
+  On effectue le changement de variables $y = \ln x$.
+  \[ ∫ \frac{\D x}{x \ln^β x}
+  = ∫ \frac{\D y}{y^β}
+  = \begin{cases}
+    \frac{y^{-β+1}}{-β+1} & \text{si $β≠1$,} \\
+    \ln y & \text{si $β=1$.}
+  \end{cases} \]
+
+\item
+  Si $β≤0$, alors $\frac{1}{\ln^β n} = \ln^{-β} n ≥ 1$, donc $u_n ≥ \frac1n$,
+  d'où la divergence de la série $∑u_n$.
+
+\item
+  Si $β>0$, la fonction $x \mapsto \frac{1}{x \ln^β x}$ est décroissante et positive sur $\intO{1,+∞}$.
+  On en déduit l'inégalité demandée pour tout $n≥3$.
+
+\item
+  \begin{itemize}
+  \item
+    Si $0 < β < 1$, on a
+    \[ ∑_{k=3}^n u_k ≥ ∫_3^{n+1} \frac{\D x}{x \ln^β x} = \Cro{\frac{\ln^{1-β}(x)}{1-β}}_3^{n+1} \to +∞, \]
+    donc la série $∑ u_n$ diverge.
+
+  \item
+    Si $β = 1$, on a
+    \[ ∑_{k=3}^n u_k ≥ ∫_3^{n+1} \frac{\D x}{x \ln x} = \BigCro{\ln(\ln x)}_3^{n+1} \to +∞, \]
+    donc la série $∑ u_n$ diverge.
+
+  \item
+    Si $β > 1$, on a
+    \begin{align*}
+      ∑_{k=3}^n u_k &≤ ∫_2^n \frac{\D x}{x \ln^β x} = \Cro{ -\frac{1}{(β-1)\ln^{β-1}(x)} }_2^n \\
+      &≤ \frac{1}{(β-1)\ln^{β-1}(2)}.
+    \end{align*}
+    Les sommes partielles de la SATP $∑u_n$ sont donc majorées, donc $∑u_n$ converge.
+  \end{itemize}
+  On a donc démontré la règle de Bertrand.
+\end{enumerate}
+
+\Exo{12}
+
+\begin{enumerate}
+\item
+  On a
+  \begin{align*}
+    w_n
+    &= \ln\BiggCro{\frac{(n+1)^α u_{n+1}}{n^α u_n}} \\
+    &= α \ln\BigPa{1+\frac1n} + \ln\BigPa{\frac{u_{n+1}}{u_n}} \\
+    &= α \biggCro{\frac1n + O\BigPa{\frac1{n^2}}} + \ln\biggCro{ 1 - \frac{α}{n} + O\BigPa{\frac1{n^2}} } \\
+    &= O\BigPa{\frac1{n^2}}.
+  \end{align*}
+
+\item
+  La série $∑ w_n$ converge donc absolument.
+  Or $w_n = \ln(v_{n+1}) - \ln(v_n)$, donc
+  $\ln(v_n) = \ln(v_0) + ∑_{k=0}^{n-1} w_k \to \ln(v_0) + ∑_{n≥0} w_n$.
+
+\item
+  Notons $ℓ = \lim_\ninf \ln(v_n)$.
+  On a donc $v_n \to K = e^ℓ > 0$,
+  d'où $u_n \sim \frac{K}{n^α}$.
+
+\item
+  Comme il s'agit de SATP, les série $∑ u_n$ et $∑ \frac{K}{n^α}$ sont de même nature.
+  On a donc démontré la règle de Raabe-Duhamel.
+
+\item
+  \begin{enumerate}
+  \item
+On a
+    \begin{align*}
+      \frac{u_{n+1}}{u_n}
+      &= \frac{(n+1)^2}{n(a+n+1)} \\
+      &= \BigPa{1+\frac1n}^2 \BigPa{1+\frac{a+1}{n}}^{-1} \\
+      &= \biggCro{1+\frac2n+O\BigPa{\frac1{n^2}}} \biggCro{ 1-\frac{a+1}{n}+O\BigPa{\frac1{n^2}}} \\
+      &= 1-\frac{a-1}{n} + O\BigPa{\frac1{n^2}}
+    \end{align*}
+    Ainsi il existe $K>0$ tel que $u_n \sim \frac{K}{n^{a-1}}$, et la série $∑ u_n$ converge £ssi. $a>2$.
+
+  \item
+    On a
+    \begin{align*}
+      \frac{u_{n+1}}{u_n}
+      &= (n+1) \, e \, \frac{(n+1)^{-n-1}}{n^{-n}}
+      = e \Pa{1+\frac1n}^{-n} \\
+      &= \exp\Cro{ 1 - n\ln\Pa{1+\frac1n} } \\
+      &= \exp\Cro{ 1 - n\Pa{ \frac1n - \frac1{2n^2} + O\BigPa{\frac1{n^3}} } } \\
+      &= \exp\Cro{ \frac{1}{2n} + O\BigPa{\frac1{n^2}} } \\
+      &= 1 + \frac{1}{2n} + O\BigPa{\frac1{n^2}}
+    \end{align*}
+    Ainsi il existe $K>0$ tel que $u_n \sim \frac{K}{n^{-1/2}} = K√n$.
+    Ceci répond très rapidement à la première partie de l'exercice sur la formule de Stirling.
+  \end{enumerate}
+
+\item
+  Il suffit de reprendre le calcul de la première question en étant un peu plus soigneux:
+  $w_n = α \ln\pa{1+\frac1n} + \ln\pa{ 1 - \frac{α}{n} + O(ε_n) }$.
+  On trouve $w_n = O\pa{\frac1{n^2}} + O(ε_n)$,
+  donc la série $∑ w_n$ converge et on conclut comme précédemment.
+\end{enumerate}
+
+\Exo{15}
+
+\begin{enumerate}
+\item
+  \begin{enumerate}
+  \item
+    Trivial.
+
+  \item
+    Comparaison série-intégrale: le logarithme est croissant sur $\intFO{1,+∞}$.
+
+  \item
+    En sommant pour $k$ variant de~$2$ à~$n$, on trouve
+    \[ ∫_1^n \ln x \D x ≤ a_n ≤ ∫_2^{n+1} \ln x \D x. \]
+    Les deux intégrales se calculent et l'on trouve des quantités équivalentes à $n \ln n$;
+    le seul point qui n'est pas complétement immédiat étant $\ln(n+1) \sim \ln n$.
+    Ainsi, $\frac{a_n}{n\ln n}$ est encadré par deux quantités qui tendent vers~$1$,
+    donc tend également vers~$1$ d'après le théorème des gendarmes.
+    Bref, $a_n \sim n\ln n$.
+  \end{enumerate}
+
+\item
+  \begin{enumerate}
+  \item
+    On trouve $b_{n+1} - b_n = -n \ln\pa{1+\frac1n}$, d'où $b_{n+1}-b_n \to -1$.
+
+  \item
+    Notons $β_n = b_{n+1} - b_n$.
+    Comme $β_n \to -1$, le lemme de Cesàro donne que
+    $\frac{1}{n-1} ∑_{k=1}^{n-1} β_k \to -1$,
+    £cad. que $\frac{b_n}{n-1} \to -1$.
+    Ainsi, $b_n \sim -(n-1) \sim -n$.
+  \end{enumerate}
+
+\item
+  \begin{enumerate}
+  \item
+    On trouve $c_{n+1} - c_n = b_{n+1} - b_n + 1 = -n\ln\pa{1+\frac1n} + 1$.
+    Un développement limité donne alors $c_{n+1} - c_n \sim \frac{1}{2n}$.
+
+  \item
+    La série à termes positifs $∑_n \frac{1}{2n}$ diverge, donc les sommes partielles
+    $∑_{k=1}^{n-1} (c_{n+1}-c_n)$ et $∑_{k=1}^{n-1} \frac{1}{2k}$ sont équivalentes,
+    d'où $c_n - c_1 \sim \frac12 H_{n-1}$ où $H_n = ∑_{k=1}^n \frac{1}{k}$ est la somme partielle de la série harmonique que l'on sait équivalente à $\ln n$.
+    Bref, $c_n \sim \frac12 \ln n$.
+  \end{enumerate}
+
+\item
+  \begin{enumerate}
+  \item
+    On a
+    \begin{align*}
+      d_{n+1} - d_n
+      &= -n\ln\BigPa{1+\frac1n} + 1 - \frac12 \ln\BigPa{1+\frac1n} \\
+      &= -n\BiggCro{ \frac1n - \frac{1}{2n^2} + O\BigPa{\frac1{n^3}} } + 1 \\
+      &\quad - \frac12 \BiggCro{ \frac1n + O\BigPa{\frac1{n^2}} } \\
+      &= O\BigPa{\frac1{n^2}}
+    \end{align*}
+
+  \item
+    La série $∑(d_{n+1} - d_n)$ est donc absolument convergente.
+
+  \item
+    La convergence de cette série est équivalente à la convergence de la suite $(d_n)$,
+    donc il existe $ℓ∈ℝ$ tel que $d_n \to ℓ$, donc $d_n = ℓ + o(1)$.
+    Comme $d_n = \ln(n!) - n\ln n + n - \frac12 n$, on a bien le résultat demandé.
+  \end{enumerate}
+
+\item
+  Notons $K = e^ℓ > 0$.
+  On a
+  \begin{align*}
+    n! &= \exp(\ln(n!)) \\
+    &= \exp\BigPa{n\ln n - n + \frac12 n + ℓ + o(1)} \\
+    &= n^n ⋅ e^{-n} ⋅ √{n} ⋅ e^ℓ ⋅ \exp(o(1)) \\
+    &\sim K√n \BigPa{\frac{n}{e}}^n
+  \end{align*}
+  car $\exp(o(1)) \to 1$.
+
+\item
+  \begin{enumerate}
+  \item
+    On a
+    \begin{align*}
+      W_{n+2}
+      &= ∫_0^{π/2} \sin(t) \sin^{n+1}(t) \D t \\
+      &= \BigCro{ -\cos(t) \sin^{n+1}(t) }_0^{π/2} \\
+      &\quad + (n+1) ∫_0^{π/2} \cos^2(t) \sin^n(t) \D t.
+    \end{align*}
+    Or le crochet est nul et en remplaçant $\cos^2(t)$ par $1-\sin^2(t)$ dans l'intégrale,
+    on obtient que $W_{n+2} = (n+1)(W_n - W_{n+2})$.
+    Le résultat s'ensuit immédiatement.
+
+  \item
+    Récurrence.
+
+  \item
+    D'après la question 5, on a $(2n)! \sim K √{2n} (2n/e)^{2n}$
+    et $\pa{n!}^2 \sim K^2 n (n/e)^{2n}$.
+    Il ne reste plus qu'à simplifier l'expression obtenue dans la question précédente,
+    d'où le résultat.
+
+  \item
+    Pour $t ∈ \intF{0,π/2}$, on a $\sin(t) ∈ \intF{0,1}$, donc
+    $0 ≤ \sin^{n+2}(t) ≤ \sin^{n+1}(t) ≤ \sin^n(t)$.
+    En intégrant, il vient donc $0 ≤ W_{n+2} ≤ W_{n+1} ≤ W_n$.
+    Comme $W_n > 0$, on a donc
+    \[ \frac{n+1}{n+2} = \frac{W_{n+2}}{W_n} ≤ \frac{W_{n+1}}{W_n} ≤ 1, \]
+    d'où $W_{n+1} / W_n \to 1$ d'après le théorème des gendarmes,
+    ce qui est le résultat demandé.
+
+  \item
+    Il suffit de remarquer que $I_n > 0$ pour tout $n∈ℕ$ et de calculer $\frac{I_{n+1}}{I_n}$,
+    qui se simplifie grâce à la relation de récurrence trouvée sur les $W_n$.
+    On trouve que la suite $(I_n)$ est constante, donc $I_n = I_0 = \fracπ2$.
+    Or $I_n \sim n W_n^2$ d'après la question précédente, donc $W_n^2 \sim \frac{π}{2n}$
+    d'où le résultat car $W_n > 0$.
+
+  \item
+    D'après la question c, on a $W_{2n} \sim \frac{π}{K√{2n}}$.
+    D'après la question e, on a $W_{2n} \sim √{\frac{π}{4n}}$.
+    Le quotient tend donc vers~$1$, £cad. $\frac{√{2π}}{K} \to 1$.
+    Une suite constante (car indépendante de $n$) ne peut tendre vers~$1$ qu'en étant égale à~$1$,
+    donc $K = √{2π}$.
+  \end{enumerate}
+
+\item
+  Bref, j'ai démontré la formule de Stirling:
+  \[ n! \sim √{2πn} \BigPa{\frac ne}^n. \]
+\end{enumerate}
+
+\Exo{17}
+
+\begin{enumerate}
+  \setcounter{enumi}{5}
+\item
+D'abord, remarquons que pour tout $θ∈ℝ$,
+  \[ \sinθ ≥ \frac12 \iff ∃k∈ℤ \+ \frac{π}{6} ≤ θ-2kπ ≤ \frac{5π}{6}. \]
+  Ainsi, en appliquant ceci à $θ=\ln(n)$, il vient
+  \[ \sin(\ln n) ≥ \frac12  \iff n ∈ I_k = \ccro{a_k,b_k}, \]
+  où $a_k = \left\lceil e^{π/6+2kπ} \right\rceil$ et $b_k = \left\lfloor e^{5π/6+2kπ} \right\rfloor$.
+  On vérifie que $I_k = ∅$ si $k < 0$, $I_0 = \ccro{2,13}$, $I_1 = \ccro{904,\numprint{7340}}$,
+  $I_2 = \ccro{\numprint{484064},\numprint{3930840}}$, etc.
+
+  Notons $\DS P_n = ∑_{k=a_n}^{b_n} u_k$.
+  On a \[ P_n ≥ ∑_{k=a_n}^{b_n} \frac{1/2}{b_n} = \frac{b_n-a_n+1}{2b_n} = c_n, \]
+  et un petit calcul donne $c_n \to \frac12(1-e^{-2π/3}) > 0$,
+  donc en particulier $(P_n)$ ne tend pas vers~0.
+
+  Si la série convergeait, on aurait $S_n \to ℓ$, et donc $P_n = S_{b_n} - S_{a_n - 1} \to 0$, ce qui n'est pas le cas.
+  La série $∑ u_n$ diverge.
+\end{enumerate}
+
+\Exo{20}
+
+\begin{enumerate}
+\item
+Idée: on part de $b_k = B_k - B_{k-1}$ (qui est valable même pour $k=0$ si l'on pose $B_{-1} = 0$),
+  puis on remplace dans $S_n$, on coupe la somme en deux,
+  on fait un changement d'indice pour avoir un facteur $B_k$ dans les deux termes
+  et enfin on regroupe en faisant attention au(x) terme(s) résiduel(s).
+  \begin{align*}
+    S_n &= ∑_{k=0}^n a_k b_k = ∑_{k=0}^n a_k (B_k - B_{k-1}) \\
+    &= ∑_{k=0}^n a_k B_k - ∑_{k=-1}^{n-1} a_{k+1} B_k \\
+    &= ∑_{k=0}^n (a_k - a_{k+1}) B_k + a_{n+1} B_n.
+  \end{align*}
+\item
+Notons $M$ tel que $∀n∈ℕ$, $\Abs{B_n} ≤ M$ et $c_n = a_n - a_{n+1} ≥ 0$.
+  La série $∑ c_n$ converge car elle est télescopique et $a_n \to 0$.
+  De plus, $\Abs{c_n B_n} ≤ M c_n$ donc la série $∑ c_n B_n$ est absolument convergente.
+  Enfin, $\Abs{a_{n+1} B_n} ≤ M \Abs{a_{n+1}} \to 0$, donc
+  \[ S_n \to ∑_{n≥0} c_n B_n \]
+  Ainsi, la série $∑ a_n b_n$ converge.
+\item
+En prenant $b_n = (-1)^n$, on voit que la suite $(B_n)$ est bornée car ses termes pars valent~1 et ses termes impairs sont nuls.
+  On peut donc appliquer le résultat de la question précédente et on retrouve le critère spécial.
+\item
+\begin{enumerate}
+\item
+On prend $b_n = e^{int}$ et on doit vérifier que la suite $(B_n)$ est bornée.
+  C'est facile car on peut calculer explicitement $B_n$ (somme géométrique de raison $q=e^{it}≠1$).
+  On trouve $B_n = \frac{1-q^{n+1}}{1-q}$, donc $\Abs{B_n} ≤ \frac{2}{\Abs{1-q}}$, d'où le résultat.
+\item
+On applique le cas précédent avec $t = β$ et $a_n = \frac{1}{n^α}$,
+  d'où la convergence de $∑ \frac{e^{inβ}}{n^α}$
+  puis de $∑ \frac{e^{i(nβ+γ)}}{n^α}$ en multipliant par $e^{iγ}$.
+  D'où la convergence de $∑ \frac{\sin(nβ+γ)}{n^α}$ en prenant la partie réelle.
+\item
+Notons $u_n = \frac{\sin n}{n^α + \sin n}$.
+  D'abord, si $α>1$, on a $u_n = O(1/n^α)$, d'où la convergence absolue.
+  Un développement limité donne
+  \begin{align*} \frac{\sin n}{n^α+\sin n}
+    &= \frac{\sin n}{n^α} ⋅ \frac{1}{1+\frac{\sin n}{n^α}} \\
+    &= \frac{\sin n}{n^α} \Cro{ 1 - \frac{\sin n}{n^α} + o\Pa{\frac{1}{n^α}} } \\
+    &= \frac{\sin n}{n^α} - \frac{\sin^2 n}{n^{2α}} + o\Pa{\frac{1}{n^{2α}}} \\
+    &= \frac{\sin n}{n^α} - \frac{1-\cos(2n)}{2n^{2α}} + o\Pa{\frac{1}{n^{2α}}}
+  \end{align*}
+
+  Notons $v_n = \frac{\sin n}{n^α}$ et $w_n = \frac{\cos(2n)}{2n^{2α}}$.
+  D'après la question précédente, la série $∑ v_n$ converge.
+  Comme $w_n = \frac12 ⋅ \frac{\sin(2n+π/2)}{n^{2α}}$, on a de même la convergence de $∑ w_n$.
+
+  Ainsi, $∑ u_n$ converge £ssi. $∑ (u_n - v_n - w_n)$ converge.
+  Or $u_n - v_n - w_n \sim \frac{-1}{2n^{2α}}$ qui est de signe constant,
+  donc cette série converge £ssi. $α > 1/2$.
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

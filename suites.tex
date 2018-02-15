@@ -1,0 +1,580 @@
+\documentclass{yann}
+
+\undef\U \undef\V
+\newcommand\I{i}
+\newcommand\U{(u_n)_{n\in\N}}
+\newcommand\V{(v_n)_{n\in\N}}
+
+\begin{document}
+\title{Suites numériques}
+\maketitle
+
+% -----------------------------------------------------------------------------
+\section{Généralités}
+
+\Para{Définitions}
+\begin{itemize}
+\item
+Une \emph{suite} à valeurs dans un ensemble $X$ est une application $\Fn{u}{\N}{X}$.
+  On note fréquemment $u_n$ au lieu de $u(n)$ et $\U$ au lieu de $u$.
+\item
+On dit que $u_n$ est le \emph{terme général} de la suite $\U$.
+\item
+Une \emph{suite numérique} est une suite à valeurs dans $\R$ ou $\C$.
+\item
+Une \emph{suite réelle} est une suite à valeurs dans $\R$.
+\item
+Une suite réelle $\U$ est dite \emph{croissante} si et seulement si
+  $\forall n\in\N$, $u_n\leq u_{n+1}$.
+\item
+Une suite réelle $\U$ est dite \emph{décroissante} si et seulement si
+  $\forall n\in\N$, $u_n\geq u_{n+1}$.
+\item
+Une suite numérique $\U$ est dite \emph{stationnaire} £ssil. existe
+  $c \in \K$ et $n_0 \in \N$ tels que $\forall n \geq n_0$, $u_n = c$.
+\end{itemize}
+
+\Para{Définitions}
+\begin{itemize}
+\item
+Soit $\U$ une suite numérique et $\ell\in\K$.
+  On dit que la suite $\U$ \emph{converge} vers $\ell$ si et seulement si
+  \[ \forall\epsilon> 0 \+\exists N\in\N\+\forall n\geq N\+
+  \Abs{u_n -\ell}\leq\epsilon. \]
+  $\ell$ est nécessairement unique et s'appelle \emph{la limite} de la suite $\U$.
+  On écrit $\lim\limits_{\ninf} u_n = \ell$ ou encore $u_n \Toninf\ell$.
+\item
+Une suite numérique $\U$ est dite \emph{convergente} si et seulement s'il
+  existe $\ell\in\K$ tel que $\U$ converge vers $\ell$.
+  Elle est dite \emph{divergente} dans le cas contraire.
+\end{itemize}
+
+\Para{Définitions}
+
+Soit $\U$ une suite réelle.
+\begin{itemize}
+\item
+On dit que \emph{$u_n \Toninf +\infty$} si et seulement si
+  \[ \forall M\in\R\+\exists N\in\N\+\forall n\geq N\+ u_n\geq M. \]
+\item
+On dit que \emph{$u_n \Toninf -\infty$} si et seulement si
+  \[ \forall M\in\R\+\exists N\in\N\+\forall n\geq N\+ u_n\leq M. \]
+\end{itemize}
+
+\Para{Remarque}
+
+Soit $\U$ une suite réelle telle que $u_n \Toninf\pm\infty$.
+Alors $\U$ est une suite \emph{divergente}.
+
+\Para{Définitions}
+\begin{itemize}
+\item
+Une suite réelle $\U$ est dite \emph{majorée} si et seulement si
+  \[ \exists A\in\R\+\forall n\in\N\+ u_n\leq A. \]
+\item
+Une suite réelle $\U$ est dite \emph{minorée} si et seulement si
+  \[ \exists B\in\R\+\forall n\in\N\+ u_n\geq B. \]
+\item
+Une suite numérique $\U$ est dite \emph{bornée} si et seulement si
+  \[ \exists M\in\R\+\forall n\in\N\+ \Abs{u_n}\leq M. \]
+\end{itemize}
+
+\Para{Définitions}
+\begin{itemize}
+\item
+Une \emph{extractrice} est une fonction $\N\to\N$ strictement croissante.
+\item
+Une \emph{sous-suite} ou \emph{suite extraite} de la suite $\U$
+  est une suite de la forme $(u_{\sigma(n)})_{n\in\N}$ où $\sigma$
+  est une extractrice.
+\end{itemize}
+
+\Para{Proposition}
+
+Une sous-suite d'une suite convergente est également convergente.
+
+Plus précisément:
+Soit $\U$ une suite numérique et $\ell\in\K$ tels que $u_n \Toninf\ell$.
+Soit $\sigma$ une extractice.
+Alors $u_{\sigma(n)} \Toninf\ell$.
+
+\subsection{Théorèmes}
+
+\Para{Théorème}
+
+Toute suite réelle croissante majorée converge.
+
+Autrement dit:
+Soit $\U$ une suite réelle croissante et majorée.
+Alors $\U$ est convergente.
+
+\Para{Corollaire}
+
+Toute suite réelle décroissante minorée converge.
+
+\Para{Proposition}
+
+Toute suite réelle croissante non majorée tend vers $+\infty$.
+
+\Para{Théorème des gendarmes}
+
+Soit $(u_n)_{n\in\N}$, $(v_n)_{n\in\N}$ et $(w_n)_{n\in\N}$ trois suites réelles et $\ell\in\R$.
+Si:
+\begin{itemize}
+\item
+$u_n \Toninf\ell$;
+\item
+$w_n \Toninf\ell$;
+\item
+$\exists N\in\N \+ \forall n\geq N \+ u_n\leq v_n\leq w_n$.
+\end{itemize}
+
+Alors $(v_n)_{n\in\N}$ est une suite convergente et $v_n \Toninf\ell$.
+
+\Para{Théorème}
+
+Soit $\U$ une suite réelle.
+Soit $I$ un intervalle \emph{ouvert} de $\R$ et $\Fn fI\R$.
+Si:
+\begin{itemize}
+\item
+$u_n \Toninf\ell$;
+\item
+$\ell\in I$;
+\item
+$f$ continue en $\ell$.
+\end{itemize}
+
+Alors la suite $\bigl( f(u_n) \bigr)_n$ est définie à partir d'un certain rang et
+$f(u_n) \Toninf f(\ell)$.
+
+\Para{Théorème de Bolzano-Weierstraß}[hors-programme]
+
+Toute suite réelle bornée admet une sous-suite convergente.
+
+Autrement dit:
+
+Soit $\U$ une suite réelle \emph{bornée}.
+Alors il existe une extractrice $\sigma$
+et un réel $\ell$ tels que $u_{\sigma(n)} \Toninf\ell$.
+
+\Para{Définition}
+
+Soit $\U$ et $\V$ deux suites réelles.
+On dit qu'elles sont \emph{adjacentes} si et seulement si:
+\begin{itemize}
+\item
+$\U$ est croissante;
+\item
+$\V$ est décroissante;
+\item
+$v_n - u_n \Toninf 0$.
+\end{itemize}
+
+\Para{Théorème}
+
+Soit $\U$ et $\V$ deux suites adjacentes.
+Alors elles convergent toutes les deux vers la même limite $\ell\in\R$.
+De plus:
+\begin{multline*}
+u_0\leq\cdots\leq u_n\leq u_{n+1}\leq\cdots\leq\ell \\
+\ell\leq\cdots\leq v_{n+1}\leq v_n\leq\cdots\leq v_0
+\end{multline*}
+
+\Para{Théorème de Cesàro}
+
+Soit $\U$ une suite numérique telle que $u_n \Toninf\ell\in\K$.
+On pose $m_n = \frac{1}{n}\sum_{k=0}^{n-1} u_k$;
+il s'agit de la moyenne arithmétique des $n$ premiers termes de la suite $\U$.
+
+Alors $m_n \Toninf\ell$.
+
+\Para{Remarque}
+
+Si $\U$ est une suite réelle qui tend vers $\pm\infty$, le résultat est encore vrai.
+
+\subsection{Comparaison}
+
+\Para{Définitions}
+
+Soit $\U$ et $\V$ deux suites numériques.
+\begin{itemize}
+\item
+On dit que \emph{$u_n = \GrandO_\ninf(v_n)$} si et seulement s'il existe
+  une suite numérique $(e_n)_{n\in\N}$ \emph{bornée} telle que
+  $\exists N\in\N,\forall n\geq N$, $u_n = e_n v_n$.
+\item
+On dit que \emph{$u_n = \PetitO_\ninf(v_n)$} si et seulement s'il existe
+  une suite numérique $(e_n)_{n\in\N}$ \emph{qui tend vers 0} telle que
+  $\exists N\in\N,\forall n\geq N$, $u_n = e_n v_n$.
+\item
+On dit que \emph{$u_n \Sim_\ninf v_n$} si et seulement s'il existe
+  une suite numérique $(e_n)_{n\in\N}$ \emph{qui tend vers 1} telle que
+  $\exists N\in\N,\forall n\geq N$, $u_n = e_n v_n$.
+\end{itemize}
+
+\Para{Proposition}
+
+Soit $\U$ et $\V$ deux suites numériques.
+Alors $u_n \Sim_\ninf v_n$ si et seulement si $u_n = v_n + \PetitO_\ninf(v_n)$.
+
+\Para{Proposition}
+
+Soit $\U$ et $\V$ deux suites numériques.
+On suppose de plus que:
+\[ \exists N\in\N\+\forall n\geq N\+ v_n\neq0. \]
+Alors:
+\begin{itemize}
+\item
+$u_n = \GrandO_\ninf(v_n)$ si et seulement si la suite $\left(\frac{u_n}{v_n}\right)_{n\geq N}$ est bornée.
+\item
+$u_n = \PetitO_\ninf(v_n)$ si et seulement si $\frac{u_n}{v_n} \Toninf 0$.
+\item
+$u_n \Sim_\ninf v_n$ si et seulement si $\frac{u_n}{v_n} \Toninf 1$.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Suites récurrentes du premier ordre}
+
+\Para{Définition}
+
+Soit $\U$ une suite à valeurs dans un ensemble $X$
+et $\Fn fXX$.
+
+On dit que $\U$ est une \emph{suite récurrente (du premier ordre)}
+associée à la fonction $f$
+si et seulement si \[ \forall n\in\N, u_{n+1} = f(u_n). \]
+
+\Para{Proposition}
+
+Soit $\U$ une suite récurrente associée à $f$.
+Si:
+\begin{itemize}
+\item
+$u_n \Toninf\ell$;
+\item
+$\ell\in X$;
+\item
+$f$ continue en $\ell$.
+\end{itemize}
+
+Alors $f(\ell) =\ell$.
+
+\Para{Remarque}
+
+Cela sert à trouver les limites \emph{potentielles} de $\U$.
+
+\Para{Définition}
+
+Soit $\Fn fXX$ et $Y\subset X$.
+On dit que $Y$ est \emph{stable} par $f$ si et seulement si $f(Y)\subset Y$.
+
+\Para{Proposition}
+
+Soit $\U$ une suite récurrente réelle associée à $f$
+et $I$ un intervalle stable par $f$ tel que $u_{n_0}\in I$.
+Alors $\forall n\geq n_0$, $u_n\in I$.
+
+\Para{Proposition}
+
+Soit $\Fn{f}{I}{I}$ où $I$ est un intervalle de $\R$
+et $\U$ une suite récurrente associée à $f$.
+\begin{enumerate}
+\item
+Si $f$ est croissante sur $I$, alors $\U$ est monotone;
+\item
+Si $f$ est décroissante sur $I$, alors les suites extraites
+  $(u_{2n})_{n\in\N}$ et $(u_{2n+1})_{n\in\N}$ sont monotones;
+\item
+Dans le cas général, on ne peut rien dire: $\U$ peut avoir un comportement très complexe.
+\end{enumerate}
+
+\Para{Exemples}
+\begin{itemize}
+\item
+\emph{Suites arithmétiques:}
+  $\forall n\in\N\+ u_{n+1} = u_n + b$.
+  On a alors $\forall n\in\N\+ u_n = u_0 + nb$.
+\item
+\emph{Suites géométriques:}
+  $\forall n\in\N\+ u_{n+1} = a u_n$.
+  On a alors $\forall n\in\N\+ u_n = a^n u_0$.
+\item
+\emph{Suites arithmético-géométriques:}
+  $\forall n\in\N\+ u_{n+1} = au_n + b$ où $a\neq1$.
+  On pose $\ell$ tel que $\ell= a\ell+ b$, puis $v_n = u_n -\ell$.
+  On vérifie alors que $\V$ est une suite géométrique.
+\item
+\emph{Récurrence homographique:}
+  $\forall n\in\N\+ u_{n+1} = \frac{a u_n + b}{c u_n + d}$.
+  Soit $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$.
+  On calcule $A^n = \begin{pmatrix} \alpha_n & \beta_n \\ \gamma_n & \delta_n \end{pmatrix}$
+  et l'on a:
+  \[ \forall n\in\N\+
+  u_n = \frac{\alpha_n u_0 +\beta_n}{\gamma_n u_0 +\delta_n}. \]
+\end{itemize}
+
+\subsection{Suites récurrentes du second ordre}
+
+\Para{Définition}
+
+Soit $\U$ une suite à valeurs dans un ensemble $X$,
+et $\Fn{f}{X^2}{X}$.
+On dit que $\U$ est une \emph{suite récurrente du second ordre} associée à la fonction $f$
+si et seulement si \[ \forall n\in\N, u_{n+2} = f(u_n, u_{n+1}). \]
+
+\Para{Proposition}
+
+Soit $\U$ une suite récurrente du second ordre associée à $f$.
+Si:
+\begin{itemize}
+\item
+$u_n \Toninf\ell$;
+\item
+$\ell\in X$;
+\item
+$f$ continue en $(\ell,\ell)$.
+\end{itemize}
+
+Alors $f(\ell,\ell) =\ell$.
+
+\subsection{Cas des suites récurrentes linéaires du second ordre à coefficients constants sans second membre}
+
+\Para{Proposition}
+
+Soit $\U$ une suite numérique et $(a,b,c)\in\K^3$ avec
+$a\neq0$ et $(b,c)\neq(0,0)$
+tels que \[ \forall n\in\N\+ au_{n+2} + bu_{n+1} + c u_n = 0. \]
+
+On forme l'\emph{équation caractéristique}:
+\[ ar^2 + br + c = 0. \tag{EC} \]
+
+Si \emph{$\K=\C$}, il y a deux cas:
+\begin{enumerate}
+\item
+Soit $\Delta\neq0$:
+  (EC) admet deux racines distinctes $r_1$ et $r_2$, et
+  \[ \exists(A,B)\in\C^2\+\forall n\in\N\+ u_n = A r_1^n + B r_2^n \]
+\item
+Soit $\Delta= 0$:
+  (EC) admet une racine double $r_0\neq0$, et
+  \[ \exists(A,B)\in\C^2\+\forall n\in\N\+ u_n = (An + B) r_0^n \]
+\end{enumerate}
+
+Si \emph{$\K=\R$}, il y a trois cas:
+\begin{enumerate}
+\item
+Soit $\Delta> 0$:
+  (EC) admet deux racines distinctes $r_1$ et $r_2$, et
+  \[ \exists(A,B)\in\R^2\+\forall n\in\N\+ u_n = A r_1^n + B r_2^n \]
+\item
+Soit $\Delta= 0$:
+  (EC) admet une racine double $r_0\neq0$, et
+  \[ \exists(A,B)\in\R^2\+\forall n\in\N\+ u_n = (An + B) r_0^n \]
+\item
+Soit $\Delta< 0$:
+  (EC) admet deux racines complexes conjuguées $\rho e^{\pm\I\theta}$, et
+  \[ \exists(A,B)\in\R^2\+\forall n\in\N\+ u_n =\rho^n \Big( A \cos(n\theta) + B \sin(n\theta) \Big) \]
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\section{Exercices}
+
+\Exercice
+
+Déterminer la limite, ou montrer la divergence des suites $\U$ définies par
+\begin{enumerate}
+  \item
+$u_n = \frac{3^n-(-2)^n}{3^n+(-2)^n}$
+  \item
+$u_n = \sqrt{n^2+n+1} - \sqrt{n^2-n+1}$
+  \item
+$u_n = \frac{n-\sqrt{n^2+1}}{n+\sqrt{n^2+1}}$
+  \item
+$u_n = \frac{1}{n^2} \sum_{k=1}^n k$
+  \item
+$u_n = \bigPa{1+\frac1n}^n$
+  \item
+$u_n = \sqrt[n]{n^2}$
+  \item
+$u_n = \bigPa{\sin\frac1n}^{1/n}$
+  \item
+$u_n = \bigPa{\frac{n-1}{n+1}}^n$
+  \item
+$u_n = \frac{\sin n}{n+(-1)^{n+1}}$
+  \item
+$u_n = \frac{n!}{n^n}$
+  \item
+$u_n = \frac{n-(-1)^n}{n+(-1)^n}$
+  \item
+$u_n = \frac{e^n}{n^n}$
+  \item
+$u_n = \sqrt[n]{2+(-1)^n}$
+  \item
+$u_n = \sqrt[n]{n}$
+  \item
+$u_n = \bigPa{1+\frac xn}^n$
+  \item
+$u_n = \bigPa{\frac{n-1}{n+1}}^{n+2}$
+  \item
+$u_n = n^2 \bigPa{\cos\frac{1}{n} - \cos\frac{1}{n+1}}$
+  \item
+$u_n = \bigPa{\tan\pa{\frac\pi4 + \frac{\alpha}{n}}}^n$
+  \item
+$u_n = \bigPa{\frac{\ln(n+1)}{\ln(n)}}^{n\ln n}$
+  \item
+$u_n = \bigPa{\frac{\arctan(n+1)}{\arctan(n)}}^{n^2}$
+  \item
+$u_n = \cos\bigPa{\pi n^2 \ln(1-1/n)}$
+\end{enumerate}
+
+\Exercice
+
+Montrer que l'ensemble des entiers naturels $n$ tels que $2^{n^2} < (4n)!$ est fini.
+
+\Exercice
+
+Soit $\U$ une suite réelle convergeant vers $\ell\in\R$.
+Si $\floor\cdot$ désigne la fonction partie entière,
+la suite $\bigPa{\floor{u_n}}_{n\in\N}$ est-elle convergente?
+
+\Exercice
+
+Trouver un exemple de suite qui diverge mais dont la moyenne de Cesàro converge.
+
+\Exercice
+
+Étudier la convergence des suites réelles $\U$ définies par:
+\begin{enumerate}
+\item
+$u_0 = a > 0, u_{n+1} = \frac12\left(u_n + \frac{a}{u_n}\right)$
+\item
+$u_0 = 1$, $u_{n+1} = \frac{u_n}{u_n^2+1}$
+\item
+$u_0\geq0$, $u_{n+1} = \frac16(u_n^2+8)$
+\item
+$u_0 = 1$, $u_{n+1} = \frac{1}{2+u_n}$
+\item
+$u_{n+1} = \cos u_n$
+\item
+$0 < u_0 < \frac{\sqrt5-1}{2}, u_{n+1} = 1 - u_n^2$
+\item
+$u_{n+1} = u_n - u_n^2$
+\item
+$u_{n+1} = u_n + \frac{1+u_n}{1+2u_n}$
+\item
+$0\leq u_0\leq1$, $u_{n+1} = \frac{\sqrt{u_n}}{\sqrt{u_n}+\sqrt{1-u_n}}$
+\item
+$u_{n+1} =\sqrt{2-u_n}$
+\end{enumerate}
+
+\Exercice
+\begin{enumerate}
+\item
+\begin{enumerate}
+\item
+Résoudre $u_0 = a$, $u_1 = b$ et $u_{n+2} = \frac{u_{n+1} + u_n}{2}$.
+\item
+Déterminer $\lim_\ninf u_n$.
+\end{enumerate}
+\item
+\begin{enumerate}
+\item
+Résoudre $v_0 =\alpha> 0$, $v_1 =\beta> 0$ et $v_{n+2} =\sqrt{ v_{n+1} v_n }$
+\item
+Déterminer $\lim_\ninf v_n$.
+\end{enumerate}
+\end{enumerate}
+
+\Exercice
+
+Soit $\U$ et $\V$ deux suites réelles vérifiant
+\[ \left\{ \begin{array}{l}
+  0\leq u_n\leq1, \\
+  0\leq u_n\leq1, \\
+  u_n v_n \Toninf 1.
+\end{array} \right. \]
+Que peut-on dire de ces deux suites?
+
+\Exercice
+
+Pour $n\in\N$, on pose
+$u_n =\sum_{k=0}^n \frac{1}{k!}$ et
+$v_n = u_n + \frac{1}{n\cdot n!}$.
+\begin{enumerate}
+\item
+Montrer que $\U$ et $\V$ sont deux suites adjacentes;
+  on note $\ell$ leur limite commune.
+\item
+Déterminer un $n$ tel que $v_n - u_n\leq10^{-7}$.
+\item
+En déduire une valeur approchée de $\ell$ à $10^{-7}$ près.
+\end{enumerate}
+
+\Exercice
+
+Trouver $\lim_\ninf\sqrt{1+\sqrt{1+ \cdots +\sqrt{1}}}$ (avec $n$ radicaux).
+
+\Exercice
+
+Étudier la convergence des suites $\U$ et $\V$ définies par
+$0 < u_0 < v_0$,
+$u_{n+1} = \frac{2u_n+v_n}{3}$ et
+$v_{n+1} = \frac{2v_n+u_n}{3}$.
+
+\Exercice
+
+Soit $\U$ et $\V$ les suites réelles définies par
+$u_0 = a > 0$,
+$v_0 = b > 0$,
+$u_{n+1} =\sqrt{u_n v_n}$ et
+$v_{n+1} = \frac{u_n+v_n}{2}$.
+
+Montrer que $\U$ et $\V$ sont des suites adjacentes.
+
+\emph{Remarque:}
+leur limite commune $M(a,b)$ s'appelle la \emph{moyenne arithmético-géométrique} de $a$ et $b$.
+On peut prouver que:
+\[ \frac{\pi}{M(a,b)} =\int_{-\infty}^{+\infty} \frac{\D x}{\sqrt{(x^2+a^2)(x^2+b^2)}} \]
+
+\Exercice
+
+Soit $\U$ et $\V$ deux suites réelles telles que $u_n^2 + u_n v_n + v_n^2 \to 0$.
+Que dire de $\U$ et $\V$?
+
+\Exercice
+
+Soit $\U$ une suite à valeurs positives et $\lambda \in \intO{0,1}$.
+\begin{enumerate}
+  \item
+On suppose que $u_{n+1} \leq \lambda u_n$ pour tout entier~$n$.
+  Montrer que $u_n \to 0$.
+  \item
+On suppose qu'il existe une suite réelle $\V$ tendant vers~0 telle que $u_{n+1} \leq \lambda (u_n + v_n)$ pour tout entier~$n$.
+  A-t-on $u_n \to 0$?
+\end{enumerate}
+
+\Exercice
+
+Soit $\U$ une suite à valeurs strictement positives
+telle que $\frac{u_{n+1}}{u_n} \to \ell$.
+\begin{enumerate}
+  \item
+Si $\ell < 1$, montrer que $u_n \to 0$.
+  \item
+Si $\ell > 1$, montrer que $u_n \to +\infty$.
+  \item
+Montrer qu'on ne peut pas conclure dans le cas $\ell = 1$.
+\end{enumerate}
+
+\Exercice
+
+Soit $\U$ une suite injective à valeurs dans $\N$.
+Montrer que $u_n \to +\infty$.
+
+\Exercice[lemme des petits pas]
+
+Soit $\U$ une suite numérique telle que $u_{n+1} - u_n \to \ell$.
+Montrer que $u_n = n \ell + o(n)$ quand $n \to +\infty$.
+
+\end{document}

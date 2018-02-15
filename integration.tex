@@ -1,0 +1,690 @@
+\documentclass{yann}
+\yann{displaystyle}
+
+\newcommand{\Res}{\mathop{\mathrm{Res}}}
+
+\begin{document}
+\title{Intégration}
+\maketitle
+
+Ce chapitre a pour objectif d'étendre la notion d'intégrale
+vue en première année, pour pouvoir traiter des intégrales comme
+\[ ∫_{-∞}^{+∞} \frac{\D t}{1 + t^2} = π. \]
+
+\section{Fonctions continues par morceaux}
+
+\Para{Définition}
+
+Une \emph{subdivision} de $[a,b]$ est un $(n+1)$-uplet $\nUpletσ0n∈ℝ^{n+1}$ tel que:
+\[ a = σ_0 < σ_1 < σ_2 < \cdots < σ_{n-1} < σ_n = b. \]
+
+\Para{Définition}
+
+Soit $\Fn{f}{[a,b]}{𝕂}$.
+
+On dit que $f$ est \emph{continue par morceaux} sur le segment $[a,b]$
+£ssil. existe une subdivision $(σ_k)_{0≤k≤n}$ de $[a,b]$ telle que
+pour tout $k∈\Dcro{0,n-1}$, en notant $f_k$ la restriction de $f$ à l'intervalle ouvert $\intO{σ_k,σ_{k+1}}$, on ait:
+\begin{enumerate}
+\item
+  $f_k$ est continue sur l'intervalle ouvert $\intO{σ_k,σ_{k+1}}$,
+\item
+  $f_k$ se prolonge en une fonction continue, notée $\tilde f_k$ sur l'intervalle fermé $[σ_k,σ_{k+1}]$.
+\end{enumerate}
+
+\Para{Définition}
+
+Soit $I$ un intervalle quelconque de $ℝ$.
+On dit que $f$ est \emph{continue par morceaux sur $I$} si $f$ est continue par morceaux sur tout segment $K$ inclus dans $I$.
+On peut noter que cela correspond à la définition précédente si $I$ est un segment.
+
+\Para{Proposition}
+
+Soit $\Fn{f}{I}{𝕂}$ une fonction continue.
+Alors $f$ est continue par morceaux sur $I$.
+
+\Para{Proposition}
+
+L'ensemble $\mathcal{CM}(I,𝕂)$ des fonctions continues par morceaux de $I$ dans $𝕂$ est un sous-espace vectoriel de $𝕂^I$.
+
+\Para{Proposition}
+
+Soit $\Fn{f}{I}{𝕂}$ une fonction continue par morceaux.
+Alors $f$ est bornée sur tout segment $K⊂I$.
+
+\Para{Définition}
+
+Soit $\Fn{f}{[a,b]}{𝕂}$ une fonction continue par morceaux.
+Soit $a =σ_0 <σ_1 < \dots <σ_n = b$ une subdivision adaptée.
+Pour $k∈\Dcro{0,n-1}$, on note $\tilde f_k$ l'unique fonction continue $[σ_k,σ_{k+1}] \to 𝕂$ dont la restriction à l'ouvert $\intO{σ_k,σ_{k+1}}$ est égale à $f$.
+Par définition, l'intégrale de $f$ sur $[a,b]$ vaut
+\[ ∫_a^b f =∑_{k=0}^{n-1}∫_{σ_k}^{σ_{k+1}} \tilde f_k. \]
+
+On pose également $∫_b^a f = -∫_a^b f$.
+
+\Para{Proposition}[propriétés de l'intégrale]
+
+\begin{enumerate}
+\item
+  \emph{Linéarité}
+
+  Soit $f$ et $g$ deux fonctions continues par morceaux de $[a,b]$ dans $𝕂$.
+  Soit $(λ,μ)∈𝕂^2$.
+  Alors $∫_a^b (λf+μg) = λ∫_a^b f + μ∫_a^b g$.
+\item
+  \emph{Relation de Chasles}
+
+  Soit $\Fn{f}{I}{𝕂}$ continue par morceaux et $(a,b,c)∈I^3$.
+  Alors $∫_a^c f = ∫_a^b f + ∫_b^c f$.
+\item
+  \emph{Positivité}
+
+  Soit $\Fn{f}{[a,b]}{\Rp}$ continue par morceaux.
+  Alors $∫_a^b f ≥0$.
+\item
+  \emph{Stricte positivité}
+
+  Soit $\Fn{f}{[a,b]}{\Rp}$ une fonction \emph{continue}.
+  Si $∫_a^b f = 0$, alors $f = \tilde0$.
+\item
+  \emph{Croissance}
+
+  Soit $f, g \colon [a,b] \to ℝ$ continues par morceaux.
+  On suppose $∀x∈\intO{a,b}$, $f(x)≤g(x)$.
+  Alors $∫_a^b f ≤∫_a^b g$.
+\item
+  \emph{Inégalité de la moyenne}
+
+  Soit $\Fn{f}{[a,b]}{𝕂}$ continue par morceaux.
+  Alors $\left| ∫_a^b f \right| ≤∫_a^b \Abs{f}$.
+\end{enumerate}
+
+\Para{Remarque}
+
+La stricte positivité n'est pas valable pour les fonctions continues par morceaux. On a cependant ce résultat:
+
+\Para{Proposition}
+
+Soit $\Fn{f}{[a,b]}{\Rp}$ une fonction \emph{continue par morceaux}.
+Si $∫_a^b f = 0$, alors $\Ensemble{x∈[a,b]}{f(x)≠0}$ est un ensemble fini.
+
+\section{Intégrales impropres}
+
+\Para{Définitions}
+
+Soit $\Fn{f}{I}{𝕂}$ continue par morceaux.
+Soit $-∞ ≤ a < b ≤ +∞$.
+\begin{enumerate}
+\item
+  Si $I = \intFO{a,b}$, on dit que l'intégrale $∫_a^b f$ \emph{converge} si et seulement si $ℓ= \lim_{β\to b^-}∫_a^βf$ existe et est finie. On note alors $∫_a^b f =ℓ$.
+\item
+  Si $I = \intOF{a,b}$, on dit que l'intégrale $∫_a^b f$ \emph{converge} si et seulement si $ℓ= \lim_{α\to a^+}∫_α^b f$ existe et est finie. On note alors $∫_a^b f =ℓ$.
+\item
+  Si $I = \intO{a,b}$, on dit que l'intégrale $∫_a^b f$ \emph{converge} si et seulement si $ℓ= \lim_{(α,β) \to (a^+,b^-)}∫_α^βf$ existe et est finie. On note alors $∫_a^b f =ℓ$.
+\end{enumerate}
+
+On parle alors d'\emph{intégrale impropre} ou d'\emph{intégrale généralisée}.
+
+\Para{Proposition}
+
+Soit $\Fn{f}{\intO{a,b}}{𝕂}$ continue par morceaux.
+Les conditions suivantes sont équivalentes:
+\begin{enumerate}
+\item
+  l'intégrale $∫_a^b f$ converge;
+\item
+  il existe un $c∈\intO{a,b}$ tel que les intégrales $∫_a^c f$ et $∫_c^b f$ convergent;
+\item
+  pour tout $c∈\intO{a,b}$, les intégrales $∫_a^c f$ et $∫_c^b f$ convergent.
+\end{enumerate}
+
+\Para{Attention}
+
+Soit $\Fonction{f}{ℝ}{ℝ}{x}{x.}$
+On a:
+\begin{enumerate}
+\item
+  $f$ est continue par morceaux sur $ℝ$;
+\item
+  $\lim_{M \to +∞}∫_{-M}^M f$ existe et est nulle;
+\item
+  pourtant, l'intégrale $∫_{-∞}^{+∞} f$ diverge.
+\end{enumerate}
+
+\Para{Exemples}[intégrales de référence]
+
+\begin{enumerate}
+\item
+  Intégrales de Riemann
+  \begin{enumerate}
+  \item
+    $∫_1^{+∞} \frac{\D x}{x^α}$ converge si et seulement si $α>1$
+  \item
+    $∫_0^1    \frac{\D x}{x^α}$ converge si et seulement si $α<1$
+  \end{enumerate}
+\item
+  $∫_0^{+∞} e^{-αx} \D x$ converge si et seulement si $α>0$.
+\item
+  $∫_0^1 \ln x \D x$ converge
+\end{enumerate}
+
+\Para{Définition}
+
+Soit $\Fn{f}{\intO{a,b}}{𝕂}$ continue par morceaux
+où $-∞≤a≤b≤+∞$.
+Si l'intégrale $∫_a^b f$ converge, on note $∫_b^a f$
+la quantité: \[ ∫_b^a f = -∫_a^b f \]
+
+\Para{Proposition (propriétés de l'intégrale)}
+
+Soit $I$ un intervalle de $ℝ$.
+\begin{enumerate}
+\item
+  \emph{Linéarité}
+
+  Soit $f$ et $g$ deux fonctions continues par morceaux de $I$ dans $𝕂$.
+  Soit $(λ,μ)∈𝕂^2$.
+  Si les intégrales $∫_a^b f$ et $∫_a^b g$ convergent, alors l'intégrale $∫_a^b (λf +μg)$ converge et est égale à $λ∫_a^b f +μ∫_a^b g$.
+\item
+  \emph{Relation de Chasles}
+
+  Soit $\Fn{f}{I}{𝕂}$ continue par morceaux.
+  Si les intégrales $∫_a^b f$ et $∫_b^c f$ convergent, alors l'intégrale $∫_a^c f$ converge et est égale à $∫_a^b f +∫_b^c f$.
+\item
+  \emph{Positivité}
+
+  Soit $\Fn{f}{I}{\Rp}$ continue par morceaux et \emph{$a≤b$}.
+  Si l'intégrale $∫_a^b f$ converge, alors $∫_a^b f ≥0$.
+\item
+  \emph{Stricte positivité}
+
+  Soit $\Fn{f}{I}{\Rp}$ une fonction \emph{continue}.
+  Si l'intégrale $∫_a^b f$ converge et si $∫_a^b f = 0$, alors $f = \tilde0$.
+\item
+  \emph{Croissance}
+
+  Soit $f, g \colon I \toℝ$ continues par morceaux et \emph{$a≤b$}.
+  On suppose $∀x∈\intO{a,b} \+ f(x)≤g(x)$.
+  Si les intégrales $∫_a^b f$ et $∫_a^b g$ convergent, alors $∫_a^b f≤∫_a^b g$.
+\item
+  \emph{Inégalité de la moyenne}
+
+  Soit $\Fn fI𝕂$ continue par morceaux et \emph{$a≤b$}.
+  Si les intégrales $∫_a^b f$ et $∫_a^b \Abs{f}$ convergent, alors $\left| ∫_a^b f \right| ≤∫_a^b \Abs{f}$.
+  Sans l'hypothèse $a≤b$, il faudrait écrire:
+  $\left| ∫_a^b f \right| ≤\left| ∫_a^b \Abs{f} \right|$.
+\end{enumerate}
+
+\Para{Théorème}[changement de variables]
+
+Soit $\Fn{f}{\intO{a,b}}{𝕂}$ une fonction continue par morceaux, $\Fn{φ}{\intO{α,β}}{\intO{a,b}}$ une bijection strictement croissante de classe $\CC1$. Alors l'intégrale
+$∫_α^β(f◦φ)φ'$ est convergente si et seulement si
+$∫_a^b f$ est convergente et, si tel est le cas, elles sont égales.
+
+\Para{Proposition}[intégration par parties]
+
+Soit $f$ et $g$ deux fonctions $\intO{a,b} \to𝕂$ dérivables telles que $f'$ et $g'$ sont continues par morceaux. On suppose que $fg$ a une limite en $a$ et en $b$.
+Alors les intégrales $∫_a^b fg'$ et $∫_a^b f'g$ sont de même nature.
+De plus, si elles convergent, on a
+\[ ∫_a^b fg' = \biggl[fg\biggr]_a^b -∫_a^b f'g \]
+où $\Bigl[fg\Bigr]_a^b = \lim\limits_{x \to b^-} \bigl( f(x)g(x) \bigr) - \lim\limits_{x \to a^+} \bigl( f(x)g(x) \bigr)$.
+
+\section{Cas des fonctions positives}
+
+\Para{Théorème}
+
+Soit $f$, $\Fn{g}{\intFO{a,b}}{\Rp}$ continues par morceaux.
+On suppose que:
+\[ \tag{$H$} ∀x∈\intFO{a,b} \+ f(x)≤g(x). \]
+Alors:
+
+\begin{itemize}
+\item
+  si l'intégrale $∫_a^b g$ converge, alors l'intégrale $∫_a^b f$ converge également;
+\item
+  si l'intégrale $∫_a^b f$ diverge, alors l'intégrale $∫_a^b g$ diverge également.
+\end{itemize}
+
+Le résultat est encore vrai si on remplace $(H)$ par
+\[ \tag{$H'$} f(x) = \GrandO \bigPa{g(x)} \text{ au voisinage de $b$}. \]
+
+\Para{Théorème}
+
+Soit $f$, $\Fn{g}{\intFO{a,b}}{\Rp}$ continues par morceaux.
+On suppose que $f(x) \sim g(x)$ au voisinage de $b$.
+Alors les intégrales $∫_a^b f$ et $∫_a^b g$ sont de même nature.
+
+\Para{Corollaire}
+
+Soit $f$, $\Fn{g}{\intFO{a,b}}{ℝ}$ continues par morceaux.
+On suppose que:
+
+\begin{itemize}
+\item
+  $f(x) \sim g(x)$ au voisinage de $b$;
+\item
+  $g$ est de signe constant au voisinage de $b$.
+  Autrement dit, l'une des deux propositions suivantes est vraie:
+  \begin{itemize}
+  \item
+    il existe $c∈\intFO{a,b}$ tel que pour tout $x∈\intFO{c,b}$, on ait $g(x) ≥ 0$,
+  \item
+    il existe $c∈\intFO{a,b}$ tel que pour tout $x∈\intFO{c,b}$, on ait $g(x) ≤ 0$.
+  \end{itemize}
+\end{itemize}
+
+Alors les intégrales $∫_a^b f$ et $∫_a^b g$ sont de même nature.
+
+\section{Intégrales absolument convergentes}
+
+\Para{Définition}
+
+Soit $I$ un intervalle de $ℝ$ et $\Fn fI𝕂$ une fonction continue par morceaux.
+
+On dit que l'intégrale $∫_a^b f$ est \emph{absolument convergente} si et seulement si l'intégrale $∫_a^b \Abs{f(x)} \D x$ converge.
+
+\Para{Théorème}
+
+Une intégrale absolument convergente est convergente.
+
+\Para{Définition}
+
+Une intégrale convergente mais non absolument convergente est dite \emph{semi-convergente}.
+
+\Para{Exemple}
+
+L'intégrale $∫_0^{+∞} \frac{\sin x}{x} \D x$ est semi-convergente.
+
+\Para{Proposition}
+
+Soit $f$ et $g$ deux fonctions continues par morceaux sur $\intFO{a,b}$.
+Si $f(x) = \GrandO \bigPa{g(x)}$ au voisinage de~$b^-$ et si $∫_a^b g$ converge absolument, alors $∫_a^b f$ converge.
+
+On peut déduire de ceci les règles suivantes:
+
+\Para{Corollaire}
+
+Soit $\Fn{f}{\intFO{a,+∞}}{𝕂}$ continue par morceaux.
+S'il existe $α> 1$ tel que $x^αf(x) \to 0$ quand $x \to +∞$,
+alors l'intégrale $∫_a^{+∞} f$ converge.
+
+\Para{Corollaire}
+
+Soit $\Fn{f}{\intOF{0,a}}{𝕂}$ continue par morceaux.
+S'il existe $α< 1$ tel que $x^αf(x) \to 0$ quand $x \to 0^+$,
+alors l'intégrale $∫_0^a f$ converge.
+
+\section{Lien avec les séries numériques}
+
+\Para{Remarque}
+
+La théorie des intégrales impropres ressemble beaucoup à celle des séries numériques.
+Il y a une différence notable:
+
+\Para{Attention}
+
+Il existe des fonctions $\Fn f\Rp\Rp$ continues
+telles que $∫_0^{+∞} f$ converge mais $f$ ne tend pas vers 0 en $+∞$.
+
+\Para{Théorème}[comparaison série-intégrale]
+
+Soit $f$ une fonction $\intFO{a,+∞} \to \Rp$ continue par morceaux décroissante.
+Alors l'intégrale $∫_a^{+∞} f(x) \D x$ et la série $∑_{n≥a} f(n)$ sont de même nature.
+
+\section{Intégrabilité}
+
+\Para{Définition}
+
+Soit $I$ un intervalle de $ℝ$ et $\Fn fI𝕂$ continue par morceaux.
+Soit $(a,b)∈ℝ∪\Acco{±∞}$ tels que $a < b$
+et $I∈\Big\{ \intO{a,b}, \intFO{a,b}, \intOF{a,b}, \intF{a,b} \Big\}$.
+On dit que $f$ est \emph{intégrable sur $I$} si et seulement si l'intégrale $∫_a^b \Abs{f}$ converge.
+On note alors $∫_I f = ∫_a^b f$.
+
+\Para{Proposition}
+
+Les conditions suivantes sont équivalentes:
+
+\begin{itemize}
+\item
+  $f$ est intégrable sur $I$;
+\item
+  l'intégrale $∫_a^b f$ est absolument convergente;
+\item
+  il existe $M∈\Rp$ tel que pour tout segment $[α,β]⊂I$, on a $∫_α^β\Abs{f}≤M$.
+\end{itemize}
+
+\Para{Proposition}
+
+Soit $f$ et $g$ deux fonctions continues par morceaux sur $I$ telles que $\Abs{f}≤\Abs{g}$ sur $I$.
+Si $g$ est intégrable sur $I$, alors $f$ est également intégrable sur $I$.
+
+\Para{Proposition}[propriétés de l'intégrale]
+
+Soit $I$ et $J$ deux intervalles de $ℝ$.
+
+\begin{enumerate}
+\item
+  \emph{Linéarité}
+
+  Soit $f$, $\Fn gI𝕂$ deux fonctions continues par morceaux intégrables sur $I$.
+  Soit $(λ,μ)∈𝕂^2$.
+  Alors $λf +μg$ est intégrable sur $I$ et
+  $∫_I (λf +μg) =λ∫_I f +μ∫_I g$.
+\item
+  \emph{Relation de Chasles}
+
+  Soit $\Fn{f}{I∪J}{𝕂}$ continue par morceaux, intégrable sur $I$ et sur $J$.
+  Alors $f$ est intégrable sur $I∪J$.
+  Si de plus, $I∩J$ est vide ou réduit à un point, on a:
+  $∫_{I∪J} f =∫_I f +∫_J f$.
+\item
+  \emph{Positivité}
+
+  Soit $\Fn fI\Rp$ continue par morceaux intégrable sur $I$.
+  Alors $∫_I f≥0$.
+\item
+  \emph{Stricte positivité}
+
+  Soit $\Fn{f}{I}{ℝ}$ une fonction \emph{continue} et intégrable sur $I$.
+  Si $∫_I \Abs{f} = 0$, alors $f = \tilde0$.
+\item
+  \emph{Croissance}
+
+  Soit $f$, $\Fn{g}{I}{ℝ}$ continues par morceaux intégrables sur $I$.
+  Si $∀x∈I\+ f(x)≤g(x)$, alors $∫_I f≤∫_I g$.
+\item
+  \emph{Inégalité de la moyenne}
+
+  Soit $\Fn fI𝕂$ continue par morceaux intégrable sur $I$.
+  Alors $\left| ∫_I f \right| ≤∫_I \Abs{f}$.
+\end{enumerate}
+
+\Para{Théorème}[changement de variables]
+
+Soit $\Fn fI𝕂$ continue par morceaux intégrable sur $I$ et $\FnφJI$ une \emph{bijection} de classe~$\CC1$.
+Alors la fonction $(f◦φ)⋅\Abs{φ'}$ est intégrable sur $J$ et:
+\[ ∫_I f =∫_J (f◦φ)⋅\Abs{φ'} \]
+
+\Para{Remarque}
+
+Cette formule n'est autre que la formule usuelle
+de changement de variables $y = φ(x)$:
+\[ ∫_I f(y) \D y =∫_J f(φ(x))⋅\Abs{φ'(x)} \D x \]
+La présence de la valeur absolue vient du fait que $φ$ est soit croissante, soit décroissante (et change alors l'ordre des bornes).
+
+\section{Exercices}
+
+\Exercice[intégrales de Bertrand]
+
+On se propose de montrer que l'intégrale
+\[ ∫_2^{+∞} \frac{\D x}{x^α\ln^βx}, \]
+où $(α,β)∈ℝ^2$ converge £ssi.
+\[ α>1 \quad \text{ou} \quad (α=1 \text{ et } β>1). \]
+
+Soit $\Fonction{f}{\intFO{2,+∞}}{ℝ}{x}{\frac{1}{x^α\ln^βx}}$
+
+\begin{enumerate}
+\item
+  Vérifier que $f$ est continue et positive sur $\intFO{2,+∞}$.
+\item
+  On suppose $α>1$.
+  On choisit alors un $γ$ tel que $1<γ<α$.
+
+  \begin{enumerate}
+  \item
+    Montrer que $f(x) = \PetitO\BigPa{\frac{1}{x^γ}}$ quand $x \to +∞$.
+  \item
+    En déduire que l'intégrale $∫_2^{+∞} f$ converge.
+  \end{enumerate}
+\item
+  On suppose $α< 1$.
+  On choisit alors un $γ$ tel que $α<γ< 1$.
+
+  \begin{enumerate}
+  \item
+    Montrer que $\frac{1}{x^γ} = \PetitO\bigPa{f(x)}$ quand $x \to +∞$.
+  \item
+    En déduire que l'intégrale $∫_2^{+∞} f$ diverge.
+  \end{enumerate}
+\item
+  On suppose $α= 1$.
+
+  \begin{enumerate}
+  \item
+    Calculer une primitive de $f$; on fera attention au cas $β= 1$.
+  \end{enumerate}
+\end{enumerate}
+
+\Exercice[intégrales de Bertrand, suite]
+
+Montrer que l'intégrale
+\[ ∫_0^{\frac12} \frac{\D x}{x^α(-\ln x)^β}, \]
+où $(α,β)∈ℝ^2$ converge £ssi.
+\[ α<1 \quad \text{ou} \quad (α=1 \text{ et } β>1). \]
+
+\Exercice
+
+Pour $α>0$, on pose \[ f_α(x) = \frac{\sin x}{x^α}. \]
+
+\begin{enumerate}
+\item
+  Montrer que l'intégrale $∫_1^{+∞} f_α$ converge pour tout $α>0$.
+\item
+  Montrer que $f_α$ est intégrable sur $\intFO{1,+\infty}$ si et seulement si $α>1$.
+\end{enumerate}
+
+\Exercice
+
+Étudier l'existence des intégrales suivantes:
+\begin{enumerate}
+\item
+  $∫_0^{+∞} x^α e^{-x} \ln x \D x$
+\item
+  $∫_0^{+∞} \frac{\sin x}{1 + e^x + \cos x} \D x$
+\item
+  $∫_0^1 \frac{\ln x}{(x^α-1)(x+1)^3} \D x$
+\item
+  $∫_0^1 t^{α-1} (1-t)^{β-1} \D t$
+\item
+  $∫_0^{+∞} \frac{e^{-x}}{√{x\ln(1+x)}} \D x$
+\item
+  $∫_0^1 (-\ln x)^α\D x$
+\item
+  $∫_0^{+∞} \frac{e^x}{√{\sh(αx)}} \D x$
+\item
+  $∫_0^{+∞} \cos(e^x) \D x$
+\item
+  $∫_0^{+∞} \frac{\sin t}{√t + \cos t} \D t$
+\item
+  $∫_0^{+∞} \ln\left(1 + \frac{\sin x}{x^α}\right) \D x$ où $α>0$
+\item
+  $∫_0^{+∞} \frac{√{x}\sin(1/x^2)}{\ln(1+x)} \D x$
+\end{enumerate}
+
+\Exercice
+
+Justifier l'existence et calculer les intégrales suivantes:
+
+\begin{enumerate}
+\item
+  $∫_a^b \frac{\D x}{√{(x-a)(b-x)}}$
+\item
+  $∫_0^{+∞} xe^{-x}\sin x \D x$
+\item
+  $∫_0^1 \frac{\D x}{(1+x)√{1-x^2}}$
+\item
+  $∫_2^{+∞} \frac{\D x}{x^2√{x^2-4}}$
+\item
+  $∫_0^{\fracπ2}√{\tan x} \D x$
+\item
+  $∫_0^1 \frac{\ln(1-t^2)}{t^2} \D t$
+\item
+  $∫_{-∞}^{+∞} \frac{\D x}{(x^2+1)√{x^2+4}}$
+\item
+  $∫_0^{+∞} \frac{\D x}{(1+x^2)(1+x^α)}$; poser $t=\frac1x$
+\item
+  $∫_0^1 \frac{t^n-1}{\ln t} \D t$
+\item
+  $∫_0^{+∞} \frac{\sin^3 x}{x^2} \D x$
+\item
+  $∫_0^{+∞} \left( ∫_x^{+∞} e^{-t^2} \D t \right) \D x$
+\item
+  $∫_0^{+∞} \frac{t^3}{e^t-1} \D t$
+\item
+  $∫_1^{+∞} \frac{x-E(x)}{x^2} \D x$
+\end{enumerate}
+
+\Exercice
+
+On cherche à calculer l'intégrale $I =∫_0^{\fracπ2} \ln(\sin x) \D x$.
+
+\begin{enumerate}
+\item
+  Montrer que $I =∫_0^{\fracπ2} \ln(\cos x) \D x$.
+\item
+  En déduire que $2I =∫_0^{\fracπ2} \ln\Pa{\frac{\sin 2x}{2}} \D x$.
+\item
+  Conclure.
+\end{enumerate}
+
+\Exercice
+
+Soit $\Fn{f}{\Rps}{ℝ}$ continue.
+On suppose que $\lim\limits_{0^+} f =λ∈ℝ$
+et $\lim\limits_{+∞} f = μ∈ℝ$.
+
+Soit $(a,b)∈(\Rps)^2$.
+\begin{enumerate}
+\item
+  Montrer que l'intégrale $∫_0^{+∞} \frac{f(bx)-f(ax)}{x} \D x$ converge, et vaut $(μ-λ)\ln\bigl(\frac ba\bigr)$.
+\item
+  En déduire la valeur des intégrales suivantes:
+  \begin{enumerate}
+  \item
+    $∫_0^{+∞} \frac{e^{-ax}-e^{-bx}}{x} \D x$
+  \item
+    $∫_0^{+∞} \frac{\arctan 2x - \arctan x}{x} \D x$
+  \item
+    $∫_0^1 \frac{x-1}{\ln x} \D x$
+  \end{enumerate}
+\end{enumerate}
+
+\Exercice
+
+\begin{enumerate}
+\item
+  Montrer que $∫_1^x e^t \ln t \D t \sim e^x \ln x$ quand $x\to+∞$
+\item
+  Montrer que $∫_x^{+∞} e^{-t^2} \D t \sim \frac{e^{-x^2}}{2x}$ quand $x\to+∞$.
+\item
+  En déduire, pour $0 < a < b$, la valeur de \[ \lim_\ninf \left(∫_a^b e^{-nt^2} \D t\right)^{\frac1n}. \]
+\end{enumerate}
+
+\Exercice[lemme de Riemann-Lebesgue]
+
+Soit $a < b$ deux réels et $\Fn{f}{[a,b]}{ℝ}$ continue par morceaux.
+On pose pour $n∈ℕ$: $I_n =∫_a^b f(t) \sin(nt) \D t$.
+\begin{enumerate}
+\item
+  Montrer que la suite $(I_n)$ est bornée.
+\item
+  Si $f$ est de classe $\CC 1$, montrer que $I_n \Toninf 0$;
+  on pourra effectuer une intégration par parties.
+\item
+  Si $f$ est constante, calculer $I_n$ et en déduire que $I_n \Toninf 0$.
+\item
+  Si $f$ est en escaliers, montrer que $I_n \Toninf 0$.
+\item
+  Dans le cas général, montrer qu'on a $I_n \Toninf 0$.
+\end{enumerate}
+
+\Exercice[première formule de la moyenne]
+
+Soit $\Fn{f}{[a,b]}{ℝ}$ continue et $\Fn{g}{[a,b]}{\Rp}$ continue par morceaux. Montrer que:
+\[ ∃c∈[a,b]\+∫_a^b fg = f(c)∫_a^b g \]
+
+On pourra commencer par encadrer $f$ par ses bornes.
+
+\Exercice
+
+Soit $\Fn{f}{[0,1]}{ℝ}$ continue.
+En utilisant l'exercice précédent, déterminer
+\[ \lim_{x\to0^+}∫_x^{2x} \frac{f(t)}{t} \D t. \]
+Redémontrer ensuite le résultat \emph{à la main}, avec des $ε$.
+
+\Exercice[seconde formule de la moyenne]
+
+Soit $\Fn{f}{[a,b]}{ℝ}$ positive, décroissante, de classe $\CC1$ et $\Fn{g}{[a,b]}{ℝ}$ continue.
+Montrer qu'il existe $c∈[a,b]$ tel que
+\[ ∫_a^b f(t)g(t) \D t = f(a)∫_a^c g(t) \D t. \]
+\emph{Remarque:} le résultat reste vrai en supposant seulement $f$ continue, mais la preuve est plus complexe.
+
+\Exercice[méthode des résidus]
+
+Soit $P$ et $Q$ deux polynômes réels non nuls, premiers entre eux
+et $F$ la fraction rationnelle $F = \frac{P}{Q}$.
+On rappelle qu'un \emph{pôle} de $F$ est par définition une racine de $Q$.
+On suppose que:
+\begin{itemize}
+\item
+  la fraction rationnelle $F$ n'a pas de pôle réel
+\item
+  $\deg Q ≥\deg P + 2$
+\end{itemize}
+
+Pour tout pôle $α∈ℂ$, on appelle \emph{résidu} de $F(X)$ en $α$ le coefficient de $\frac{1}{X-α}$ dans la décomposition en éléments simples de $F(X)$, et on le note $\Res(F,α)$.
+On pose:
+\begin{itemize}
+\item
+  $\mathcal{P}$ l'ensemble des pôles de $F$. On a $\mathcal{P}⊂ℂ∖ℝ$;
+\item
+  $\mathcal{P}^+$ l'ensemble des pôles de $F$ ayant une partie imaginaire positive.
+\end{itemize}
+
+On cherche à montrer la formule suivante, qui est un cas simple de la \emph{formule intégrale de Cauchy}
+\[ ∫_{-∞}^{+∞} F(t) \D t = 2iπ∑_{α∈\mathcal{P}^+} \Res(F,α) \]
+
+\begin{enumerate}
+\item
+  Montrer que la fonction $t \mapsto F(t)$ est intégrable sur $ℝ$.
+\item
+  Notons $\Uplet{α_1}{α_n}$ les racines distinctes de $Q$ et $m_k$ la multiplicité de $α_k$.
+  Montrer qu'il existe des complexes $β_{k,l}$ tels que
+  \[ F(X) = ∑_{k=1}^n ∑_{l=1}^{m_k} \frac{β_{k,l}}{(X-α_k)^l}. \]
+\item
+  En considérant $\lim_{t\to+∞} tF(t)$,
+  montrer que \[ ∑_{α∈\mathcal{P}} \Res(F,α) = 0. \]
+\item
+  Si $α∈ℂ∖ℝ$ et $l≥2$, montrer que
+  \[ ∫_{-M}^M \frac{\D t}{(t-α)^l} \longto 0 \]
+  quand $M\to+∞$.
+\item
+  Si $α=a+ib$ avec $(a,b)∈ℝ^2$ et $b≠0$, montrer que
+  \[ ∫_{-M}^M \frac{\D t}{t-α} \longto
+  \begin{cases}
+    \phantom{-}iπ & \text{si $b>0$} \\
+    -iπ & \text{si $b<0$}
+  \end{cases} \]
+  quand $M\to+∞$.
+\item
+  En déduire que
+  \[ ∫_{-M}^M F \longto iπ∑_{α∈\mathcal{P}^+} \Res(F,α) - iπ∑_{α∈\mathcal{P}^-} \Res(F,α) \]
+  quand $M\to+∞$
+  où $\mathcal{P}^- = \mathcal{P} ∖ \mathcal{P}^+$.
+
+\item
+  Conclure: montrer la formule de Cauchy.
+\item
+  \emph{Application:} Calculer les intégrales suivantes:
+  \begin{enumerate}
+  \item
+    $\DS ∫_{-∞}^{+∞} \frac{\D t}{(t^2+1)^2}$
+  \item
+    $\DS ∫_{-∞}^{+∞} \frac{t^2 \D t}{t^4 + 1}$
+  \item
+    $\DS ∫_{-∞}^{+∞} \frac{\D t}{1+t^{2n}}$
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

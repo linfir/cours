@@ -1,0 +1,377 @@
+\documentclass{yann}
+\yann{layout=onecolumn,geometry={margin=2.5cm}}
+\usepackage{booktabs}
+
+\begin{document}
+\title{Calcul de primitives}
+\maketitle
+
+Il y a longtemps, très longtemps, vous avez appris à dériver une fonction.
+C'est utile, mais pas très amusant: il suffit de connaître les dérivées usuelles et d'appliquer les règles sur les sommes, produits, quotients et composées.
+C'est très mécanique...
+
+Primitiver une fonction, c'est une toute autre histoire.
+Il faut toujours connaître les primitives usuelles (c'est juste le tableau des dérivées, vu à l'envers), et il y a encore une règle pour la somme.
+En revanche, il n'y a pas de règle générale qui donne la primitive d'un produit, d'un quotient ou d'une composée.
+
+Mais comment faire pour calculer une primitive?
+Au fil du temps, on a trouvé un certain nombre de méthodes\footnote{Une méthode, c'est une astuce qui sert au moins deux fois.} qui s'appliquent dans certains cas particuliers.
+C'est d'ailleurs l'objet de ce chapitre.
+Après, vous êtes tout seuls.
+Il faudra essayer, deviner, combiner les méthodes, trouver des astuces diaboliques, s'apercevoir que ça ne marche pas, recommencer, recommencer encore...
+Bref, c'est comme un puzzle, il faudra réfléchir.
+
+Existe-t-il une méthode ultime permettant de calculer tou\-tes les primitives?
+Et Wolfram Alpha (ou Maple, Mathematica, Maxima, Sympy, Sage, etc.), au fait: la connaît-il?
+
+À ces questions, la réponse est NON; et ce non ne signifie pas «on a beaucoup cherché, et on n'a rien trouvé», mais un bien plus fort «on a \emph{démontré} qu'il n'existe pas de méthode universelle».
+Certaines primitives \emph{ne peuvent pas} s'exprimer à partir\footnote{Plus précisément, en partant des fonctions usuelles et en faisant un nombre fini de sommes, différences, produits, quotients ou compositions.} des fonctions usuelles.
+
+Par exemple, si on demande $\DS ∫\frac{\D x}{\ln x}$ à Wolfram Alpha, il répondra \verb|li(x)|.
+Or la fonction $\mathrm{li}$, dite logarithme intégral est par définition.. une primitive de $1/\ln(x)$!
+En un sens, c'est de la triche, mais il n'existe pas de meilleure réponse.
+Et si on lui demande une fonction assez compliquée comme
+\[ ∫\frac{\sin^3\Pa{1+\frac{1}{\ln t}}}{\cos t + √{e^t + 1}} \D t, \]
+il ne répondra rien.
+
+\Para{Rappel}
+Soit $I$ un intervalle de $ℝ$, et $f, F$ deux fonctions de $I$ dans $𝕂$.
+On dit que $F$ est une primitive de $f$ sur $I$ si et seulement si
+$F$ est dérivable sur $I$ et $F' = f$.
+On note $∫ f = F + C^{\text{ste}}$.
+
+\section{Fonctions usuelles}
+
+\begingroup
+\def\Icos{$\intO{kπ-π/2, kπ+π/2}$ où~$k∈ℤ$}
+\def\Isin{$\intO{kπ, (k+1)π}$ où~$k∈ℤ$}
+\def\IRs{$ℝ^*_-$, $ℝ^*_+$}
+\renewcommand\arraystretch{1.5}
+\begin{tabular}{ccc}
+  \toprule
+  Fonction $f$& Intervalle de définition& Primitive de $f$\cr
+  \midrule
+  $f(x)$& $I$& $∫f(x)\D x = F(x)$\cr
+  $f(αx)$ où $α≠0$& $I$& $\frac1αF(αx)$\cr
+  \midrule
+  $e^x$ & $ℝ$& $e^x$\cr
+  $\ln x$ & $\Rps$ & $x\ln(x)-x$\cr
+  \midrule
+  $x^α$ où $α∈ℂ∖\acco{-1}$& $\Rps$& $\frac{x^{α+1}}{α+1}$\cr
+  $x^n$ où $n∈ℕ$& $ℝ$& $\frac{x^{n+1}}{n+1}$\cr
+  $x^n$ où $n∈ℤ$, $n≤-2$& \IRs& $\frac{x^{n+1}}{n+1}$\cr
+  $x^{-1} = \frac1x$& \IRs& $\ln\Abs{x}$\cr
+  \midrule
+  $\cos x$& $ℝ$& $\sin x$\cr
+  $\sin x$& $ℝ$& $-\cos x$\cr
+  $\ch x$& $ℝ$& $\sh x$\cr
+  $\sh x$& $ℝ$& $\ch x$\cr
+  % $\tan x$& \Icos& $-\ln\abs{\cos x}$\cr
+  % $\cotan x$& \Isin& $\ln\abs{\sin x}$\cr
+  % $\th x$& $ℝ$& $\ln\ch x$\cr
+  % $\coth x$& \IRs& $\ln\abs{\sh x}$\cr
+  % \midrule
+  $\frac{1}{\cos^2 x} = 1 + \tan^2 x$& \Icos& $\tan x$\cr
+  % $\frac{1}{\sin^2 x} = 1 + \cotan^2 x$& \Isin& $-\cotan x$\cr
+  % $\frac{1}{\ch^2 x} = 1 - \th^2 x$& $ℝ$& $\th x$\cr
+  % $\frac{1}{\sh^2 x} = \coth^2 x - 1$& \IRs& $-\coth x$\cr
+  \midrule
+  $\frac{1}{1+x^2}$& $ℝ$& $\arctan x$\cr
+  % $\frac{1}{1-x^2}$& $]-1,1[$& $\argth x$\cr
+  % $\frac{1}{1-x^2}$& $]-∞,-1[$, $]-1,1[$, $]1,+∞[$& $\frac12\ln\Abs{\frac{1+x}{1-x}}$\cr
+  % $\frac{1}{√{1+x^2}}$& $ℝ$& $\argsh x = \ln\Pa{x+√{x^2+1}}$\cr
+  % $\frac{1}{√{1-x^2}}$& $]-1,1[$& $\arcsin x$ ou  $-\arccos x$\cr
+  % $\frac{1}{√{x^2-1}}$& $]1,+∞[$& $\argch x = \ln\Pa{x+√{x^2-1}}$\cr
+  % $\frac{1}{√{x^2-1}}$& $]-∞,-1[$, $]1,+∞[$& $\ln\Abs{x+√{x^2-1}}$\cr
+  % \midrule
+  $\frac{1}{a^2+x^2}$ où $a ∈ℝ^*$& $ℝ$& $\frac1a \arctan\Pafrac xa$\cr
+  % $\frac{1}{a^2-x^2}$ où $a > 0$& $]-∞,-a[$, $]-a,a[$, $]a,+∞[$& $\frac1{2a} \ln\Abs{\frac{a+x}{a-x}}$\cr
+  % $\frac{1}{√{a^2+x^2}}$ où $a ∈\Rs$& $ℝ$& $\argsh\Pafrac xa$\cr
+  % $\frac{1}{√{a^2-x^2}}$ où $a > 0$& $]-a,a[$& $\arcsin\Pafrac xa$ ou $-\arccos\Pafrac xa$\cr
+  % $\frac{1}{√{x^2-a^2}}$ où $a > 0$& $]-∞,-a[$, $]a,+∞[$& $\argch\Pafrac xa$\cr
+  \bottomrule
+\end{tabular}
+\endgroup
+
+\yann{displaystyle}
+
+\section{Méthodes générales}
+
+\subsection{Changement de variables}
+
+Soit $f$ une fonction de classe $\CC0$ et $ϕ$ de classe $\CC1$.
+Le changement de variable $x = ϕ(y)$ s'écrit:
+\[ ∫ f(x) \D x = ∫ f(ϕ(y)) ϕ'(y) \D y \]
+
+Si l'on souhaite faire un changement de variables \enquote{dans l'autre sens}, £cad. de la forme $y = ψ(x)$,
+on doit s'assurer que $ψ$ est bijective et que $ψ^{-1}$ est de classe $\CC1$;
+cela est garanti si $ψ$ est une bijection de classe $\CC1$ dont la dérivée ne s'annule pas.
+
+\Para{Exemples}
+$∫\frac{\D x}{x^2 + a^2}$,
+$∫\tan x \D x$,
+$∫\frac{\arcsin x}{√{1-x^2}} \D x$,
+$∫\frac{\D x}{√{1+√{1+x}}}$.
+
+\subsection{Intégration par parties}
+
+Si $f$ est de classe $\CC0$ et $g$ est de classe $\CC1$, on a:
+\[ ∫fg = Fg - ∫Fg' \qquad \text{ où } F = ∫f \]
+
+\Para{Exemples}
+$∫\ln x \D x$,
+$∫\arcsin x \D x$,
+$∫\ln\Pa{1+x^2} \D x$,
+$∫\frac{x \D x}{\cos^2 x}$.
+
+\subsection{Généralisation: intégration par parties multiple}
+
+Si $f$ et $g$ sont de classe $\CC n$:
+
+\begin{align*}
+  ∫ f^{(n)} g
+  &= ∑_{k=0}^{n-1} (-1)^k f^{(n-1-k)} g^{(k)} + (-1)^n ∫fg^{(n)} \\
+  &= f^{(n-1)} g - f^{(n-2)}g' + f^{(n-3)}g'' - f^{(n-4)}g^{(3)} + \cdots
+  + (-1)^{n-1} f g^{(n-1)} + (-1)^n ∫fg^{(n)}
+\end{align*}
+
+\Para{Exemples}
+$∫(x^3 + x^2 + 1) e^x \D x$,
+$∫_{-1}^1 (1-x^2)^n \D x$.
+
+\section{Fonctions polynôme-exponentielle}
+
+\subsection{$∫P(x) e^{αx} \D x$}
+
+On suppose $P ∈ℂ[X]$, $α∈ℂ^*$. Soit $d$ le degré de $P$.
+On dispose de deux méthodes:
+\begin{itemize}
+\item
+  intégration par parties: on effectue $d$ intégrations par parties (ou une intégration par parties multiple) en dérivant le polynôme et en primitivant l'exponentielle;
+\item
+  identification (préférable quand $d ≥3$): on cherche $Q ∈ℂ_d[X]$ tel que \[ ∫P(x) e^{αx} \D x = Q(X) e^{αx} + C, \] £cad. $αQ(X) + Q'(X) = P(X)$.
+\end{itemize}
+
+\Para{Exemple}
+$∫(x^2-x+3) e^{2x} \D x$.
+
+\subsection{$∫e^{αx} \cos(βx) \D x$}
+
+On suppose $(α,β) ∈ℝ^2 ∖\Acco{(0,0)}$.
+On calcule $∫e^{(α+ iβ) x} \D x$, et l'on sépare partie réelle et partie imaginaire.
+
+\Para{Exemple}
+$∫e^{2x} \sin{3x} \D x$.
+
+\subsection{$∫P(x) \cos(βx) \D x$}
+
+On suppose $P ∈ℝ_d[X]$, $β∈ℝ^*$.
+On dispose de trois méthodes:
+\begin{itemize}
+\item
+  intégration par parties;
+\item
+  identification: on cherche $∫P(x) \cos(βx) \D x$ sous la forme $A(x) \cos(βx) + B(x) \sin(βx)$ où $(A,B) ∈ℝ_d[X]^2$;
+\item
+  passage par l'exponentielle complexe: on commence par calculer $∫P(x) e^{iβx} \D x$.
+\end{itemize}
+
+\Para{Exemple}
+$∫x^3 \sin x \D x$.
+
+\subsection{$∫P(x) e^{αx} \cos(βx) \D x$}
+
+On suppose $P ∈ℝ[X]$, $(α,β) ∈ℝ^2 ∖\Acco{(0,0)}$.
+On dispose de deux méthodes:
+\begin{itemize}
+\item
+  passage à l'exponentielle complexe puis intégration par parties;
+\item
+  identification.
+\end{itemize}
+
+\Para{Exemple}
+$∫x^3 e^x \cos x \D x$.
+
+\section{Fonctions rationnelles}
+
+Pour toute fonction rationnelle $R ∈ℝ(X)$ dont on sait factoriser le dénominateur, on dispose d'un algorithme permettant de calculer $∫R(x) \D x$.
+
+\Para{Astuce}
+Si $R$ est impaire, on peut écrire \[ R(X) = X \frac{P(X^2)}{Q(X^2)}, \] de sorte que si l'on fait le changement de variables $y=x^2$, on a \[ ∫R(x) \D x = \frac12 ∫\frac{P(y)}{Q(y)} \D y. \]
+Il reste à intégrer $S(Y) = \frac{P(Y)}{Q(Y)}$, qui est plus simple que $R$.
+Ainsi, on a abaissé le degré et donc simplifié le calcul.
+
+\subsection{Décomposition en éléments simples}
+
+\Para{Exemples}[pôles simples réels]
+\[ \frac{1}{X^2-1}, \quad
+\frac{X+1}{X+2}, \quad
+\frac{2X+8}{X^2+8X+15}, \]
+\[ \frac{X^4+X+1}{X(X^2-1)}, \quad
+\frac{X^5+6X^4+9X^3+6}{X(X+1)(X+2)(X+3)}. \]
+
+\Para{Exemples}[pôles multiples réels]
+\[ \frac{1}{X^2(X+1)}, \quad \frac{X^3+2}{(X^2-1)^2}. \]
+
+\Para{Exemples}[pôles simples complexes]
+\[ \frac{1}{X(X^2+1)}, \quad
+\frac{-X^3+2X^2+1}{X^3+X}, \quad
+\frac{2X^3-4X+2}{X^3+2X}. \]
+
+\Para{Exemple}[pôles multiples complexes]
+\[ \frac{X^3+3X+1}{X^5+2X^3+X}. \]
+
+\subsection{Éléments simples de première espèce}
+
+On cherche à calculer \[ ∫\frac{c}{(ax+b)^n} \D x. \]
+Ce cas est très facile.
+Attention toutefois au cas $n = 1$ si $(a,b) ∉ℝ^2$: il faut alors multiplier par la quantité conjuguée et se ramener à un élément simple de seconde espèce.
+
+\subsection{Éléments simples de seconde espèce}
+
+On cherche à calculer \[ ∫\frac{dx+e}{(ax^2+bx+c)^n} \D x, \]
+où $(a,b,c)∈ℝ^3$, $a≠0$, $Δ=b^2-4ac<0$.
+
+On procède par étapes.
+
+\subsubsection{Première étape}
+
+On effectue le changement de variables $y = x+\frac{b}{2a}$, de sorte que
+\[ ∫\frac{dx+e}{(ax^2+bx+c)^n} \D x = ∫\frac{dy+e'}{(ay^2+c')^n} \D y. \]
+Notons que l'on a nécessairement $c'>0$.
+
+\subsubsection{Deuxième étape}
+
+On sépare l'intégrale en deux, de sorte que l'on doit calculer:
+\begin{itemize}
+\item
+  $I = ∫\frac{dy}{(ay^2+c')^n} \D y$, qui est immédiate à calculer, car l'intégrande est de la forme $\frac{u'}{u^n}$;
+\item
+  $J = ∫\frac{e'}{(ay^2+c')^n} \D y$, qui se ramène immédiatement à $K = ∫\frac{\D y}{(y^2+α^2)^n}$.
+\end{itemize}
+
+\subsubsection{Troisième étape}
+
+Si $n=1$, c'est gagné, on connaît une primitive:
+\[ \frac{1}{α}\arctan\Pafrac{y}{α}. \]
+Sinon, on fait le changement de variables $y=tα$, de façon à se ramener à
+\[ J_n = ∫\frac{\D t}{(t^2+1)^n}. \]
+Avec une intégration par parties, on établit une relation de récurrence entre les $J_n$ permettant
+de calculer $J_2$, $J_3$, etc...
+
+\subsubsection{Conclusion} On exprime en fonction de la variable initiale, puis on regroupe le tout.
+
+\Para{Exemples}
+$∫\frac{\D x}{x(x^2+1)^3}$,
+$∫\frac{x^3 \D x}{x^2+2x+2}$,
+$∫\frac{\D x}{x^3+1}$.
+
+% -----------------------------------------------------------------------------
+\section{Fonctions de la forme $R(\cosθ,\sinθ)$}
+On suppose $R ∈ℝ(X,Y)$.
+
+\subsection{Cas particulier: $∫\cos^m θ\sin^n θ\D θ$}
+
+On a une méthode qui marche toujours: linéariser.
+Cependant, on peut parfois être plus malin.
+Si $m$ est impair, on peut poser $x = \sin θ$;
+si $n$ est impair, on peut poser $x = \cos θ$.
+
+\Para{Exemple}
+$∫\sin^7 θ\cos^4 θ\D θ$.
+
+\subsection{Cas général}
+
+On a une méthode qui marche toujours: la tangente de l'arc moitié, £cad. le changement de variable $x = \tan\frac{θ}{2}$.
+Cela nous ramène à primitiver une fraction rationnelle, mais les calculs sont souvent horribles.
+On peut être plus malin.
+
+La \emph{règle de Bioche} répond au problème.
+On forme l'élément différentiel $ω(θ) = R(\cosθ,\sinθ) \D θ$.
+\begin{itemize}
+\item
+  si $ω(-θ)  = ω(θ)$, alors on pose $x = \cosθ$;
+\item
+  si $ω(π-θ) = ω(θ)$, alors on pose $x = \sinθ$;
+\item
+  si $ω(π+θ) = ω(θ)$, alors on pose $x = \tanθ$;
+\item
+  sinon, on pose $x = \tan\frac{θ}{2}$.
+  Rappel: on a alors $\sinθ= \frac{2x}{1+x^2}$ et $\cosθ=\frac{1-x^2}{1+x^2}$.
+\end{itemize}
+Dans tous les cas, on se ramène alors à primitiver une fraction rationnelle.
+
+\Para{Exemple}
+$∫ \frac{\sin^2 x}{2+\cos x} \D x$,
+$∫ \frac{\D x}{2+\cos x}$.
+
+\subsection{Fonctions de la forme $R(\chθ, \shθ)$}
+On suppose $R ∈ℝ(X,Y)$.
+
+Il suffit d'appliquer la règle de Bioche à $R(\cosθ, \sinθ)$, puis:
+\begin{itemize}
+\item
+  au lieu de poser $x = \cosθ$, on pose $x = \chθ$;
+\item
+  au lieu de poser $x = \sinθ$, on pose $x = \shθ$;
+\item
+  au lieu de poser $x = \tanθ$, on pose $x = \thθ$;
+\item
+  au lieu de poser $x = \tan\fracθ2$, on pose $x = \th\fracθ2$ ou bien $x = e^θ$.
+\end{itemize}
+
+\Para{Exemple}
+$∫\frac{\sh^2 x}{\ch x(2\sh^3 x + 3\ch^3 x)} \D x$.
+
+% -----------------------------------------------------------------------------
+\section{Fonctions de la forme $R\Pa{e^{αx}}$}
+On suppose $R ∈ℝ(X)$.
+On pose $y = e^{αx}$.
+
+\Para{Exemple}
+$∫\frac{\D x}{(e^x + 2)^2}$.
+
+Le même changement marche parfois même si $R$ n'est pas rationnelle, par exemple pour:
+$∫√{e^x + 1} \D x$.
+
+% -----------------------------------------------------------------------------
+\section{Fonctions de la forme $R\Pa{x,√[n]{\frac{ax+b}{cx+d}}}$}
+On suppose $R ∈ℝ(X,Y)$.
+On pose $y = √[n]{\frac{ax+b}{cx+d}}$.
+
+\Para{Exemples}
+$∫√{\frac{x}{(1-x)^3}} \D x$,
+$∫\frac{1}{√{x}+√{x+1}}$,
+$∫{\frac{\D x}{√{x} + √[3]{x}}}$.
+
+% -----------------------------------------------------------------------------
+\section{Intégrales abéliennes $R\Pa{x, √{ax^2+bx+c}}$}
+On suppose $R ∈ℝ(X,Y)$.
+
+Notons $Δ= b^2 - 4ac$.
+\begin{itemize}
+\item
+  $Δ= 0$: la racine carrée disparaît, il ne reste qu'une valeur absolue,
+  qui disparait également si on restreint l'intervalle.
+\item
+  $a<0$, $Δ<0$: impossible car $∀x ∈ℝ$, $ax^2+bx+c < 0$.
+\item
+  $a>0$, $Δ<0$: par un changement de variable affine,
+  on se ramène à $G(t,√{1+t^2})$, puis on pose $t = \shθ$.
+\item
+  $a<0$, $Δ>0$: par un changement de variable affine,
+  on se ramène à $G(t,√{1-t^2})$, puis on pose $t = \sinθ$ ou $t = \cosθ$.
+\item
+  $a>0$, $Δ>0$: par un changement de variable affine,
+  on se ramène à $G(t,√{t^2-1})$, puis on pose $t = \chθ$.
+\end{itemize}
+
+\Para{Exemple}
+$∫\frac{x \D x}{√{x^2+x+1}}$,
+$∫\frac{x \D x}{1 + √{x^2+x+1}}$.
+
+%\end{multicols}
+\newpage
+
+\end{document}

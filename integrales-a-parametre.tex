@@ -1,0 +1,466 @@
+\documentclass{yann}
+
+\newcommand\DerPart[2]{\frac{\partial#1}{\partial#2}}
+\newcommand\I{i}
+
+\begin{document}
+\title{Intégrales à paramètre}
+\maketitle
+
+\Para{Contexte}
+
+Soit $I$ et $J$ deux intervalles (non vides) de $\R$ et
+\[ \Fonction{f}{I\times J}{\K}{(x,t)}{f(x,t).} \]
+On s'intéresse à la fonction $F$ définie sur $I$ par
+\[ F(x) = \int_J f(x,t) \D t. \]
+
+% -----------------------------------------------------------------------------
+\section{Continuité}
+
+\Para{Théorème}[continuité sous le signe $\int$]
+
+On suppose:
+\begin{enumerate}
+\item
+$f$ est continue par rapport à $x$, c.-à-d.
+
+  \begin{itemize}
+  \item
+pour tout $t\in J$ fixé, la fonction $x \mapsto f(x,t)$ est continue sur $I$.
+  \end{itemize}
+\item
+$f$ est continue par morceaux par rapport à $t$, c.-à-d.
+
+  \begin{itemize}
+  \item
+pour tout $x\in I$ fixé, la fonction $t \mapsto f(x,t)$ est continue par morceaux sur $J$.
+  \end{itemize}
+\item
+\emph{Hypothèse de domination:}
+  Il existe une fonction $\Fn{\varphi}{J}{\Rp}$ telle que
+
+  \begin{itemize}
+  \item
+pour tout $(x,t)\in I\times J$, on a $\Abs{f(x,t)}\leq\varphi(t)$,
+  \item
+$\varphi$ est continue par morceaux et intégrable sur $J$.
+  \end{itemize}
+\end{enumerate}
+
+Alors:
+\begin{itemize}
+\item
+La fonction $F \colon x \mapsto \int_J f(x,t) \D t$ est définie et continue sur $I$.
+\end{itemize}
+
+\Para{Remarque}[version locale]
+
+On peut remplacer l'hypothèse de domination par:
+\begin{itemize}
+\item
+\emph{Hypothèse de domination locale:}
+  Pour tout segment $K$ inclus dans $I$,
+  il existe une fonction $\varphi_K \colon J \to \Rp$ telle que
+
+  \begin{itemize}
+  \item
+pour tout $(x,t)\in K\times J$, on a $\Abs{f(x,t)}\leq\varphi_K(t)$,
+  \item
+$\varphi_K$ est continue par morceaux et intégrable sur $J$.
+  \end{itemize}
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Dérivabilité}
+
+\Para{Théorème}[dérivation sous le signe $\int$]
+
+On suppose:
+\begin{enumerate}
+\item
+$f$ est de classe $\CC1$ par rapport à $x$, c.-à-d.
+
+  \begin{itemize}
+  \item
+pour tout $t\in J$ fixé, la fonction $x \mapsto f(x,t)$
+    est de classe $\CC1$ sur $I$.
+  \end{itemize}
+\item
+$f$ est continue par morceaux et intégrable par rapport à $t$, c.-à-d.
+
+  \begin{itemize}
+  \item
+pour tout $x\in I$ fixé, la fonction $t \mapsto f(x,t)$
+    est continue par morceaux et intégrable sur $J$.
+  \end{itemize}
+\item
+$\DerPart fx$ est continue par morceaux par rapport à $t$, c.-à-d.
+
+  \begin{itemize}
+  \item
+pour tout $x\in I$ fixé, la fonction $t \mapsto \DerPart fx$
+    est continues par morceaux sur $J$.
+  \end{itemize}
+\item
+\emph{Hypothèse de domination:}
+  Il existe une fonction $\varphi\colon J \to \Rp$ telle que
+
+  \begin{itemize}
+  \item
+pour tout $(x,t)\in I\times J$, on a $\left| \DerPart fx(x,t) \right| \leq \varphi(t)$,
+  \item
+$\varphi$ est continue par morceaux et intégrable sur $J$.
+  \end{itemize}
+\end{enumerate}
+
+Alors:
+\begin{itemize}
+\item
+La fonction $F \colon x \mapsto \int_J f(x,t) \D t$ est définie et de classe $\CC1$ sur $I$.
+\item
+Pour tout $x\in I$, on a \[ F'(x) = \int_J \DerPart fx(x,t) \D t. \]
+\end{itemize}
+
+\Para{Remarque}[version locale]
+
+On peut remplacer l'hypothèse de domination par:
+\begin{itemize}
+\item
+\emph{Hypothèse de domination locale:}
+  Pour tout segment $K$ inclus dans $I$,
+  il existe une fonction $\varphi_K \colon J \to \Rp$ telle que
+
+  \begin{itemize}
+  \item
+pour tout $(x,t)\in K\times J$, on a $\left| \DerPart fx(x,t) \right| \leq \varphi_K(t)$,
+  \item
+$\varphi_K$ est continue par morceaux et intégrable sur $J$.
+  \end{itemize}
+\end{itemize}
+
+\Para{Théorème}[extension aux fonctions de classe $\CC p$]
+
+On suppose:
+\begin{enumerate}
+\item
+$f$ est de classe $\CC p$ par rapport à $x$, c.-à-d.
+
+  \begin{itemize}
+  \item
+pour tout $t\in J$ fixé, la fonction $x \mapsto f(x,t)$ est de classe $\CC p$ sur $I$.
+  \end{itemize}
+\item
+pour tout $0\leq k<p$,
+  $\frac{\partial^k f}{\partial x^k}$ est continue par morceaux
+  et intégrable par rapport à $t$, c.-à-d.
+
+  \begin{itemize}
+  \item
+pour tout $k\in\Dcro{0,p-1}$ et pour tout $x\in I$ fixés,
+    la fonction $t \mapsto \frac{\partial^k f}{\partial x^k} (x,t)$
+    est continue par morceaux et intégrable sur $J$.
+  \end{itemize}
+\item
+$\frac{\partial^p f}{\partial x^p}$ est continue par morceaux par rapport à $t$, c.-à-d.
+
+  \begin{itemize}
+  \item
+pour tout $x\in I$ fixé, la fonction $t \mapsto \frac{\partial^p f}{\partial x^p} (x,t)$
+    est continue par morceaux sur $J$.
+  \end{itemize}
+\item
+\emph{Hypothèse de domination:}
+  Il existe une fonction $\varphi\colon J \to \Rp$ telle que
+
+  \begin{itemize}
+  \item
+pour tout $(x,t)\in I\times J$, on a $\left| \frac{\partial^p f}{\partial x^p} (x,t) \right| \leq \varphi(t)$,
+  \item
+$\varphi$ est continue par morceaux et intégrable sur $J$.
+  \end{itemize}
+\end{enumerate}
+
+Alors:
+\begin{itemize}
+\item
+La fonction $F \colon x \mapsto \int_J f(x,t) \D t$ est définie et de classe $\CC p$ sur $I$.
+\item
+Pour tout $k\in\Dcro{0,p}$, pour tout $x\in I$,
+  on a \[ F^{(k)}(x) = \int_J \frac{\partial^k f}{\partial x^k}(x,t) \D t. \]
+\end{itemize}
+
+\Para{Remarque}[version locale]
+
+On peut remplacer l'hypothèse de domination par:
+\begin{itemize}
+\item
+\emph{Hypothèse de domination locale:}
+  Pour tout segment $K$ inclus dans $I$,
+  il existe une fonction $\varphi_K \colon J \to \Rp$ telle que
+
+  \begin{itemize}
+  \item
+pour tout $(x,t)\in K\times J$,
+    on a $\left| \frac{\partial^p f}{\partial x^p} (x,t) \right| \leq \varphi_K(t)$,
+  \item
+$\varphi_K$ est continue par morceaux et intégrable sur $J$.
+  \end{itemize}
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Exercices}
+
+\Exercice
+
+On considère la fonction définie par \[ f(x) = \int_0^1 e^{-x/t} \D t. \]
+\begin{enumerate}
+\item
+Déterminer l'ensemble de définition de $f$.
+\item
+Montrer que $f$ est continue sur son ensemble de définition.
+\item
+Montrer que $f$ est de classe $\CC1$ sur $\Rps$.
+\item
+Montrer que $f$ est de classe $\CC\infty$ sur $\Rps$.
+\item
+Vérifier que $\forall x > 0$, \[ f''(x) = \frac{e^{-x}}{x}. \]
+\end{enumerate}
+
+\Exercice
+
+On cherche à calculer l'intégrale de Gauß
+\[ \int_0^{+\infty} e^{-x^2} \D x. \]
+Pour cela, on considère les fonctions définies par
+\[ f(x) = \left(\int_0^x e^{-t^2} \D t \right)^2
+\quad\text{et}\quad
+g(x) = \int_0^1 \frac{e^{-x^2(1+t^2)}}{1+t^2} \D t. \]
+\begin{enumerate}
+\item
+Montrer que $f$ et $g$ sont définies et de classe $\CC1$ sur $\R$.
+\item
+Calculer $f'$ et $g'$.
+\item
+En déduire que $\forall x\in\R$, \[ f(x) + g(x) = \frac\pi4. \]
+\item
+En déduire la valeur de l'intégrale de Gauß.
+\end{enumerate}
+
+\Exercice[théorème de division des fonctions $\CC\infty$]
+
+Soit $\Fn{f}{\R}{\R}$ de classe $\CC\infty$ et
+\[ g(x) = \begin{cases}
+  \dfrac{f(x)-f(0)}{x} & \text{si } x\neq0 \\
+  \hfil f'(0)               & \text{si } x=0.
+\end{cases} \]
+\begin{enumerate}
+\item
+Vérifier que $g(x) = \int_0^1 f'(tx) \D t$.
+\item
+En déduire que $g$ est de classe $\CC\infty$.
+\item
+\emph{Généralisation.}
+  Montrer que la fonction
+  \[ g_n \colon x \mapsto \frac{1}{x^n}
+  \left( f(x) - \sum_{k=0}^{n-1} \frac{x^k}{k!} f^{(k)}(0) \right) \]
+  se prolonge en une fonction de classe $\CC\infty$ en $0$.
+\end{enumerate}
+
+\Exercice
+
+Montrer qu'il existe un unique réel $x\in[0,\pi]$ tel que
+\[ \int_0^\pi \cos(x\sin\theta) \D\theta = 0. \]
+et calculer une valeur approchée de $x$ à $10^{-2}$ près.
+
+\emph{Indication:} Montrer que
+\[ \int_0^\pi \cos(x\sin\theta) \D\theta = 2\int_0^1 \frac{\cos(xt)}{\sqrt{1-t^2}} \D t. \]
+
+\Exercice[la fonction gamma]
+
+Soit \[ \Gamma(x) = \int_0^{+\infty} t^{x-1} e^{-t} \D t. \]
+\begin{enumerate}
+\item
+Montrer que $\Gamma$ est de classe $\CC\infty$ sur $\Rps$.
+\item
+Montrer que $\Gamma$ est convexe.
+\item
+Montrer que $\ln\circ\Gamma$ est convexe.
+\item
+Montrer que $\forall x\in\Rps$, $\Gamma(x+1) = x\Gamma(x)$.
+\item
+Montrer que $\forall n\in\N$, $\Gamma(n+1) = n!$.
+\item
+Effectuer le changement de variables $t = n + y\sqrt n$
+  dans l'intégrale $\Gamma(n+1)$,
+  pour obtenir une expression de la forme
+  \[ \Gamma(n+1) = n^n e^{-n} \sqrt n \int_{-\infty}^{+\infty} f_n(y) \D y. \]
+\item
+Soit $\varphi(y) = \begin{cases}
+  e^{-y^2/2}  & \text{si } y < 0 \\
+  (1+y)e^{-y} & \text{si } y\geq0.
+\end{cases}$
+  Vérifier que $\forall n\in\Ns$, $\forall y\in\R$, $\Abs{f_n(y)}\leq\varphi(y)$.
+\item
+En déduire la \emph{formule de Stirling}
+  \[ n! \Sim_{n\to+\infty} \left( \frac{n}{e} \right)^n \sqrt{2\pi n}. \]
+\end{enumerate}
+
+\Exercice
+
+Soit $\Fn{f}{\Rp}{\R}$ continue telle que
+$\int_0^{+\infty} f$ converge absolument.
+On pose \[ \varphi(a) = \int_0^{+\infty} e^{-at}f(t) \D t. \]
+\begin{enumerate}
+\item
+Montrer que $\varphi$ est définie sur $\Rp$.
+\item
+Montrer que $\varphi$ est continue sur $\Rp$.
+\item
+Montrer que $\varphi$ est de classe $\CC\infty$ sur $\Rps$.
+\end{enumerate}
+
+\Exercice[le même en nettement plus dur]
+
+Soit $\Fn{f}{\Rp}{\R}$ continue telle que
+$\int_0^{+\infty} f$ converge (pas nécessairement absolument).
+On pose \[ \varphi(a) = \int_0^{+\infty} e^{-at}f(t) \D t \quad\text{et}\quad
+F(x) = \int_x^{+\infty} f(t) \D t. \]
+\begin{enumerate}
+\item
+Montrer que $F$ est définie, continue et bornée sur $\Rp$.
+\item
+Montrer que $\varphi$ est définie sur $\Rp$ et que $\forall a\in\Rp$,
+  \[ \varphi(a) = F(0) - a\int_0^{+\infty} e^{-at} F(t) \D t. \]
+\item
+Montrer que $\varphi$ est de classe $\CC\infty$ sur $\Rps$.
+\item
+Montrer que $\varphi$ est continue en $0$.
+\end{enumerate}
+
+\Exercice
+
+On considère $f(x) = \int_0^{+\infty} \frac{\D t}{t^x (1+t)}$.
+\begin{enumerate}
+\item
+Domaine de définition, monotonie, convexité de $f$ (sans dériver $f$).
+\item
+Continuité, dérivabilité, calcul de $f^{(k)}$.
+\item
+Donner un équivalent de $f(x)$ en $0$ et en $1$.
+\item
+Calculer $f(\frac1n)$ pour $n\in\N$, $n\geq2$.
+\end{enumerate}
+
+\Exercice
+
+Soit $f(x) = \int_0^{+\infty} \frac{e^{-tx}}{1+t^2} \D t$.
+\begin{enumerate}
+\item
+Montrer que $f$ est définie et continue sur $\R$.
+\item
+Montrer que $f$ est de classe $\CC\infty$ sur $\Rps$.
+\item
+Montrer que $\forall x > 0$, $f(x) + f''(x) = \frac{1}{x}$.
+\end{enumerate}
+
+\Exercice
+
+Soit $f(x) = \int_0^{+\infty} \frac{\D t}{1+x^3+t^3}$.
+\begin{enumerate}
+\item
+Montrer que $f$ est définie sur $\Rp$.
+\item
+À l'aide du changement de variable $u = \frac1t$, calculer $f(0)$.
+\item
+Montrer que $f$ est continue et décroissante.
+\item
+Déterminer $\lim\limits_{+\infty} f$.
+\end{enumerate}
+
+\Exercice
+
+Soit $f(x) = \int_0^{\pi/2} \sin^x(t) \D t$.
+\begin{enumerate}
+\item
+Montrer que $f$ est définie et positive sur $]-1,+\infty[$.
+  \item
+Montrer que $f$ est de classe $\CC1$ et préciser sa monotonie.
+  \item
+Former une relation entre $f(x)$ et $f(x+2)$ pour tout $x > -1$.
+  \item
+On pose pour $x > 0$, $\varphi(x) = xf(x)f(x-1)$.
+    Montrer que
+    \[ \forall x > 0, \quad\varphi(x+1) =\varphi(x). \]
+  \item
+Déterminer un équivalent de $f$ en $-1^+$.
+\end{enumerate}
+
+\Exercice
+
+On considère les fonctions $f$ et $g$ définies sur $\Rp$ par
+\[ f(x) = \int_0^{+\infty} \frac{e^{-xt}}{1+t^2} \D t
+\quad\text{et}\quad
+g(x) = \int_0^{+\infty} \frac{\sin t}{x+t} \D t. \]
+\begin{enumerate}
+\item
+Monter que $f$ et $g$ sont de classe $\CC2$ sur $\Rps$ et
+  qu'elles sont solutions de l'équation différentielle
+  $y'' + y = \frac1x$.
+\item
+Montrer que $f$ et $g$ sont continues en $0$.
+\item
+En déduire que \[ \int_0^{+\infty} \frac{\sin t}{t} \D t = \frac\pi2. \]
+\end{enumerate}
+
+\Exercice
+
+Existence et calcul de
+\[ \varphi(x) = \int_0^{+\infty} e^{-t^2} \cos(xt) \D t. \]
+On pourra montrer que $\varphi$ est solution d'une équation différentielle
+que l'on résoudra.
+
+\Exercice
+
+Soit $f$ définie sur $\Rp$ par \[ f(x) = \int_0^{+\infty} \frac{\arctan(xt)}{1+t^2} \D t. \]
+\begin{enumerate}
+\item
+Étudier la continuité et la dérivabilité de $f$.
+\item
+Pour $x > 0$, calculer $f'(x)$.
+\item
+En déduire que \[ \int_0^1 \frac{\ln t}{t^2-1} \D t = \frac{\pi^2}{8}. \]
+\item
+  Bonus: montrer que $f$ n'est pas dérivable en $0$.
+  Pour cela, on pourra minorer $f(x)/x$.
+\end{enumerate}
+
+\Exercice
+
+Soit \[ f(x) = \int_0^{+\infty} \frac{\cos(xt)}{1+t^2} \D t. \]
+\begin{enumerate}
+\item
+Étudier la continuité et la dérivabilité de $f$.
+
+  \begin{enumerate}
+  \item
+Montrer que pour tout $x > 0$, on a
+    \[ f'(x) = \frac{1}{x}\int_0^{+\infty} \cos(xt)\cdot\frac{t^2 - 1}{(1+t^2)^2} \D t. \]
+  \item
+Montrer que $f$ est de classe $\CC2$ sur $\Rps$ et que pour $x > 0$, on a
+    \[ f''(x) = \frac{2}{x^2}\int_0^{+\infty} \cos(xt)\cdot\frac{1-3t^2}{(1+t^2)^3} \D t. \]
+  \item
+En déduire que pour tout $x > 0$, on a $f''(x) = f(x)$.
+  \end{enumerate}
+\item
+Calculer $f(0)$ et $\lim\limits_{+\infty} f$.
+\item
+En déduire la valeur de $f$.
+\item
+Calculer \[ \int_0^{+\infty} \frac{t\sin(xt)}{1+t^2}\D t. \]
+\end{enumerate}
+
+\Exercice
+
+En utilisant une équation différentielle linéaire du premier ordre, calculer
+\[ f(x) =\int_0^{+\infty} \frac{e^{-t}}{\sqrt t}{e^{\I x t}} \D t. \]
+
+\end{document}

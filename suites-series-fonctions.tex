@@ -1,0 +1,535 @@
+\documentclass{yann}
+\usepackage[most]{tcolorbox}
+
+\newcommand{\FIK}{\mathcal{F}(I,𝕂)}
+\newcommand{\fn}{(f_n)_{n∈ℕ}}
+\newcommand{\Sfn}{∑_n f_n}
+
+\begin{document}
+\title{Suites et séries de fonctions}
+\maketitle
+
+\Para{Notations}
+
+\begin{itemize}
+\item
+$I$ désigne un intervalle de $ℝ$ non vide et non réduit à un point;
+\item
+$𝕂$ désigne $ℝ$ ou $ℂ$;
+\item
+$𝕂^I = \FIK$ désigne le £Kev. des fonctions de $I$ dans $𝕂$.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Généralités}
+
+\Para{Définition}
+
+On appelle \emph{suite de fonctions} toute suite $\fn$ à valeurs dans $\FIK$.
+Autement dit, une suite de fonctions est une suite $\fn$ dont les éléments sont des fonctions $\Fn{f_n}{I}{𝕂}$.
+
+\Para{Définition}
+
+Soit $\fn$ une suite de fonctions de $I$ dans $𝕂$.
+On pose \[ \Fonction{S_n}{I}{𝕂}{x}{∑_{k=0}^n f_k(x)} \]
+On appelle \emph{série de fonctions} de $I$ dans $𝕂$
+de terme général $f_n$ la suite de fonctions $(S_n)_{n∈ℕ}$; on la note plutôt $∑_n f_n$.
+
+% -----------------------------------------------------------------------------
+\section{Modes de convergence}
+
+% -----------------------------------------------------------------------------
+\subsection{Convergence simple}
+
+\Para{Définition}
+
+Soit $\fn$ une suite de fonctions de $I$ dans $𝕂$, et soit $f \colon I \to𝕂$.
+On dit que la suite de fonctions $\fn$ \emph{converge simplement} vers $f$ sur $I$ si et seulement si \[ ∀x∈I \+ f_n(x) \Toninf f(x). \]
+
+\Para{Définition}
+
+On dit que la série $\Sfn$ \emph{converge simplement} sur $I$
+£ssi. la suite de fonction $(S_n)_{n∈ℕ}$ converge simplement sur $I$.
+
+Autrement dit, la série $\Sfn$ converge simplement sur $I$ £ssi.
+\[ \tcboxmath{ ∀x∈I, \text{la série} ∑_n f_n(x) \text{ converge.} } \]
+
+\Para{Proposition}[unicité de la limite simple]
+
+Soit $\fn$ une suite de fonctions de $I$ dans $𝕂$.
+Soit $f$ et $g$ deux fonctions de $I$ dans $𝕂$.
+Si $\fn$ converge simplement sur $I$ vers $f$ et vers $g$
+alors $f = g$.
+
+\Para{Définition}
+
+Soit $\fn$ une suite de fonctions de $I$ dans $𝕂$ convergeant simplement sur $I$ vers $f \colon I \to 𝕂$.
+$f$ s'appelle la \emph{limite simple} de la suite de fonctions $(f_n)_{n∈ℕ}$.
+
+% -----------------------------------------------------------------------------
+\subsection{Convergence uniforme}
+
+\Para{Définition}
+
+Soit $\fn$ une suite de fonctions de $I$ dans $𝕂$, et soit $f \colon I \to𝕂$.
+On dit que la suite de fonctions $\fn$ \emph{converge uniformément} vers $f$ sur $I$ si et seulement si
+\[ ∀ε>0 \+ ∃N∈ℕ \+ ∀n≥N \+ ∀x∈I \+ \abs{f_n(x) - f(x)} ≤ ε, \]
+ou de façon équivalente, £ssi.
+\[ \tcboxmath{ \sup_I \Abs{f_n - f} \Toninf 0. } \]
+
+\Para{Proposition}
+
+Si $\fn$ converge uniformément vers $f$, alors $\fn$ converge simplement vers $f$.
+
+\Para{Définition}
+
+On dit que la série $\Sfn$ \emph{converge uniformément} sur $I$ si et seulement si la suite de fonction $(S_n)_{n∈ℕ}$ converge uniformément sur $I$.
+
+\Para{Proposition}
+
+Soit $\Sfn$ une série de fonction qui converge simplement vers $f$ sur $I$.
+Cette série converge uniformément vers $f$ sur $I$ si et seulement si
+la suite de fonctions $(R_n)$ converge uniformément vers $0$ sur $I$
+où \[ R_n(x) = ∑_{k>n} f_k(x). \]
+
+Ainsi, montrer que $\Sfn$ converge uniformément sur $I$ revient à montrer
+l'existence d'une suite réelle $(ε_n)_{n∈ℕ}$ telle que:
+\begin{tcolorbox}
+  \begin{itemize}
+  \item
+$∀n∈ℕ$, $∀x∈I$, $\Abs{R_n(x)} ≤ε_n$;
+  \item
+la suite numérique $(ε_n)$ tend vers $0$.
+  \end{itemize}
+\end{tcolorbox}
+
+% -----------------------------------------------------------------------------
+\subsection{Convergence normale}
+
+Cette notion de convergence n'a de sens que pour une série de fonctions.
+
+\Para{Définition}
+
+Soit $\Sfn$ une série de fonctions bornées de $I$ dans $𝕂$.
+On dit que la série de fonctions $\Sfn$ \emph{converge normalement} sur $I$
+si et seulement si la \emph{série numérique}
+de terme général $u_n = \sup_I \Abs{f_n}$ converge.
+
+\Para{Proposition}
+
+Soit $\Sfn$ une série de fonctions de $I$ dans $𝕂$.
+Montrer que la série converge normalement sur $I$ revient à
+montrer l'existence d'une suite réelle $(α_n)_{n∈ℕ}$ telle que:
+\begin{tcolorbox}
+  \begin{itemize}
+  \item
+$∀n∈ℕ$, $∀x∈I$, $\Abs{f_n(x)}≤α_n$;
+  \item
+la série numérique $∑_nα_n$ converge.
+  \end{itemize}
+\end{tcolorbox}
+
+\Para{Proposition}
+
+La convergence normale entraîne la convergence uniforme (qui entraîne la convergence simple).
+
+% -----------------------------------------------------------------------------
+\section{Théorèmes}
+
+% -----------------------------------------------------------------------------
+\subsection{Continuité}\label{sec:cont}
+
+\Para{Théorème de continuité de la limite}
+
+La limite uniforme d'une suite de fonctions continue est elle-même continue.
+Plus précisément, si
+\begin{itemize}
+\item
+pour tout $n∈ℕ$, $f_n$ est continue sur $I$,
+\item
+$\fn$ converge uniformément vers $f$.
+\end{itemize}
+Alors $f$ est continue sur $I$.
+
+\Para{Remarque}
+
+Cela n'est pas vrai pour la limite simple;
+considérez par exemple la suite de fonction $f_n(x) = x^n$ sur $[0,1]$.
+
+\Para{Théorème de continuité de la somme}
+
+Soit $\Sfn$ une série de fonctions de $I$ dans $𝕂$.
+
+On suppose que:
+\begin{itemize}
+\item
+pour tout $n∈ℕ$, $f_n$ est continue sur $I$;
+\item
+$\Sfn$ converge uniformément sur $I$.
+\end{itemize}
+
+Alors la somme $f = ∑_{n=0}^{+∞} f_n$ est une fonction définie et continue sur $I$.
+
+% -----------------------------------------------------------------------------
+\subsection{Permutation avec une limite}\label{sec:perm-lim}
+
+\Para{Théorème de la double limite}
+
+Soit $\fn$ une suite de fonctions de $I$ dans $𝕂$.
+On suppose que:
+\begin{itemize}
+\item
+$a$ est une extrémité de $I$ (éventuellement $±∞$);
+\item
+pour tout $n∈ℕ$, $\lim_a f_n = ℓ_n$ existe et est finie;
+\item
+$\fn$ converge uniformément vers $f$ sur $I$.
+\end{itemize}
+
+Alors:
+\begin{itemize}
+\item
+la suite $(ℓ_n)_{n∈ℕ}$ converge. Notons $ℓ$ sa limite;
+\item
+$f$ admet une limite en $a$;
+\item
+$\lim_a f = ℓ$, c.-à-d.
+  \[ \tcboxmath{
+    \lim_{x\to a} \; \lim_\ninf \; f_n(x) = \lim_\ninf \; \lim_{x\to a} \; f_n(x).
+  } \]
+\end{itemize}
+
+\Para{Théorème de permutation limite-somme}
+
+Soit $\Sfn$ une série de fonctions de $I$ dans $𝕂$.
+On suppose que:
+\begin{itemize}
+\item
+$a$ est une extrémité de $I$ (éventuellement $±∞$);
+\item
+pour tout $n∈ℕ$, $\lim_a f_n = ℓ_n$ existe et est finie;
+\item
+$\Sfn$ converge uniformément vers $f$ sur $I$.
+\end{itemize}
+
+Alors:
+\begin{itemize}
+\item
+la série numérique $∑_n ℓ_n$ est absolument convergente;
+\item
+$f$ admet une limite en $a$;
+\item
+$\lim_a f = ∑_{n=0}^{+∞} ℓ_n$, c.-à-d.
+  \[ \tcboxmath{ \lim_{x \to a} ∑_{n=0}^{+∞} f_n(x) = ∑_{n=0}^{+∞} \lim_{x \to a} f_n(x). } \]
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\subsection{Permutation avec une intégrale}\label{sec:perm-int}
+
+\Para{Théorème de permutation limite/intégrale}
+
+On suppose que:
+\begin{itemize}
+\item
+pour tout $n∈ℕ$, $f_n$ est continue sur le segment $[a,b]$;
+\item
+$\fn$ converge uniformément vers $f$ sur $[a,b]$.
+\end{itemize}
+
+Alors $f$ est continue sur $[a,b]$ et
+\[ \tcboxmath{ \lim_\ninf ∫_a^b f_n = ∫_a^b \lim_\ninf f_n } = ∫_a^b f. \]
+
+\Para{Théorème de permutation somme/intégrale}
+
+Soit $\Sfn$ une série de fonctions de $[a,b]$ dans $𝕂$.
+On suppose que:
+\begin{itemize}
+\item
+pour tout $n∈ℕ$, $f_n$ est continue sur le segment $[a,b]$
+\item
+la série de fonctions $∑_n f_n$ converge uniformément sur $[a,b]$ vers $f$
+\end{itemize}
+
+Alors $f$ est continue sur $[a,b]$ et
+\[ \tcboxmath{ ∑_{n=0}^{+∞} ∫_a^b f_n = ∫_a^b ∑_{n=0}^{+∞} f_n } = ∫_a^b f. \]
+
+% -----------------------------------------------------------------------------
+\subsection{Dérivabilité}\label{sec:deriv}
+
+\Para{Théorème de dérivation de la limite}
+
+On suppose que:
+\begin{itemize}
+\item
+pour tout $n∈ℕ$, $f_n$ est de classe $\CC1$ sur $I$;
+\item
+$(f_n)$ converge simplement vers $f$ sur $I$;
+\item
+$(f'_n)$ converge uniformément vers $g$ sur $I$.
+\end{itemize}
+
+Alors:
+\begin{itemize}
+\item
+$f$ est de classe $\CC1$ sur $I$;
+\item
+$f' = g$.
+\end{itemize}
+
+\Para{Théorème de dérivation de la somme}
+
+Soit $\Sfn$ une série de fonctions de $I$ dans $𝕂$.
+
+On suppose que:
+\begin{itemize}
+\item
+pour tout $n∈ℕ$, $f_n$ est de classe $\CC1$ sur $I$
+\item
+$∑_n f_n$ converge simplement sur $I$ vers $f$
+\item
+$∑_n f'_n$ converge uniformément sur $I$
+\end{itemize}
+
+Alors $f$ est de classe $\CC1$ sur $I$ et
+\[ ∀x∈I \+ f'(x) = ∑_{n=0}^{+∞} f'_n(x). \]
+
+% -----------------------------------------------------------------------------
+\subsection{Généralisation}\label{sec:deriv2}
+
+\Para{Théorème de dérivation de la limite}
+
+On suppose que:
+\begin{itemize}
+\item
+pour tout $n∈ℕ$, $f_n$ est de classe $\CC{p}$ sur $I$, $p≥1$;
+\item
+pour $0≤k≤p-1$,
+  la suite $(f^{(k)}_n)$ converge simplement vers $g_k$ sur $I$;
+\item
+la suite $(f^{(p)}_n)$ converge uniformément vers $g_p$ sur $I$.
+\end{itemize}
+
+Alors:
+\begin{itemize}
+\item
+$f=g_0$ est de classe $\CC{p}$;
+\item
+pour tout $0≤k≤p$, $f^{(k)} = g_k$.
+\end{itemize}
+
+\Para{Théorème de dérivation de la somme}
+
+Soit $\Sfn$ une série de fonctions de $I$ dans $𝕂$.
+On suppose que:
+\begin{itemize}
+\item
+pour tout $n∈ℕ$, $f_n$ est de classe $\CC{p}$, $p≥1$
+\item
+pour tout $k∈\Dcro{0,p-1}$, $∑_n f_n^{(k)}$ converge simplement sur $I$
+\item
+$f$ est la somme de la série $\Sfn$, c.-à-d. $f =∑_{n=0}^{+∞} f_n$
+\item
+$∑_n f_n^{(p)}$ converge uniformément sur $I$
+\end{itemize}
+
+Alors $f$ est de classe $\CC p$ sur $I$ et
+\[ ∀k∈\ccro{0,p} \+ ∀x∈I \+ f^{(k)}(x) = ∑_{n=0}^{+∞} f^{(k)}_n(x). \]
+
+\Para{Remarque importante: caractère local}
+
+Les notions de continuité et de dérivabilité sont des notions \emph{locales}.
+Cela signifie, par exemple, que pour montrer qu'une fonction $f$ est continue en~42, il suffit de s'intéresser à la continuité de $f$ sur un voisinage de~42, par exemple le segment $[41,43]$.
+
+Ainsi, dans les théorèmes sur la continuité et sur la dérivabilité
+(sections \ref{sec:cont}, \ref{sec:deriv} et \ref{sec:deriv2}),
+on peut remplacer l'hypothèse de convergence uniforme sur $I$
+par la convergence uniforme sur tout segment $K$ inclus dans $I$.
+
+Cela n'est pas possible pour les théorèmes de la section~\ref{sec:perm-lim}.
+
+% -----------------------------------------------------------------------------
+\section{Exercices}
+
+\Exercice
+
+Soit $\Fn{φ}{\Rp}{ℝ}$ continue, non identiquement nulle telle que $φ(0) = 0$ et $\lim_{+∞} φ = 0$.
+
+Que peut-on dire de la convergence des suites de fonctions suivantes?
+En particulier, on se demandera s'il y a convergence simple?
+uniforme?
+uniforme sur tout segment?
+sur quel(s) intervalle(s) de $\Rp$?
+\begin{multicols}{2}
+\begin{enumerate}
+\item
+$a_n(x) = φ(x)/n$
+\item
+$b_n(x) = φ(x/n)$
+\item
+$c_n(x) = nφ(x)$
+\item
+$d_n(x) = φ(nx)$
+\item
+$e_n(x) = φ(nx)φ(x/n)$
+\end{enumerate}
+\end{multicols}
+
+\Exercice
+
+Soit $α∈ℝ$.
+Étudier la convergence de la suite de fonctions
+définie par $f_n(x) = n^α x (1-x)^n$ sur $[0,1]$.
+
+\Exercice
+
+Soit $f_0(t) = 0$ et $f_{n+1}(t) = \sqrt{t+f_n(t)}$.
+\begin{enumerate}
+  \item
+Étudier la convergence simple de la suite de fonctions $(f_n)$ sur $\Rp$.
+  \item
+Y a-t-il convergence uniforme?
+\end{enumerate}
+
+\Exercice
+
+Soit $f_n(x) = n \cos^n(x) \sin(x)$ définie sur $I = [0,π/2]$.
+\begin{enumerate}
+\item
+Déterminer la limite simple de la suite $(f_n)$.
+\item
+Montrer que
+  \[ \lim_\ninf ∫_0^{π/2} f_n(x) \D x ≠ ∫_0^{π/2} \lim_\ninf f_n(x) \D x. \]
+\item
+A-t-on convergence uniforme sur $I$ de la suite $(f_n)$?
+\end{enumerate}
+
+\Exercice
+
+Soit $f_n \colon x \mapsto \frac{1}{n!} \, x^n \, e^{-x}$.
+\begin{enumerate}
+\item
+Montrer que $\fn$ converge uniformément sur $\Rp$.
+\item
+Calculer \[ \lim_\ninf ∫_0^{+∞} f_n(x) \D x, \]
+  où par définition \[ ∫_0^{+∞} f_n = \lim_{M \to +∞} ∫_0^M f_n. \]
+  Le résultat est-il surprenant?
+\end{enumerate}
+
+\Exercice\label{exo:tcb1}
+
+Soit $\Fn{f}{[0,1]}{ℝ}$ de classe $\CC1$ telle que $f(1)≠0$.
+On pose \[ u_n = ∫_0^1 x^n f(x) \D x. \]
+\begin{enumerate}
+\item
+Déterminer la limite $ℓ$ de la suite $(u_n)_{n∈ℕ}$
+\item
+Déterminer un équivalent de $u_n - ℓ$.
+  On pourra effectuer une intégration par parties.
+\end{enumerate}
+
+\Exercice\label{exo:tcb2}
+
+Soit $\Fn{f}{[0,1]}{ℝ}$ continue.
+Déterminer \[ \lim_\ninf ∫_0^1 n x^n f(x^n) \D x. \]
+
+On pourra commencer par le changement de variables $y=x^n$,
+et majorer la différence entre l'intégrale et la limite conjecturée.
+
+\Exercice\label{exo:tcb3}
+
+Déterminer \[ \lim_{n∞} ∫_0^1 \frac{\D x}{1+x+x^2+\cdots+x^n}. \]
+
+\Exercice
+
+Soit $\Fonction{f_n}{\intOF{0,1}}{ℝ}{x}{\frac{(-x\ln x)^n}{n!}}$
+\begin{enumerate}
+\item
+Montrer que $f_n$ se prolonge en une fonction continue sur $[0,1]$, que
+  l'on notera également $f_n$.
+\item
+Montrer que la série $∑_n f_n$ converge normalement sur $[0,1]$.
+\item
+  \begin{enumerate}
+  \item
+Pour $(p,q)∈ℕ^2$, on note $I_{p,q} =∫_0^1 x^p (-\ln x)^q \D x$.
+    Montrer que pour $q≥1$, on a $I_{p,q} = \frac{q}{p+1} I_{p,q-1}$.
+  \item
+En déduire la valeur de $∫_0^1 f_n$.
+  \end{enumerate}
+\item
+En déduire que:
+  \[ ∫_0^1 \frac{\D x}{x^x} =∑_{n=1}^{+∞} \frac{1}{n^n} \]
+\end{enumerate}
+
+\Exercice
+
+Soit $\DS f(x) = ∑_{n=1}^{+∞} \frac{\sin(nx)}{n2^n}$
+\begin{enumerate}
+\item
+Vérifier que $f$ est définie, puis continue, puis de classe $\CC1$ sur $ℝ$.
+\item
+Calculer la somme de la série $∑_{n=1}^{+∞} \pa{e^{ix}/2}^n$,
+  et en déduire une expression explicite de $f'$.
+\item
+Expliciter $f$.
+\end{enumerate}
+
+\Exercice
+
+Soit $\DS f(x) = ∑_{n=0}^{+∞} e^{-n^2x}$.
+\begin{enumerate}
+\item
+Montrer que $f$ est de classe $\CC∞$ sur $\Rps$.
+\item
+Déterminer $\lim_{0^+} f$ et $\lim_{+∞} f$.
+\end{enumerate}
+
+\Exercice
+
+Soit $f(x) = ∑_{n=0}^{+∞} \frac{x^n}{n!}$.
+Montrer que $f$ est de classe $\CC1$ sur $\R$,
+puis déterminer $f$.
+
+\Exercice
+
+Soit $\DS f(x) = ∑_{n≥1} \frac{nx}{2^n x^2 + n}$.
+\begin{enumerate}
+\item
+Étudier la convergence simple puis la convergence uniforme de la série.
+\item
+Montrer que $f$ définit une fonction de classe $\CC1$ sur $\Rps$.
+\item
+Montrer que $f$ n'est pas dérivable en zéro.
+\item
+Déterminer un équivalent de $f$ au voisinage de $+∞$.
+\end{enumerate}
+
+\Exercice
+
+Montrer que la série de fonctions $\sum f_n$ où $f_n(x) = \frac{xe^{-nx}}{\ln n}$ pour $n\geq2$ converge normalement sur tout segment de $\Rps$ mais pas normalement sur $\Rp$.
+
+% -----------------------------------------------------------------------------
+\Exercice
+
+Reprendre les exercices~\ref{exo:tcb1}, \ref{exo:tcb2} et \ref{exo:tcb3}
+en admettant le théorème suivant, qui est une version plus forte du théorème de permutation limite/intégrale.
+\emph{Ce théorème n'est pas au programme,}
+mais il s'agit d'un cas particulier du théorème de convergence dominée que nous verrons plus loin.
+
+\Para{Théorème de convergence bornée}
+
+On suppose que:
+\begin{itemize}
+\item
+pour tout $n∈ℕ$, $f_n$ est continue (par morceaux) sur le segment $[a,b]$;
+\item
+$f_n$ converge simplement vers $f$ sur $[a,b]$;
+\item
+$f$ est également continue (par morceaux);
+\item
+la suite $\fn$ est bornée, £cad.
+ \[ ∃M ≥0 \+ ∀n ∈ℕ\+ ∀x ∈[a,b] \+ \abs{f_n(x)} ≤ M \]
+\end{itemize}
+Alors \[ \tcboxmath{ \lim_\ninf ∫_a^b f_n = ∫_a^b \lim_\ninf f_n } = ∫_a^b f. \]
+
+\end{document}

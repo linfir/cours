@@ -1,0 +1,114 @@
+\documentclass{yann}
+\usepackage{tikz}
+\yann{layout=onecolumn,displaystyle}
+
+\begin{document}
+\title{Preuve: produit de Cauchy}
+\maketitle
+
+Soit $(a_n)_{n∈ℕ}$ et $(b_n)_{n∈ℕ}$ deux suites numériques telles que
+les séries $∑_n a_n$ et $∑_n b_n$ sont absolument convergentes.
+On note $(c_n)_{n∈ℕ}$ la suite définie par
+$∀n∈ℕ$, $c_n = ∑_{k=0}^n a_k b_{n-k}$.
+On cherche à montrer que $∑_n c_n$ est absolument convergente et que
+\[ ∑_{n=0}^{+∞} c_n = \Pa{ ∑_{n=0}^{+∞} a_n } \Pa{ ∑_{n=0}^{+∞} b_n }. \]
+
+\section{Cas positif}
+
+On commence par traiter le cas où $(a_n)$ et $(b_n)$ sont à valeurs positives.
+Introduisons quelques notations:
+\begin{itemize}
+\item
+$A_n = ∑_{k=0}^n a_k$, $B_n = ∑_{k=0}^n b_k$ et $C_n = ∑_{k=0}^n c_k$;
+\item
+$A = ∑_{n=0}^{+∞} a_n$ et $B = ∑_{n=0}^{+∞} b_n$;
+\item
+$Δ_n = \Ensemble{(i,j)∈ℕ^2}{i+j≤n}$.
+\item
+$□_n = \Ensemble{(i,j)∈ℕ^2}{i≤n \text{ et } j≤n}$
+\end{itemize}
+
+On vérifie que, pour tout entier $n∈ℕ$, on a:
+\begin{gather}
+  Δ_n ⊂ □_n ⊂ Δ_{2n} \label{eq:subset} \\
+  A_n B_n = ∑_{(i,j)∈□_n}{a_i b_j} \label{eq:square} \\
+  C_n = ∑_{(i,j)∈Δ_n}{a_i b_j} \label{eq:triangle}
+\end{gather}
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\fig{
+      \draw[->,thick,>=stealth] (0,0) -- (5.5,0) ;
+      \draw[->,thick,>=stealth] (0,0) -- (0,5.5) ;
+      \foreach \i in {0,...,5} {
+        \foreach \j in {0,...,5} {
+          \filldraw (\i, \j) circle (1pt) ;
+        }
+      }
+    }
+    \begin{scope}
+      \fill[gray!50] (0,0) -- (4.05,0) -- (0,4.05);
+      \fig
+      \node[above] at (2,0) {$Δ_4$} ;
+    \end{scope}
+    \begin{scope}[xshift=8cm]
+      \fill[gray!50] (0,0) rectangle (4.05,4.05) ;
+      \fig
+      \node[above] at (2,0) {$□_4$} ;
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+Si $(i,j)∈Δ_n$, alors $i+j≤n$, donc $i≤i+j≤n$ et de même $j≤i+j≤n$, donc $(i,j)∈□_n$.
+De plus, si $(i,j)∈□_n$, alors $i+j≤n+n=2n$, donc $(i,j)∈Δ_{2n}$.
+Cela prouve~(\ref{eq:subset}).
+
+La relation~(\ref{eq:square}) vient du fait que
+\[ A_n B_n = \Pa{ ∑_{i=0}^n a_i } \Pa{ ∑_{j=0}^n b_j } = ∑_{0≤i,j≤n} a_i b_j. \]
+
+Enfin, commme \( c_k = ∑_{\substack{(i,j)∈ℕ^2 \\ i+j=k}} a_i b_j \),
+on a la relation~(\ref{eq:triangle}) car
+\[ C_n = ∑_{k=0}^n c_k = ∑_{k≤n} \, ∑_{i+j=k} a_i b_j
+= ∑_{i+j≤n} a_i b_j
+= ∑_{(i,j)∈Δ_n} a_i b_j. \]
+
+Pour $n∈ℕ$, notons $p=\floor{n/2}$. Comme $□_p ⊂ Δ_n ⊂ □_n$, il vient
+\[ ∑_{(i,j)∈□_p} a_i b_j ≤ ∑_{(i,j)∈Δ_n} a_i b_j ≤ ∑_{(i,j)∈□_n} a_i b_j \]
+car les $a_i b_j ≥ 0$.
+Autrement dit, on a $A_p B_p ≤ C_n ≤ A_n B_n$.
+En faisant tendre $n\to+∞$, le théorème des gendarmes assure que $C_n \to AB$, ce qui est exactement le résultat souhaité.
+L'absolue convergence de $∑ c_n$ est immédiate car $c_n≥0$ pour tout $n∈ℕ$.
+
+\section{Cas général}
+
+On garde les mêmes notations, en ajoutant:
+\begin{itemize}
+\item
+$\tilde a_n = \Abs{a_n}$, $\tilde b_n = \Abs{b_n}$
+  et $\tilde c_n = ∑_{k=0}^n \tilde a_k \tilde b_{n-k}$.
+  Notons que $\tilde c_n ≠ \Abs{c_n}$ en général;
+\item
+$\tilde A_n = ∑_{k=0}^n \tilde a_k$ et de même pour $\tilde B_n$ et $\tilde C_n$.
+\end{itemize}
+
+Comme les séries $∑ \Abs{a_n}$ et $∑ \Abs{b_n}$ sont absolument convergentes et positives,
+le cas positif montre que la série de terme général
+$\tilde c_n$ est également absolument convergente.
+Or d'après l'inégalité triangulaire, $\Abs{c_n} ≤ \tilde c_n$,
+donc la série $∑ c_n$ est également absolument convergente.
+De plus,
+\[ A_n B_n - C_n
+= ∑_{(i,j)∈□_n} a_i b_j - ∑_{(i,j)∈Δ_n} a_i b_j
+= ∑_{(i,j)∈□_n∖Δ_n} a_i b_j \]
+donc
+\[ \Abs{A_n B_n - C_n}
+≤ ∑_{(i,j)∈□_n∖Δ_n} \Abs{a_i} ⋅ \Abs{b_j}
+= ∑_{(i,j)∈□_n} \Abs{a_i} ⋅ \Abs{b_j} - ∑_{(i,j)∈Δ_n} \Abs{a_i} ⋅ \Abs{b_j}
+= \tilde A_n \tilde B_n - \tilde C_n \]
+
+Or d'après le cas positif, $\tilde A_n \tilde B_n - \tilde C_n \to 0$,
+d'où $A_n B_n - C_n \to 0$, ce qui est exactement le résultat cherché.
+
+CQFD
+
+\end{document}

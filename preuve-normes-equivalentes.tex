@@ -1,0 +1,83 @@
+\documentclass{yann}
+\usepackage{tcolorbox}
+
+\newcommand{\Par}{\mathcal{P}}
+\newcommand{\BW}{Bolzano-Weierstraß}
+
+\begin{document}
+\title{Équivalence des normes en dimension finie}
+\maketitle
+
+On veut montrer le résultat suivant:
+\begin{tcolorbox}
+    Soit $\K$ le corps $\R$ ou $\C$.
+    Si $E$ est un £Kevdf., alors toutes les normes sur $E$ sont équivalentes.
+\end{tcolorbox}
+
+\section{Préliminaires}
+
+\Para{\BW{} sur $\R$}
+
+Toute suite réelle bornée admet une sous-suite convergente.
+
+\Para{\BW{} sur $\C$}
+
+Toute suite réelle bornée admet une sous-suite convergente.
+
+\emph{Démonstration:}
+si $(z_n)$ est une suite bornée, notons $z_n = x_n + i y_n$ où $(x_n, y_n) \in \R^2$.
+Les suites $(x_n)$ et $(y_n)$ sont également bornées.
+D'après \BW, il existe une extractice $\phi$ telle que la suite $(x_{\phi(n)})$ converge.
+On considère alors la suite de terme général $y'_n = y_{\phi(n)}$.
+Elle est bornée comme sous-suite d'une suite bornée, donc on peut à nouveau utiliser \BW:
+il existe une extractrice $\psi$ telle que la suite $y'_{\psi(n)}$ converge.
+Notons $\sigma = \phi \circ \psi$.
+La suite $(x_{\sigma(n)})$ converge car c'est une sous-suite de $(x_{\phi(n)})$
+et la suite $(y_{\sigma(n)})$ converge par construction,
+donc la suite $(z_{\sigma(n)})$ converge.
+
+\Para{Bolzano-Weierstraß sur $\K^p$}
+
+Pour tout $x\in\K^p$, on note $x=\pa{x^1,x^2,\dots,x^p}$
+
+Soit $(u_n)$ une suite à valeurs dans $\K^p$.
+On suppose que les suites $(u_n^i)_{n\in\N}$ sont bornées pour tout $i\in\ccro{1,p}$.
+Alors il existe une extractrice $\sigma$ telle que
+pour tout $i\in\ccro{1,p}$, la suite $(u_{\sigma(n)}^i)_{n\in\N}$ converge.
+
+\section{Preuve}
+
+Soit $\B = \nUplet e1p$ une base de $E$, fixée dans toute la preuve.
+Pour tout $x\in\E$, on note $(x^1, \dots, x^p)$ les coordonnées de $x$ dans la base $\B$, £cad.
+\[ x = \sum_{i=1}^p x^i e_i. \]
+On note également $\DS N(x) = \max_{1\leq i\leq p} \Abs{x^i}$.
+On vérifie sans peine que $N$ est bien une norme sur $E$.
+
+Soit $\Norme$ une norme quelconque sur $E$; on va chercher à montrer que $N$ et $\Norme$ sont équivalentes.
+
+Pour tout $x\in E$, on a
+\begin{align*}
+    \Norm{x} &= \left\| \sum_{i=1}^p x^i e_i \right\|
+    \leq \sum_{i=1}^p \Norm{x^i e_i}
+    = \sum_{i=1}^p \Abs{x^i} \Norm{e_i} \\
+    &\leq \sum_{i=1}^p N(x) \Norm{e_i} = \beta N(x)
+\end{align*}
+où l'on pose $\beta = \sum_{i=1}^p \Norm{e_i} > 0$.
+On pose également $S = \Ensemble{x\in E}{N(x) = 1}$ et $\DS \alpha = \inf_{x\in S} \Norm{x}$.
+
+Si $x\in E$, $x\neq0$, on pose $y=x/N(x)$ de sorte que $y\in S$.
+Par définition de $\alpha$, on a donc $\Norm{y} \geq \alpha$
+et donc par homogénéité de la norme $\Norme$, on a $\Norm{x} \geq \alpha N(x)$.
+Cette dernière inégalité est encore vraie si $x=0$.
+Ainsi, on a montré que
+\[ \forall x \in E \+ \alpha N(x) \leq \Norm{x} \leq \beta N(x). \]
+
+Il ne reste plus qu'à prouver que $\alpha > 0$.
+Supposons donc par l'absurde que $\alpha = 0$.
+
+Pour tout $n\in\N$, il existe par définition de $\alpha$ un vecteur $u_n$ de $S$ tel que $\Norm{u_n} \leq \frac{1}{n+1}$.
+D'après \BW{} sur $\K^p$, il existe une sous-suite $(v_n)$ de $(u_n)$ telle que
+les suites $(v_n^i)_{n\in\N}$ convergent.
+Notons $\ell = \sum_{i=1}^p \ell^i e_i$ où $\ell^i = \lim_\ninf v_n^i$.
+
+\end{document}

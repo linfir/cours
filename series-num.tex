@@ -1,0 +1,836 @@
+\documentclass{yann}
+\usepackage[most]{tcolorbox}
+
+\undef\U
+\undef\V
+\newcommand\U{(u_n)_{n∈ℕ}}
+\newcommand\V{(v_n)_{n∈ℕ}}
+\newcommand\SU{∑_n u_n}
+\newcommand\SV{∑_n v_n}
+
+\begin{document}
+\title{Séries numériques}
+\maketitle
+
+% -----------------------------------------------------------------------------
+\section{Généralités}
+
+\Para{Définitions}
+\begin{itemize}
+\item
+Soit $\U$ une suite numérique.
+  La \emph{série numérique} de \emph{terme général} $u_n$ est la suite $(S_n)_{n∈ℕ}$ où $∀n∈ℕ$, $S_n = ∑_{k=0}^n u_k$.
+  On note $\SU$ au lieu de $(S_n)_{n∈ℕ}$.
+\item
+Soit $\SU$ une série numérique.
+  Pour $n∈ℕ$, on pose $S_n = ∑_{k=0}^n u_k$.
+  $S_n$ s'appelle la \emph{somme partielle} d'ordre $n$ de la série $\SU$.
+\end{itemize}
+
+\Para{Remarque}
+
+Techniquement, une série est donc égale à la suite de ses sommes partielles; toutefois, en pratique, on fera la distinction.
+
+\Para{Définition}
+
+Soit $\SU$ une série numérique et $(S_n)_{n∈ℕ}$ ses sommes partielles.
+
+On dit que la série $\SU$ est convergente (respectivement divergente, majorée, minorée, bornée, croissante ou décroissante) si et seulement si la suite $(S_n)_{n∈ℕ}$ l'est.
+
+\Para{Définition}
+
+Soit $\SU$ une série numérique \emph{convergente}.
+
+On appelle \emph{somme de la série} la limite $S$ de la suite de ses sommes partielles $(S_n)_{n∈ℕ}$, et on la note $∑_{n=0}^{+∞} u_n$.
+Ainsi, $S = ∑_{n=0}^{+∞} u_n = \lim_\ninf S_n = \lim_\ninf ∑_{k=0}^n u_k$
+
+\Para{Définition}
+
+Soit $\SU$ une série numérique \emph{convergente}.
+Notons $(S_n)_{n∈ℕ}$ ses sommes partielles et $S$ sa somme.
+On appelle \emph{reste} d'ordre $n$ de la série la quantité $R_n = S - S_n = ∑_{k=0}^{+∞} u_k -∑_{k=0}^n u_k = ∑_{k=n+1}^{+∞} u_k = ∑_{k>n} u_k$.
+
+\Para{Proposition}
+
+Soit $\SU$ une série numérique convergente.
+Notons $S$ sa somme, $(S_n)_{n∈ℕ}$ ses sommes partielles et $(R_n)_{n∈ℕ}$ ses restes.
+Alors on a $∀n∈ℕ, S_n + R_n = S$.
+De plus, $R_n \Toninf 0$.
+
+\Para{Exemples}
+\begin{itemize}
+\item
+\emph{Séries géométriques:}
+
+  Soit $(u_n)_{n∈ℕ}$ une suite géométrique non nulle de raison $q∈ℂ$.
+  Alors la série $\SU$ converge si et seulement si $\Abs{q}<1$.
+\item
+\emph{Séries télescopiques:}
+
+  Soit $(a_n)_{n∈ℕ}$ une suite numérique et $u_n = a_{n+1} - a_n$.
+  Alors la série $\SU$ converge si et seulement si la suite $(a_n)_{n∈ℕ}$ converge.
+  On a alors $∑_{n=0}^{+∞} u_n = \lim_\ninf a_n - a_0$.
+\end{itemize}
+
+\Para{Proposition}
+
+Soit $\SU$ une série numérique.
+
+Si la série converge, alors $u_n \Toninf 0$.
+
+\Para{Attention}
+
+La réciproque est \emph{FAUSSE}.
+Le contre-exemple classique est la \emph{série harmonique}
+$∑_{n≥1} \frac1n$ qui est \emph{divergente},
+bien que $\frac1n \Toninf 0$.
+
+\Para{Définition}
+
+On dit que la série numérique $\SU$ est \emph{grossièrement divergente} si et seulement si $u_n$ ne tend pas vers 0.
+
+\subsection{Absolue convergence}
+
+\Para{Définition}
+
+Soit $\SU$ une série numérique.
+On dit que la série est \emph{absolument convergente} si et seulement si la série $∑_n \Abs{u_n}$ converge.
+
+\Para{Théorème}
+
+Toute série absolument convergente est convergente.
+
+\emph{Autrement dit:}
+Soit $\U$ une suite numérique.
+Si $∑_n \Abs{u_n}$ converge, alors $\SU$ converge.
+
+\Para{Remarque}
+
+L'utilité pratique de ce théorème réside dans le fait qu'il est généralement plus simple d'étudier la série à termes positifs $∑_n \Abs{u_n}$ que la série numérique générale $\SU$.
+
+% -----------------------------------------------------------------------------
+\section{Séries à termes positifs (SATP)}
+
+\Para{Définition}
+
+Une \emph{série à termes positifs} est une série numérique $\SU$ telle que $∀n∈ℕ, u_n∈\Rp$.
+
+\Para{Proposition}
+
+Une SATP converge si et seulement si la suite des ses sommes partielles est majorée.
+De plus, si elle converge, sa somme est égale à la borne supérieure
+des sommes partielles.
+
+\Para{Lemme}
+
+Soit $\U$ et $\V$ deux suites réelles.
+
+On suppose que $∀n∈ℕ, 0≤u_n≤v_n$.
+\begin{itemize}
+\item
+Si $\SV$ converge, alors $\SU$ converge également.
+\item
+Si $\SU$ diverge, alors $\SV$ diverge également.
+\end{itemize}
+
+\Para{Proposition}
+
+Soit $\SU$ et $\SV$ deux SATP.
+On suppose que $u_n = \GrandO_\ninf(v_n)$.
+Alors:
+\begin{itemize}
+\item
+Si $\SV$ converge, alors $\SU$ converge également.
+\item
+Si $\SU$ diverge, alors $\SV$ diverge également.
+\end{itemize}
+
+\Para{Théorème}
+
+Soit $\SU$ et $\SV$ deux SATP telles que \emph{$u_n \Sim_\ninf v_n$}.
+Alors $\SU$ et $\SV$ ont \emph{même nature}.
+
+\Para{Remarque}
+
+On a en fait un résultat plus précis (mais hors-programme), cf. exercice~\ref{exo:equiv_reste}.
+
+\subsection{Comparaison série-intégrale}
+
+\Para{Lemme}
+
+Soit $I$ est un intervalle de $ℝ$
+et $\Fn{f}{I}{ℝ}$ continue par morceaux \emph{décroissante}.
+Alors si $[n-1,n+1]⊂I$, on a:
+\[ f(n+1) ≤ ∫_n^{n+1} f(x) \D x ≤ f(n), \]
+\[ ∫_n^{n+1} f(x) \D x ≤ f(n) ≤ ∫_{n-1}^n f(x) \D x. \]
+
+\Para{Lemme}
+
+Soit $\Fn{f}{\Rp}{ℝ}$ continue par morceaux, \emph{positive} et \emph{décroissante}.
+Alors la série de terme général $u_n =∫_{n-1}^n f(x) \D x - f(n)$
+est convergente.
+
+\Para{Théorème}
+
+Soit $n_0∈ℕ$ et $\Fn{f}{\intFO{n_0, +∞}}{ℝ}$ continue par morceaux, \emph{positive} et \emph{décroissante}.
+Alors la série $∑_{n} f(n)$ converge si et seulement si la suite $\left( ∫_{n_0}^n f(x) \D x \right)_n$ converge.
+
+\Para{Corollaire}[pour les $5/2$]
+
+La série $∑_{n} f(n)$ converge si et seulement si l'intégrale $∫_{n_0}^{+∞} f(x) \D x$ converge.
+
+\Para{Proposition}[séries de Riemann]
+
+Soit $α∈ℝ$.
+La série $∑_n \frac{1}{n^α}$ converge si et seulement si $α> 1$.
+
+% -----------------------------------------------------------------------------
+\section{Séries numériques générales}
+
+\Para{Définition}
+
+Une série \emph{semi-convergente} est une série convergente mais non absolument convergente.
+Ainsi, une série numérique est:
+\begin{itemize}
+\item
+soit absolument convergente,
+\item
+soit semi-convergente,
+\item
+soit divergente.
+\end{itemize}
+
+\Para{Définition}
+
+Soit $\SU$ une série réelle.
+On dit que cette série est \emph{alternée} si et seulement si $(-1)^n u_n$ est de signe constant.
+
+\Para{Théorème}[critère spécial]
+
+On considère la série réelle $\SU$ où:
+\begin{itemize}
+\item
+$u_n = (-1)^n a_n$
+\item
+$(a_n)_{n∈ℕ}$ décroissante
+\item
+$a_n \Toninf 0$
+\end{itemize}
+
+Alors la série $\SU$ converge.
+
+De plus, on a la majoration suivante, valable pour tout $n∈ℕ∪\Acco{-1}$:
+\[ \Abs{R_n} = \left| ∑_{k=n+1}^{+∞} u_k \right| ≤\Abs{u_{n+1}} \]
+et $R_n$ est du signe de $u_{n+1}$.
+
+% -----------------------------------------------------------------------------
+\section{Règles pratiques}
+
+\Para{Proposition}
+
+Soit $\SU$ et $\SV$ deux séries numériques. On suppose que:
+\begin{itemize}
+\item
+$\SV$ converge \emph{absolument},
+\item
+$u_n = \GrandO_\ninf(v_n)$, ou a fortiori $u_n = \PetitO_\ninf(v_n)$.
+\end{itemize}
+
+Alors $\SU$ converge absolument.
+
+\Para{Proposition}
+
+Soit $\SU$ et $\SV$ deux séries réelles.
+On suppose que:
+\begin{itemize}
+\item
+$u_n \Sim_\ninf v_n$,
+\item
+à partir d'un certain rang $v_n$ est de \emph{signe constant}.
+\end{itemize}
+
+Alors $\SU$ et $\SV$ ont même nature.
+
+\Para{Proposition}[règle $n^αu_n$]
+
+Soit $\SU$ une série numérique.
+On suppose qu'il existe \emph{$α>1$} tel que $n^αu_n \Toninf 0$.
+
+Alors la série $\SU$ est absolument convergente.
+
+\Para{Proposition}[règle de d'Alembert]
+
+Soit $\SU$ une série numérique.
+On suppose que:
+\begin{itemize}
+\item
+$∃N∈ℕ,∀n≥N, u_n≠0$
+\item
+$\left|\frac{u_{n+1}}{u_n}\right| \Toninf λ∈\Rp ∪\Acco{+∞}$
+\end{itemize}
+
+Alors:
+\begin{itemize}
+\item
+si $λ>1$, la série est grossièrement divergente.
+\item
+si $λ<1$, la série est absolument convergente.
+\item
+si $λ=1$, on ne peut pas conclure.
+\end{itemize}
+
+\Para{Remarque}
+
+La règle de Raabe-Duhamel (hors-programme) permet de préciser le cas $\lambda=1$, cf. exercice~\ref{exo:raabe-duhamel}.
+
+% -----------------------------------------------------------------------------
+\section{Opérations}
+
+\Para{Proposition}
+
+L'ensemble des séries numériques est un espace vectoriel pour les lois usuelles.
+L'ensemble des séries numériques convergentes est un sous-espace vectoriel de cet espace vectoriel.
+
+\Para{Définition}
+
+Soit $∑_n a_n$ et $∑_n b_n$ deux séries numériques.
+
+On appelle \emph{produit de Cauchy} de ces deux séries la série
+$∑_n c_n$ où $∀n∈ℕ$,
+\[ c_n =∑_{k=0}^n a_k b_{n-k} =∑_{l=0}^n a_{n-l} b_l \]
+
+\Para{Théorème}
+
+Soit $∑_n a_n$ et $∑_n b_n$ deux séries numériques \emph{absolument convergentes}.
+
+Alors leur produit de Cauchy $∑_n c_n$ est absolument convergent, et:
+\[ ∑_{n=0}^{+∞} c_n = \left(∑_{n=0}^{+∞} a_n \right) \left(∑_{n=0}^{+∞} b_n \right) \]
+
+% -----------------------------------------------------------------------------
+\section{Exercices}
+
+\subsection{Séries à termes positifs}
+
+\Exercice
+
+Étudier la nature des séries $∑_n u_n$ dans chacun des cas suivants:
+\begin{enumerate}
+\item
+$u_n =√{\frac{n+1}{n}}$
+\item
+$u_n = \frac{\ln n}{2^n}$
+\item
+$u_n = n^{1/n}-(n+1)^{1/n}$
+\item
+$u_n = \frac{n√n}{2^n+√n}$
+\item
+$u_n = \ln(\frac{1}{√n}) - \ln\bigl(\sin(\frac{1}{√n})\bigr)$
+\item
+$u_n = \frac{1}{n√[n]{n}}$
+\item
+$u_n = \arccos\left(\frac{n^3+1}{n^3+2}\right)$
+\item
+$u_n = \frac{\ln(1 + a^n n^α)}{n^β}$ où $a > 0$
+\item
+$u_n = n^αe^{β√n}$
+\item
+$u_n^{-1} = 1^α+ 2^α+ \cdots + n^α$ où $α> 0$
+\item
+$u_n^{-1} = 1 + √2 + √[3] 3 + \cdots + √[n] n$
+\item
+$u_n = \cos\left(\arctan(n) + \frac{1}{n^α}\right)$ où $α> 0$
+\item
+$u_n = \bigl(\cos \frac1n\bigr)^{n^α}$ où $α> 0$
+\item
+$u_n = \frac{(√n)^{\ln n}}{(\ln n)^{√n}}$
+\item
+$u_n = \ln\left(3\tan^2\bigl(\frac{πn^α}{6n^α+1}\bigr)\right)$ où $α> 0$
+\item
+$u_n = \sin\bigl(π(2+√3)^n\bigr)$
+\end{enumerate}
+
+\Exercice
+
+Soit $u_n = 1/n$ si $n$ est un carré parfait (0, 1, 4, 9, 16, etc.) et $u_n = 0$ sinon.
+Déterminer la nature de la série de terme général $u_n$.
+
+\Exercice
+
+Soit $\SU$ et $\SV$ deux SATP convergentes.
+Peut-on affirmer que la série de terme général $\max(u_n, v_n)$ est également convergente?
+
+\Exercice
+
+Soit $\SU$ une SATP convergente.
+Peut-on affirmer que la série de terme général $v_n = \prod_{k=0}^n u_k$ est également convergente?
+
+\Exercice\label{exo:equiv_reste}
+
+Soit $\U$ et $\V$ deux séries numériques à termes positifs.
+On suppose que $u_n \sim v_n$ quand $n \to +\infty$.
+\begin{enumerate}
+\item
+On suppose que $\SU$ converge;
+  on sait qu'alors $\SV$ converge également.
+  Montrer que les restes des deux séries sont équivalents, £cad.:
+  \[ ∑_{k=n+1}^{+∞} u_k \,\,\Sim_\ninf\,\,∑_{k=n+1}^{+∞} v_k \]
+\item
+On suppose que $\SU$ diverge;
+  on sait qu'alors $\SV$ diverge également.
+  Montrer que les sommes partielles des deux séries sont équivalentes, £cad.:
+  \[ ∑_{k=0}^n u_k \,\,\Sim_\ninf\,\,∑_{k=0}^n v_k \]
+\end{enumerate}
+
+\Exercice
+
+Démontrer que chacune des séries $∑_n u_n$ converge,
+et calculer leur somme:
+\begin{enumerate}
+\item
+$u_n =√{n}+a√{n+1}+b√{n+2}$
+\item
+$u_n = \arctan\left(\frac{1}{n^2+n+1}\right)$
+\item
+$u_n = \ln\left(1-\frac{1}{n^2}\right)$
+\item
+$u_n = \ln\left(\cos\frac{θ}{2^n}\right)$ où $θ∈\intFO{0,\fracπ2}$
+\item
+$u_n = \frac{(-1)^n}{3^n} \cos^3(3^nθ)$
+\item
+$u_n = \frac{√{n+1}-2√{n}+1}{2^{n+1}}$
+\item
+$u_n = \frac{4n}{n^4+2n^2+9}$
+\item
+$u_n = \frac{4n-3}{n(n^2-4)}$ pour $n≥3$
+\item
+$u_n = \frac{1}{(2n-1)(2n)(2n+1)(2n+2)}$
+\item
+$u_n = \frac{2n^3-3n^2+1}{(n+2)!}$
+\item
+$u_n = \frac{1}{(n+1)^2(n+2)^2}$
+\item
+$u_n =∫_{\frac{1}{n+1}}^{\frac{1}{n}} \frac{e^{√x}}{√x} \D x$ pour $n≥1$
+\end{enumerate}
+
+\Exercice
+
+\begin{enumerate}
+\item
+Soit $\alpha < 1$.
+
+  Déterminer un équivalent de $S_n = \sum_{k=1}^n \frac{1}{k^\alpha}$.
+\item
+Soit $\alpha > 1$.
+
+  Déterminer un équivalent de $R_n = \sum_{k=n+1}^{+\infty} \frac{1}{k^\alpha}$.
+\end{enumerate}
+
+\Exercice[développement asymptotique de la série harmonique]
+
+La \emph{série harmonique} est la série $∑_n \frac1n$.
+\begin{enumerate}
+\item
+Montrer de plusieurs façons qu'il s'agit d'une série divergente:
+  \begin{itemize}
+  \item
+en comparant la série à une intégrale
+  \item
+en minorant $∑_{k=2^n}^{2^{n+1} - 1} \frac1k$
+  \item
+en remarquant que $\frac1n \sim \ln n - \ln (n-1)$, et que cette expression est télescopique
+  \item
+une autre méthode?
+  \end{itemize}
+\item
+On note $H_n = ∑_{k=1}^n \frac1k$ les sommes partielles de la série harmonique.
+  En reprenant la comparaison série intégrale de la question 1a,
+  montrer que $H_n \sim \ln n$.
+  \emph{Remarque:} on pourrait aussi utiliser la question 1c.
+\item
+Montrer qu'il existe une unique suite $(u_n)_{n∈ℕ^*}$
+  telle que $∀n≥1$, $∑_{k=1}^n u_k = H_n - \ln n$ et la déterminer.
+\item
+Déterminer un équivalent de $u_n$, puis montrer que la série $∑u_n$ converge.
+\item
+En déduire que la suite $H_n - \ln n$ converge également.
+  On note $γ$ sa limite; il s'agit de la \emph{constante d'Euler}, dont une valeur approchée est $γ\simeq 0.577$.
+  Ainsi \[ \tcboxmath{ H_n = \ln n + γ + \PetitO\limits_\ninf(1) } \]
+\item
+Pour $α> 1$, montrer que $∑_{k=n+1}^{+∞} \frac{1}{k^α} \sim \frac{1}{(α-1) n^{α-1}}$.
+  On pourra utiliser une comparaison série-intégrale.
+\item
+Déterminer un équivalent du reste $R_n = ∑_{k = n+1}^{+∞} u_k$ de la série $∑u_n$.
+\item
+Exprimer $R_n$ en fonction de $H_n$, $\ln n$ et $γ$.
+  En déduire que $H_n = \ln n + γ+ \frac{1}{2n} + \PetitO(\frac{1}{n})$.
+\item
+Montrer qu'il existe une unique suite $(v_n)_{n∈ℕ^*}$ telle que $∀n≥1$, $∑_{k=1}^n v_k = H_n - \ln n - \frac{1}{2n}$ et la déterminer.
+\item
+Déterminer un équivalent de $v_n$ quand $n \to +∞$.
+\item
+En déduire un équivalent du reste $T_n = ∑_{k=n+1}^{+∞} v_k$.
+\item
+Montrer que:
+    \[ H_n = \ln n +γ+ \frac{1}{2n} - \frac{1}{12n^2} + \PetitO_\ninf\BigPa{\frac{1}{n^2}}. \]
+\end{enumerate}
+
+\Exercice
+
+Soit $u_n = \frac{n-a\floor{n/a}}{n(n+1)}$ où $a\in\Ns$.
+Déterminer la nature et la somme de la série de terme général $u_n$.
+
+\Exercice[séries de Bertrand]
+
+Les \emph{séries de Bertrand} sont les séries de la forme
+$∑_n \frac{1}{n^α\ln^βn}$ où $(α,β)∈ℝ^2$.
+
+Le but de cet exercice est de montrer le résultat suivant:
+\begin{itemize}
+\item
+si $α> 1$, la série converge
+\item
+si $α< 1$, la série diverge
+\item
+si $α= 1$:
+  \begin{itemize}
+  \item
+si $β> 1$, la série converge
+  \item
+si $β≤1$, la série diverge
+  \end{itemize}
+\end{itemize}
+
+Notons $u_n = \frac{1}{n^α\ln^βn}$ pour $n≥2$.
+\begin{enumerate}
+\item
+Vérifier que dans le cas particulier $β= 0$, on retrouve une règle connue.
+\item
+Si $α> 1$, montrer qu'il existe $γ> 1$ tel que $u_n = \PetitO(\frac{1}{n^γ})$. Conclure.
+\item
+Si $α< 1$, montrer qu'il existe $γ< 1$ tel que $\frac{1}{n^γ} = \PetitO(u_n)$. Conclure.
+\item
+On suppose désormais $α= 1$. Calculer $∫\frac{\D x}{x \ln^βx}$, en faisant bien attention de distinguer le cas $β= 1$.
+\item
+Si $β≤0$, montrer que $u_n≥\frac1n$. Conclure.
+\item
+Si $β> 0$, montrer que $∫_n^{n+1} \frac{\D x}{x \ln^βx}≤u_n≤∫_{n-1}^n \frac{\D x}{x \ln^βx}$ pour tout $n≥3$.
+\item
+Conclure en distinguant les cas $0<β<1$, $β=1$ et $β>1$.
+\end{enumerate}
+
+% \Exercice[règle de Cauchy]
+%
+% La \emph{règle de Cauchy} est la suivante:
+%
+% Soit $∑u_n$ une série à termes positifs. On suppose que $√[n]{u_n} \Toninf ℓ∈ℝ∪\Acco{+∞}$. Alors:
+% \begin{itemize}
+% \item
+si $ℓ< 1$, la série converge;
+% \item
+si $ℓ> 1$, la série diverge;
+% \item
+si $ℓ= 1$, on ne peut pas conclure.
+% \end{itemize}
+%
+% Questions:
+% \begin{enumerate}
+% \item
+Si $ℓ< 1$, montrer qu'il existe $a∈\intFO{0,1}$ tel que $u_n = \PetitO(a^n)$. Conclure.
+% \item
+Si $ℓ> 1$, montrer qu'il existe $a > 1$ tel que $a^n = \PetitO(u_n)$. Conclure.
+% \item
+Trouver un exemple de suite $(u_n)$ convergente telle que $ℓ= 1$.
+%   Trouver également un exemple de suite $(u_n)$ divergente telle que $ℓ= 1$.
+%   Conclure.
+% \item
+Démontrer la règle de Cauchy.
+% \item
+\emph{Application:} Déterminer la nature des séries $∑u_n$ dans les cas suivants.
+%   \begin{enumerate}
+%   \item
+$u_n = \left(\frac{n-1}{2n+1}\right)^n$
+%   \item
+$u_n = \left({a+\frac1n}\right)^n$
+%   \end{enumerate}
+% \item
+Soit $(u_n)$ une suite de réels strictements positifs telle que $\frac{u_{n+1}}{u_n} \Toninfℓ∈ℝ∪\Acco{+∞}$.
+%   Montrer que $√[n]{u_n} \Toninfℓ$.
+%   En déduire que la règle de Cauchy est \emph{plus forte} que la règle de d'Alembert.
+% \end{enumerate}
+
+\Exercice[comparaison logarithmique]
+
+Soit $∑_n u_n$ et $∑_n v_n$ deux séries réelles.
+On suppose qu'il existe $N∈ℕ$ tel que pour tout $n≥N$:
+\begin{itemize}
+\item
+$u_n > 0$
+\item
+$v_n > 0$
+\item
+$\frac{u_{n+1}}{u_n}≤\frac{v_{n+1}}{v_n}$
+\end{itemize}
+
+Montrer que:
+\begin{itemize}
+\item
+Si $∑_n v_n$ converge, alors $∑_n u_n$ converge également.
+\item
+Si $∑_n u_n$ diverge, alors $∑_n v_n$ diverge également.
+\end{itemize}
+
+\Exercice[règle de Raabe-Duhamel]\label{exo:raabe-duhamel}
+
+La \emph{règle de Raabe-Duhamel} est la suivante:
+
+Soit $∑u_n$ une série à termes strictement positifs.
+On suppose que $∃α∈ℝ$ tel que
+\[ \frac{u_{n+1}}{u_n} = 1 - \frac{α}{n} + O\Pafrac{1}{n^2}. \]
+Alors la série $∑u_n$ converge si et seulement si $α > 1$.
+Plus précisément, il existe une constante $K > 0$ telle que $u_n \sim \frac{K}{n^α}$.
+
+Cette règle précise le cas douteux de la règle de d'Alembert.
+\begin{enumerate}
+\item
+Soit $(u_n)$ une suite de réels strictements positifs telle que $\frac{u_{n+1}}{u_n} = 1 - \frac{α}{n} + \GrandO(\frac{1}{n^2})$.
+  On pose $v_n = n^αu_n$ et $w_n = \ln\left(\frac{v_{n+1}}{v_n}\right)$.
+  Montrer que $w_n = \GrandO(\frac{1}{n^2})$.
+\item
+En déduire que la suite de terme général $\ln v_n$ converge.
+\item
+En déduire l'existence d'une constante $K > 0$ telle que $u_n \sim \frac{K}{n^α}$.
+\item
+Démontrer la règle de Raabe-Duhamel.
+\item
+Appliquer le résultat précédent à:
+  \begin{enumerate}
+  \item
+$u_n = \frac{n⋅n!}{(a+1)(a+2)\cdots(a+n)}$ où $a>0$
+  \item
+$u_n = n! e^n n^{-n}$
+  \end{enumerate}
+\item
+Montrer que le règle s'applique encore si l'on suppose seulement que
+  $\frac{u_{n+1}}{u_n} = 1 - \frac{α}{n} + ε_n$, où
+  $∑\Abs{ε_n}$ est une série convergente,
+  ce qui est bien le cas si $ε_n = \GrandO(\frac{1}{n^2})$.
+\end{enumerate}
+
+\Exercice
+
+Soit $(a_n)_{n∈ℕ}$ une suite réelle positive.
+On définit la suite $(u_n)$ par $u_0 > 0$ et $∀n∈ℕ$, $u_{n+1} = u_n + \frac{a_n}{u_n}$.
+Montrer que la suite $(u_n)$ converge si et seulement si la série $∑a_n$ converge.
+
+\Exercice[critère de condensation de Cauchy]
+\begin{enumerate}
+\item
+Soit $(a_n)_{n∈ℕ^*}$ une suite réelle positive décroissante.
+  On note $b_n = 2^n a_{2^n}$ pour $n∈ℕ$.
+  \begin{enumerate}
+  \item
+Montrer que $∀n∈ℕ$, $∑_{k = 1}^{2^{n+1}-1} a_k≤∑_{k=0}^n b_k$
+  \item
+Montrer que $∀n∈ℕ$, $∑_{k = 0}^n b_k ≤2\left( ∑_{k=1}^{2^n} a_k \right) - a_{2^n}$
+  \item
+En déduire que les séries $∑_n a_n$ et $∑_n b_n$ sont de même nature.
+  \end{enumerate}
+\item
+Montrer le \emph{critère de condensation de Cauchy}:
+
+  Soit $(a_n)_{n∈ℕ}$ une suite réelle positive, décroissante à partir d'un certain rang.
+  Alors les séries $∑_n a_n$ et $∑_n 2^n a_{2^n}$ sont de même nature.
+\item
+\emph{Application:} retrouver les résultats sur les séries de Riemann, puis sur les séries de Bertrand.
+\end{enumerate}
+
+\Exercice[archi-classique, formule de Stirling]
+\begin{enumerate}
+\item
+Soit $a_n = \ln(n!)$.
+  \begin{enumerate}
+  \item
+Montrer que $a_n =∑_{k=2}^n \ln k$.
+  \item
+Montrer que $∀k≥2$, $∫_{k-1}^k \ln x \D x≤\ln k≤∫_k^{k+1} \ln x \D x$.
+  \item
+En déduire un encadrement de $a_n$, puis que $a_n \sim n\ln n$.
+  \end{enumerate}
+\item
+Soit $b_n = a_n - n\ln n = \ln(n!) - n\ln n$.
+  \begin{enumerate}
+  \item
+Montrer que $b_{n+1} - b_n \Toninf -1$.
+  \item
+En utilisant le théorème de Cesàro, en déduire que $b_n \sim -n$.
+  \end{enumerate}
+\item
+Soit $c_n = b_n - (-n) = \ln(n!) - n\ln n + n$.
+  \begin{enumerate}
+  \item
+Montrer que $c_{n+1} - c_n \sim \frac1{2n}$.
+  \item
+En déduire que $c_n \sim \frac12 \ln n$.
+  \end{enumerate}
+\item
+Soit $d_n = c_n - \frac12 \ln n = \ln(n!) - n\ln n + n - \frac12 \ln n$.
+  \begin{enumerate}
+  \item
+Montrer que $d_{n+1} - d_n = \GrandO_\ninf (\frac{1}{n^2})$.
+  \item
+En déduire que la série de terme général $∑_n (d_{n+1}-d_n)$ converge.
+  \item
+En déduire que la suite $(d_n)$ converge. On note $ℓ$ sa limite.
+    Montrer que:
+    \[ \ln(n!) = n\ln n - n + \frac12 \ln n +ℓ+ \PetitO_\ninf(1) \]
+  \end{enumerate}
+\item
+En déduire qu'il existe une constante $K > 0$, que l'on exprimera en fonction de $ℓ$, telle que:
+  \[ n! \sim K √n \Pafrac{n}{e}^n \]
+\item
+On pose $W_n =∫_0^{\fracπ2} \sin^n t \D t$.
+  Il s'agit bien évidemment des \emph{intégrales de Wallis}.
+  \begin{enumerate}
+  \item
+Montrer que pour tout $n∈ℕ$, on a: $W_{n+2} = \frac{n+1}{n+2} W_n$.
+    \emph{Indication}: on pourra partir de $W_{n+2}$ et faire un intégration par parties
+    bien choisie.
+  \item
+En déduire que pour tout $n∈ℕ$, on a:
+    $W_{2n} = \frac{(2n)!π}{(n!)^2 2^{2n+1}}$.
+  \item
+En déduire que $W_{2n} \sim \frac{π}{K√{2n}}$.
+  \item
+Établir, pour tout entier naturel $n$, l'encadrement $W_{n+2}≤W_{n+1}≤W_n$.
+    En déduire que $W_{n+1} \sim W_n$.
+  \item
+Soit $I_n = (n+1) W_{n+1} W_n$.
+    Montrer que la suite $(I_n)$ est constante; calculer $I_0$.
+    En déduire que $W_n \sim√{\frac{π}{2n}}$.
+  \item
+Déduire de c) et e) la valeur de $K$.
+  \end{enumerate}
+\item
+En déduire que
+  \[ \tcboxmath{ n! \Sim_\ninf \sqrt{2\pi n} \; \BigPa{\frac{n}{e}}^n } \]
+  Ce résultat est connu sous le nom de \emph{formule de Stirling}.
+\end{enumerate}
+
+\Exercice
+
+Soit $u_0 \in \intO{0,\pi}$ et pour tout $n\in\N$, $u_{n+1} = \sin(u_n)$.
+On cherche à déterminer la nature de la série de terme général $\frac{u_n}{\sqrt n}$.
+\begin{enumerate}
+    \item
+Montrer que $u_n \to 0$.
+    \item
+Déterminer un réel $\alpha$ tel que $u_{n+1} - u_n$ ait une limite finie non nulle.
+    \item
+En déduire un équivalent de $u_n$; on utilisera le théorème de Cesàro (ou celui des petits pas).
+    \item
+Conclure.
+\end{enumerate}
+
+\subsection{Séries numériques}
+
+\Exercice
+
+Étudier la nature des séries $∑_n u_n$ dans chacun des cas suivants:
+\begin{enumerate}
+\item
+$u_n = \frac{(-1)^n}{\tan(\frac1n)}$
+\item
+$u_n = \cos\left(π√{n^2+n+1}\right)$
+\item
+$u_n = \frac{(-1)^n}{n+\sin n}$
+\item
+$u_n = \ln\left(1+\frac{(-1)^n}{n^α}\right)$ où $α> 0$
+\item
+$u_n = \frac{(-1)^n}{n^α+ (-1)^n n^β}$ où $α> 0$, $β> 0$ et $α≠β$
+\item
+$u_n = \frac{\sin(\ln n)}{n}$
+\item
+$u_n = \cos\left( πn^2 \ln(\frac{n}{n-1}) \right)$
+\item
+$u_n = \frac{n(-1)^n}{(2n+1)(3n+1)}$, et calculer la somme
+\item
+$u_n = \frac{(-1)^{\floor{√n}}}{n^α}$
+\end{enumerate}
+
+\Exercice
+
+On considère la série harmonique alternée $∑_n u_n$ où $u_n = \frac{(-1)^n}{n+1}$
+\begin{enumerate}
+\item
+Montrer qu'il s'agit d'une série convergente.
+\item
+Montrer que les sommes partielles de cette série peuvent s'exprimer
+  en fonction des sommes partielles de la série harmonique.
+  Plus précisément, montrer que:
+  \[ ∑_{n = 0}^{2N-1} u_n = H_{2N} - H_N \]
+\item
+En déduire la valeur de la somme $∑_{n=0}^{+∞} u_n$.
+
+  On s'intéresse désormais à la série $∑_n v_n$,
+  où la suite $(v_n)$ est une permutation de la suite $(u_n)$
+  obtenue en prenant dans l'ordre un terme positif puis deux termes négatifs, et ainsi de suite:
+  $v_0 = 1$, $v_1 = - \frac12$, $v_2 = -\frac14$, $v_3 = \frac13$, $v_4 = -\frac16$, $v_5 = -\frac18$,
+  $v_6 = \frac15$, $v_7 = -\frac{1}{10}$, $v_8 = -\frac{1}{12}$, etc...
+\item
+Vérifiez que vous avez compris la définition de la suite $(v_n)$: calculer $v_{3n}, v_{3n+1}, v_{3n+2}$.
+\item
+Notons $S_n =∑_{k=0}^n v_k$.
+  Exprimer $S_{3n-1}$ sous forme d'une série et en déduire que la suite $(S_{3n-1})$ converge.
+\item
+En déduire que la série $∑_n v_n$ converge.
+\item
+Exprimer $S_{3n-1}$ en fonction de $H_p$.
+\item
+En déduire la valeur de la somme $∑_{n=0}^{+∞} v_n$.
+\item
+Commenter.
+\end{enumerate}
+
+\Exercice[dur]
+
+On pose $u_n =∑_{k=n}^{+∞} \frac{(-1)^k}{√{k+1}}$.
+Étudier la convergence de la série $∑ u_n$.
+
+\Exercice[transformation d'Abel]
+
+Soit $(a_n)$ et $(b_n)$ deux suites numériques.
+On pose $B_n =∑_{k=0}^n b_k$, et $S_n =∑_{k=0}^n a_k b_k$.
+\begin{enumerate}
+\item
+Montrer que $S_n = a_{n+1} B_n +∑_{k=0}^n (a_k - a_{k+1}) B_k$.
+  Cette égalité porte le nom de \emph{transformation d'Abel}.
+\item
+En déduire que si
+  \begin{itemize}
+  \item
+la suite $(B_n)$ est bornée, et
+  \item
+la suite $(a_n)$ est une suite réelle positive décroissante de limite nulle,
+  \end{itemize}
+  alors la série $\sum a_n b_n$ converge.
+\item
+Montrer que le critère spécial est un cas particulier de le la règle précédente.
+\item
+\emph{Applications:}
+  \begin{enumerate}
+  \item
+Si $a_n$ est une suite réelle positive décroissante de limite nulle, et $t∈ℝ∖2πℤ$, montrer que la série $∑_n a_n e^{int}$ converge.
+  \item
+Étudier pour $α∈\intOF{0,1}$, $β\not∈2πℤ$, $γ∈ℝ$ la série $∑_n \frac{\sin(nβ+γ)}{n^α}$.
+  \item
+Étudier pour $α>0$ la série $∑_n \frac{\sin n}{n^α + \sin n}$.
+  \end{enumerate}
+\end{enumerate}
+
+\subsection{Amusant}
+
+\Exercice
+
+Expliquer comment il est possible d'empiler~$n$ pièces identiques de sorte que celle du haut soit en \emph{porte-à-faux} avec celle du bas, c.-à-d. que la projection la pièce du haut sur le plan horizontal ne touche pas la pièce du bas.
+
+\end{document}

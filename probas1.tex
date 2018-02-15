@@ -1,0 +1,450 @@
+\documentclass{yann}
+
+\newcommand{\Part}{\mathcal{P}}
+\newcommand{\Pro}{\bigl(\Omega, \Part(\Omega)\bigr)}
+\newcommand{\Prob}{\bigl(\Omega, \Part(\Omega), \P\bigr)}
+
+\begin{document}
+\title{Probabilités finies}
+\maketitle
+
+% -----------------------------------------------------------------------------
+\section{Généralités}
+
+\Para{Définitions}
+
+\begin{itemize}
+\item
+Un \emph{espace probabilisable fini} est un couple $\Pro$
+  où $\Omega$ est un ensemble fini
+  et $\Part(\Omega)$ est l'ensemble des parties de $\Omega$.
+\item
+$\Omega$ s'appelle l'\emph{univers}.
+\item
+Un élément de $\Omega$ s'appelle un \emph{résultat} ou une \emph{réalisation}.
+\item
+Un élément de $\Part(\Omega)$ s'appelle un \emph{événement}.
+\end{itemize}
+
+\Para{Définitions}
+
+Soit $\Pro$ un espace probabilisable fini.
+Soit $A$ et $B$ deux événements.
+\begin{itemize}
+\item
+L'événement $\emptyset$ est l'événement impossible.
+\item
+L'événement $\Omega$ est l'événement certain.
+\item
+Les événements $\emptyset$ et $\Omega$ sont les événements triviaux.
+\item
+Un événement de la forme $\{x\}$ où $x\in\Omega$ s'appelle un \emph{événement élémentaire}.
+\item
+L'événement \og{}non $A$\fg{} est $\bar A =\Omega\setminus A$.
+\item
+L'événement \og{}$A$ ou $B$\fg{} est $A\cup B$.
+\item
+L'événement \og{}$A$ et $B$\fg{} est $A\cap B$.
+\item
+Les événements $A$ et $B$ sont \emph{incompatibles} s'ils sont disjoints, c.-à-d. si $A\cap B=\emptyset$.
+\end{itemize}
+
+\Para{Définitions}
+
+Soit $\Pro$ un espace probabilisable fini.
+Une \emph{probabilité} sur $\Pro$ est une application
+$\Fn{\P}{\Part(\Omega)}{[0,1]}$ telle que
+\begin{itemize}
+\item
+$\P(\Omega)=1$.
+\item
+Si $A$ et $B$ sont des événements incompatibles,
+  alors $\P(A\cup B)=\P(A)+\P(B)$.
+\end{itemize}
+
+Le triplet $\Prob$ s'appelle un \emph{espace probabilisé fini}.
+
+\Para{Proposition}
+
+Soit $\Prob$ un espace probabilisé.
+Si $A_1, \dots, A_n$ est une famille d'événements deux à deux incompatibles,
+alors \[ \P\left( \bigcup_{i=1}^n A_i \right) = \sum_{i=1}^n \P(A_i) \]
+
+\Para{Proposition}
+
+Soit $\Prob$ un espace probabilisé.
+Pour tout événement $A$ on a
+\[ \P(A) = \sum_{x\in A} \P\bigl(\{x\}\bigr) \]
+
+\Para{Proposition}
+
+Soit $\Prob$ un espace probabilisé.
+\begin{itemize}
+\item
+Si $A$ est un événement, alors $\P(\bar A) = 1 - \P(A)$.
+\item
+Si $A$ et $B$ sont deux événements tels que $A\subset B$, alors $\P(A)\leq\P(B)$.
+\item
+Si $A$ et $B$ sont deux événements, alors $\P(A\cup B)=\P(A)+\P(B)-\P(A\cap B)$.
+\end{itemize}
+
+\Para{Définition}
+
+Soit $\Pro$ un espace probabilisable fini.
+Un \emph{système complet d'événements} est une famille $\nUplet A1n$
+d'événements deux à deux incompatibles tels que
+\[ \bigcup_{i=1}^n A_i = \Omega. \]
+
+\Para{Proposition}
+
+Soit $\Prob$ un espace probabilisé.
+Soit $\nUplet A1n$ un système complet d'événements.
+Pour tout événement $B$, on a
+\[ \P(B) = \sum_{i=1}^n \P(B\cap A_i). \]
+
+\Para{Proposition-Définition}[probabilité uniforme]
+
+Soit $\Pro$ un espace probabilisable fini.
+Alors l'application
+\[ \Fonction{\P}{\Part(\Omega)}{[0,1]}{A}{\frac{\Card{A}}{\Card{\Omega}}} \]
+est une probabilité appelée \emph{probabilité uniforme sur $\Omega$}.
+
+% -----------------------------------------------------------------------------
+\section{Indépendance}
+
+\Para{Définition}
+
+Soit $\Prob$ un espace probabilisé.
+\begin{itemize}
+\item
+Deux événements $A$ et $B$ sont \emph{indépendants} si $\P(A\cap B)=\P(A)\P(B)$.
+\item
+Une famille $\nUplet A1n$ d'évenements sont \emph{(mutuellement) indépendants}
+  si pour toute partie $I\subset\Dcro{1,n}$, on a
+  \[ \P\left( \bigcap_{i\in I} A_i \right) = \prod_{i\in I} \P(A_i) \]
+\end{itemize}
+
+\Para{Attention}
+
+Trois événements peuvent être indépendants deux à deux, sans pour autant être mutuellement indépendants.
+
+\Para{Proposition}
+
+Soit $\Prob$ un espace probabilisé.
+Soit $\nUplet A1n$ des événements mutuellement indépendants.
+\begin{itemize}
+\item
+Si $I\subset\Dcro{1,n}$,
+  alors $(A_i)_{i\in I}$ sont des événements mutuellement indépendants.
+\item
+Si pour tout $i\in\Dcro{1,n}$, $B_i \in \bigl\{ \emptyset, A_i, \bar A_i,\Omega \bigr\}$,
+  alors $\nUplet B1n$ sont des événements mutuellement indépendants.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Probabilité conditionnelle}
+
+\Para{Proposition-Définition}
+
+Soit $\Prob$ un espace probabilisé.
+Soit $A$ un événement tel que $\P(A)>0$.
+L'application
+\[ \Fonction{\P_A}{\Part(\Omega)}{[0,1]}{B}{\frac{\P(A\cap B)}{\P(A)}} \]
+est une probabilité sur $\Pro$
+appelée \emph{probabilité conditionnellement à $A$},
+ou \emph{probabilité sachant $A$}.
+
+On note $\P(B|A) = \P_A(B)$.
+
+\Para{Proposition}[lien avec l'indépendance]
+
+Soit $\Prob$ un espace probabilisé.
+Soit $A$ un événement de probabilité non nulle
+et $B$ un événement quelconque.
+Alors les événements $A$ et $B$ sont indépendants si et seulement si $\P(B|A)=\P(B)$.
+
+\Para{Formule des probabilités totales}
+
+Soit $\Prob$ un espace probabilisé.
+Soit $\nUplet A1n$ un système complet d'événements de probabilités non nulles.
+Pour tout événement $B$, on a
+\[ \P(B) = \sum_{i=1}^n \P(B|A_i)\P(A_i). \]
+
+\Para{Cas particulier}
+
+Soit $\Prob$ un espace probabilisé.
+Soit $A$ un événement de probabilité $\P(A) \in \intO{0,1}$.
+Pour tout événement $B$, on a
+\[ \P(B) = \P(B|A)\P(A) + \P(B|\bar A)\P(\bar A) \]
+
+\Para{Formule de Bayes}
+
+Soit $\Prob$ un espace probabilisé.
+Soit $A$ et $B$ deux événements de probabilités non nulles.
+Alors
+\[ \P(A|B) = \frac{ \P(B|A)\P(A) }{ \P(B) } \]
+
+\Para{Corollaire}[formule de Bayes usuelle]
+
+Soit $\Prob$ un espace probabilisé.
+Soit $\nUplet A1n$ un système complet d'événements de probabilités non nulles.
+Pour tout événement $B$ de probabilité non nulle,
+et pour tout $k\in\Dcro{1,n}$, on a
+\[ \P(A_k|B) = \frac{ \P(B|A_k)\P(A_k) }{ \DS \sum_{i=1}^n \P(B|A_i)\P(A_i) }. \]
+
+% -----------------------------------------------------------------------------
+\section{Exercices}
+
+\Exercice
+
+Soit $A$ et $B$ deux événements tels que $\P(A)=\P(B)=\frac34$.
+Donner un encadrement, le meilleur possible, de $\P(A\cap B)$?
+
+\Exercice
+
+Soit $\Omega = \{ 1,2,3,4 \}$ muni de la probabilité uniforme.
+Soit $A = \{ 1,2 \}$, $B = \{ 1,3 \}$ et $C = \{ 1,4 \}$
+Montrer que $A$, $B$ et $C$ sont deux à deux indépendants,
+mais qu'ils ne sont pas mutuellement indépendants.
+
+\Exercice
+
+On jette deux dés (à 6 faces). Expliciter l'univers $\Omega$.
+
+Soit $A_0$ l'événement \og{}la somme des points est paire\fg{},
+$A_1$ l'événement \og{}la somme des points est impaire\fg{}
+et $B$ l'événement \og{}la valeur absolue de la différence des points est égale à 4\fg{}.
+Combien comptez-vous d'événements élémentaires dans $A_0\setminus B$,
+dans $A_1\setminus B$?
+
+\Exercice
+
+L'irradiation par les rayons $X$ de vers à soie induit certaines anomalies.
+La probabilité d'une anomalie particulière est $p=\frac1{10}$.
+\begin{itemize}
+\item
+Quelle est la probabilité de trouver au moins un embryon présentant
+  cette anomalie, sur dix disséqués?
+\item
+Combien faut-il en disséquer pour trouver au moins une anomalie
+  avec une probabilité supérieure à $50\%$? à $95\%$?
+\end{itemize}
+
+\Exercice
+
+Un professeur décide de faire passer rapidement l'oral de \og{}probabilités\fg{}.
+L'étudiant est autorisé à répartir quatre boules, deux blanches et deux noires,
+entre deux urnes. Le professeur choisit au hasard une des urnes et en extrait
+une boule. Si la boule est noire, l'étudiant est reçu.
+Comment répartiriez-vous les boules?
+
+\Exercice
+
+On plombe un dé à 6 faces de sorte que la probabilité d'apparition d'une face
+donnée est proportionnelle au nombre de points de cette face.
+On lance le dé deux fois.
+Quelle est la probabilité d'obtenir une somme des points égale à 4?
+
+\Exercice
+
+Un jeu consiste à lancer une pièce (diamètre $3$ cm) sur une table
+quadrillée par des carrés de $4$ cm de côtés.
+On gagne si la pièce tombe entièrement à l'intérieur d'un carré.
+Quelle est la probabilité de gagner à ce jeu?
+
+\Exercice
+
+Un appareil contient $6$ transistors dont $2$ exactement sont défectueux.
+On les identifie en testant les transistors l'un après l'autre.
+Le test s'arrête quand les $2$ transistors défectueux sont trouvés.
+Calculer la probabilité pour que le test:
+\begin{itemize}
+\item
+soit terminé au bout de $2$ opérations?
+\item
+nécessite strictement plus de $3$ opérations?
+\end{itemize}
+
+\Exercice
+
+Dans une course de $20$ chevaux, quelle est la probabilité, en jouant
+$3$ chevaux, de gagner le tiercé dans l'ordre?
+dans l'ordre ou le désordre?
+dans le désordre?
+
+\Exercice
+
+Au Loto, on doit cocher 6 cases dans une grille comportant 49 numéros.
+\begin{enumerate}
+\item
+Quelle est la probabilité de gagner le gros lot (c'est-à-dire d'avoir les 6 bons numéros)?
+\item
+On gagne quelque chose à partir du moment où l'on a au moins 3 bons numéros.
+  Avec quelle probabilité cela arrive-t-il?
+\item
+En fait, on peut aussi (en payant plus cher) cocher 7, 8, 9 ou même 10 numéros
+  sur la grille. Dans chacun des cas, quelle est la probabilité de gagner le
+  gros lot?
+\end{enumerate}
+
+\Exercice
+
+On choisit au hasard un comité de quatre personnes parmi huit américains, cinq anglais et trois français. Quelle est la probabilité:
+\begin{itemize}
+\item
+qu'il ne se compose que d'américains?
+\item
+qu'aucun américain ne figure dans ce comité?
+\item
+qu'au moins un membre de chaque nation figure dans le comité?
+\end{itemize}
+
+\Exercice[\og{}paradoxe\fg{} des anniversaires]
+
+Dans une classe de $n$ élèves, quelle est la probabilité pour que
+deux étudiants au moins aient même anniversaire?
+
+Quel est le nombre minimum de personnes dans le groupe pour que
+cette probabilité soit d'au moins $50\%$? de $90\%$?
+
+\Exercice
+
+Alice, Bob, Charly et Denis jouent au bridge, et
+reçoivent chacuns $13$ cartes d'un (même) jeu de $52$ cartes.
+
+Sachant qu'Alice et Charly ont à eux deux $8$ Piques,
+on en déduit que Bob et Denis ont $5$ Piques à eux deux.
+Quelle est la probabilité pour que les Piques soient \og{}bien répartis\fg{},
+c.-à-d. pour que la répartition des $5$ Piques soit $3-2$ ou $2-3$ entre Bob et Denis?
+
+\Exercice[inclusion-exclusion]
+
+Une école d'ingénieur propose à ses $320$ étudiants deux cours
+de mathématiques, un en analyse, et un en probabilités.
+On sait qu'il y a $140$ étudiants qui choisissent l'analyse,
+$170$ qui n'assistent pas au cours de probabilités,
+et $190$ qui suivent exactement un cours de mathématiques.
+
+On choisit un étudiant au hasard. Quelle est la probabilité pour
+qu'il ne suive pas les deux cours de mathématiques?
+Qu'il suive au moins un cours de mathématiques?
+Qu'il suive l'analyse mais pas les probabilités?
+
+\Exercice
+
+Un étudiant, Ulysse, sort habituellement le vendredi soir, avec une probabilité $2/3$.
+Or ce jour-là, il y a justement un devoir de mathématiques le lendemain matin.
+On suppose qu'Ulysse réussit à avoir la moyenne avec une probabilité
+de $3/4$ s'il n'est pas sorti la veille, et de seulement $1/2$ dans le cas contraire.
+
+Sachant qu'Ulysse n'a pas obtenu la moyenne, quelle est la probabilité pour qu'il soit sorti la veille?
+
+\Exercice
+
+Un nouveau test de dépistage d'une maladie rare et incurable, touchant
+environ une personne sur $100000$, vient d'être mis au point.
+Pour tester sa validité, on a effectué une étude statistique:
+sur $534$ sujets sains, le test a été positif $1$ seule fois,
+et, sur $17$ sujets malades, il a été positif $16$ fois.
+
+Une personne effectue ce test, et le résultat est positif.
+Quelle est la probabilité pour qu'elle soit atteinte de cette maladie?
+Faut-il commercialiser ce test?
+
+\Exercice
+
+Loïc joue au Loto; s'il gagne, il part aux Seychelles pour un mois complet à
+coup sûr. S'il perd, il ne partira probablement pas (seulement avec une
+probabilité de $1/10000$).
+\begin{enumerate}
+\item
+Quelle est la probabilité pour que Loïc parte aux Seychelles demain?
+\item
+Sachant qu'il est parti aux Seychelles, quelle est la probabilité qu'il ait gagné au Loto?
+\end{enumerate}
+
+\Exercice
+
+Trois personnes (Alduire, Basilis et Cléophie)
+jouent à la roulette russe
+de la façon suivante: on fait tourner une fois le barillet au début,
+puis chacun appuie sur la détente à son tour
+(Alduire, puis Basilis, puis Cléophie).
+Préféreriez-vous être à la place d'Alduire, de Basilis ou de Cléophie?
+
+\Exercice
+
+Trois machines $A$, $B$ et $C$ fournissent respectivement $50\%$, $30\%$
+et $20\%$ de la production d'une usine. Les pourcentages de pièces
+défectueuses sont respectivement de $3\%$, $4\%$ et $5\%$.
+\begin{enumerate}
+\item
+Quelle est la probabilité qu'une pièce, prise au hasard dans la production, soit défecteuse?
+\item
+Quelle est la probabilité pour qu'une pièce défectueuse prise au hasard
+  provienne de $A$? de $B$? de $C$?
+\end{enumerate}
+
+\Exercice
+
+Alice et Bob jouent aux fléchettes.
+À chaque manche, Alice gagne avec une probabilité $p$.
+La partie se déroule en deux manches gagnantes.
+Quelle est la probabilité $p'$ pour que Alice gagne?
+
+Quand a-t-on $p' < p$, $p' = p$, $p' > p$? Commenter le résultat.
+
+\Exercice[Monty Hall]
+
+Hildebert joue à un jeu télévisé.
+Il a face à lui, trois portes ($A$, $B$ et $C$) identiques;
+derrière l'une d'entre elle se trouve le gros lot, mais derrière
+les deux autres, rien du tout.
+
+Hildebert choisit une des portes (disons, la $A$), et alors le
+présentateur (qui connaît la porte gagnante) ouvre une autre porte
+(disons, la $C$) et montre à tous qu'il n'y a rien derrière
+celle-ci (la porte $C$).
+Il demande ensuite à Hildebert s'il préfère rester sur son choix
+ou s'il veut changer.
+
+Hildebert, se disant que cela ne fait aucune différence,
+reste sur son choix (la porte $A$).
+A-t-il raison d'agir ainsi?
+
+\Exercice
+
+Soit $\Prob$ un espace probabilisé fini tel que $\Card{\Omega}$ est un nombre premier $p$ et $\P$ est la probabilité uniforme.
+Soit $A$ et $B$ deux événements non triviaux.
+Montrer que $A$ et $B$ ne sont pas indépendants.
+
+\Exercice
+
+Un couple a deux enfants dont une fille.
+Quelle est la probabilité que l'autre enfant soit un garçon?
+
+\Exercice
+
+On considère un jeu de $52$ cartes.
+Après avoir mélangé les cartes, quelle est la probabilité que
+\begin{enumerate}
+\item
+l'as de coeur soit placé avant l'as de pique?
+\item
+les as de coeur et de pique soient voisins?
+\end{enumerate}
+
+\Exercice[la chaîne des menteurs]
+
+On suppose qu'un message binaire ($0$ ou $1$) est transmis depuis un emetteur $M_0$ à travers une chaîne $M_1, M_2, \dots, M_n$ de messagers menteurs, qui transmettent correctement le message avec une probabilité $p$, mais qui changent sa valeur avec une probabilité $1-p$.
+
+Si l'on note $a_n$ la probabilité que l'information transmise par $M_n$ soit identique à celle envoyée par $M_0$ (avec comme convention que $a_0=1$), déterminer $a_{n+1}$ en fonction de $a_n$, puis une expression explicite de $a_n$ en fonction de $n$, ainsi que la valeur limite de la suite $(a_n)_{n\in\N}$. Le résultat est-il conforme à ce à quoi l'on pouvait s'attendre?
+
+\Exercice[urne de Polya]
+
+Soit $(a,b,c) \in \N^3$ avec $a+b>0$.
+On considère une urne contenant $a$ boules blanches et $b$ boules noires.
+Après chaque tirage, on remet la boule choisie dans l'urne avec $c$ nouvelles boules de la même couleur.
+Déterminer la probabilité que la $n$-ième boule tirée soit blanche.
+
+\end{document}
