@@ -38,19 +38,19 @@ donc la suite $(z_{\sigma(n)})$ converge.
 
 \Para{Bolzano-Weierstraß sur $\K^p$}
 
-Pour tout $x\in\K^p$, on note $x=\pa{x^1,x^2,\dots,x^p}$
-
-Soit $(u_n)$ une suite à valeurs dans $\K^p$.
-On suppose que les suites $(u_n^i)_{n\in\N}$ sont bornées pour tout $i\in\ccro{1,p}$.
+Soit $(u_n^1)_{n\in\N}$, $(u_n^2)_{n\in\N}$, $\dots$, $(u_n^p)_{n\in\N}$ des suites numériques bornées.
 Alors il existe une extractrice $\sigma$ telle que
 pour tout $i\in\ccro{1,p}$, la suite $(u_{\sigma(n)}^i)_{n\in\N}$ converge.
+
+\emph{Démonstration:}
+On fait une récurrence sur $p$; l'hérédité se démontre avec la même technique que ci-dessus.
 
 \section{Preuve}
 
 Soit $\B = \nUplet e1p$ une base de $E$, fixée dans toute la preuve.
 Pour tout $x\in\E$, on note $(x^1, \dots, x^p)$ les coordonnées de $x$ dans la base $\B$, £cad.
 \[ x = \sum_{i=1}^p x^i e_i. \]
-On note également $\DS N(x) = \max_{1\leq i\leq p} \Abs{x^i}$.
+On note $\DS N(x) = \max_{1\leq i\leq p} \Abs{x^i}$.
 On vérifie sans peine que $N$ est bien une norme sur $E$.
 
 Soit $\Norme$ une norme quelconque sur $E$; on va chercher à montrer que $N$ et $\Norme$ sont équivalentes.
@@ -79,5 +79,17 @@ Pour tout $n\in\N$, il existe par définition de $\alpha$ un vecteur $u_n$ de $S
 D'après \BW{} sur $\K^p$, il existe une sous-suite $(v_n)$ de $(u_n)$ telle que
 les suites $(v_n^i)_{n\in\N}$ convergent.
 Notons $\ell = \sum_{i=1}^p \ell^i e_i$ où $\ell^i = \lim_\ninf v_n^i$.
+
+On a $\Norm{\ell} = \Norm{\ell - v_n + v_n} \leq \Norm{\ell - v_n} + \Norm{v_n} \leq \beta N(v_n - \ell) + \Norm{v_n}$.
+Or pour tout $i\in\ccro{1,p}$, on a $\Abs{v_n^i - \ell^i} \Toninf 0$ et donc $N(v_n - \ell) \Toninf 0$.
+De plus, la suite $(\Norm{v_n})$ étant une sous-suite de $(\Norm{u_n})$, on a $\Norm{v_n} \Toninf 0$.
+Ainsi, $\Norm{\ell} \Toninf 0$ donc $\Norm{\ell} = 0$ donc $\ell = 0$.
+
+Pour tout $i\in\ccro{1,p}$, on a $v_n^i \to \ell^i = 0$, donc $\exists n_i\in\N$, $\forall n\geq n_i$, $\Abs{v_n^i} \leq 1/2$.
+Soit $m = \max(n_1,\dots,n_p)$ de sorte que $N(v_m) \leq 1/2$. Ce qui est absurde car $v_m \in S$.
+
+Ainsi $\alpha > 0$ donc les normes $N$ et $\Norme$ sont bien équivalentes.
+Bref, toute norme sur $E$ était équivalente à $N$,
+donc toutes les normes sont équivalentes.
 
 \end{document}
