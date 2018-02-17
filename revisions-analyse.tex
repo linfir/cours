@@ -1,0 +1,548 @@
+\documentclass{yann}
+
+\newcommand\Cf{\mathcal{C}_f}
+\newcommand\IntF{\cro}
+\newcommand\IntO{\intO}
+
+\begin{document}
+\title{Révisions d'analyse réelle}
+\maketitle
+
+Il s'agit essentiellement de révisions de première année,
+avec une petite généralisation: on considère, quand c'est possible,
+des fonctions à valeurs vectorielles.
+
+\Para*{Notations}
+
+Dans tout le chapitre,
+\begin{itemize}
+\item $I$ et $J$ désignent des intervalles de $ℝ$ (non vides et non réduits à un point);
+\item $E$, $F$ et $G$ désignent des espaces vectoriels normés \emph{de dimensions finies}.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Continuité}
+
+\Para{Théorème}
+
+Soit $f \colon \IntF{a,b} \toℝ$ continue.
+Alors $f$ est bornée et ses bornes sont atteintes.
+
+\Para{Théorème}[théorème des valeurs intermédiaires]
+
+Soit $f \colon I \to ℝ$ continue.
+Alors $f(I)$ est un intervalle de $ℝ$.
+
+\Para{Corollaire}
+
+Soit $f \colon \IntF{a,b} \to ℝ$ continue
+On suppose que $γ∈\bigl[f(a),f(b)\bigr] ∪\bigl[f(b),f(a)\bigr]$.
+Alors $∃c∈\IntF{a,b}$, $f(c)=γ$.
+
+% -----------------------------------------------------------------------------
+\section{Dérivation}
+
+\subsection{Dérivée}
+
+\Para{Définition}
+
+Soit $f \colon I \to E$ et $a∈I$.
+On dit que $f$ est \emph{dérivable} en $a$
+si et seulement si
+\[\lim_{\substack{x \to a \\ x≠a}} \left( \frac{f(x) - f(a)}{x-a} \right) \text{ existe}.\]
+Cette limite, si elle existe, s'appelle la \emph{dérivée} de $f$
+en $a$ et se note $f'(a)$.
+
+\Para{Proposition}
+\begin{enumerate}
+\item $f$ est dérivable en $a$ et $f'(a) =ℓ$;
+\item $f(x) = f(a) + (x-a)ℓ+ \PetitO_{x \to a}(x-a)$;
+\item $∀ε> 0$, $∃δ> 0$, $∀x∈I∖\Acco{a}$,
+  \[\Abs{x-a}≤δ\implies \left\| \frac{f(x)-f(a)}{x-a} -ℓ\right\|_E ≤ε.\]
+\end{enumerate}
+
+\Para{Proposition}
+
+Soit $f \colon I \to E$ et $a∈I$.
+Si $f$ est dérivable en $a$, alors $f$ est continue en $a$.
+
+\Para{Proposition}
+
+Soit $f \colon I \to E$ dérivable et $u \colon E \to F$ une application \emph{linéaire}.
+Alors $u◦f$ est dérivable et $(u◦f)' = u◦f'$.
+
+\Para{Proposition}
+
+Soit $f \colon I \to E$ et $g \colon I \to F$ deux fonctions dérivables.
+Soit $B \colon E×F \to G$ une application \emph{bilinéaire}.
+On note $\Fn{h}{I}{G}$ telle que \[ h(t) = B(f(t),g(t)). \]
+Alors $h$ est dérivable et \[ h'(t) = B(f'(t),g(t)) + B(f(t),g'(t)). \]
+
+\Para{Exemple}
+
+Soit $f$ et $g$ deux fonctions dérivables $I \toℝ^3$.
+On pose $\Fn{h}{I}{ℝ^3}$ où $h(t) = f(t) \wedge g(t)$.
+Alors $h$ est dérivable et $h'(t) = f'(t) \wedge g(t) + f(t) \wedge g'(t)$.
+
+\Para{Théorème}[dérivée d'une composée]
+
+Soit $f \colon I \to E$ et $g \colon J \to I$ deux fonctions dérivables.
+Alors leur composée $f◦g \colon J \to E$ est dérivable et
+\[∀t∈J\+ (f◦g)'(t) = g'(t)⋅f'(g(t)).\]
+
+\Para{Théorème}[limite de la dérivée, HP]
+
+Soit $f \colon I \to E$ une fonction continue et $a∈I$.
+On suppose que $f$ est dérivable sur $I∖\Acco a$ et que
+\[ℓ= \lim_{\substack{x \to a \\ x≠a}} f'(x) \text{ existe et est finie.}\]
+Alors $f$ est dérivable en $a$ et $f'(a) = ℓ$.
+
+\Para{Théorème}[dérivée de la réciproque]
+
+Soit $f \colon I \to J$ une fonction dérivable et \emph{bijective}.
+Soit $x∈I$ un point tel que $f'(x)≠0$.
+
+Alors $f^{-1}$ est dérivable au point $y = f(x)$ et
+\[(f^{-1})'(y) = \frac{1}{f'(x)} = \frac{1}{f'◦f^{-1} (y)}.\]
+
+\subsection{Accroissements finis}
+
+\Para{Théorème}[Rolle]
+
+Soit $f \colon \IntF{a,b} \toℝ$ une fonction numérique.
+On suppose:
+\begin{itemize}
+\item $f$ continue sur $\IntF{a,b}$,
+\item $f$ dérivable sur $\IntO{a,b}$,
+\item $f(a) = f(b)$.
+\end{itemize}
+
+Alors $∃c∈\IntO{a,b}$, $f'(c) = 0$.
+
+\Para{Théorème}[égalité des accroissements finis]
+
+Soit $f \colon [a,b] \to ℝ$ une fonction numérique continue,
+dérivable sur l'ouvert $\IntO{a,b}$.
+Alors $∃c∈\IntO{a,b} \+ f(b) - f(a) = f'(c) (b - a)$.
+
+\Para{Corollaire}
+
+Soit $f \colon [a,b] \toℝ$ une fonction numérique continue, dérivable sur l'ouvert $\IntO{a,b}$.
+Si $∀x∈\IntO{a,b} \+ f'(x)≥0$ (resp. $f'(x) > 0$),
+alors $f$ est croissante (resp. strictement croissante) sur $[a,b]$.
+
+\Para{Théorème}[inégalité des accroissements finis]
+
+Soit $f \colon \IntF{a,b} \to E$ une fonction continue, dérivable sur l'ouvert $\IntO{a,b}$.
+On suppose que $∀x∈\IntO{a,b} \+ \Norm{f'(x)}≤M$.
+Alors $\Norm{f(b)-f(a)}≤M(b-a)$.
+
+\subsection{Fonctions de classe $\CC p$}
+
+\Para{Définition}
+
+Soit $f \colon I \to E$.
+On définit $f^{(p)}$ pour $p∈ℕ$ par récurrence:
+$f^{(0)} = f$, et $f^{(p+1)}$ est la dérivée de $f^{(p)}$,
+définie sur l'ensemble des points où $f^{(p)}$ est dérivable.
+
+\Para{Définition}
+
+Soit $f \colon I \to E$.
+On dit que $f$ est de classe $\CC p$
+si et seulement si $f$ est $p$ fois dérivable sur $I$
+et $f^{(p)}$ est continue sur $I$.
+
+\Para{Théorème}
+
+Soit $f \colon I \to E$ et $g \colon J \to I$ de classe $\CC p$.
+Alors $f◦g \colon J \to E$ est de classe $\CC p$.
+Autrement dit, la composée de deux fonctions de classe $\CC p$ l'est également.
+
+\Para{Théorème}[formule de Leibniz]
+
+Soit $f$ et $g$ deux fonctions de $I$ dans $𝕂$ de classe $\CC p$.
+Alors leur produit $fg$ est également de classe $\CC p$ et
+\[(fg)^{(p)} = ∑_{n=0}^p \binom pn f^{(n)} g^{(p-n)}.\]
+
+\Para{Proposition}[généralisation]
+
+Soit $f \colon I \to E$ et $g \colon I \to F$ deux fonctions de classe $\CC p$.
+Soit $B \colon E×F \to G$ une application bilinéaire.
+On pose \[ \Fonction{h}{I}{G}{x}{B \bigl( f(x),g(x) \bigr).} \]
+Alors $h$ est de classe $\CC p$ et
+\[ h^{(p)}(x) = ∑_{n=0}^p \binom pn \; B\bigl( f^{(n)}(x), g^{(p-n)}(x) \bigr). \]
+
+\Para{Théorème}[prolongement $\CC k$]
+
+Soit $f \colon I∖\{a\} \to E$ une fonction de classe $\CC k$.
+On suppose que $f^{(i)}$ admet une limite finie en $a$ pour tout $i∈\Dcro{0,k}$.
+Alors $f$ admet une prolongement de classe $\CC k$ sur $I$.
+
+\Para{Définition}
+
+Soit $f \colon I \to J$ et $p∈\Ns$.
+On dit que $f$ est un $\CC p$-difféomorphisme si et seulement si
+les trois conditions suivantes sont vérifiées:
+\begin{itemize}
+\item $f$ est bijective;
+\item $f$ est de classe $\CC p$;
+\item $f^{-1}$ est de classe $\CC p$.
+\end{itemize}
+
+\Para{Proposition}[caractérisation des difféomorphismes]
+
+Soit $f \colon I \to J$ et $p∈\Ns$.
+Alors $f$ est un $\CC p$-difféomorphisme si et seulement si les trois conditions suivantes sont vérifiées:
+\begin{itemize}
+\item $f$ est surjective;
+\item $f$ est de classe $\CC p$ sur $I$;
+\item $∀x∈I$, $f'(x)≠0$.
+\end{itemize}
+
+\subsection{Formules de Taylor}
+
+\Para{Théorème}[formule de Taylor avec reste intégral]
+
+Soit $\Fn{f}{I}{E}$ une fonction de classe $\CC{n+1}$.
+Alors, pour tous $(a,x)∈I^2$, on a
+\[f(x) = \underbrace{∑_{k=0}^n \frac{(x-a)^k}{k!} f^{(k)}(a)}_{\text{partie principale}} + \underbrace{\vphantom{∑_{k=0}}∫_a^x \frac{(x-t)^n}{n!} f^{(n+1)}(t) \D t}_{\text{reste intégral}}.\]
+
+\Para{Théorème}[formule de Taylor-Young]
+
+Soit $\Fn{f}{I}{E}$ une fonction de classe $\CC{n}$ sur un voisinage de $a∈I$.
+Alors, on a
+\[f(x) = ∑_{k=0}^n \frac{(x-a)^k}{k!} f^{(k)}(a) + \PetitO_{x \to a}\Bigl( (x-a)^n \Bigr).\]
+
+\Para{Théorème}[inégalité de Taylor-Lagrange, HP]
+
+Soit $\Fn{f}{I}{E}$ une fonction de classe $\CC{n+1}$.
+
+On suppose que
+\[∀t∈I\+ \Norm{f^{(n+1)}(t)}≤M.\]
+Alors, pour tous $(a,x)∈I^2$, on a
+\[\left\| f(x) - ∑_{k=0}^n \frac{(x-a)^k}{k!} f^{(k)}(a) \right\| ≤M \frac{\Abs{x-a}^{n+1}}{(n+1)!}.\]
+
+\Para{Théorème}[égalité de Taylor-Lagrange, HP]
+
+Soit $\Fn{f}{I}{ℝ}$ une fonction de classe $\CC{n+1}$.
+Alors, pour tous $(a,x)∈I^2$, il existe $θ∈\IntO{0,1}$ tel que
+\[f(x) = ∑_{k=0}^n \frac{(x-a)^k}{k!} f^{(k)}(a) + \frac{(x-a)^{n+1}}{(n+1)!} f^{(n+1)}(ξ)\]
+où $ξ= a + (x-a)θ$ est compris entre $a$ et $x$.
+
+\subsection{Fonctions convexes (HP)}
+
+\Para{Définition}
+
+Soit $f \colon I \to ℝ$.
+
+On dit que $f$ est \emph{convexe} si et seulement si
+$∀(x,y)∈I^2$, $∀λ∈[0,1]$,
+\[f \bigl( λx + (1-λ)y \bigr) ≤λf(x) + (1-λ)f(y)\]
+On dit que $f$ est \emph{concave} si et seulement si $(-f)$ est convexe.
+
+\Para{Proposition}
+
+Soit $f \colon I \toℝ$.
+\begin{itemize}
+\item $f$ est convexe si et seulement si tout arc de la courbe représentative de $f$
+  est situé au dessous de la corde correspondante.
+\item Si $f$ est dérivable et convexe, alors toute tangente à la courbe représentative de $f$
+  est situé au dessous de celle-ci.
+\item On suppose $f$ est dérivable.
+  Alors $f$ est convexe si et seulement si $f'$ est croissante.
+\item On suppose $f$ deux fois dérivable.
+  Alors $f$ est convexe si et seulement si $f''$ est positive.
+\end{itemize}
+
+\Para{Théorème}[inégalité de Jensen]
+
+Soit $f \colon I \toℝ$ une fonction convexe et $\nUplet x1n∈I^n$.
+Soit $\nUpletλ1n∈ℝ_+^n$ tels que $∑_{k=1}^nλ_k = 1$.
+Alors
+\[f \left( ∑_{k=1}^n λ_k x_k \right) ≤∑_{k=1}^n λ_k f(x_k).\]
+
+% -----------------------------------------------------------------------------
+\section{Intégration}
+
+\subsection{Subdivisions}
+
+\Para{Définition}
+
+Soit $\IntF{a,b}⊂ℝ$ un segment.
+Une \emph{subdivision} de $[a,b]$ est un $(n+1)$-uplet
+$\nUpletσ0n∈ℝ^{n+1}$ tel que
+\[a =σ_0 <σ_1 < \cdots <σ_n = b\]
+
+\Para{Définitions}
+
+Soit $f \colon \IntF{a,b} \to E$.
+\begin{itemize}
+\item $f$ est dite \emph{en escaliers} sur $\IntF{a,b}$
+  si et seulement si il existe une subdivision $\nUpletσ0n$ de $\IntF{a,b}$ telle que
+  pour tout $k∈\Dcro{0,n-1}$,
+  $f$ est constante sur $]σ_k,σ_{k+1}[$.
+    \item $f$ est dite \emph{continue par morceaux} sur $\IntF{a,b}$
+      si et seulement si il existe une subdivision $\nUpletσ0n$ de $\IntF{a,b}$ telle que
+      pour tout $k∈\Dcro{0,n-1}$,
+      la restriction de $f$ à $]σ_k,σ_{k+1}[$ est continue
+      \emph{et se prolonge en une fonction continue sur $[σ_k,σ_{k+1}]$}.
+    \item Plus généralement,
+      $f$ est dire \emph{de classe $\CC k$ par morceaux} sur $\IntF{a,b}$
+      si et seulement si il existe une subdivision $\nUpletσ0n$ de $\IntF{a,b}$ telle que
+      pour tout $k∈\Dcro{0,n-1}$,
+      la restriction de $f$ à $]σ_k,σ_{k+1}[$ est de classe $\CC k$
+      \emph{et se prolonge en une fonction de classe $\CC k$ sur $[σ_k,σ_{k+1}]$}.
+\end{itemize}
+
+\Para{Théorème}
+
+Soit $f \colon [a,b] \to E$ continue par morceaux et $ε> 0$.
+Alors il existe $φ\colon [a,b] \to E$ en escaliers
+tel que $∀x∈[a,b]\+ \Norm{f(x) -φ(x)}≤ε$.
+
+\subsection{Intégration sur un segment}
+
+\Para{Remarque}
+
+La construction de l'intégrale n'est pas fondamentale,
+je renvoie donc au cours de première année.
+On pourra toutefois noter que les propriétés suivantes
+\emph{caractérisent} l'intégrale des fonctions continues par morceaux
+sur un segment:
+\begin{itemize}
+\item Intégrale d'une fonction constante,
+\item Relation de Chasles,
+\item Inégalité de la moyenne,
+\item Croissance.
+\end{itemize}
+
+\subsection{Propriétés de l'intégrale}
+
+\Para{Proposition}[intégrale d'une fonction constante]
+
+Soit $f \colon I \to E$ une fonction, $(a,b)∈I^2$ où $a≤b$.
+On suppose que
+\[∃C∈E\+∀x∈\IntO{a,b}\+ f(x) = C.\]
+Alors $f$ est continue par morceaux sur $\IntF{a,b}$ et \[∫_a^b f = (b-a)C.\]
+
+\Para{Proposition}[linéarité]
+
+Soit $f, g \colon I \to E$ deux fonctions continues par morceaux, $(a,b)∈I^2$ et $(λ,μ)∈𝕂^2$.
+Alors $λf +μg \colon I \to E$ est continue par morceaux sur $I$ et
+\[∫_a^b (λf +μg) =λ∫_a^b f +μ∫_a^b g.\]
+
+\Para{Proposition}[relation de Chasles]
+
+Soit $f \colon I \to E$ une fonction continue par morceaux et $(a,b,c)∈I^3$.
+Alors \[∫_a^b f =∫_a^c f +∫_c^b f.\]
+
+\Para{Proposition}[inégalité de la moyenne]
+
+Soit $f \colon I \to E$ une fonction continue par morceaux,
+$(a,b)∈I^2$ où $a≤b$.
+Alors \[\left\| ∫_a^b f(t) \D t \right\| ≤∫_a^b \Norm{f(t)} \D t.\]
+
+\Para{Remarque}
+
+Si l'on enlève l'hypothèse $a≤b$, la conclusion s'écrit alors
+\[\left\| ∫_a^b f(t) \D t \right\| ≤\left| ∫_a^b \Norm{f(t)} \D t \right|.\]
+
+\Para{Proposition}[positivité]
+
+Soit $f \colon I \to \Rp$ une fonction continue par morceaux,
+$(a,b)∈I^2$ où $a≤b$.
+Alors \[∫_a^b f≥0.\]
+
+\Para{Proposition}[croissance]
+
+Soit $f, g \colon I \toℝ$ deux fonctions continues par morceaux,
+$(a,b)∈I^2$ où $a≤b$.
+On suppose que
+\[∀x∈[a,b]\+ f(x)≤g(x).\]
+Alors
+\[∫_a^b f≤∫_a^b g.\]
+
+\Para{Théorème}[stricte positivité]
+
+Soit $f \colon I \to \Rp$ une fonction \emph{continue},
+$(a,b)∈I^2$ où $a≤b$.
+On suppose que
+\[∫_a^b f = 0.\]
+Alors $f$ est identiquement nulle sur $\IntF{a,b}$.
+
+\Para{Théorème}[inégalité de Cauchy-Schwarz]
+
+Soit $f, g \colon I \to𝕂$ deux fonctions continues par morceaux
+et $(a,b)∈I^2$.
+Alors
+\[\left|∫_a^b f(t) g(t) \D t \right|≤
+√{∫_a^b \Abs{f(t)}^2 \D t}
+√{∫_a^b \Abs{g(t)}^2 \D t}.\]
+Si l'on suppose en outre que $f$ et $g$ sont continues,
+alors il y a égalité si et seulement si la famille $(f,g)$ est liée.
+
+\Para{Définition}
+
+Soit $f \colon [a,b] \to E$ continue par morceaux.
+La \emph{valeur moyenne} de $f$ sur $[a,b]$ est $\frac{1}{b-a}∫_a^b f$.
+
+\subsection{Sommes de Riemann}
+
+\Para{Théorème}
+
+Soit $f \colon [a,b] \to E$ continue par morceaux.
+Soit $(σ_n)_{n∈ℕ}$ une suite de subdivisions de $[a,b]$.
+On note $σ_n$ la subdivision
+\[a = ξ_{n,1} < ξ_{n,2} < \dots < ξ_{n,m_n} = b.\]
+On note $h_n$ le pas de la subdivision $σ_n$, c.-à-d.
+\[h_n = \max_{1≤k<m_n} \Bigl( ξ_{n,k+1} - ξ_{n,k} \Bigr).\]
+On suppose que $h_n \to 0$.
+Alors
+\[\frac{1}{m_n} ∑_{k=1}^{m_n} f(ξ_{n,k}) \Toninf ∫_a^b f(t) \D t.\]
+
+\Para{Corollaire}
+
+Soit $f \colon [0,1] \to E$ continue par morceaux.
+Alors
+\[\frac{1}{n+1} ∑_{k=0}^{n} f\left(\frac{k}{n}\right) \Toninf ∫_0^1 f.\]
+
+\subsection{Primitives}
+
+\Para{Définition}
+
+Soit $f \colon I \to E$. Une \emph{primitive} $F$ de $f$ sur $I$
+est une fonction dérivable sur $I$ telle que $F' = f$.
+
+\Para{Proposition}
+
+Soit $f \colon I \to E$ une fonction admettant deux primitives $F$ et $G$.
+Alors \[∃C∈E\+∀x∈I\+ F(x) - G(x) = C.\]
+
+Autrement dit, \emph{sur un intervalle}, deux primitives d'une
+même fonctions diffèrent d'une constante.
+
+\Para{Théorème}
+
+Soit $f \colon I \to E$ une fonction continue par morceaux et $a∈I$.
+On pose \[\Fonction{Φ}{I}{E}{x}{∫_a^x f(t) \D t.}\]
+Alors $Φ$ est continue sur $I$.
+De plus, si $f$ est continue en $x∈I$, alors
+$Φ$ est dérivable en $x$ et $Φ'(x) = f(x)$.
+
+\Para{Corollaire}
+
+Toute fonction continue sur un intervalle admet des primitives sur
+cet intervalle.
+
+% -----------------------------------------------------------------------------
+\section{Exercices}
+
+\Exercice
+
+Montrer que la fonction $f \colon \Rp \toℝ$ définie par $f(x) = \cos(√x)$
+est de classe $\CC1$ sur $\Rp$.
+
+\Exercice
+
+Soit $f \colon [0,1] \to ℝ$ définie par
+$f(x) = \frac1x$ si $x>0$ et $f(0)=0$.
+Montrer que $f$ \emph{n'est pas} continue par morceaux sur $\IntF{a,b}$.
+
+\Exercice
+
+Soit $f \colonℝ\toℝ$ convexe telle que sa courbe représentative $\Cf$
+admette une asympote $Δ$ d'équation $y=ax+b$ en $+∞$.
+Montrer que $\Cf$ est située au dessus de $Δ$.
+
+\Exercice
+
+Soit $(a,b)∈ℝ^2$ tels que $a < b$ et $f \colon [a,b] \to [a,b]$.
+\begin{enumerate}
+\item Si $f$ est continue, montrer que $f$ admet un point fixe.
+\item Même question si $f$ est monotone.
+\end{enumerate}
+
+\Exercice
+
+Soit $f \colonℝ\to \Rps$ une fonction continue.
+\begin{enumerate}
+\item Montrer qu'il existe une infinité de fonctions $g$ de $ℝ$ dans $ℝ$ telles que $\Abs{g} = f$.
+\item Montrer qu'il existe exactement deux fonctions continues $g$ de $ℝ$ dans $ℝ$ telles que $\Abs{g} = f$.
+\item Le résultat précédent est-il encore valable si $f$ est à valeurs dans $\Rp$?
+\end{enumerate}
+
+\Exercice
+
+Soit $f \colon \Rp \toℝ$ dérivable telle que $f(0) = \lim_{+∞}f = 0$.
+Montrer qu'il existe $x > 0$ tel que $f'(x) = 0$.
+
+\Exercice
+
+Déterminer les fonctions $f \colonℝ\toℝ$ dérivables telles que
+pour tout $x∈ℝ$ on ait $(f'(x))^2 = 1$.
+
+\Exercice
+
+Soit $P∈ℝ[X]$ un polynôme réel scindé.
+Montrer que $P'$ est également scindé;
+on pourra commencer par traiter le cas où $P$ est scindé à racines simples.
+
+\Exercice
+
+Soit $f \colon \Rp \toℝ$ de classe $\CC1$.
+\begin{enumerate}
+\item On suppose $\lim_{+∞} f' = ℓ∈ℝ$.
+  Montrer que \[\frac{f(x)}{x} \To{x\to+∞} ℓ.\]
+\item La réciproque est-elle vraie?
+\end{enumerate}
+
+\Exercice[égalité des accroissements finis généralisés]
+
+Soit $f, g \colon [a,b] \toℝ$ continues et dérivables sur $]a,b[$
+      telles que $g'$ ne s'annule pas sur $]a,b[$.
+      Montrer qu'il existe $c∈\IntO{a,b}$ tel que
+      \[\frac{f(b)-f(a)}{g(b)-g(a)} = \frac{f'(c)}{g'(c)}\]
+
+      On pourra introduire
+      $φ\colon x \mapsto \bigl(f(b)-f(a) \bigr) g(x) - \bigl( g(b)-g(a) \bigr) f(x)$
+      et utiliser le théorème de Rolle.
+
+      \paragraph{Exercice 11 (règle de L'Hospital)}
+
+      Soit $f, g \colon I \toℝ$ et $x_0∈I$.
+      On suppose:
+      \begin{itemize}
+      \item $ε> 0$
+      \item $J = [x_0-ε,x_0+ε]⊂I$
+      \item $f(x_0)=g(x_0)=0$
+      \item $f$ et $g$ sont continues en $x_0$
+      \item $f$ et $g$ sont dérivables sur $J∖\Acco{x_0}$
+      \item $g'$ ne s'annule pas sur $J∖\Acco{x_0}$
+      \item $\lim_{x\to x_0} \frac{f'(x)}{g'(x)} =ℓ∈𝕂$
+      \end{itemize}
+
+      Montrer que $\lim_{x\to x_0}\frac{f(x)}{g(x)} =ℓ$.
+
+      \paragraph{Exercice 12}
+      \begin{enumerate}
+      \item Montrer que $∀n∈ℕ$, $∀x∈ℝ$, on a
+        \[\left| e^x - ∑_{k=0}^n \frac{x^k}{k!} \right| ≤\frac{\Abs{x}^{n+1} e^{\Abs x}}{(n+1)!}\]
+        On pourra utiliser les formules de Taylor.
+      \item En déduire que \[∀x∈ℝ\+ e^x = ∑_{k=0}^{+∞} \frac{x^k}{k!}.\]
+      \end{enumerate}
+
+      \paragraph{Exercice 13}
+
+      Soit $a < 0 < b$ et $f \colon [a,b] \toℝ$ de classe $\CC1$.
+      \begin{enumerate}
+      \item Montrer que l'intégrale $∫_a^b \frac{f(t)}{t} \D t$ converge si et seulement si $f(0) = 0$.
+      \item Montrer que dans tous les cas,
+        \[\lim_{ε\to 0^+} \left[ ∫_a^{-ε} \frac{f(t)}{t} \D t +∫_{ε}^b \frac{f(t)}{t} \D t \right]\]
+        existe.
+
+        \emph{Remarque:} cette limite s'appelle \emph{valeur principale de Cauchy} de l'intégrale
+        (généralement divergente) et se note parfois $ℓ= \mathrm{v.p.}∫_a^b \frac{f(t)}{t} \D t$.
+      \end{enumerate}
+
+\end{document}

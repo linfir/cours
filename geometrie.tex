@@ -1,0 +1,415 @@
+% Time-stamp: <2017-02-04 15:33:04 yann>
+
+\documentclass{yann}
+\usepackage{tikz}
+\usepackage{tkz-tab}
+
+\newcommand{\gammaI}{\Fn{γ}{I}}
+\newcommand{\gammaIE}{\gammaI\EE}
+\newcommand{\deltaJ}{\Fn{δ}{J}}
+\newcommand{\deltaJE}{\deltaJ\EE}
+\newcommand{\EE}{\mathscr{E}}
+\renewcommand\Vec{\overrightarrow}
+\newcommand\AccoDeux[2]{\begin{cases} #1 \\ #2 \end{cases}}
+\newcommand\AccoTrois[3]{\begin{cases} #1 \\ #2 \\ #3 \end{cases}}
+
+\tikzset{
+  Axe/.style = {},
+  Vecs/.style = { thick, <->, >=stealth },
+  Vec/.style = { thick, ->, >=stealth },
+  Curve/.style = { very thick },
+  Curve name/.style = {},
+  gamma p pos/.style = { below },
+  gamma q pos/.style = { left },
+}
+
+\begin{document}
+\title{Courbes paramétrées}
+\maketitle
+
+\Para{Notations}
+\begin{itemize}
+\item $I$ et $J$ désignent des intervalles non vides et non réduits à un point de $ℝ$;
+\item $\EE$ désigne un espace euclidien de dimension~2.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Généralités}
+
+\Para{Définition}
+On appelle \emph{arc paramétré} de $\EE$ toute application $\gammaIE$ de classe $\CC1$.
+On parle parfois de \emph{courbe paramétrée} ou d'\emph{arc orienté} à la place d'arc paramétré.
+
+\Para{Définition}[Interprétation cinématique]
+Un \emph{mouvement ponctuel} est un arc paramétré $γ$ dans lequel la variable $t$ est le temps.
+\begin{itemize}
+\item $γ(t)$ est la \emph{position} du point mobile à l'instant~$t$;
+\item $γ'(t)$ est la \emph{vitesse} du point mobile à l'instant~$t$;
+\item $γ''(t)$ est l'\emph{accélération} du point mobile à l'instant~$t$;
+\item $Γ=γ(I)$ s'appelle la \emph{trajectoire} du point mobile.
+\end{itemize}
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw[Curve] (-1.5,-1) .. controls +(60:1) and +(-25:-1) .. (1,1) .. controls +(-25:1) and +(0,0) .. (2,-1) ;
+    \draw[Vec] (1,1) -- +(-25:2) ;
+    \filldraw (1,1) circle (1pt) node [below,xshift=-5pt] { $γ(t)$ } ;
+    \draw (2.25,0.8) node { $γ'(t)$ } ;
+    \draw[Curve name] (-1.5,-0.5) node { $Γ$ } ;
+  \end{tikzpicture}
+\end{center}
+
+% -----------------------------------------------------------------------------
+\section{Symétries}
+
+\Para{Proposition}
+Soit $\Fn{γ}{I}{\EE}$ une courbe paramétrée.
+Soit $\Fn{θ}{I}{I}$ et $\Fn{s}{\EE}{\EE}$ deux applications.
+Si $γ◦θ=s◦γ$, alors la trajectoire $Γ$ de $γ$ est stable par~$s$.
+
+\Para{Corollaire}
+En particulier, si $I$ est symétrique par rapport à zéro et si
+\[ γ(-t) = s\bigPa{γ(t)}, \]
+Alors la trajectoire de $γ$ est stable par $s$; on peut alors réduire l'étude à $I∩ℝ^+$.
+
+\Para{Exemples de symétries}
+Soit $\Fn{γ}{ℝ}{ℝ^2}$ un arc paramétré.
+On note $γ(t) = \bigPa{x(t),y(t)}$.
+\begin{enumerate}
+\item Si $x(-t) = x(t)$ et $y(-t) = y(t)$,
+  alors il suffit d'étudier $γ$ sur $ℝ^+$.
+\item Si $x(-t) = x(t)$ et $y(-t) = -y(t)$,
+  alors la trajectoire de $γ$ est symétrique
+  par rapport à l'axe des abscisses et
+  il suffit d'étudier $γ$ sur $ℝ^+$.
+\item Si $x(θ(t)) = -y(t)$ et $y(θ(t)) = x(t)$,
+  alors la trajectoire de $γ$ est invariante
+  par rotation d'angle $\fracπ2$.
+\item Si
+  \[ \left\{ \begin{aligned}
+    x(t+17) &= -\frac12 x(t) - \frac{√3}{2} y(t) \\
+    y(t+17) &= \frac{√3}2 x(t) - \frac1{2} y(t)
+  \end{aligned} \right. \]
+  alors la trajectoire de $γ$ est stable
+  par la rotation d'angle $2π/3$ et il suffit d'étudier
+  $γ$ sur $\intF{0,17}$.
+\item etc.
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\section{Variations}
+
+L'outil principal pour le tracé de l'allure de $γ$ est le tableau regroupant les variations de $x$ et de $y$.
+Par exemple, pour la strophoïde droite (cf. exercice~1):
+\begin{center}
+  \begin{tikzpicture}
+    \tkzTabInit
+        {$t$/1, $x'$/1, $x$/1.5, $y$/1.5, $y'$/1}
+        {$0$, $√{√{5}-2}$, $+∞$}
+        \tkzTabLine{z,,-}
+        \tkzTabVar{+/$1$,R,-/$-1$}
+        \tkzTabVar{-/$0$,+/ ,-/$-∞$}
+        \tkzTabLine{$1$, +, z, -}
+  \end{tikzpicture}
+\end{center}
+
+% -----------------------------------------------------------------------------
+\section{Étude locale}
+
+% -----------------------------------------------------------------------------
+\subsection{Tangentes}
+
+\Para{Définition}[demi-tangente]
+Soit $\gammaIE$ un arc paramétré.
+Pour $t ∈I$, on note $M(t) = γ(t)$.
+Soit $t_0 ∈I$. On note $A = A(t_0) = M(t_0)$.
+On dit que \emph{$γ$ admet une demi-tangente en $A(t_0^+)$} £ssi. la limite
+\[
+\vec u = \lim_{t \to t_0^+} \frac{\Vec{AM(t)}}{\Norm{AM(t)}}
+= \lim_{t \to t_0^+} \frac{1}{\Norm{γ(t)-γ(t_0)}} \BigPa{ γ(t) - γ(t_0) }
+\]
+existe.
+Dans ce cas, la \emph{demi-tangente à $γ$ en $A(t_0^+)$} est par définition la droite passant par $A$ de vecteur directeur $\vec u ≠0$.
+
+On définit de façon analogue la demi-tangente en $A(t_0^-)$.
+
+\Para{Définition}[tangente]
+Avec les mêmes notations que précédemment, si deux limites sont \emph{égales ou opposées}, alors les demi-tangentes sont égales et l'on dit que $γ$ admet une tangente en $A(t_0)$.
+
+% -----------------------------------------------------------------------------
+\subsection{Au voisinage d'un point régulier}
+
+\Para{Définitions}
+Soit $\gammaIE$ un arc paramétré.
+\begin{itemize}
+\item On dit que $t_0 ∈I$ est un \emph{point régulier} de $γ$ £ssi. $γ'(t_0)≠0$.
+  On dit que $t_0$ est un \emph{point stationnaire} dans le cas contraire.
+\item On dit que $γ$ est un \emph{arc régulier} £ssi. tous les points $t ∈I$ sont des points réguliers de $γ$.
+\end{itemize}
+
+\Para{Proposition}
+Soit $\gammaIE$ un arc paramétré et $t_0 ∈I$ un point régulier de $γ$.
+Alors $γ$ admet une tangente en $t_0$;
+il s'agit de la droite passant par $γ(t_0)$ et de vecteur directeur $γ'(t_0)$.
+
+% -----------------------------------------------------------------------------
+\subsection{Au voisinage d'un point stationnaire}
+
+Dans ce cas, l'allure locale est plus complexe.
+La proposition suivante permet d'étudier l'allure au voisinage d'un point quelconque.
+
+\Para{Proposition}
+Soit $\Fn{γ}{I}{\EE}$ un arc paramétré de classe $\CC k$ et $t∈I$.
+On note
+\begin{itemize}
+\item $p$ le plus petit entier tel que
+  \[ \left\{ \begin{array}{l} 1≤p<k, \\ γ^{(p)}(t)≠0; \end{array} \right. \]
+\item $q$ le plus petit entier tel que
+  \[ \left\{ \begin{array}{l} p<q≤k, \\ \text{la famille $\bigPa{ γ^{(p)}(t), γ^{(q)}(t)}$ est libre}.  \end{array} \right. \]
+\item $\vec u = γ^{(p)(t)}$ et $\vec v = γ^{(q)}(t)$.
+\end{itemize}
+On suppose que $p$ et $q$ existent.
+
+La famille $(\vec u,\vec v)$ est alors une base du plan $\EE$, et d'après Taylor-Young, quand $h\to0$, on a
+\[ γ(t+h) = γ(t) + \frac{h^p}{p!} \bigPa{1+o(1)} \, \vec u + \frac{h^q}{q!} \bigPa{1+o(1)} \, \vec v. \]
+
+Cette formule montre que l'allure locale de $γ$ au voisinage de $t$ dépend essentiellement de la parité de $p$ et~$q$.
+
+\newenvironment{myfig}[2]{
+  \begin{center}
+    \begin{tikzpicture}[scale=1.5]
+      %\draw[step=0.25,gray!30,very thin] (-1,-1) grid (2.25,2);
+      \useasboundingbox (-1,-1) -- (2.25,2);
+      \draw[Axe] (-1,0) -- (2,0);
+      \draw (60:-1) -- (60:2);
+      \draw[Vecs] (60:1) -- (0,0) -- (1,0);
+
+      \draw (1,0) node[gamma p pos] {$\vec u$};
+      \draw (60:1) node[gamma q pos] {$\vec v$};
+      \draw (0,1.5) node[align=center] {$p$ #1\\$q$ #2};
+}{\end{tikzpicture}\end{center}}
+
+\begin{enumerate}
+\item Point à allure normale:
+  \begin{myfig}{impair}{pair}
+    \draw[Curve] (2,0.5) .. controls +(-1,-0.5) and +(0.5,0) .. (0,0) .. controls +(-1,0) and +(0,0) .. (-1,1);
+    \draw[Curve name] (2,0.5) node[above] {$Γ$};
+  \end{myfig}
+
+\item Point d'inflexion:
+  \begin{myfig}{impair}{impair}
+    \draw[Curve] (2,0.5) .. controls +(-1,-0.5) and +(0.5,0) .. (0,0) .. controls +(-1,0) and +(60:0.1) .. (-1,-0.5);
+    \draw[Curve name] (2,0.5) node[above] {$Γ$};
+  \end{myfig}
+
+  \pagebreak[3]
+\item Point de rebroussement de première espèce:
+  \begingroup
+  \tikzset{gamma p pos/.style = {below left=1ex}}
+  \begin{myfig}{pair}{impair}
+    \draw[Curve] (2,0.5) .. controls +(-1,-0.5) and +(0.5,0) .. (0,0) .. controls +(1,0) and +(-0.5,0.5) .. (2,-0.75);
+    \draw[Curve name] (2,0.5) node[above] {$Γ$};
+  \end{myfig}
+  \endgroup
+
+\item Point de rebroussement de seconde espèce:
+  \begin{myfig}{pair}{pair}
+    \draw[Curve] (2,0.5) .. controls +(-1,-0.5) and +(0.5,0) .. (0,0) .. controls +(1,0) and +(0,0) .. (2,1);
+    \draw[Curve name] (2,1) node[above] {$Γ$};
+  \end{myfig}
+\end{enumerate}
+
+
+% -----------------------------------------------------------------------------
+\section{Branches infinies}
+
+\Para{Définition}
+Soit $\gammaI{\EE}$ un arc paramétré.
+On dit que $γ$ admet une \emph{branche infinie} lorsque $t$ tend vers $t_0$ £ssi.
+\[ \Norm{γ(t)} \To{t\to t_0} +∞. \]
+
+\Para{Définition}
+Soit $\gammaI{\EE}$ un arc paramétré admettant une \emph{branche infinie} lorsque $t$ tend vers $t_0$ £ssi.
+On dit que $γ$ admet une \emph{direction asymptotique}
+lorsque $t$ tend vers $t_0$ £ssi. la limite
+\[ \vec u = \lim_{t \to t_0} \frac{γ(t)}{\Norm{γ(t)}} \]
+existe.
+On dit que $\vec u$ est la \emph{direction asymptotique} de $γ$ lorsque $t$ tend vers $t_0$.
+
+\Para{Définition}[asymtote et branche parabolique]
+Avec les mêmes notations, supposons que $γ$ admette $\vec u$ comme direction asymptotique lorsque $t$ tend vers $t_0$.
+Soit $\vec v$ un vecteur tel que $\B=(\vec u, \vec v)$ soit libre.
+Notons $\bigPa{X(t), Y(t)}$ les coordonnées de $γ(t)$ dans la base $\B$.
+
+\begin{itemize}
+\item Si \[ \left\{ \begin{array}{l} X(t) \To{t\to t_0} ±∞\\ Y(t) \To{t\to t_0} b∈ℝ, \end{array} \right. \]
+  on dit que la droite d'équation $Y=b$ est \emph{asymptote} à $γ$ lorsque $t$ tend vers $t_0$.
+\item Dans le cas contraire, on dit que $γ$ admet une \emph{branche parabolique} de direction $\vec u$ lorsque $t$ tend vers $t_0$.
+\end{itemize}
+
+\Para{Remarque}
+Ceci est indépendant du choix du vecteur $\vec v$ non colinéaire à $\vec u$.
+
+% -----------------------------------------------------------------------------
+\section{Changement de paramétrage}
+
+Cette partie n'est pas clairement au programme.
+
+\Para{Définition}
+Soit $\Fn{ϕ}{I}{J}$ une application où $I$ et $J$ sont
+des intervalles de $ℝ$.
+On dit que $ϕ$ est un \emph{$\CC k$-difféomorphisme} ($k ≥1$)
+lorsque les conditions suivantes sont vérifiées:
+\begin{enumerate}
+\item $ϕ$ est bijective;
+\item $ϕ$ est de classe $\CC k$ sur~$I$;
+\item $ϕ^{-1}$ est de classe $\CC k$ sur~$J$.
+\end{enumerate}
+
+\Para{Théorème}[caractérisation des difféomorphismes]
+Soit $\Fn{ϕ}{I}{J}$ une application où $I$ et $J$ sont
+des intervalles de $ℝ$.
+Alors $ϕ$ est un $\CC k$-difféomorphisme ($k ≥1$) \ssi:
+\begin{enumerate}
+\item $ϕ$ est surjective;
+\item $ϕ$ est de classe $\CC k$ sur $I$;
+\item $∀t ∈I \+ ϕ'(t) ≠0$.
+\end{enumerate}
+
+\Para{Définition}
+Soit $\gammaIE$ un arc paramétré de classe $\CC k$, $k ≥1$.
+On appelle \emph{changement de paramétrage} (de classe $\CC k$) de $γ$ tout $\CC k$-difféomorphisme $\Fn{ϕ}{J}{I}$ où $J$ est un intervalle de $I$.
+
+\Para{Définition}
+On dit que deux arcs paramétrés $\gammaIE$ et $\deltaJE$ de classe $\CC k$ ($k ≥1$) sont \emph{équivalents} £ssil. existe un changement de paramétrage (de classe $\CC k$) $ϕ$ de $γ$ tel que $δ=γ◦ϕ$.
+
+\Para{Exemple}
+Soit $\EE = ℝ^2$. On définit les arcs $γ$ et $δ$ par
+\[ \Fonction{γ} {ℝ} {ℝ^2} {t} {\Pa{\frac{1-t^2}{1+t^2},\frac{2t}{1+t^2}},} \]
+\[ \Fonction{δ} {\intO{-π,π}} {ℝ^2} {θ} {\pa{\cosθ,\sinθ}.} \]
+Alors les arcs $γ$ et $δ$ sont équivalents via le changement de paramétrage $t = \tan(θ/2)$.
+
+\Para{Proposition}
+Il s'agit d'une relation d'équivalence, \cad
+\begin{itemize}
+\item tout arc paramétré est équivalent à lui-même;
+\item si $γ$ est équivalent à $δ$, alors $δ$ est équivalent à $γ$;
+\item deux arcs paramétrés équivalents à un même troisième sont équivalents.
+\end{itemize}
+
+\Para{Définition}
+Soit $\gammaIE$ un arc paramétré de classe $\CC k$, $k ≥1$.
+On appelle \emph{paramétrage admissible} de $γ$ toute arc paramétré $\deltaJE$ équivalent à $γ$.
+
+\Para{Définition}
+Soit $\gammaIE$ et $\deltaJE$ deux arcs paramétrés équivalents et $\Fn{ϕ}{J}{I}$ un difféomorphisme tel que $δ=γ◦ϕ$.
+Comme $ϕ$ est une application injective entre deux intervalles de $ℝ$, elle est soit strictement croissante, soit strictement décroissante.
+\begin{itemize}
+\item Si $ϕ$ est croissante, on dit que $γ$ et $δ$ sont \emph{orientés dans le même sens}.
+\item Si $ϕ$ est décroissante, on dit que $γ$ et $δ$ sont \emph{orientés dans le sens contraire}.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\subsection{Longueur d'une courbe paramétrée}
+
+\Para{Définition}
+Soit $\Fn{γ}{\intF{a,b}}{\EE}$ un arc paramétré régulier.
+La \emph{longueur} de $γ$ est par définition
+\[ L = ∫_a^b \Norm{γ'(t)} \D t. \]
+Si $\B$ est une £bon. de $\EE$ et si
+\[ \Coords_\B γ(t) = \bigPa{ x(t), y(t) }, \]
+alors
+\[ L = ∫_a^b √{x'(t)^2 + y'(t)^2} \D t. \]
+
+% -----------------------------------------------------------------------------
+\section{Exercices}
+
+\subsection{Études de courbes paramétrées}
+
+\Exercice
+Tracer les courbes suivantes.
+On fera l'étude la plus complète possible des courbes suivantes:
+les points réguliers, doubles, les asymptotes, les points d'inflexion;
+et pour les plus motivés: la courbure, la longueur de la courbe, l'aire des boucles, etc.
+\begin{enumerate}
+\item Astroïde:
+  $\AccoDeux{x = a\cos^3(t)}{y=a\sin^3(t)}$
+\item Strophoïde droite:
+  $\AccoDeux{x = \frac{1-t^2}{1+t^2}}{y = t\frac{1-t^2}{1+t^2}}$
+\item Lemniscate de Benoulli:
+  $\AccoDeux{x = \frac{t}{1+t^4}}{y = \frac{t^3}{1+t^4}}$
+\item Folium De Descartes:
+  $\AccoDeux{x = \frac{t}{1+t^3}}{y = \frac{t^2}{1+t^3}}$
+\item Deltoïde:
+  $\AccoDeux{x=2\cos t+\cos2t}{y=2\sin t-\sin2t}$
+\item Cœur de Rémi:
+  $\AccoDeux{x=\sin^3 t}{y=\cos t - \cos^4 t}$
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\subsection{Autres exercices}
+
+\Exercice
+Soit $\mathscr{P}$ la parabole d'équation $y^2 = 2px$.
+Trouver la longueur minimale d'une corde de $\mathscr{P}$ normale à $\mathscr{P}$ en l'une de ses extrémités.
+
+\Exercice
+Reconnaître la transformation
+\[ \left\{ \begin{alignedat}{5}
+  x' &{}={}&  3x &{}+{}& 4y &{}+{}& 2z &{}-{}& 4 \\
+  y' &{}={}& -2x &{}-{}& 3y &{}-{}& 2z &{}+{}& 4 \\
+  z' &{}={}&  4x &{}+{}& 8y &{}+{}& 5z &{}-{}& 8
+\end{alignedat} \right. \]
+
+
+\Exercice
+Montrer que les droites
+\[ \mathcal{D}  \AccoDeux{x = 2z + 1}{y = z - 1}
+\qquad \text{et} \qquad
+\mathcal{D}' \AccoDeux{x = z + 2}{y = 3z - 3} \]
+sont coplanaires, et déterminer leur plan.
+
+
+\Exercice
+Soit $\Fn{f}{ℝ^2}{ℝ^2}$ une fonction telle que pour tous points $A$ et $B$ du plan $ℝ^2$,
+la famille $(\Vec{AB}, \Vec{f(A)f(B)})$ soit liée.
+
+Montrer que $f$ est soit une homothétie, soit une translation, soit une application constante.
+
+\Exercice
+Soit $A$, $B$, $C$ et $D$ quatre points de l'espace, et $λ$, $μ$ deux réels.
+On définit les points $M$, $N$, $P$ et $Q$ par les relations:
+$\Vec{AM} = λ\Vec{AB}$,
+$\Vec{DN} = λ\Vec{DC}$,
+$\Vec{AP} = μ\Vec{AD}$ et
+$\Vec{BQ} = μ\Vec{BC}$.
+Montrer que les droites $(MN)$ et $(PQ)$ sont coplanaires.
+
+
+\Exercice[distance d'un point à une droite]
+Soit $\mathcal{D}$ la droite du plan d'équation $ax+by+c=0$ et $M_0$ le point de coordonnées $(x_0,y_0)$.
+Montrer que la distance de $M_0$ à $\mathcal{D}$ est donnée par
+\[ d(M_0,\mathcal{D}) = \frac{\Abs{ax_0+by_0+c}}{√{a^2+b^2}}. \]
+
+Même question dans l'espace avec le plan $\mathcal{P}$ d'équation $ax+by+cz+d = 0$
+et le point $M_0(x_0,y_0,z_0)$.
+
+
+\Exercice
+Soit $\mathcal{D}$ et $\mathcal{D}'$ deux droites de l'espace non parallèles.
+Montrer qu'il existe une unique droite $Δ$ qui soit perpendiculaire $\mathcal{D}$ et à $\mathcal{D}'$;
+$Δ$ s'appelle la \emph{perpendiculaire commune} à $\mathcal{D}$ et $\mathcal{D}'$.
+
+La calculer pour $\mathcal{D}  \AccoDeux{x=a}{y=b}$ et $\mathcal{D}' \AccoDeux{x+cy+z=0}{cx-y+z=0}$.
+
+
+\Exercice
+Former un système d'équations cartésiennes de la symétrique $\mathcal{D}'$
+de la droite $\mathcal{D} \AccoDeux{x = 3z+1}{y = -z+2}$
+par rapport à la droite $Δ\AccoDeux{x = y}{y = z}$
+
+
+\Exercice
+Déterminer l'image du cercle unité de $ℂ$ par l'application $f$ définie par $f(z) = 1/(1-z)^2$.
+
+\end{document}

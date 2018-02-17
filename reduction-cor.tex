@@ -1,0 +1,398 @@
+\documentclass{yann}
+
+\newcommand\Exo[1]{\paragraph{Exercice #1}}
+\newcommand\ImplD{$\Cro\Rightarrow$}
+\newcommand\ImplR{$\Cro\Leftarrow$}
+
+\begin{document}
+\title{Réduction: corrigés}
+\maketitle
+
+% ------------------------------------------------------------------------------
+\Exo{5}
+
+\begin{enumerate}
+\item
+  Posons $t = 2\cosθ$.
+  On développe $D_5$ par rapport à la première ligne
+  \[ D_5 = \Det{t,1,0,0,0; 1,t,1,0,0; 0,1,t,1,0; 0,0,1,t,1; 0,0,0,1,t }
+  = t D_4 - \Det{1,1,0,0; 0,t,1,0; 0,1,t,1; 0,0,1,t } \]
+  d'où en développant par rapport à la première colonne $D_5 = tD_4 - D_3$.
+  De même, on trouve
+  \[ ∀n≥1 \+ D_{n+2} = tD_{n+1} - D_n. \]
+  L'équation caractéristique de cette récurrence linéaire est
+  \[ r^2 - 2\cos(θ)r+1 = 0 \]
+  dont les racines sont $e^{iθ}$ et $e^{-iθ}$.
+
+  Supposons $θ≠0 \pmod{π}$, de sorte que l'on a deux racines distinctes complexes conjuguées.
+  D'après le cours, $∃!(A,B)∈ℝ^2$,
+  \[ ∀n≥1 \+ D_n = A \cos(nθ) + B \sin(nθ). \]
+  Or $D_1 = 2\cosθ$ et $D_2 = 4\cos^2θ - 1$, d'où
+  \[ \left\{ \begin{alignedat}{3}
+    A\cos(θ)  &{}+{}& B\sin(θ)  &{}= 2\cos(θ)     &\qquad& L_1 \\
+    A\cos(2θ) &{}+{}& B\sin(2θ) &{}= 4\cos^2(θ)-1 && L_2
+  \end{alignedat} \right. \]
+  En écrivant $\sin(2θ)L_1- \sin(θ)L_2$,
+  il vient $A\cro{\sin(2θ)\cosθ-\sin(θ)\cos(2θ)} = 2\sin(2θ)\cos(θ) - \sin(θ)(4\cos^2θ-1)$,
+  soit $A\sinθ = 4\sinθ \cos^2θ - \sinθ \pa{4\cos^2θ-1} = \sinθ$,
+  d'où $A=1$ car $\sinθ≠0$.
+  On remplace dans $L_1$, d'où $B = \frac{\cosθ}{\sinθ}$.
+  Ainsi, $D_n = \frac{1}{\sinθ} \pa{ \sinθ \cos(nθ) + \cosθ \sin(nθ)}$
+  et finalement
+  \[ ∀n≥1 \+ D_n(θ) = \frac{\sin((n+1)θ)}{\sinθ}. \]
+  Reste à traiter le cas $θ=0\pmodπ$.
+  $D_n$ est continue (c'est un polynôme en $\cosθ$) et $2π$-périodique.
+  \begin{enumerate}
+  \item
+    Si $θ = 0 \pmod{2π}$,
+    alors $D_n(θ) = \lim\limits_{ε\to0^+}D_n(ε)$,
+    \[ D_n(θ) = \lim_{ε\to0^+} \frac{\sin((n+1)ε)}{\sinε} = n+1 \]
+    car $\sin(kε) \sim ε$ quand $ε\to0$.
+  \item
+    Si $θ = π \pmod{2π}$,
+    alors $D_n(θ) = \lim\limits_{ε\to0^+} D_n(π+ε)$
+    \begin{align*}
+      D_n(θ) &= \lim_{ε\to0^+} \frac{\sin((n+1)π + (n+1)ε)}{\sin(π+ε)} \\
+      &= (-1)^n (n+1)
+    \end{align*}
+    car $\sin(kπ+x) = (-1)^k \sin x$.
+  \end{enumerate}
+
+\item
+  Posons, pour $k ∈ \ccro{1,n}$,
+  \[ λ_k = -2 \cos\Pafrac{kπ}{n+1}. \]
+  Comme $0 < \frac{kπ}{n+1} < π$, on a d'après la question 1,
+  \begin{align*}
+    χ_A(λ_k) &= \det(λ_k I_n - A) \\
+    &= (-1)^n \det\Pa{A + 2\cos\BigPa{\frac{kπ}{n+1}}} \\
+    &= (-1)^n \frac{\sin(kπ)}{\sin\bigPa{\frac{kπ}{n+1}}} \\
+    &= 0.
+  \end{align*}
+  Donc $λ_k$ est une valeur propre de $A$.
+  De plus, la fonction cosinus étant strictement décroissante sur $\intF{0,π}$, on a:
+  \[ -2 < λ_1 < λ_2 < \dots < λ_n < 2. \]
+  Ainsi, la matrice $A$ admet $n$ valeurs propres distinctes, donc elle est diagonalisable
+  et $\Sp A = \acco{λ_1, \dots, λ_n}$,
+  $χ_A = ∏_{k=1}^n (X - λ_k)$.
+\end{enumerate}
+
+% ------------------------------------------------------------------------------
+\Exo{6}
+
+\begin{enumerate}
+\item
+  $χ_A$ est un polynôme unitaire, de degré~$3$ et l'ensemble de ses racines est $\acco{1,-2,2}$
+  donc $χ_A= (X-1)(X+2)(X-2)$.
+
+\item
+  La division euclidienne de $X^n$ par $χ_A$ s'écrit
+  \[ \tag{\star} X^n = Q_n(X) χ_A(X) + P_n(X) \]
+  où $\deg P_n < 3$.
+  Notons $P_n(X) = α_n X^2 + β_n X + γ_n$.
+  En évaluant (\star) en $A$, il vient $A^n = Q_n(A) χ_A(A) + P_n(A)$.
+  Or $χ_A(A) = 0$ d'après Cayley-Hamilton, d'où
+  \[ A^n = P_n(A) = α_n A^2 + β_n A + γ_n I_3. \]
+
+\item
+  En évaluant (\star) en $λ∈\acco{1,-2,2}$, il vient
+  $P_n(λ) = λ^n$ car $χ_A(λ) = 0$.
+
+\item
+  La question précédente donne le système
+  \[ \left\{ \begin{alignedat}{3}
+    α_n &{}+{}&  β_n &{}+{}& γ_n &= 1 \\
+    4α_n &{}+{}& 2β_n &{}+{}& γ_n &= 2^n \\
+    4α_n &{}-{}& 2β_n &{}+{}& γ_n &= (-2)^n
+  \end{alignedat} \right. \]
+  Ce système a une unique solution (Vandermonde);
+  un calcul donne
+  $α_n = \frac{1}{12} \pa{ -4 + 3⋅2^n + (-2)^n }$,
+  $β_n = \frac{1}{4}  \pa{ 2 - (-2)^n }$,
+  $γ_n = \frac{1}{6}  \pa{ 8 - 3⋅2^n + (-2)^n }$.
+  On peut simplifier un peu ces expressions en distinguant les cas $n$~pair / $n$~impair.
+\end{enumerate}
+
+% ------------------------------------------------------------------------------
+\Exo{9}
+
+\begin{enumerate}
+\item
+  On commence par réduire $A$: $A=PDP^{-1}$
+  où $D = \Diag(0,1,1)$ et $P = \smallMatrix{1,1,0; 2,1,1; 3,0,4}$.
+  D'autres choix sont possibles pour $P$.
+  Posons $Δ = \Diag(0,1,-1)$.
+  Alors $B = PΔP^{-1}$ convient car $B^2 = PΔ^2P^{-1} = A$
+  et $B = ±A \iff Δ = ±D$ ce qui n'est pas le cas.
+  Ici, $B = \smallMatrix{5,-4,1; 2,-1,0; -12,12,-4}$.
+
+\item
+  Notons $S_θ = \smallMatrix{\cosθ,\sinθ; \sinθ,-\cosθ}$.
+  Un calcul donne $S_θ = I_2$.
+  Pour les $5/2$: on reconnaît la réflexion d'axe $\smallMatrix{\cos(θ/2);\sin(θ/2)} ℝ$.
+  Notons $C_θ = P \smallMatrix{0,;,S_θ} P^{-1}$.
+  On a $C_θ^2 = A$, et de plus
+  \begin{align*}
+    C_θ = C_ϕ &\iff \Matrix{0,;,S_θ} = \Matrix{0,;,S_ϕ} \\ &\iff θ=ϕ \pmod{2π}.
+  \end{align*}
+  Donc la famille $(C_θ)_{θ∈\intFO{0,2π}}$ est une famille (infinie) de matrices deux à deux distinctes, de carré~$A$.
+\end{enumerate}
+
+% ------------------------------------------------------------------------------
+\Exo{11}
+
+\begin{enumerate}
+\item
+  On commence par diagonaliser $A$: $A=PDP^{-1}$
+  où $D = \Diag(-1,1,1)$ et $P = \smallMatrix{1,1,1; -1,1,0; 2,0,2}$.
+  D'où $A^n = P D^n P^{-1}$.
+  Or $D^n = \Diag((-1)^n,1,1)$, donc $D^n = I_3$ si $n$ est pair et $D^n = D$ si $n$ est impair.
+  Ainsi,
+  \[ A^n = \begin{cases}
+    I_3 & \text{si $n$ est pair;} \\
+    A & \text{si $n$ est impair.}
+  \end{cases} \]
+  \emph{Remarque:} on aurait également pu remarquer que $A^2 = I_3$ et en déduire le résultat immédiatement, sans besoin de diagonaliser $A$.
+
+\item
+  Par une récurrence triviale $U_n = A^n U_0$, d'où $U_n = U_0$ si $n$ est pair et $U_n = U_1$ si $n$ est impair.
+
+\item
+  Ici, on a vraiment besoin de la diagonalisation de $A$.
+  Posons $Y(t) = P^{-1} X(t) = \smallMatrix{u(t);v(t);w(t)}$.
+  On a $Y'(t) = P^{-1} X'(t)$, d'où
+  \begin{align*}
+    X'(t) = AX(t) &\iff P^{-1} X(t) = P^{-1} A X(t) \\
+    &\iff Y'(t) = P^{-1} A P Y(t) \\
+    &\iff Y'(t) = D Y(t) \\
+    &\iff \left\{ \begin{aligned}
+      u'(t) &= -u(t) \\
+      v'(t) &= v(t) \\
+      w'(t) &= w(t)
+    \end{aligned} \right. \\
+    &\iff ∃(a,b,c)∈ℝ^3 \+ \left\{ \begin{aligned}
+      u(t) &= a e^{-t} \\
+      v(t) &= be^t \\
+      w(t) &= ce^t
+    \end{aligned} \right.
+  \end{align*}
+  La solution générale du système différentiel $X'=AX$ est donc $X(t) = PY(t)$
+  où $Y(t) = \smallMatrix{ae^{-t};be^t;ce^t}$,
+  d'où
+  \begin{align*}
+    X(t) &= \Matrix{ae^{-t}+be^t+ce^t;-ae^t+be^t;2ae^{-t}+2ce^t} \\
+    &= ae^{-t} \Matrix{1;-1;2} + be^t \Matrix{1;1;0} + ce^t \Matrix{1;0;2}
+  \end{align*}
+  Pour les $5/2$: cette dernière forme est donnée dans le chapitre \enquote{équations différentielles}.
+\end{enumerate}
+
+% ------------------------------------------------------------------------------
+\Exo{12}
+
+\begin{enumerate}
+\item
+  $χ_A = (X+1)^3$.
+  Notons $N = A+I_3$.
+  D'après Cayley-Hamilton, $χ_A(A) = 0$, £cad. $N^3 = 0$.
+  Pour $p≥2$, on a d'après le binôme de Newton ($N$ et $I_3$ commutent)
+  \begin{align*}
+    A^p
+    &= (N-I_3)^p = ∑_{k=0}^p \binom pk N^k (-I_3)^{p-k} \\
+    &= (-1)^p \BigCro{ I_3 - p N + \frac{p(p-1)}{2} N^2 }.
+  \end{align*}
+  Cette formule est encore valable pour $p = 0$ et $p = 1$.
+  Ainsi, on a pour tout $p≥0$,
+  \[ A^p = \frac{(-1)^p}{2} \Matrix{
+    2,-2ap,2ap ;
+    -2p,2+ap(p-1),-ap(p-1) ;
+    -2p,ap(p-1),2-ap(p-1)
+  }. \]
+
+\item
+  $χ_B = X(X-1)(X-3)$ donc $B$ est diagonalisable:
+  $B = PDP^{-1}$ où $D = \Diag(0,1,3)$ et $P = \smallMatrix{1,1,1; -1,2,2; 0,-2,0}$.
+  Pour tout $p≥1$, $D^p = \Diag(0,1,3^p)$ (c'est faux pour $p=0$).
+  On calcule $P^{-1} = \frac16 \smallMatrix{4,-2,0; 0,0,-3; 2,2,3}$,
+  d'où pour tout $p≥1$,
+  \[ B^p = \frac16 \Matrix{ 2⋅3^p,2⋅3^p,3(3^p-1); 4⋅3^p,4⋅3^p,6(3^p-1); 0,0,6 }. \]
+
+\item
+  On a nécessairement $a≠0$.
+  En notant $C_1$, $C_2$ et $C_3$ les colonnes de $C$, on a $aC_1-C_2 = 0$ et $aC_2-C_3=0$,
+  d'où $\Rang C = 1$ (car $C≠0$) et $\Ker C = \Vect\Cro{ \smallMatrix{a;-1;0}, \smallMatrix{0;a;-1} }$.
+  $0$~est valeur propre de multiplicité au moins~$2$;
+  vu que $\Tr C = 3$, la dernière valeur propre est~$3$ et $χ_C= X^2(X-3)$
+  donc $C$ est diagonalisable car $\dim E_0 = m_0$.
+  Un calcul donne $\Ker(C-I_3) = \Vect\Cro{\smallMatrix{a^2;a;1}}$.
+  Ainsi $C = QEQ^{-1}$ où $E = \Diag(0,0,3)$ et $Q = \smallMatrix{a,0,a^2; -1,a,a; 0,-1,1}$.
+  \emph{Remarque:} le calcul de $Q$ n'est pas nécessaire.
+  Pour tout $p≥1$, on a $E^p = \Diag(0,0,3^p) = 3^{p-1} E$ (faux pour $p=0$),
+  d'où \[ ∀p≥1 \+ C^p = 3^{p-1} C. \]
+  \emph{Variante:} on remarque que $C^2 = 3C$ et on conclut avec une récurrence triviale.
+\end{enumerate}
+
+% ------------------------------------------------------------------------------
+\Exo{22}
+
+\begin{enumerate}
+\item
+  $u^2(M) = u(u(M)) = u(\frac23 M - \frac13 \T M)
+  = \frac23 \pa{ \frac23 M - \frac13 \T M } - \frac13 \T{\pa{ \frac23 M - \frac13 \T M}}
+  = \frac59 M - \frac49 \T M
+  = \frac43 \pa{ \frac23 M - \frac13 \T M} - \frac13 M$
+  d'où $u^2 = \frac43 u - \frac13 \Id_E$.
+  Le polynôme $P = 3X^2-4X+1 = (X-1)(3X-1)$ annule $u$ et est scindé simple,
+  donc $u$ est diagonalisable et $\Sp u ⊂ \acco{1,\frac13}$.
+
+\item
+  Déterminons les espaces propres:
+  \[ u(M) = M \iff \frac23 M - \frac13 \T M = M \iff \T M = -M, \]
+  d'où $\Ker(u-\Id_E) = \M An𝕂$ de dimension $\frac{n(n-1)}{2}$.
+  De même, \[ u(M) = \frac13 M \iff \T M = M, \]
+  d'où $\Ker(u-\frac13 \Id_E) = \M Sn𝕂$ de dimension $\frac{n(n+1)}{2}$.
+  Ainsi,
+  \begin{align*}
+    \Tr(u) &= ∑_{λ∈\Sp u} m_λ λ = m_1 + \frac13 m_{\frac13} = \frac{n(2n-1)}{3} \\
+    \det(u) &= ∏_{λ∈\Sp u} λ^{m_λ} = 1^{m_1} ⋅ \Pafrac13^{m_{\frac13}} = 3^{-\frac{n(n+1)}{2}}
+  \end{align*}
+\end{enumerate}
+
+% ------------------------------------------------------------------------------
+\Exo{23}
+
+\begin{enumerate}
+\item
+  $v^2 = \Id_E$ donc $X^2-1 = (X+1)(X-1)$ est annulateur de~$v$ et scindé simple,
+  donc $v$ est diagonalisable et $\Sp v ⊂ \acco{-1,1}$.
+
+\item
+  Déterminons les espaces propres:
+  on a immédiatement $\Ker(v-\Id_E) = \M Sn𝕂$ et $\Ker(v+\Id_E) = \M An𝕂$.
+  Dans une base $\B$ adaptée à la somme directe $E = \M Sn𝕂 ⊕ \M An𝕂$,
+  la matrice de $v$ est donc $\Diag(1, \dots, 1, -1, \dots, -1)$.
+
+\item
+  $P = -\frac13 X + \frac23$ convient.
+
+\item On a
+  \begin{align*}
+    \Mat_\B(u) &= \Mat_\B (P(v)) = P(\Mat_\B v) \\
+    &= \Diag(P(1), \dots, P(1), P(-1), \dots, P(-1)) \\
+    &= \Diag\BigPa{\underbrace{\frac13, \dots, \frac13}_{\text{$p$ fois}}, \underbrace{\vphantom{\frac13}1, \dots, 1}_{\text{$q$ fois}}}
+  \end{align*}
+  où $p = \dim \M Sn𝕂 = \frac{n(n+1)}{2}$ et $q = \dim \M An𝕂 = \frac{n(n-1)}{2}$.
+  On retrouve bien
+  \begin{align*}
+    \Tr(u)  &= \frac13 \frac{n(n+1)}{2} + 1 \frac{n(n-1)}{2} = \frac{n(2n-1)}{3} \\
+    \det(u) &= \BigPa{\frac13}^{\frac{n(n+1)}{2}} ⋅ 1^{\frac{n(n-1)}{2}} = 3^{-\frac{n(n+1)}{2}}
+  \end{align*}
+\end{enumerate}
+
+
+% ------------------------------------------------------------------------------
+\Exo{32}
+
+\begin{enumerate}
+\item
+  On suppose $u$ diagonalisable.
+  Il existe donc une base $\B$ telle que $D = \Mat_\B(u)$ soit diagonale.
+  Alors $\Mat_\B(u^2) = D^2$ est encore diagonale, donc $u^2$ est diagonalisable.
+
+\item
+  \begin{enumerate}
+  \item
+    Comme $u^2$ est diagonalisable, il existe un polynôme annulateur de $u^2$ scindé simple.
+    D'après le cours, on peu prendre $P = ∏_{λ∈\Sp(u^2)} (X-λ)$.
+    De plus, $u$ étant inversible, $u^2$ l'est aussi donc $0∉\Sp(u^2)$, d'où le résultat.
+
+  \item
+    Pour $i∈\ccro{1,d}$, on choisit $β_i∈ℂ$ tel que $β_i^2=α_i$;
+    cela est possible car on sait que $z \mapsto z^2$ est surjective sur $ℂ$.
+    Alors \[ Q(X) = ∏_{i=1}^d (X-β_i) ∏_{i=1}^d (X+β_i). \]
+    Les racines de $Q$ sont $β_1,\dots,β_d,-β_1,\dots,-β_d$.
+    Montrons qu'elles sont deux à deux distinctes:
+    \begin{itemize}
+    \item
+      Si $β_i=β_j$, alors $β_i^2=β_j^2$ £cad. $α_i=α_j$ d'où $i=j$.
+    \item
+      Si $-β_i=-β_j$, alors de même $i=j$.
+    \item
+      Si $β_i=-β_j$, alors $β_i^2=β_j^2$ d'où $i=j$.
+      Ainsi, $β_i=-β_i$ d'où $β_i=0$ puis $α_i=0$: c'est impossible.
+    \end{itemize}
+    Bref, les $2d$ racines sont bien deux à deux distinctes.
+
+  \item
+    $Q(u) = (u^2 - α_1\Id_E) ◦ (u^2 - α_2\Id_E) ◦ \dots ◦ (u^2 - α_d\Id_E)
+    = P(u^2) = 0$ car $P$ annule $u^2$.
+    Ainsi, $u$ admet un polynôme annulateur scindé simple donc $u$ est diagonalisable.
+  \end{enumerate}
+
+\item
+  Par exemple, si $\dim E = 2$ et $\B$ une base de $E$,
+  on prend $u$ tel que $\Mat_\B(u) = \smallMatrix{0,1;0,0}$.
+  Alors $\Mat_\B(u^2) = 0$ donc $u^2$ est diagonalisable,
+  mais $u$ n'est pas diagonalisable car $u$ est nilpotent et non nul.
+\end{enumerate}
+
+% ------------------------------------------------------------------------------
+\Exo{34}
+
+\begin{description}
+\item[\ImplD]
+  $A$ est de rang~$1$, donc $\dim \Ker A = n-1$.
+  Comme $A$ est diagonalisable, la multiplicité de la valeur propre~$0$ est exactement $n-1$.
+  Ainsi, il existe $P∈\GLnK$ et $D = \Diag(0, \dots, 0, λ)$ avec $λ≠0$ telles que $A=PDP^{-1}$.
+  D'où $\Tr A = \Tr D = λ ≠ 0$.
+
+\item[\ImplR]
+  Soit $E$ un £Kev. de dimension~$n$ et $\B$ une base de $E$.
+  On pose $u∈\LE$ tel que $\Mat_\B(u) = A$.
+  Le théorème du rang affirme que $\Ker u$ est de dimension $n-1$.
+  Soit $\nUplet e1{n-1}$ une base de $\Ker u$, que l'on complète en une base $\B' = \nUplet e1n$ de $E$.
+  La matrice de $u$ dans la base $\B'$ est de la forme
+  \[ B = \Mat_{\B'}(u)
+  = \Matrix{ 0, \cdots, 0, α_1 ;
+    \vdots, \raisebox{0.5ex}{\mbox{(0)}}, \vdots, \vdots ;
+    0, \cdots, 0, α_n }. \]
+  Or $α_n = \Tr B = \Tr A ≠ 0$ et $χ_u = χ_B = X^{n-1} (X-α_n)$
+  donc $χ_u$ est scindé et $∀λ∈\Sp u$, $m_λ = \dim E_λ$ car $m_0 = n-1 = \dim \Ker u$.
+  Donc $u$ est diagonalisable, donc $A$ est diagonalisable.
+
+\item[\ImplR] Autre preuve: $\Rang A = 1$, donc $\Ima A = \Vect(C)$
+  où $C$ est un vecteur colonne non nul.
+  Notons $A_1, \dots, A_n$ les colonnes de $A$.
+  Comme $A_i = A E_i$ où $E_i = \T{\bigPa{0,\dots,0,1,0,\dots,0}}$, on a $A_i ∈ \Ima A$,
+  donc il existe $x_i∈𝕂$ tel que $A_i = x_i C$.
+  Posons $L = \bigPa{x_1, \dots, x_n}$; c'est une matrice ligne et on vérifie facilement que $A=CL$.
+  Notons $C = \bigPa{y_1, \dots, y_n}^T$.
+  En identifiant $\M{M}{1}{𝕂}$ à $𝕂$, on a $λ = LC = ∑_{i=1}^n x_i y_i = \Tr A$,
+  car $A = \bigPa{ y_i x_j }_{1≤i,j≤n}$.
+  D'où \[ A^2 = CLCL = C \underbrace{(LC)}_{\text{scalaire}=λ} L = λ A. \]
+  La matrice $A$ est annulée par le polynôme $X^2-λX$ qui est scindé simple car $λ=\Tr A≠0$,
+  donc $A$ est diagonalisable.
+
+\end{description}
+
+% ------------------------------------------------------------------------------
+\Exo{35}
+
+Supposons $B$ diagonalisable; il existe alors un polynôme $P∈𝕂[X]$ scindé simple annulateur de $B$.
+Notons $P = ∑_{k=0}^d α_k X^k$.
+Or $B^2 = 0$, donc
+\[ 0 = P(B) = α_1 B + α_0 I_{2n} = \Matrix{ α_0 I_n, α_1 A; 0, α_0 I_n } \]
+d'où $α_0 = 0$ et $α_1 = 0$ car $A≠0$.
+Ainsi $X^2$ divise $P$: $P$ n'est pas à racines simples, ce qui est absurde.
+Bref, $B$ n'est pas diagonalisable.
+
+% ------------------------------------------------------------------------------
+\Exo{40}
+
+Le polynôme $X^3+X^2+X = X(X^2+X+1) = X(X-j)(X-\bar\jmath)$ annule $A$,
+donc, en tant que matrice de $\MnC$, $A$ est diagonalisable et $\Sp_ℂ A ⊂ \acco{0,j,\bar\jmath}$.
+Ainsi, $χ_A = X^{m_0} (X-j)^{m_j} (X-\bar\jmath)^{m_{\bar\jmath}}$ et $m_0 = \dim \Ker A$,
+donc $\Rang A = n - \dim \Ker A = n - m_0 = m_j + m_{\bar\jmath}$.
+Or $A∈\MnR$ donc $χ_A ∈ ℝ[X]$, de sorte que les racines conjuguées $j$ et $\bar\jmath$ ont même multiplicité:
+$m_j = m_{\bar\jmath}$.
+Bref, $\Rang A = 2 m_j$ est bien pair.
+
+\end{document}

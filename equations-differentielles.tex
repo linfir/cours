@@ -1,0 +1,1049 @@
+\documentclass{yann}
+
+\newcommand{\me}{e}
+\newcommand{\eq}[1]{\mathrm{(#1)}}
+\newcommand{\mtag}[1]{\tag{$\mathrm{#1}$}}
+\newcommand{\solI}[1]{\mathcal{S}_I(#1)}
+\newcommand{\solJ}[1]{\mathcal{S}_J(#1)}
+\newcommand{\VnK}{\mathrm{M}_{n,1}(𝕂)}
+
+\begin{document}
+\title{Équations différentielles}
+\maketitle
+
+Ce chapitre reprend rapidement et étend l'étude des équations différentielles linéaires vues en première année.
+
+\Para{Notations}
+
+Dans ce chapitre,
+\begin{itemize}
+\item $𝕂$ désigne le corps $ℝ$ ou $ℂ$,
+\item $I$ désigne un intervalle (non vide et non réduit à un point) de $ℝ$,
+\item $J$ désigne un intervalle (non vide et non réduit à un point) \emph{inclus dans $I$},
+\item toutes les fonctions qui interviennent sont (au moins) continues,
+\item $t∈I$ est la variable par rapport à laquelle on dérive,
+\item dans le cas scalaire, la fonction inconnue est $x \colon t \mapsto x(t)∈𝕂$,
+\item dans le cas vectoriel,
+  \begin{itemize}
+  \item on identifie $\VnK$ et $𝕂^n$,
+  \item la fonction inconnue est $X \colon t \mapsto X(t)∈𝕂^n$.
+  \end{itemize}
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\section{Équations différentielles linéaires scalaires du premier ordre}
+
+\subsection{Généralités}
+
+\Para{Définitions}
+
+Une \emph{équation différentielle linéaire scalaire du premier ordre}
+est une équation de la forme
+\[\mtag{E} a(t) x'(t) + b(t) x(t) = c(t),\]
+où $a$, $b$ et $c$ sont des fonctions \emph{continues} de $I$ dans $𝕂$,
+et $x$ une fonction inconnue de $I$ dans $𝕂$.
+
+Une \emph{solution sur $J⊂I$} de cette équation est une fonction $f$ de $J$ dans $𝕂$,
+dérivable en tout point de $J$, telle que pour tout $t∈J$, on ait
+\[a(t) f'(t) + b(t) f(t) = c(t).\]
+On note $\solJ{E}$ l'ensemble des solutions de $\eq{E}$ sur $J$.
+
+\emph{Résoudre} $\eq{E}$, c'est déterminer $\solJ{E}$
+pour tout intervalle $J⊂I$.
+
+\Para{Définition}
+
+Avec les mêmes notations, dans le cas $𝕂=ℝ$, on considère l'équation différentielle
+\[\mtag{E} a(t) x'(t) + b(t) x(t) = c(t).\]
+Les courbes représentatrices des solutions de $\eq{E}$ s'appellent \emph{courbes intégrales} de $\eq{E}$.
+
+\Para{Définitions}
+
+On considère l'équation différentielle
+
+\[\mtag{E} a(t) x'(t) + b(t) x(t) = c(t).\]
+\begin{itemize}
+\item $\eq{E}$ est dite \emph{à coefficients constants}
+  si et seulement si les fonctions $a$ et $b$ sont constantes.
+\item $\eq{E}$ est dite \emph{normalisée} ou \emph{résolue en $x'$}
+  si et seulement si \[∀t∈I\+ a(t) = 1.\]
+\item $\eq{E}$ est dite \emph{homogène} ou \emph{sans second membre}
+  si et seulement si \[∀t∈I\+ c(t) = 0.\]
+\item On appelle \emph{équation différentielle homogène associée} à $\eq{E}$
+  ou \emph{équation différentielle sans second membre associée} à $\eq{E}$
+  l'équation différentielle
+  \[\mtag{E_0} a(t) x'(t) + b(t) x(t) = 0.\]
+\end{itemize}
+
+\Para{Définition}
+
+Un \emph{problème de Cauchy} du premier ordre
+est la donnée d'une équation différentielle du premier ordre
+normalisée et d'une condition initiale.
+
+Un problème de Cauchy linéaire du premier ordre est donc de la forme
+\[\mtag{C} \begin{cases}
+  ∀t∈I\+ x'(t) + b(t)x(t) = c(t), \\
+  x(t_0) = x_0 \text{ où } t_0∈I \text{ et } x_0∈𝕂.
+\end{cases}\]
+
+\subsection{Étude théorique}
+
+\Para{Remarque}
+
+Étant donné l'équation différentielle linéaire scalaire du premier ordre
+\[\mtag{E} a(t) x'(t) + b(t) x(t) = c(t),\]
+on peut se ramener à une équation normalisée:
+\begin{enumerate}
+\item si $a$ ne s'annule pas sur $I$, il suffit de diviser par $a(t)$;
+\item par contre, si $a$ s'annule, on découpe $I$ en intervalles
+  où $a$ ne s'annule pas, puis on fait une étude sur chaque intervalle.
+  À la fin, on cherche à \og{}raccorder\fg{} les solutions.
+\end{enumerate}
+
+\Para{Proposition}
+
+Soit $f$ une solution sur $J$ de l'équation différentielle normalisée
+\[\mtag{E} x'(t) + b(t) x(t) = c(t).\]
+Alors $f$ est de classe $\CC1$ sur $J$.
+
+De plus, si $b$ et $c$ sont de classe $\CC p$ sur $J$,
+alors $f$ est de classe $\CC{p+1}$ sur $J$;
+si $b$ et $c$ sont de classe $\CC∞$ sur $J$, alors $f$ l'est également.
+
+\Para{Théorème}[Cauchy-Lipschitz linéaire]
+
+Soit $\Fn bI𝕂$ et $\Fn cI𝕂$ deux fonctions \emph{continues}.
+Soit $t_0∈I$ et $x_0∈𝕂$.
+Alors le problème de Cauchy
+\[\mtag{C}
+\begin{cases}
+  ∀t∈I\+ x'(t) + b(t) x(t) = c(t), \\
+  x(t_0) = x_0
+\end{cases}\]
+admet une unique solution sur tout intervalle $J$
+tel que $t_0∈J$ et $J⊂I$.
+
+De plus, la solution sur $J$ n'est autre que la restriction à $J$
+de la solution sur $I$.
+
+\Para{Corollaire}
+
+Soit $\eq{E}$ une équation différentielle linéaire scalaire normalisée
+du premier ordre sur $I$
+\[\mtag{E} x'(t) + b(t)x(t) = c(t).\]
+Alors les courbes intégrales de $\eq{E}$ sont disjointes.
+Plus précisément, elles forment une partition de $I×ℝ$.
+
+\Para{Proposition}
+
+Soit $f$ une solution sur $J$ de l'équation différentielle linéaire scalaire
+normalisée homogène du premier ordre
+\[\mtag{E_0} x'(t) + b(t) x(t) = 0.\]
+Alors
+\begin{itemize}
+\item soit $f$ est identiquement nulle sur $J$,
+\item soit $f$ ne s'annule pas sur $J$.
+\end{itemize}
+
+\Para{Théorème}[de structure]
+
+On considère les équations différentielles linéaires scalaires
+normalisées du premier ordre
+\[\mtag{E}   x'(t) + b(t)x(t) = c(t)\]
+\[\mtag{E_0} x'(t) + b(t)x(t) = 0\]
+\begin{itemize}
+\item $\solJ{E_0}$ est un sous-espace vectoriel de $\CC1(I,𝕂)$ de dimension $1$.
+\item $\solJ{E}$ est un sous-espace \emph{affine} de $\CC1(I,𝕂)$ de dimension $1$ et de direction $\solJ{E_0}$.
+\end{itemize}
+
+\subsection{Résolution pratique}
+
+\subsubsection{Principe de superposition}
+
+\Para{Corollaire}
+
+Étant donné une équation linéaire $\eq{E}$,
+la solution générale de $\eq{E}$ est donnée
+par la somme de la solution générale de l'équation homogène $\eq{E_0}$
+et d'une solution particulière de $\eq{E}$.
+
+Plus précisément, soit $x_p$ une solution particulière de $\eq{E}$ sur $J$.
+Alors toute solution $x$ de $\eq{E}$ sur $J$ est de la forme
+\[x = x_0 + x_p,\]
+où $x_0$ est une solution de $\eq{E_0}$ sur $J$.
+
+\emph{Pour résoudre $\eq{E}$, il suffit donc de résoudre $\eq{E_0}$ et de trouver une solution particulière de $\eq{E}$.}
+
+\Para{Remarque}
+
+Si $\eq{E}$ est de la forme
+\[\mtag{E} a(t) x'(t) + b(t) x(t) = c_1(t) + c_2(t),\]
+pour trouver une solution particulière de $\eq{E}$, il suffit de
+\begin{itemize}
+\item trouver une solution particulière $x_{p,1}$ de
+  \[\mtag{E_1} a(t) x'(t) + b(t) x(t) = c_1(t),\]
+\item trouver une solution particulière $x_{p,2}$ de
+  \[\mtag{E_2} a(t) x'(t) + b(t) x(t) = c_2(t),\]
+\item poser $x_p = x_{p,1} + x_{p,2}$.
+\end{itemize}
+
+Dans ces conditions, $x_p$ est une solution particulière de $\eq{E}$.
+
+\subsubsection{Résolution de l'équation homogène}
+
+\Para{Proposition}
+
+On considère l'équation différentielle
+\[\mtag{E_0} x'(t) + a(t) x(t) = 0,\]
+où $\Fn aI𝕂$ est une fonction continue.
+
+On note $A$ une primitive de $a$ sur $I$.
+Alors, pour $J⊂I$,
+\[\solJ{E_0} = \Bigl\{ \Fn fJ𝕂\,\Bigm|\, ∃K∈𝕂\+ ∀t∈J \+ f(t) = K \me^{-A(t)} \Bigr\}.\]
+Moins formellement, on dit que la \emph{solution générale} de $(E_0)$
+sur $J$ est donnée par
+\[x(t) = K \me^{-A(t)} \quad \text{où} \quad K∈𝕂.\]
+
+\Para{Remarque}
+
+La \og{}résolution\fg{} suivante peut permettre de retrouver la formule
+\begin{enumerate}
+\item $x'(t) + a(t) x(t) = 0$
+\item $\frac{x'(t)}{x(t)} = -a(t)$
+\item $\ln\Abs{x(t)} = -A(t) + C_0$ où $C_0∈ℝ$
+\item $\Abs{x(t)} = \me^{C_0} \me^{-A(t)} = C_1 \me^{-A(t)}$ où $C_1∈\Rp$
+\item $x(t) = K \me^{-A(t)}$ où $K∈ℝ$
+\end{enumerate}
+
+Néanmoins, \emph{il ne s'agit pas d'une preuve} à cause
+\begin{itemize}
+\item de la division par $x(t)$ qui pourrait s'annuler, et
+\item du passage de $\Abs{x(t)}$ à $x(t)$ nécessite des justifications
+  (on pourrait imaginer que $x$ change de signe et donc que $K$ soit une fonction de $t$...)
+\end{itemize}
+
+Bref, à éviter sur une copie, sauf si l'on sait déjà que $∀x∈I$, $x(t)>0$.
+
+\subsubsection{Recherche d'une solution particulière}
+
+\Para{Proposition}[cas d'une équation à coefficients constants]
+
+On considère l'équation différentielle
+\[\mtag{E} x'(t) + ax(t) = P(t) \me^{αt},\]
+où $P∈𝕂_d[X]$.
+
+Il existe une unique solution particulière de la forme
+\begin{enumerate}
+\item Si $α≠-a$, on prend $x_p(t) = Q(t) \me^{αt}$
+  où $Q∈𝕂_d[X]$ à déterminer.
+\item Si $α= -a$, on prend $x_p(t) = tQ(t) \me^{αt}$
+  où $Q∈𝕂_d[X]$ à déterminer.
+\end{enumerate}
+
+Bien sûr, si le second membre est une somme de termes de ce type,
+il suffit de superposer les solutions particulières correspondantes.
+
+\Para{Exemples}
+\begin{enumerate}
+\item Pour $x' + x = t\me^t$, on prend $x_p = (at+b)\me^t$.
+\item Pour $x' - x = (t+1)\me^t$, on prend $x_p = t(at+b)\me^t$.
+\item Pour $x' + x = \sin t$, on prend $x_p = a\cos t + b\sin t$.
+\item Pour $x' + 3x = t\cos 2t$, on prend $x_p = (at+b)\cos 2t + (ct+d)\sin 2t$.
+\item Pour $x' + x = t\me^t - \me^{2t}$, on prend $x_p = (at+b)\me^t + c\me^{2t}$.
+\end{enumerate}
+
+\Para{Proposition}[méthode de variation de la constante]
+
+On considère les équations différentielles
+\[\mtag{E}   x'(t) + a(t) x(t) = b(t),\]
+\[\mtag{E_0} x'(t) + a(t) x(t) = 0.\]
+Soit $φ$ une solution non nulle de $\eq{E_0}$ sur $J$.
+On rappelle que $φ$ ne s'annule pas et que
+la solution générale de $\eq{E_0}$ est donnée par
+\[x_0(t) = Kφ(t) \quad \text{où } K∈𝕂.\]
+
+On recherche alors les solutions de $\eq{E}$ sous la forme
+$x(t) =λ(t)φ(t)$, et l'on obtient
+\[\mtag{E'}λ'(t)φ(t) = b(t),\]
+qui est facile à résoudre.
+
+\Para{Corollaire}
+
+La solution du problème de Cauchy
+\[\begin{cases}
+∀t∈I\+ x'(t) + a(t)x(t) = b(t), \\
+x(t_0) = x_0
+\end{cases}\]
+est donnée par
+\[x(t) = \me^{-A(t)} \left( \me^{A(t_0)} x_0 + ∫_{t_0}^{t} \me^{A(u)}b(u) \D u \right),\]
+où $A$ est une primitive de $a$ sur $I$.
+
+Cette formule \emph{n'est pas à connaître}, mais à savoir retrouver au besoin.
+
+\subsubsection{Problèmes de raccords}
+
+\Para{Remarque}
+
+On considère l'équation différentielle sur $I$
+\[\mtag{E} a(t)x'(t) + b(t)x(t) = c(t).\]
+Si $a$ s'annule sur $I$, on est face à un problème de raccord.
+
+Supposons par exemple que $I=ℝ$ et que $a$ s'annule uniquement en $1$.
+\begin{itemize}
+\item On pose alors $I_1 = \intO{-∞,1}$ et $I_2 = \intO{1,+∞}$.
+  Sur ces deux intervalles, $\eq{E}$ est une équation normalisée, donc
+  on peut utiliser les résultats précédents.
+\item On résoud $\eq{E}$ sur $I_1$ et sur $I_2$.
+\item On détermine, généralement par la méthode d'analyse-synthèse,
+  quelles sont les fonctions $f$
+  solutions de $\eq{E}$ sur $ℝ$, sachant que la restriction de $f$ à $I_k$
+  est nécessairement une solution de $\eq{E}$ sur $I_k$.
+\end{itemize}
+
+\Para{Exemples}
+\begin{enumerate}
+\item Résoudre sur $ℝ$ l'équation $tx'(t) - 2x(t) = 0$.
+\item Résoudre sur $ℝ$ l'équation $2tx'(t) - x(t) = 0$.
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\section{Systèmes différentiels linéaires}
+
+\Para{Exemple}
+
+On cherche à résoudre le système différentiel
+\[\mtag{S} \left\{ \begin{aligned}
+  x'(t) &= a(t) x(t) + b(t) y(t) + c(t) z(t) + j(t) \\
+  y'(t) &= d(t) x(t) + e(t) y(t) + f(t) z(t) + k(t) \\
+  z'(t) &= g(t) x(t) + h(t) y(t) + i(t) z(t) + l(t)
+\end{aligned} \right.\]
+Ce système peut s'écrire
+\[\mtag{S} X'(t) = A(t) X(t) + B(t)\]
+où $X(t) = \Matrix{x(t); y(t); z(t)}$,
+$A(t) = \Matrix{a(t),b(t),c(t); d(t),e(t),f(t); g(t),h(t),i(t)}$, \\
+et $B(t) = \Matrix{j(t); k(t); l(t)}$.
+
+\subsection{Généralités}
+
+\Para{Définitions}
+
+Un \emph{système différentiel linéaire du premier ordre}
+est une équation de la forme
+\[\mtag{S} X'(t) = A(t) X(t) + B(t)\]
+où $\Fn{A}{I}{\MnK}$ et $\Fn{B}{I}{𝕂^n}$ sont des fonctions continues,
+et $\Fn{X}{I}{𝕂^n}$ est une fonction inconnue.
+
+Une \emph{solution sur $J⊂I$} de ce système est une fonction $f$ de $J$ dans $𝕂^n$,
+dérivable en tout point de $J$, telle que pour tout $t∈J$, on ait
+\[f'(t) = A(t) f(t) + B(t).\]
+On note $\solJ{S}$ l'ensemble des solutions de $\eq{S}$ sur $J$.
+
+\emph{Résoudre} $\eq{S}$, c'est déterminer $\solJ{S}$
+pour tout intervalle $J⊂I$.
+
+\Para{Définitions}
+
+On considère le système différentiel linéaire du premier ordre
+\[\mtag{S} X'(t) = A(t) X(t) + B(t)\]
+\begin{itemize}
+\item $\eq{S}$ est dit \emph{à coefficients constants}
+  si et seulement si la fonction $A$ est constante.
+\item $\eq{S}$ est dit \emph{homogène} ou \emph{sans second membre}
+  si et seulement si \[∀t∈I \+ B(t) = 0.\]
+\item On appelle \emph{système différentiel homogène associe} à $\eq{S}$
+  le système différentiel
+  \[\mtag{S_0} X'(t) = A(t) X(t).\]
+\end{itemize}
+
+\Para{Définition}
+
+Un \emph{problème de Cauchy} du premier ordre
+est la donnée d'un système différentiel linéaire du premier ordre
+et d'une condition initiale.
+
+Un problème de Cauchy linéaire du premier ordre est donc de la forme
+\[\mtag{C} \begin{cases}
+  ∀t∈I\+ X'(t) = A(t)X(t) + B(t), \\
+  X(t_0) = X_0 \text{ où $t_0 ∈I$ et $X_0∈𝕂$.}
+\end{cases}\]
+
+\subsection{Étude théorique}
+
+\Para{Proposition}
+
+Soit $f$ une solution sur $J$ du système différentiel
+\[\mtag{S} X'(t) = A(t) X(t) + B(t).\]
+Alors $f$ est de classe $\CC1$ sur $J$.
+
+De plus, si $B$ et $C$ sont de classe $\CC p$ sur $J$,
+alors $f$ est de classe $\CC{p+1}$ sur $J$;
+si $b$ et $c$ sont de classe $\CC∞$ sur $J$, alors $f$ l'est également.
+
+\Para{Théorème}[Cauchy-Lipschitz linéaire]
+
+Soit $\Fn{A}{I}{\MnK}$ et $\Fn{B}{I}{𝕂^n}$ deux fonctions \emph{continues}.
+Soit $t_0∈I$ et $X_0∈𝕂^n$.
+Alors le problème de Cauchy
+\[\mtag{C} \begin{cases}
+  ∀t∈I \+ X'(t) = A(t) X(t) + B(t), \\
+  X(t_0) = X_0
+\end{cases}\]
+admet une unique solution sur tout intervalle $J$ tel que $t_0∈J$ et $J⊂I$.
+
+De plus, la solution sur $J$ n'est autre que la restriction à $J$
+de la solution sur $I$.
+
+\Para{Proposition}
+
+Soit $t_0∈J$.
+On considère le système différentiel homogène
+\[\mtag{S_0} X'(t) = A(t)X(t)\]
+Alors l'application
+\[\Fonction{Φ}{\solJ{S_0}}{𝕂^n}{X}{X(t_0)}\]
+est un isomorphisme (c.-à-d. une application linéaire bijective).
+
+\Para{Théorème}[de structure]
+
+On considère les systèmes différentiels linéaires
+\[\mtag{S}   X'(t) = A(t)X(t) + B(t)\]
+\[\mtag{S_0} X'(t) = A(t)X(t)\]
+Alors:
+\begin{itemize}
+\item $\solJ{S_0}$ est un sous-espace vectoriel de $\CC1(I,𝕂^n)$ de dimension $n$.
+\item $\solJ{S}$ est un sous-espace \emph{affine} de $\CC1(I,𝕂^n)$ de dimension $n$ et de direction $\solJ{S_0}$.
+\end{itemize}
+
+\subsection{Résolution pratique}
+
+\subsubsection{Principe de superposition}
+
+\Para{Corollaire}
+
+Étant donné un système différentiel linéaire $\eq{S}$,
+la solution générale de $\eq{S}$ est donnée
+par la somme de la solution générale du système homogène associé $\eq{S_0}$
+et d'une solution particulière de $\eq{S}$.
+
+Plus précisément, soit $X_p$ une solution particulière de $\eq{S}$ sur $J$.
+Alors toute solution $X$ de $\eq{S}$ sur $J$ est de la forme
+\[X = X_0 + X_p,\]
+où $X_0$ est une solution de $\eq{S_0}$ sur $J$.
+
+\emph{Pour résoudre $\eq{S}$, il suffit donc de résoudre $\eq{S_0}$ et de trouver une solution particulière de $\eq{S}$.}
+
+\Para{Remarque}
+
+Si $\eq{S}$ est de la forme
+\[\mtag{S} X'(t) = A(t) X(t) + B_1(t) + B_2(t),\]
+pour trouver une solution particulière de $\eq{S}$, il suffit de
+\begin{itemize}
+\item trouver une solution particulière $X_{p,1}$ de
+  \[\mtag{S_1} X'(t) = A(t) X(t) + B_1(t),\]
+\item trouver une solution particulière $X_{p,2}$ de
+  \[\mtag{S_2} X'(t) = A(t) X(t) + B_2(t),\]
+\item poser $X_p = X_{p,1} + X_{p,2}$.
+\end{itemize}
+
+Dans ces conditions, $X_p$ est une solution particulière de $\eq{S}$.
+
+\subsubsection{Résolution d'un système différentiel homogène à coefficients constants}
+
+\Para{Théorème}
+
+Soit $A∈\MnK$ et $\Fn{X}{ℝ}{𝕂^n}$ une solution de
+\[\mtag{S} X'(t) = A X(t).\]
+On suppose que $A$ est diagonalisable:
+soit $\nUplet X1n$ une base de vecteurs propres
+associés aux valeurs propres $\nUpletλ1n$.
+Alors il existe $\nUplet a1n∈𝕂^n$ tels que
+\[∀t∈ℝ\+ X(t) = ∑_{k=1}^n a_k \me^{λ_k t} X_k.\]
+
+\Para{Remarque}
+
+Si on ne peut pas diagonaliser $A$, mais seulement la trigonaliser,
+$A = P T P^{-1}$, on pose $X(t) = P Y(t)$, et le système devient
+\[\mtag{S'} Y'(t) = T Y(t),\]
+ce qui donne un système triangulaire que l'on peut résoudre,
+en résolvant successivement les équations différentielles scalaires.
+
+% -----------------------------------------------------------------------------
+\section{Équations différentielles linéaires scalaires du second ordre}
+
+\subsection{Généralités}
+
+\Para{Définitions}
+
+Une \emph{équation différentielle linéaire scalaire du second ordre}
+est une équation de la forme
+\[\mtag{E} a(t) x''(t) + b(t) x'(t) + c(t) x(t) = d(t),\]
+où $a$, $b$, $c$ et $d$ sont des fonctions \emph{continues} de $I$ dans $𝕂$,
+et $x$ une fonction inconnue de $I$ dans $𝕂$.
+
+Une \emph{solution sur $J⊂I$} de cette équation est une fonction $f$ de $J$ dans $𝕂$,
+deux fois dérivable en tout point de $J$, telle que pour tout $t∈J$, on ait
+\[a(t) f''(t) + b(t) f'(t) + c(t) f(t) = d(t).\]
+On note $\solJ{E}$ l'ensemble des solutions de $\eq{E}$ sur $J$.
+
+\emph{Résoudre} $\eq{E}$, c'est déterminer $\solJ{E}$ pour tout intervalle $J⊂I$.
+
+\Para{Définition}
+
+Avec les mêmes notations, dans le cas $𝕂=ℝ$, on considère l'équation différentielle
+\[\mtag{E} a(t) x''(t) + b(t) x'(t) + c(t) x(t) = d(t).\]
+Les courbes représentatrices des solutions de $\eq{E}$ s'appellent
+\emph{courbes intégrales} de $\eq{E}$.
+
+\Para{Définitions}
+
+On considère l'équation différentielle
+\[\mtag{E} a(t) x''(t) + b(t) x'(t) + c(t) x(t) = d(t).\]
+\begin{itemize}
+\item $\eq{E}$ est dite \emph{à coefficients constants}
+  si et seulement si les fonctions $a$, $b$ et $c$ sont constantes.
+\item $\eq{E}$ est dite \emph{normalisée} ou \emph{résolue en $x''$}
+  si et seulement si \[∀t∈I\+ a(t) = 1.\]
+\item $\eq{E}$ est dite \emph{homogène} ou \emph{sans second membre}
+  si et seulement si \[∀t∈I\+ d(t) = 0.\]
+\item On appelle \emph{équation différentielle homogène associée} à $\eq{E}$
+  ou \emph{équation différentielle sans second membre associée} à $\eq{E}$
+  l'équation différentielle
+  \[\mtag{E_0} a(t) x''(t) + b(t) x'(t) + c(t) x(t) = 0.\]
+\end{itemize}
+
+\Para{Définition}
+
+Un \emph{problème de Cauchy} du second ordre
+est la donnée d'une équation différentielle du second ordre
+normalisée et de deux conditions initiales.
+
+Un problème de Cauchy linéaire du second ordre est donc de la forme
+\[\mtag{C}
+\begin{cases}
+  ∀t∈I\+ x''(t) + b(t)x'(t) + c(t) x(t) = d(t), \\
+  x(t_0) =α, \\
+  x'(t_0) =β\text{ où } (t_0,α,β)∈I×𝕂^2.
+\end{cases}\]
+
+\subsection{Étude théorique}
+
+\Para{Remarque}
+
+Étant donné l'équation différentielle linéaire scalaire du premier ordre
+\[\mtag{E} a(t) x''(t) + b(t) x'(t) + c(t) x(t) = d(t),\]
+on peut se ramener à une équation normalisée:
+\begin{enumerate}
+\item si $a$ ne s'annule pas sur $I$, il suffit de diviser par $a(t)$;
+\item par contre, si $a$ s'annule, on découpe $I$ en intervalles
+  où $a$ ne s'annule pas, puis on fait une étude sur chaque intervalle.
+  À la fin, on peut chercher à \og{}raccorder\fg{} les solutions.
+\end{enumerate}
+
+\Para{Remarque}
+
+On considère l'équation différentielle suivante:
+\[\mtag{E} x''(t) + b(t) x'(t) + c(t) x(t) = d(t).\]
+On peut se ramener à un système différentiel
+\[\mtag{S} X'(t) = A(t) X(t) + B(t)\]
+en posant
+$X(t) = \begin{pmatrix} x(t) \\ x'(t) \end{pmatrix}$,
+$A(t) = \begin{pmatrix} 0 & 1 \\ -c(t) & -b(t) \end{pmatrix}$,
+$B(t) = \begin{pmatrix} 0 \\ d(t) \end{pmatrix}$
+
+\Para{Proposition}
+
+Soit $f$ une solution sur $J$ de l'équation différentielle normalisée
+\[\mtag{E} x''(t) + b(t) x'(t) + c(t) x(t) = d(t).\]
+Alors $f$ est de classe $\CC2$ sur $J$.
+
+De plus, si $b$, $c$ et $d$ sont de classe $\CC p$ sur $J$,
+alors $f$ est de classe $\CC{p+2}$ sur $J$;
+si $b$, $c$ et $d$ sont de classe $\CC∞$ sur $J$, alors $f$ l'est également.
+
+\Para{Remarque}
+
+Toute équation différentielle linéaire scalaire du second ordre sous forme résolue
+\[\mtag{E} x''(t) + b(t) x'(t) + c(t) x(t) = d(t)\]
+peut s'écrire sous la forme d'un système différentiel
+\[\mtag{S} X'(t) = A(t) X(t) + B(t)\] où
+$X(t) = \begin{pmatrix} x(t) \\ x'(t) \end{pmatrix}$,
+$A(t) = \begin{pmatrix} 0 & 1 \\ -c(t) & -b(t) \end{pmatrix}$, \\
+$B(t) = \begin{pmatrix} 0 \\ d(t) \end{pmatrix}$.
+
+\Para{Théorème}[Cauchy-Lipschitz linéaire]
+
+Soit $\Fn bI𝕂$, $\Fn cI𝕂$ et $\Fn dI𝕂$
+trois fonctions \emph{continues}.
+Soit $t_0∈I$ et $(α,β)∈𝕂^2$.
+
+Alors le problème de Cauchy
+\[\mtag{C}
+\begin{cases}
+  ∀t∈I\+ x''(t) + b(t) x'(t) + c(t) x(t) = d(t), \\
+  x(t_0) =α, \\
+  x'(t_0) =β
+\end{cases}\]
+admet une unique solution sur tout intervalle $J$
+tel que $t_0∈J$ et $J⊂I$.
+
+De plus, la solution sur $J$ n'est autre que la restriction à $J$
+de la solution sur $I$.
+
+\Para{Remarque}
+
+Les courbes intégrales de $\eq{E}$ ne sont pas disjointes.
+
+\Para{Théorème}[de structure]
+
+On considère les équations différentielles linéaires scalaires normalisées du second ordre
+\[\mtag{E} x''(t) + b(t)x'(t) + c(t) x(t) = d(t)\]
+\[\mtag{E_0} x''(t) + b(t)x'(t) + c(t) x(t) = 0\]
+\begin{itemize}
+\item $\solJ{E_0}$ est un sous-espace vectoriel de $\CC2(I,𝕂)$ de dimension 2.
+\item $\solJ{E}$ est un sous-espace \emph{affine} de $\CC2(I,𝕂)$ de dimension 2 et de direction $\solJ{E_0}$.
+\end{itemize}
+
+\Para{Définition}
+
+On appelle \emph{système fondamental} des solutions de l'équation homogène
+\[\mtag{E_0} x''(t) + b(t)x'(t) + c(t) x(t) = 0\]
+toute base $(φ,ψ)$ de $\solI{E_0}$.
+
+\Para{Proposition}
+
+Soit $(φ,ψ)$ un système fondamental de $\eq{E_0}$.
+Alors
+\[\begin{split} \solJ{E_0} &= \Bigl\{ \Fn fJ𝕂\;\Bigm|\; ∃(A,B)∈𝕂\, \\
+& ∀t∈J\+, f(t) = Aφ(t) + Bψ(t) \Bigr\}. \end{split}\]
+
+Autrement dit, la solution générale de $\eq{E_0}$ est
+\[x_0(t) = Aφ(t) + Bψ(t)\]
+où $(A,B)∈𝕂^2$.
+
+\Para{Définition}
+
+Avec les mêmes notations,
+soit $φ$ et $ψ$ deux solutions de $\eq{E_0}$.
+On appelle \emph{Wronskien} de $φ$ et $ψ$ la quantité
+\[W(t) = \begin{vmatrix} φ(t) & ψ(t) \\ φ'(t) & ψ'(t) \end{vmatrix} =φ(t)ψ'(t) -φ'(t)ψ(t).\]
+
+\Para{Remarque}
+
+$W$ est solution de l'équation différentielle
+\[W'(t) + b(t)W(t) = 0.\]
+
+\Para{Proposition}
+
+Les conditions suivantes sont équivalentes:
+\begin{enumerate}
+\item $(φ,ψ)$ est un système fondamental pour $\eq{E_0}$,
+\item $(φ,ψ)$ est une famille libre,
+\item $W$ ne s'annule pas sur $I$,
+\item $W$ n'est pas identiquement nul sur $I$.
+\end{enumerate}
+
+\subsection{Résolution pratique}
+
+\subsubsection{Principe de superposition}
+
+\Para{Proposition}
+
+Étant donné une équation linéaire $\eq{E}$,
+la solution générale de $\eq{E}$ est donnée
+par la somme de la solution générale de l'équation homogène $\eq{E_0}$
+et d'une solution particulière de l'équation complète $\eq{E}$.
+
+Plus précisément, soit $x_p$ une solution particulière de $\eq{E}$ sur $J$.
+Alors toute solution $x$ de $\eq{E}$ sur $J$ est de la forme
+\[x = x_0 + x_p,\]
+où $x_0$ est une solution de $\eq{E}$ sur $J$.
+
+Pour résoudre $\eq{E}$,
+il suffit donc de résoudre $\eq{E_0}$
+et de trouver une solution particulière de $\eq{E}$.
+
+\Para{Remarque}
+
+Si $\eq{E}$ est de la forme
+\[\mtag{E} a(t) x''(t) + b(t)x'(t) + c(t)x(t) = d_1(t) + d_2(t),\]
+pour trouver une solution particulière de $\eq{E}$,
+il suffit de
+\begin{itemize}
+\item trouver une solution particulière $x_{p,1}$ de
+  \[\mtag{E_1} a(t) x''(t) + b(t) x'(t) + c(t) x(t) = d_1(t),\]
+\item trouver une solution particulière $x_{p,2}$ de
+  \[\mtag{E_2} a(t) x''(t) + b(t) x'(t) + c(t) x(t) = d_2(t),\]
+\item poser $x_p = x_{p,1} + x_{p,2}$.
+\end{itemize}
+
+Dans ces conditions, $x_p$ est une solution particulière de $\eq{E}$.
+
+\subsubsection{Résolution de l'équation homogène}
+
+\Para{Proposition}[cas des coefficients constants]
+
+Soit l'équation différentielle
+\[\mtag{E} ax''(t) + bx'(t) + cx(t) = 0,\]
+où $(a,b,c)∈𝕂^3$, $a≠0$.
+
+On forme l'\emph{équation caractéristique} de discriminant $Δ= b^2-4ac$
+\[\mtag{E_c} ar^2 + br + c = 0.\]
+
+Alors, dans le cas $𝕂=ℝ$,
+\begin{itemize}
+\item Si $Δ> 0$, la solution générale est donnée par
+  \[x(t) = A \me^{r_1t} + B \me^{r_2t},\]
+  où $(A,B)∈ℝ^2$ et $r_1$ et $r_2$ sont les racines distinctes de $\eq{E_c}$.
+\item Si $Δ= 0$, la solution générale est donnée par
+  \[x(t) = (A t+B) \me^{r_0t},\]
+  où $(A,B)∈ℝ^2$ et $r_0$ est la racine double de $\eq{E_c}$.
+\item Si $Δ< 0$, la solution générale est donnée par
+  \[x(t) = \me^{αt} \Bigl( A \cos(ωt) + B \sin(ωt) \Bigr),\]
+  où $(A,B)∈ℝ^2$ et $α±iω$ sont les
+  racines complexes conjuguées de $\eq{E_c}$.
+\end{itemize}
+
+Alors, dans le cas $𝕂=ℂ$,
+\begin{itemize}
+\item Si $Δ≠0$, la solution générale est donnée par
+  \[x(t) = A \me^{r_1 t} + B \me^{r_2 t},\]
+  où $(A,B)∈ℂ^2$ et $r_1$ et $r_2$ sont les racines distinctes de $\eq{E_c}$.
+\item Si $Δ= 0$, la solution générale est donnée par
+  \[x(t) = (A t+B) \me^{r_0 t},\]
+  où $(A,B)∈ℂ^2$ et $r_0$ est la racine double de $\eq{E_c}$.
+\end{itemize}
+
+\Para{Remarque}[cas général]
+
+\emph{Il n'existe pas de méthode générale!}
+\begin{itemize}
+\item Dans le cas d'une équation à coefficients constants, on a des formules.
+\item On peut tenter de chercher une solution sous la forme
+  d'un monôme, d'un polynôme, d'une série entière, etc...
+\item L'énoncé peut suggérer un changement de variable.
+\item Si on a trouvé une solution $f$ qui ne s'annule pas,
+  on peut chercher les autres solutions sous la forme $x(t) = f(t) y(t)$
+  où $y$ est la nouvelle fonction inconnue.
+\end{itemize}
+
+et c'est à peu près tout.
+
+\subsubsection{Recherche d'une solution particulière}
+
+\Para{Proposition}[cas d'une équation à coefficients constants]
+
+On considère l'équation différentielle
+\[\mtag{E} ax''(t) + bx'(t) + cx(t) = P(t) \me^{αt},\]
+où $a≠0$ et $P∈𝕂_d[X]$.
+On note $\eq{E_c}$ l'équation caractéristique.
+
+Il existe une unique solution particulière de la forme
+\begin{enumerate}
+\item Si $α$ n'est pas racine de $\eq{E_c}$,
+  on prend $x_p(t) = Q(t) \me^{αt}$ où $Q∈𝕂_d[X]$ à déterminer.
+\item Si $α$ est racine simple de $\eq{E_c}$,
+  on prend $x_p(t) = tQ(t) \me^{αt}$ où $Q∈𝕂_d[X]$ à déterminer.
+\item Si $α$ est racine double de $\eq{E_c}$,
+  on prend $x_p(t) = t^2Q(t) \me^{αt}$ où $Q∈𝕂_d[X]$ à déterminer.
+\end{enumerate}
+
+Bien sûr, si le second membre est une somme de termes de ce type,
+il suffit de superposer les solutions particulières correspondantes.
+
+\Para{Théorème}[Hors-programme, méthode de variation des constantes]
+
+On considère l'équation différentielle
+\[\mtag{E} x''(t) + b(t)x'(t) + c(t)x(t) = d(t)\]
+et l'on note $\eq{E_0}$ l'équation homogène associée.
+On suppose que $(φ,ψ)$ est un système fondamental de solutions de $\eq{E_0}$.
+
+Alors la solution générale de $\eq{E}$ est donnée par
+\[x(t) =λ(t)φ(t) +μ(t)ψ(t),\]
+où $λ$ et $μ$ sont solutions du système de Cramer
+\[\mtag{S} \left\{ \begin{aligned}
+  λ'(t)φ(t)  + μ'(t)ψ(t)  &= 0 \\
+  λ'(t)φ'(t) + μ'(t)ψ'(t) &= d(t).
+\end{aligned} \right.\]
+
+% -----------------------------------------------------------------------------
+\section{Notions sur les équations différentielles non linéaires (hors-programme)}
+
+\Para{Contexte}
+
+Les équations différentielles non linéaires sont bien plus générales
+et bien plus complexes que les équations différentielles linéaires.
+
+Par exemple, les équations différentielles scalaires du premier ordre
+sous forme résolue sont les équations de la forme
+\[x'(t) = f(t, x(t)),\]
+où $f$ est une fonction de deux variables, définie sur un ouvert $Ω$
+de $ℝ^2$.
+
+La théorie générale n'est pas au programme, nous traiterons quelques cas particuliers.
+
+\subsection{Équations à variables séparables}
+
+\Para{Exemple}
+
+On considère l'équation différentielle
+\[\mtag{E} (1+t^2)x'(t) - 1 - x^2(t) = 0.\]
+À cause du terme en $x^2$, il ne s'agit pas d'une équation linéaire.
+Celle-ci n'est pas trop méchante, car on peut \og{}séparer les variables\fg{}:
+\[\frac{x'}{1+x^2} = \frac{1}{1+t^2},\]
+ce qui s'intègre en
+\[\mtag{E'} \arctan x(t) = \arctan t + C.\]
+Avec un peu de travail, on obtient les solutions suivantes:
+\begin{itemize}
+\item $t \mapsto \frac{kt+1}{k-t}$
+  sur $\intO{-∞,k}$ et sur $\intO{k,+∞}$ où $k∈ℝ$
+\item $t \mapsto t$ sur $ℝ$
+\end{itemize}
+
+\Para{Remarque}
+
+Au lieu de l'équation
+\[\frac{x'}{1+x^2} = \frac{1}{1+t^2},\]
+on écrit parfois, de façon un peu abusive,
+\[\frac{\D x}{1+x^2} = \frac{\D t}{1+t^2},\]
+ce qui rend encore plus visible encore l'aspect
+\og{}à variables séparées\fg{}.
+On résout en
+\[∫\frac{\D x}{1+x^2} =∫\frac{\D t}{1+t^2}.\]
+
+\Para{Définition}
+
+Une équation différentielle scalaire est dite
+\og{}à variables séparables\fg{} si elle est de la forme
+\[a(x(t))x'(t) = b(t),\]
+où $a$ et $b$ sont deux fonctions numériques continues.
+
+\Para{Proposition}
+
+On considère l'équation différentielle
+\[\mtag{E} a(x(t))x'(t) = b(t),\]
+où $a$ et $b$ sont continues.
+Notons $A$ (resp. $B$) une primtive de $a$ (resp. $b$).
+
+L'équation $\eq{E}$ s'intègre en
+\[A(x(t)) = B(t) + C,\]
+où $C$ est une constante.
+
+On ne peut pas toujours exprimer $x(t)$ en fonction de $t$,
+mais on peut généralement tracer les courbes intégrales.
+
+\Para{Exemple}
+
+Déterminer les courbes intégrales de l'équation
+\[xx' + t = 0.\]
+
+\subsection{Systèmes autonomes}
+
+\Para{Définition}
+
+Un \emph{système autonome} de deux équations différentielles du premier ordre
+est un système différentiel de la forme
+\[\mtag{S} \left\{ \begin{aligned}
+  \frac{\D x}{\D t} &=φ(x,y) \\
+  \frac{\D y}{\D t} &=ψ(x,y)
+\end{aligned} \right.\]
+Ce système est qualifié d'\emph{autonome}
+car $φ$ et $ψ$ ne dépendent pas de $t$.
+
+\Para{Proposition}
+
+Avec les mêmes notations, on suppose de plus que $φ$ et $ψ$ sont
+de classe $\CC1$ sur un ouvert $Ω$ de $ℝ^2$ et que $φ$ ne s'annule pas sur $Ω$.
+Alors on peut exprimer $y$ en fonction de $x$ en remarquant que
+\[\frac{\D y}{\D x} = \frac{ψ(x,y)}{φ(x,y)}.\]
+La courbe reliant $x$ et $y$ s'appelle \emph{courbe intégrale}
+du système différentiel~$\eq{S}$.
+
+On dit parfois aussi qu'il s'agit de la courbe intégrale
+du champ de vecteur
+\[(x,y) \mapsto \bigl(φ(x,y),ψ(x,y) \bigr).\]
+
+\Para{Exemple}[pendule simple]
+
+L'équation du pendule est donnée par (après normalisation)
+\[\frac{\mathrm{d}^2 x}{\mathrm{d}t^2} + \sin x = 0.\]
+En notant $v = \frac{\D x}{\D t}$, on obtient le système autonome en $(x,v)$
+\[\left\{ \begin{aligned}
+  \frac{\D x}{\D t} &= v \\
+  \frac{\D v}{\D t} &= -\sin x
+\end{aligned} \right.\]
+On en déduit
+\[\frac{\D v}{\D x} = -\frac{\sin x}{v},\]
+ce qui est une équation différentielle non linéaire.
+
+Pour la résoudre, il faut une petite astuce
+\[v\frac{\D v}{\D x} = -\sin x\]
+\[\frac12 v^2 = \cos x + C^\mathrm{ste}\]
+
+Au passage, nous retrouvons l'énergie du système
+\[E = \frac12 v^2 - \cos x = C.\]
+
+Avec cela, nous pouvons tracer les courbes intégrales.
+\[v = ±√{2\cos x + C}.\]
+
+% -----------------------------------------------------------------------------
+\section{Exercices}
+
+\Exercice
+
+Résoudre les équations différentielles suivantes:
+\begin{enumerate}
+\item $(1+x^2)y'+4xy=0$
+\item $x^n y' -αy = 0$ où $(n,α)∈\Ns×\Rps$.
+\item $y'+2xy-e^{x-x^2} = 0$
+\item $x(x^2+1)y' + y + x = 0$
+\item $xy'-y + \ln x = 0$
+\item $x^3\ln\Abs{x}y' - x^2y - (2\ln\Abs{x}+1)=0$
+\item $(\sin x)y'-y+1=0$
+\item $(\sh x \ch^3 x)y' + 3(\ch^4 x)y - 1 = 0$
+\end{enumerate}
+
+\Exercice
+
+Résoudre les équations différentielles suivantes:
+\begin{enumerate}
+\item $y''-2y'+y = 2\sh x$
+\item $2y''+2y'+y = xe^{-x}$
+\item $y''-4y = 4e^{-2x}$
+\item $y''-3y'+2y = (x^2+1)e^x$
+\item $y''+2y'+y = \sin^2 x$
+\item $y''+2y'+2y = \ch x \cos x$
+\item $y''+y = \Abs{x}+1$
+\item $y''-2y'+y = e^{\Abs x}$
+\end{enumerate}
+
+\Exercice
+
+Résoudre les équations différentielles suivantes:
+\begin{enumerate}
+\item $(2t+1)x'' + (4t-2)x' - 8x = 0$
+\item $x'' + (4e^t-1)x' + 4e^{2t}x = 0$
+\item $(t^2+1)^2x'' + 2t(t^2+1)x' + x = (t^2+1)^2$
+\item $\begin{vmatrix} x'' & x' & x  \\  -\sin t & \cos t & \sin t  \\  -4\sin 2t &  2 \cos 2t &  \sin 2t \end{vmatrix} = 0$
+\item $y''+y = \Abs{x^2-π^2}$ avec $y(0)=y'(0) = 0$
+\end{enumerate}
+
+\Exercice
+\begin{enumerate}
+\item Trouver toutes les applications $\Fn fℝℝ$ dérivables telles que:
+  \[∀x∈ℝ\+ f'(x) f(-x) = 1\]
+\item Trouver toutes les applications $\Fn fℝℝ$ dérivables telles que:
+  \[∀x∈ℝ\+ f'(x) + f(-x) = e^x\]
+\item Trouver toutes les applications $\Fn fℝℝ$ dérivables en $0$ telles que:
+  \[∀x∈ℝ\+∀y∈ℝ\+ f(x+y) = e^x f(y) + e^y f(x)\]
+\end{enumerate}
+
+\Exercice
+
+Soit $f∈\mathcal{C}(ℝ,ℝ)$ ayant une limite finie en $+∞$.
+Montrer que toute solution de l'équation différentielle $y'+y = f$
+admet une limite finie en $+∞$.
+
+\Exercice
+
+Soit l'équation différentielle \[x^2 y'' + 4xy' + (2-x^2)y = 1.\]
+Résoudre cette équation différentielle sur $ℝ_+^*$ et sur $ℝ_-^*$
+en posant $u = x^2 y$, puis étudier le raccordement en~$0$.
+
+\Exercice
+
+Calculer explicitement les fonctions suivantes:
+\[\begin{aligned}
+u(x) &= ∫_0^{+∞} \frac{e^{-t} \cos(xt)}{√t} \D t \\
+v(x) &= ∫_0^{+∞} \frac{e^{-t} \sin(xt)}{√t} \D t
+\end{aligned}\]
+
+\Exercice
+
+Résoudre le système différentiel:
+\[\left\{
+\begin{aligned}
+  x' &= 5x  -   y  -  2z  +  e^t    \\
+  y' &=  x  +  3y  -  2z  +  e^{2t} \\
+  z' &= -x  -   y  +  4z  +  t e^t
+\end{aligned}
+\right.\]
+
+\Exercice
+
+Soit $\Fn fℝℝ$ de classe $\CC2$ telle que
+\[∀x∈ℝ\+ f''(x) + f(x)≥0.\]
+Montrer que $∀x∈ℝ\+ f(x) + f(x+π)≥0$.
+On pourra introduire
+\[W(x) = \begin{vmatrix} f(x) & \sin(x) \\ f'(x) & \cos(x) \end{vmatrix}.\]
+
+\Exercice
+
+Soit $\Fn Aℝℝ$ continue et bornée et $k > 0$.
+Montrer que l'équation différentielle
+\[y' - ky = A\]
+admet une unique solution bornée.
+
+\Exercice
+
+Soit $\Fn f\Rpℝ$ de classe $\CC1$ telle que
+\[\lim_{x \to +∞} \Bigl( f(x) + f'(x) \Bigr) = 0.\]
+Que dire de $\lim\limits_{x \to +∞} f(x)$?
+
+\Exercice
+
+Montrer que l'équation \[x'' - 2x' + x = \frac{1}{√{πt}}\]
+possède une unique solution $x$ définie sur $ℝ_+^*$ telle que,
+par prolongement $x(0) = x'(0) = 0$.
+
+\Exercice
+
+Résoudre l'équation \[(-x^2+4x)f'(x) + (x+2)f(x) = x.\]
+On pourra commencer par rechercher les solutions
+développables en série entière au voisinage de 0.
+
+\Exercice
+
+Soit $\Fn{f}{[a,b]}{ℝ}$ non nulle de classe $\CC2$ et solution de l'équation différentielle
+$y'' + py' + qy = 0$, où $p$ et $q$ sont continues de $[a,b]$ dans $ℝ$.
+Montrer que $f$ admet un nombre fini de zéros.
+
+\Exercice
+
+Soit $I$ un intervalle de $ℝ$, $r$ et $s$ deux fonctions continues $I \toℝ$ telles que $r≤s$.
+Soit $x$ une solution non nulle de l'équation différentielle $x'' + rx = 0$,
+et $y$ une solution non nulle de l'équation différentielle $y'' + sy = 0$.
+Soit $t_1$ et $t_2$ deux zéros consécutifs de $x$.
+Montrer que $y$ s'annule sur $\intO{t_1,t_2}$ sauf si $x$ et $y$ sont proportionnelles.
+
+\Exercice[applications de l'exercice précédent]
+
+Soit $\Fn rIℝ$ une fonction continue,
+et $x$ une solution non nulle de l'équation différentielle
+\[x'' + rx = 0.\]
+\begin{enumerate}
+\item On suppose $∀t∈I, r(t)≤0$.
+  Montrer que $x$ s'annule au plus une fois dans $I$.
+\item Soit $μ> 0$. On suppose $∀t∈I, r(t)≤μ^2$.
+  Montrer que $t_2≥t_1 + \frac{π}{μ}$.
+\item Soit $λ> 0$. On suppose $∀t∈I, r(t)≥λ^2$.
+  Soit $t_1∈I$ telle que $t_1 + \frac{π}{λ}∈I$.
+
+  Montrer que toute solution de l'équation différentielle $x'' + rx = 0$
+  s'annule au moins une fois sur $\intO{t_1,t_1+\frac{π}{λ}}$.
+\end{enumerate}
+
+\Exercice
+
+Que peut-on dire des zéros des solutions sur $ℝ_+^*$ de l'équation différentielle suivante?
+\[x'' + \frac{x'}{t} + \left( 1 - \frac{α^2}{t^2} \right) x = 0\]
+
+\Exercice[lemme de Gronwall]
+
+Soit $\Fn{a}{\Rp}{ℝ}$ une fonction continue et
+$\Fn{f}{ℝ}{ℝ}$ de classe $\CC1$ telle que
+\[∀x≥0 \+ f'(x)≤a(x) f(x).\]
+
+Montrer que
+\[∀x≥0 \+ f(x)≤f(0) \exp\left( ∫_0^x a(t) \D t \right).\]
+
+\end{document}
