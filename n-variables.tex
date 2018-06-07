@@ -76,9 +76,9 @@ la dérivée de $f$ selon le vecteur $e_k$, si elle existe.
 On la note alors $∂_k f(a)$ ou encore $\DerPart{f}{x_k}(a)$.
 Ainsi,
 \[\begin{aligned}
-\DerPart{f}{x_k}(a) = \lim_{\substack{h\to 0 \\ h≠0}} \frac{1}{h} \Bigl[
-  & f(a_1, \ldots, a_{k-1}, a_k + h, a_{k+1}, \ldots, a_p) \\
-  & - f(a_1, \ldots, a_p) \Bigr].
+    \DerPart{f}{x_k}(a) = \lim_{\substack{h\to 0 \\ h≠0}} \frac{1}{h} \Bigl[
+      & f(a_1, \ldots, a_{k-1}, a_k + h, a_{k+1}, \ldots, a_p) \\
+    & - f(a_1, \ldots, a_p) \Bigr].
 \end{aligned}\]
 
 \Para{Attention}
@@ -185,9 +185,9 @@ Soit $I$ un intervalle de $ℝ$, $U$ un ouvert de $ℝ^p$.
 Soit $φ\colon I \to U$ et $\Fn{f}{U}{ℝ^n}$ deux applications de classe $\CC1$.
 Alors $f◦φ\colon I \toℝ^n$ est de classe $\CC1$ et
 \[\begin{aligned}
-(f◦φ)'(t)
-&= \DF{f}{φ(t)} (φ'(t)) \\
-&= ∑_{k=1}^p \DerPart{f}{x_k} \bigl(φ_k(t)\bigr) \, φ_k'(t).
+    (f◦φ)'(t)
+    &= \DF{f}{φ(t)} (φ'(t)) \\
+    &= ∑_{k=1}^p \DerPart{f}{x_k} \bigl(φ_k(t)\bigr) \, φ_k'(t).
 \end{aligned}\]
 
 Cela peut s'interpréter géométriquement:
@@ -208,9 +208,9 @@ Si les applications $∂_k f \colon U \toℝ^n$ sont elles-mêmes
 de classe $\CC1$ pour tout $k∈\Dcro{1,p}$,
 alors on dit que $f$ est de classe $\CC2$ et on note $∀a∈U$,
 \[∂_{k,l} f (a)
-= \frac{∂^2 f}{∂x_k \,∂x_l}(a)
-=∂_k (∂_l f) (a)
-= \frac{∂}{∂x_k}
+  = \frac{∂^2 f}{∂x_k \,∂x_l}(a)
+  =∂_k (∂_l f) (a)
+  = \frac{∂}{∂x_k}
 \left(\frac{∂f}{∂x_l}\right) (a).\]
 On définit de même par récurrence les fonctions de classe $\CC k$, $k≥2$,
 comme étant les fonctions admettant en tout point de $U$
@@ -287,7 +287,7 @@ Soit $a∈D$.
 Soit $\Fn{f}{U}{ℝ}$ de classe $\CC1$ où $U$ est un ouvert de $ℝ^p$.
 On appelle \emph{gradient de $f$} l'application
 \[\Fonction{∇f}{U}{ℝ^p}{x}{
-  \left(\Uplet{\DerPart{f}{x_1}(x)}{\DerPart{f}{x_p}(x)}\right).}\]
+\left(\Uplet{\DerPart{f}{x_1}(x)}{\DerPart{f}{x_p}(x)}\right).}\]
 
 \Para{Proposition}
 
@@ -333,9 +333,9 @@ généralement par une étude directe.
 \item $f(x,y) = \frac{\sin x + \cos y}{x^2 + y^2 + 1}$
 \item $f(x,y) = x^y$
 \item $f(x,y) = \begin{cases}
-  \frac{x \sin^2 y}{x^2+y^2} & \text{si } (x,y)≠(0,0) \\
-  \hfil 0                    & \text{si } x=y=0.
-\end{cases}$
+      \frac{x \sin^2 y}{x^2+y^2} & \text{si } (x,y)≠(0,0) \\
+      \hfil 0                    & \text{si } x=y=0.
+  \end{cases}$
 \end{enumerate}
 
 \Exercice
@@ -361,7 +361,7 @@ Calculer les dérivées partielles de ces fonctions de plusieurs façons:
 
 \Exercice
 
-Soit \[\Fonction {Φ} {]0,∞[×]-π,π[} {ℝ^2∖\Ensemble{(x,0)}{x≤0}} {(ρ,θ)} {(x,y) = (ρ\cosθ,ρ\sinθ).}\]
+Soit \[\Fonction {Φ} {\intO{0,∞}×\intO{-π,π}} {ℝ^2∖\Ensemble{(x,0)}{x≤0}} {(ρ,θ)} {(x,y) = (ρ\cosθ,ρ\sinθ).}\]
 \begin{enumerate}
 \item Soit $f \colonℝ^2 \toℝ$ et $g = f◦Φ$.
   Informellement, on a $f(x,y) = g(ρ,θ)$.
@@ -392,8 +392,8 @@ h(a,b,x) = ∫_a^b f(x,t) \D t.\]
 
 Soit $(p,q)∈ℕ^2$ et $f \colonℝ^2 \toℝ$ définie par
 \[f(x,y) = \begin{cases}
-  \frac{x^p y^q}{x^2+y^2} & \text{si } (x,y)≠(0,0) \\
-  \hfil 0                 & \text{si } x=y=0.
+    \frac{x^p y^q}{x^2+y^2} & \text{si } (x,y)≠(0,0) \\
+    \hfil 0                 & \text{si } x=y=0.
 \end{cases}\]
 \begin{enumerate}
 \item Montrer que $f$ est $\CC{∞}$ sur $ℝ^2∖\Acco{(0,0)}$.
@@ -443,8 +443,8 @@ Soit $\Fn{f}{ℝ^2}{ℝ}$ de classe $\CC2$ et $g(u,v) = f(uv,u+v)$.
 \Exercice
 
 Soit $f(x,y) = \begin{cases}
-  \frac{x y}{x^2+y^2} & \text{si } (x,y)≠(0,0) \\
-  \hfil 0             & \text{si } x=y=0.
+    \frac{x y}{x^2+y^2} & \text{si } (x,y)≠(0,0) \\
+    \hfil 0             & \text{si } x=y=0.
 \end{cases}$
 \begin{enumerate}
 \item Montrer que $∀x∈ℝ$, la fonction $y \mapsto f(x,y)$ est continue.
@@ -510,9 +510,9 @@ Soit $U$ un ouvert convexe de $ℝ^n$, $a$ et $b$ deux points distincts de $U$.
 \begin{enumerate}
 \item Si $f \colon U \toℝ$ est de classe $\CC1$ sur $U$,
   montrer qu'il existe $c∈\intO{a,b}$ tel que $f(b)-f(a) = \DIF{f}{c}{(b-a)}$.
-      On rappelle que $\DIF{f}{c}{(b-a)} = \PS{∇f(c)}{b-a}$.
-    \item De combien de décimales exactes des nombres $e$, $√2$ et $π$ a-t-on besoin
-      pour pouvoir calculer à $10^{-20}$ près le nombre $\frac{√2}{e+π^3}$?
+  On rappelle que $\DIF{f}{c}{(b-a)} = \PS{∇f(c)}{b-a}$.
+\item De combien de décimales exactes des nombres $e$, $√2$ et $π$ a-t-on besoin
+  pour pouvoir calculer à $10^{-20}$ près le nombre $\frac{√2}{e+π^3}$?
 \end{enumerate}
 
 \Exercice

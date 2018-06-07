@@ -29,8 +29,8 @@
   \[ ∀n≥1 \+ D_n = A \cos(nθ) + B \sin(nθ). \]
   Or $D_1 = 2\cosθ$ et $D_2 = 4\cos^2θ - 1$, d'où
   \[ \left\{ \begin{alignedat}{3}
-    A\cos(θ)  &{}+{}& B\sin(θ)  &{}= 2\cos(θ)     &\qquad& L_1 \\
-    A\cos(2θ) &{}+{}& B\sin(2θ) &{}= 4\cos^2(θ)-1 && L_2
+      A\cos(θ)  &{}+{}& B\sin(θ)  &{}= 2\cos(θ)     &\qquad& L_1 \\
+      A\cos(2θ) &{}+{}& B\sin(2θ) &{}= 4\cos^2(θ)-1 && L_2
   \end{alignedat} \right. \]
   En écrivant $\sin(2θ)L_1- \sin(θ)L_2$,
   il vient $A\cro{\sin(2θ)\cosθ-\sin(θ)\cos(2θ)} = 2\sin(2θ)\cos(θ) - \sin(θ)(4\cos^2θ-1)$,
@@ -100,9 +100,9 @@
 \item
   La question précédente donne le système
   \[ \left\{ \begin{alignedat}{3}
-    α_n &{}+{}&  β_n &{}+{}& γ_n &= 1 \\
-    4α_n &{}+{}& 2β_n &{}+{}& γ_n &= 2^n \\
-    4α_n &{}-{}& 2β_n &{}+{}& γ_n &= (-2)^n
+      α_n &{}+{}&  β_n &{}+{}& γ_n &= 1 \\
+      4α_n &{}+{}& 2β_n &{}+{}& γ_n &= 2^n \\
+      4α_n &{}-{}& 2β_n &{}+{}& γ_n &= (-2)^n
   \end{alignedat} \right. \]
   Ce système a une unique solution (Vandermonde);
   un calcul donne
@@ -148,8 +148,8 @@
   Or $D^n = \Diag((-1)^n,1,1)$, donc $D^n = I_3$ si $n$ est pair et $D^n = D$ si $n$ est impair.
   Ainsi,
   \[ A^n = \begin{cases}
-    I_3 & \text{si $n$ est pair;} \\
-    A & \text{si $n$ est impair.}
+      I_3 & \text{si $n$ est pair;} \\
+      A & \text{si $n$ est impair.}
   \end{cases} \]
   \emph{Remarque:} on aurait également pu remarquer que $A^2 = I_3$ et en déduire le résultat immédiatement, sans besoin de diagonaliser $A$.
 
@@ -202,9 +202,9 @@
   Cette formule est encore valable pour $p = 0$ et $p = 1$.
   Ainsi, on a pour tout $p≥0$,
   \[ A^p = \frac{(-1)^p}{2} \Matrix{
-    2,-2ap,2ap ;
-    -2p,2+ap(p-1),-ap(p-1) ;
-    -2p,ap(p-1),2-ap(p-1)
+      2,-2ap,2ap ;
+      -2p,2+ap(p-1),-ap(p-1) ;
+      -2p,ap(p-1),2-ap(p-1)
   }. \]
 
 \item
@@ -236,8 +236,8 @@
 \begin{enumerate}
 \item
   $u^2(M) = u(u(M)) = u(\frac23 M - \frac13 \T M)
-  = \frac23 \pa{ \frac23 M - \frac13 \T M } - \frac13 \T{\pa{ \frac23 M - \frac13 \T M}}
-  = \frac59 M - \frac49 \T M
+    = \frac23 \pa{ \frac23 M - \frac13 \T M } - \frac13 \T{\pa{ \frac23 M - \frac13 \T M}}
+    = \frac59 M - \frac49 \T M
   = \frac43 \pa{ \frac23 M - \frac13 \T M} - \frac13 M$
   d'où $u^2 = \frac43 u - \frac13 \Id_E$.
   Le polynôme $P = 3X^2-4X+1 = (X-1)(3X-1)$ annule $u$ et est scindé simple,
@@ -351,9 +351,9 @@
   Soit $\nUplet e1{n-1}$ une base de $\Ker u$, que l'on complète en une base $\B' = \nUplet e1n$ de $E$.
   La matrice de $u$ dans la base $\B'$ est de la forme
   \[ B = \Mat_{\B'}(u)
-  = \Matrix{ 0, \cdots, 0, α_1 ;
-    \vdots, \raisebox{0.5ex}{\mbox{(0)}}, \vdots, \vdots ;
-    0, \cdots, 0, α_n }. \]
+    = \Matrix{ 0, \cdots, 0, α_1 ;
+      \vdots, \raisebox{0.5ex}{\mbox{(0)}}, \vdots, \vdots ;
+  0, \cdots, 0, α_n }. \]
   Or $α_n = \Tr B = \Tr A ≠ 0$ et $χ_u = χ_B = X^{n-1} (X-α_n)$
   donc $χ_u$ est scindé et $∀λ∈\Sp u$, $m_λ = \dim E_λ$ car $m_0 = n-1 = \dim \Ker u$.
   Donc $u$ est diagonalisable, donc $A$ est diagonalisable.

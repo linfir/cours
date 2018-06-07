@@ -12,7 +12,7 @@
 \begin{enumerate}
   \setcounter{enumi}{1}
 \item
-Soit $v_n = \arctan(n)$.
+  Soit $v_n = \arctan(n)$.
   On a $0 ≤v_n < v_{n+1} < π/2$ et
   \[ \tan(v_{n+1}-v_n) = \frac{\tan(v_{n+1})-\tan(v_n)}{1+\tan(v_{n+1})\tan(v_n)} = \frac{1}{n^2+n+1}, \]
   d'où $u_n = v_{n+1} - v_n$.
@@ -20,13 +20,13 @@ Soit $v_n = \arctan(n)$.
   d'où la convergence et \[ ∑_{n≥1} u_n = \fracπ2. \]
 
 \item
-$u_n = \ln\pa{\frac{n-1}{n}} + \ln\pa{\frac{n+1}{n}}$,
+  $u_n = \ln\pa{\frac{n-1}{n}} + \ln\pa{\frac{n+1}{n}}$,
   d'où \[ S_n = ∑_{k=2}^n \BigCro{ \ln(k-1)-\ln(k) } + ∑_{k=2}^n \BigCro{ \ln(k+1) - \ln(k) }. \]
   On conclut par télescopage:
   \[ ∑_{n≥2} u_n = -\ln(2). \]
 
 \item
-Si $x ∈\intO{0,π/2}$, on a \[ \cos(x) = \frac{\sin(2x)}{2\sin(x)} > 0, \]
+  Si $x ∈\intO{0,π/2}$, on a \[ \cos(x) = \frac{\sin(2x)}{2\sin(x)} > 0, \]
   d'où $u_n = v_{n-1} - v_n - \ln(2)$ où $v_n = \ln(\sin(θ/2^n))$.
   Ainsi,
   \begin{align*}
@@ -37,7 +37,7 @@ Si $x ∈\intO{0,π/2}$, on a \[ \cos(x) = \frac{\sin(2x)}{2\sin(x)} > 0, \]
   \[ ∑_{n≥0} u_n = \ln\Pa{\frac{\sin(2θ)}{2θ}}. \]
 
 \item
-On développe $\cos(3x)$ comme $\cos(2x+x)$, puis on utilise les formules pour $\cos(2x)$ et $\sin(2x)$,
+  On développe $\cos(3x)$ comme $\cos(2x+x)$, puis on utilise les formules pour $\cos(2x)$ et $\sin(2x)$,
   d'où
   \[ \cos(3x) = 4\cos^3(x) - 3\cos(x). \]
   Autrement dit, $4\cos^3(x) = \cos(3x) + 3\cos(x)$.
@@ -48,12 +48,12 @@ On développe $\cos(3x)$ comme $\cos(2x+x)$, puis on utilise les formules pour $
   \[ ∑_{n≥0} u_n  = \frac{3}{4} \cos(θ). \]
 
 \item
-On a $u_n = v_{n+1} - v_n + 1/2^{n+1}$ où $v_n = √{n} / 2^n$,
+  On a $u_n = v_{n+1} - v_n + 1/2^{n+1}$ où $v_n = √{n} / 2^n$,
   d'où \[ S_n = ∑_{k=0}^n u_k = v_{n+1} - v_0 + \frac12 ⋅\frac{1-(1/2)^{n+1}}{1-1/2}, \]
   d'où la convergence et $\DS ∑_{n≥0} u_n = 1$.
 
 \item
-Astuce (polynômes dits \enquote{bicarrés}):
+  Astuce (polynômes dits \enquote{bicarrés}):
   $n^4+2n^2+9 = (n^4+6n^2+9) - (4n^2) = (n^2+3)^2 - (2n)^2 = (n^2-2n+3)(n^2+2n+3)$.
   Une décomposition en éléments simples donne $u_n = v_n - v_{n+2}$
   où $v_n = 1/(n^2-2n+3)$.
@@ -62,7 +62,7 @@ Astuce (polynômes dits \enquote{bicarrés}):
   \[ ∑_{n≥0} u_n = v_0 + v_1 = \frac56. \]
 
 \item
-Une décomposition en élements simples donne
+  Une décomposition en élements simples donne
   \[ u_n = \frac{a}{n+2} + \frac{b}{n} + \frac{c}{n-2} \]
   où $a = -11/8$, $b = 3/4$ et $c = 5/8$.
   Comme $b = -a-c$, on a
@@ -73,20 +73,20 @@ Une décomposition en élements simples donne
 
   \setcounter{enumi}{10}
 \item
-On effectue une décomposition en éléments simples, d'où
+  On effectue une décomposition en éléments simples, d'où
   \[ u_n = \frac{1}{(n+1)^2} - \frac{2}{n+1} + \frac{1}{(n+2)^2} + \frac{2}{n+2}. \]
   Notons $σ_n = ∑_{k=1}^n 1/k^2$ et $σ = ∑_{n≥1} 1/n^2$.
   On a
   \begin{align*}
     S_n &= ∑_{k=0}^n u_k = ∑_{k=0}^n \frac{1}{(k+1)^2} + ∑_{k=0}^n \frac{1}{(k+2)^2} \\
     &\qquad + 2 ∑_{k=0}^n \Cro{ \frac{1}{k+2} - \frac{1}{k+1} } \\
-  &= σ_{n+1} + (σ_{n+2} - 1) + 2 \Cro{\frac{1}{n+2} - 1} \\
-  &\to 2σ-3.
+    &= σ_{n+1} + (σ_{n+2} - 1) + 2 \Cro{\frac{1}{n+2} - 1} \\
+    &\to 2σ-3.
   \end{align*}
   Remarque: $σ=π^2/6$.
 
 \item
-Bien que cela ne soit pas strictement nécessaire, commençons par le changement de variables $y=1/x$;
+  Bien que cela ne soit pas strictement nécessaire, commençons par le changement de variables $y=1/x$;
   on trouve \[ u_n = ∫_n^{n+1} e^{y^{-1/2}} y^{-3/2} \D y. \]
   Ainsi, \[ S_n = ∑_{k=1}^n u_k = ∫_1^{n+1} e^{y^{-1/2}} y^{-3/2} \D y. \]
   On effectue le changement de variables $u=y^{-1/2}$, d'où
@@ -97,10 +97,10 @@ Bien que cela ne soit pas strictement nécessaire, commençons par le changement
 \Exo{8}
 \begin{enumerate}
 \item
-cf. cours.
+  cf. cours.
 
 \item
-On a pour $k ≥2$,
+  On a pour $k ≥2$,
   \[ ∫_k^{k+1} \frac{\D x}{x} ≤ \frac{1}{k} ≤ ∫_{k-1}^n \frac{\D x}{x} \]
   d'où, en sommant pour $k ∈ \ccro{2,n}$:
   \[ ∫_2^{n+1} \frac{\D x}{x} ≤ H_n - 1 ≤ ∫_1^n \frac{\D x}{x}, \]
@@ -157,15 +157,15 @@ On a pour $k ≥2$,
   pour $n≥2$.
 
 \item
-Pour $n ≥2$, on a
+  Pour $n ≥2$, on a
   $v_n = \frac1n + \ln\pa{1-\frac1n} + \frac{1}{2n}\cro{ \pa{1-\frac1n}^{-1} - 1 }$,
   d'où en faisant un développement limité, $v_n \sim \frac{1}{6n^3}$.
 
 \item
-On procède comme à la question~7, et l'on trouve $T_n \sim \frac{1}{12n^2}$.
+  On procède comme à la question~7, et l'on trouve $T_n \sim \frac{1}{12n^2}$.
 
 \item
-Comme $∑_{k=1}^n v_k = H_n - \ln n - \frac{1}{2n} \to γ$,
+  Comme $∑_{k=1}^n v_k = H_n - \ln n - \frac{1}{2n} \to γ$,
   on a $∑_{k=1}^n v_k + T_n = γ$, d'où le résultat.
 
 \end{enumerate}
@@ -194,10 +194,10 @@ Comme $∑_{k=1}^n v_k = H_n - \ln n - \frac{1}{2n} \to γ$,
 \item
   On effectue le changement de variables $y = \ln x$.
   \[ ∫ \frac{\D x}{x \ln^β x}
-  = ∫ \frac{\D y}{y^β}
-  = \begin{cases}
-    \frac{y^{-β+1}}{-β+1} & \text{si $β≠1$,} \\
-    \ln y & \text{si $β=1$.}
+    = ∫ \frac{\D y}{y^β}
+    = \begin{cases}
+      \frac{y^{-β+1}}{-β+1} & \text{si $β≠1$,} \\
+      \ln y & \text{si $β=1$.}
   \end{cases} \]
 
 \item
@@ -261,7 +261,7 @@ Comme $∑_{k=1}^n v_k = H_n - \ln n - \frac{1}{2n} \to γ$,
 \item
   \begin{enumerate}
   \item
-On a
+    On a
     \begin{align*}
       \frac{u_{n+1}}{u_n}
       &= \frac{(n+1)^2}{n(a+n+1)} \\
@@ -429,7 +429,7 @@ On a
 \begin{enumerate}
   \setcounter{enumi}{5}
 \item
-D'abord, remarquons que pour tout $θ∈ℝ$,
+  D'abord, remarquons que pour tout $θ∈ℝ$,
   \[ \sinθ ≥ \frac12 \iff ∃k∈ℤ \+ \frac{π}{6} ≤ θ-2kπ ≤ \frac{5π}{6}. \]
   Ainsi, en appliquant ceci à $θ=\ln(n)$, il vient
   \[ \sin(\ln n) ≥ \frac12  \iff n ∈ I_k = \ccro{a_k,b_k}, \]
@@ -450,7 +450,7 @@ D'abord, remarquons que pour tout $θ∈ℝ$,
 
 \begin{enumerate}
 \item
-Idée: on part de $b_k = B_k - B_{k-1}$ (qui est valable même pour $k=0$ si l'on pose $B_{-1} = 0$),
+  Idée: on part de $b_k = B_k - B_{k-1}$ (qui est valable même pour $k=0$ si l'on pose $B_{-1} = 0$),
   puis on remplace dans $S_n$, on coupe la somme en deux,
   on fait un changement d'indice pour avoir un facteur $B_k$ dans les deux termes
   et enfin on regroupe en faisant attention au(x) terme(s) résiduel(s).
@@ -460,45 +460,45 @@ Idée: on part de $b_k = B_k - B_{k-1}$ (qui est valable même pour $k=0$ si l'o
     &= ∑_{k=0}^n (a_k - a_{k+1}) B_k + a_{n+1} B_n.
   \end{align*}
 \item
-Notons $M$ tel que $∀n∈ℕ$, $\Abs{B_n} ≤ M$ et $c_n = a_n - a_{n+1} ≥ 0$.
+  Notons $M$ tel que $∀n∈ℕ$, $\Abs{B_n} ≤ M$ et $c_n = a_n - a_{n+1} ≥ 0$.
   La série $∑ c_n$ converge car elle est télescopique et $a_n \to 0$.
   De plus, $\Abs{c_n B_n} ≤ M c_n$ donc la série $∑ c_n B_n$ est absolument convergente.
   Enfin, $\Abs{a_{n+1} B_n} ≤ M \Abs{a_{n+1}} \to 0$, donc
   \[ S_n \to ∑_{n≥0} c_n B_n \]
   Ainsi, la série $∑ a_n b_n$ converge.
 \item
-En prenant $b_n = (-1)^n$, on voit que la suite $(B_n)$ est bornée car ses termes pars valent~1 et ses termes impairs sont nuls.
+  En prenant $b_n = (-1)^n$, on voit que la suite $(B_n)$ est bornée car ses termes pars valent~1 et ses termes impairs sont nuls.
   On peut donc appliquer le résultat de la question précédente et on retrouve le critère spécial.
 \item
-\begin{enumerate}
-\item
-On prend $b_n = e^{int}$ et on doit vérifier que la suite $(B_n)$ est bornée.
-  C'est facile car on peut calculer explicitement $B_n$ (somme géométrique de raison $q=e^{it}≠1$).
-  On trouve $B_n = \frac{1-q^{n+1}}{1-q}$, donc $\Abs{B_n} ≤ \frac{2}{\Abs{1-q}}$, d'où le résultat.
-\item
-On applique le cas précédent avec $t = β$ et $a_n = \frac{1}{n^α}$,
-  d'où la convergence de $∑ \frac{e^{inβ}}{n^α}$
-  puis de $∑ \frac{e^{i(nβ+γ)}}{n^α}$ en multipliant par $e^{iγ}$.
-  D'où la convergence de $∑ \frac{\sin(nβ+γ)}{n^α}$ en prenant la partie réelle.
-\item
-Notons $u_n = \frac{\sin n}{n^α + \sin n}$.
-  D'abord, si $α>1$, on a $u_n = O(1/n^α)$, d'où la convergence absolue.
-  Un développement limité donne
-  \begin{align*} \frac{\sin n}{n^α+\sin n}
-    &= \frac{\sin n}{n^α} ⋅ \frac{1}{1+\frac{\sin n}{n^α}} \\
-    &= \frac{\sin n}{n^α} \Cro{ 1 - \frac{\sin n}{n^α} + o\Pa{\frac{1}{n^α}} } \\
-    &= \frac{\sin n}{n^α} - \frac{\sin^2 n}{n^{2α}} + o\Pa{\frac{1}{n^{2α}}} \\
-    &= \frac{\sin n}{n^α} - \frac{1-\cos(2n)}{2n^{2α}} + o\Pa{\frac{1}{n^{2α}}}
-  \end{align*}
+  \begin{enumerate}
+  \item
+    On prend $b_n = e^{int}$ et on doit vérifier que la suite $(B_n)$ est bornée.
+    C'est facile car on peut calculer explicitement $B_n$ (somme géométrique de raison $q=e^{it}≠1$).
+    On trouve $B_n = \frac{1-q^{n+1}}{1-q}$, donc $\Abs{B_n} ≤ \frac{2}{\Abs{1-q}}$, d'où le résultat.
+  \item
+    On applique le cas précédent avec $t = β$ et $a_n = \frac{1}{n^α}$,
+    d'où la convergence de $∑ \frac{e^{inβ}}{n^α}$
+    puis de $∑ \frac{e^{i(nβ+γ)}}{n^α}$ en multipliant par $e^{iγ}$.
+    D'où la convergence de $∑ \frac{\sin(nβ+γ)}{n^α}$ en prenant la partie réelle.
+  \item
+    Notons $u_n = \frac{\sin n}{n^α + \sin n}$.
+    D'abord, si $α>1$, on a $u_n = O(1/n^α)$, d'où la convergence absolue.
+    Un développement limité donne
+    \begin{align*} \frac{\sin n}{n^α+\sin n}
+      &= \frac{\sin n}{n^α} ⋅ \frac{1}{1+\frac{\sin n}{n^α}} \\
+      &= \frac{\sin n}{n^α} \Cro{ 1 - \frac{\sin n}{n^α} + o\Pa{\frac{1}{n^α}} } \\
+      &= \frac{\sin n}{n^α} - \frac{\sin^2 n}{n^{2α}} + o\Pa{\frac{1}{n^{2α}}} \\
+      &= \frac{\sin n}{n^α} - \frac{1-\cos(2n)}{2n^{2α}} + o\Pa{\frac{1}{n^{2α}}}
+    \end{align*}
 
-  Notons $v_n = \frac{\sin n}{n^α}$ et $w_n = \frac{\cos(2n)}{2n^{2α}}$.
-  D'après la question précédente, la série $∑ v_n$ converge.
-  Comme $w_n = \frac12 ⋅ \frac{\sin(2n+π/2)}{n^{2α}}$, on a de même la convergence de $∑ w_n$.
+    Notons $v_n = \frac{\sin n}{n^α}$ et $w_n = \frac{\cos(2n)}{2n^{2α}}$.
+    D'après la question précédente, la série $∑ v_n$ converge.
+    Comme $w_n = \frac12 ⋅ \frac{\sin(2n+π/2)}{n^{2α}}$, on a de même la convergence de $∑ w_n$.
 
-  Ainsi, $∑ u_n$ converge £ssi. $∑ (u_n - v_n - w_n)$ converge.
-  Or $u_n - v_n - w_n \sim \frac{-1}{2n^{2α}}$ qui est de signe constant,
-  donc cette série converge £ssi. $α > 1/2$.
-\end{enumerate}
+    Ainsi, $∑ u_n$ converge £ssi. $∑ (u_n - v_n - w_n)$ converge.
+    Or $u_n - v_n - w_n \sim \frac{-1}{2n^{2α}}$ qui est de signe constant,
+    donc cette série converge £ssi. $α > 1/2$.
+  \end{enumerate}
 \end{enumerate}
 
 \end{document}

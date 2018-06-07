@@ -99,14 +99,14 @@ On appelle \emph{matrice de l'endomorphisme $u$} la matrice suivante, de type $(
 \[ \Mat(u,\B \to \B') = \Mat_{\B\to\B'}(u) = \bigPa{ a_{i,j} }_{\substack{1≤i≤n\\1≤j≤p}}. \]
 \begin{center}
   \begin{tikzpicture}[
-    every left delimiter/.style={xshift=0.75em},
-    every right delimiter/.style={xshift=-0.75em},
-    dots/.style={
-      line width=1pt,
-      line cap=round,
-      dash pattern=on 0pt off 5pt,
-      shorten >=.1cm,
-      shorten <=.1cm}]
+      every left delimiter/.style={xshift=0.75em},
+      every right delimiter/.style={xshift=-0.75em},
+      dots/.style={
+        line width=1pt,
+        line cap=round,
+        dash pattern=on 0pt off 5pt,
+        shorten >=.1cm,
+    shorten <=.1cm}]
     \matrix (M) [
       matrix of nodes,
       left delimiter=(,
@@ -174,18 +174,18 @@ On appelle \emph{matrice de passage} de $\B$ à $\B'$ la matrice
 De façon plus explicite, notons $\B = \nUplet e1n$,
 $\B' = \nUplet f1n$ et $\Pass(\B\to\B') = \bigPa{ a_{i,j} }$.
 Dans ce cas, on a
-\[ \forall j \in \ccro{1,n} \+ f_j = \sum_{i=1}^n a_{i,j} e_i. \]
+\[ ∀j ∈ \ccro{1,n} \+ f_j = ∑_{i=1}^n a_{i,j} e_i. \]
 Ainsi,
 \begin{center}
   \begin{tikzpicture}[
-    every left delimiter/.style={xshift=0.75em},
-    every right delimiter/.style={xshift=-0.75em},
-    dots/.style={
-      line width=1pt,
-      line cap=round,
-      dash pattern=on 0pt off 5pt,
-      shorten >=.1cm,
-      shorten <=.1cm}]
+      every left delimiter/.style={xshift=0.75em},
+      every right delimiter/.style={xshift=-0.75em},
+      dots/.style={
+        line width=1pt,
+        line cap=round,
+        dash pattern=on 0pt off 5pt,
+        shorten >=.1cm,
+    shorten <=.1cm}]
     \matrix (M) [
       matrix of nodes,
       left delimiter=(,
@@ -215,7 +215,7 @@ Soit $E$ un £evdf. et $\B$, $\B'$ et $\B''$ trois bases de $E$.
 Alors
 \begin{enumerate}
 \item
-  $\Pass(\B \to \B') \times \Pass(\B' \to \B'') = \Pass(\B \to \B'')$;
+  $\Pass(\B \to \B') × \Pass(\B' \to \B'') = \Pass(\B \to \B'')$;
 \item
   $\Pass(\B \to \B')$ est inversible, et son inverse est $\Pass(\B' \to \B)$.
 \end{enumerate}
@@ -267,7 +267,7 @@ où
 %\Para{Définition}
 
 La \emph{matrice identité} de taille $n$ est la matrice
-$I_n = \bigPa{ \delta_{i,j} } \in \MnK$.
+$I_n = \bigPa{ δ_{i,j} } ∈ \MnK$.
 
 \Para{Théorème}
 
@@ -282,7 +282,7 @@ Alors $BA = I_n$.
 
 Soit $A$ et $B$ deux matrices carrées de $\MnK$.
 On dit que $A$ et $B$ sont \emph{semblables}
-£ssil. existe une matrice inversible $P\in\GLnK$
+£ssil. existe une matrice inversible $P∈\GLnK$
 telle que \[ B = P^{-1} A P. \]
 
 
@@ -395,11 +395,11 @@ Cette application $d$ vérifie alors automatiquement les propriétés suivantes:
 Soit $\nUplet a1n ∈𝕂^n$.
 La \emph{matrice de Vandermonde} associée à $\nUplet a1n$ est
 \[ M = \begin{pmatrix}
-  1 &  1 &  1 &  \dots &  1  \\
-  a_1 &  a_2 &  a_3 &  \dots &  a_n  \\
-  a_1^2 &  a_2^2 &  a_3^2 &  \dots &  a_n^2  \\
-  \vdots &  \vdots &  \vdots &   &  \vdots  \\
-  a_1^{n-1} &  a_2^{n-1} &  a_3^{n-1} &  \dots &  a_n^{n-1}  \end{pmatrix}. \]
+    1 &  1 &  1 &  \dots &  1  \\
+    a_1 &  a_2 &  a_3 &  \dots &  a_n  \\
+    a_1^2 &  a_2^2 &  a_3^2 &  \dots &  a_n^2  \\
+    \vdots &  \vdots &  \vdots &   &  \vdots  \\
+a_1^{n-1} &  a_2^{n-1} &  a_3^{n-1} &  \dots &  a_n^{n-1}  \end{pmatrix}. \]
 Le \emph{déterminant de Vandermonde} $V \nUplet a1n$ est le déterminant de la matrice de Vandermonde ci-dessus.
 
 \Para{Théorème}
@@ -435,12 +435,12 @@ Soit $A∈\mathrm{M}_{n,p}(𝕂) = \bigl( a_{ij} \bigr)_{\substack{1≤i≤n \\ 
 Sa décomposition par blocs suivant le découpage $\nUplet n1s$ pour les lignes et $\nUplet p1t$ pour les colonnes est
 \begin{center}
   \begin{tikzpicture}[
-    dots/.style={
-      line width=1pt,
-      line cap=round,
-      dash pattern=on 0pt off 5pt,
-      shorten >=.1cm,
-      shorten <=.1cm}]
+      dots/.style={
+        line width=1pt,
+        line cap=round,
+        dash pattern=on 0pt off 5pt,
+        shorten >=.1cm,
+    shorten <=.1cm}]
     \matrix[
       matrix of nodes,
       left delimiter=(,
@@ -470,9 +470,9 @@ Sa décomposition par blocs suivant le découpage $\nUplet n1s$ pour les lignes 
 \end{center}
 où pour tout $k∈\Dcro{1,s}$ et $l∈\Dcro{1,t}$, on a
 \[ A_{k,l} = \begin{pmatrix}
-  a_{1+σ_{k-1},1+τ_{l-1}}  &  \dots &  a_{1+σ_{k-1},τ_l}  \\
-  \vdots &   &  \vdots  \\
-  a_{σ_k, 1+τ_{l-1}} &  \dots &  a_{σ_k,τ_l}
+    a_{1+σ_{k-1},1+τ_{l-1}}  &  \dots &  a_{1+σ_{k-1},τ_l}  \\
+    \vdots &   &  \vdots  \\
+    a_{σ_k, 1+τ_{l-1}} &  \dots &  a_{σ_k,τ_l}
 \end{pmatrix} ∈\mathrm{M}_{n_k,q_l}(𝕂). \]
 
 \Para{Proposition}[addition par blocs]
@@ -601,11 +601,11 @@ Montrer que $A$ est inversible. On pourra montrer que $\Ker A = \Acco{0}$.
 Soit $a∈ℝ$.
 Pour $n∈ℕ^*$, on définit le déterminant d'ordre $n$
 \[ Δ_n = \begin{vmatrix}
-  a &  1 &  0 &  \cdots &  0  \\
-  1 &  a &  1 &  \ddots &  \vdots  \\
-  0 &  1 &  a &  \ddots &  0  \\
-  \vdots &  \ddots &  \ddots &  \ddots &  1  \\
-  0 &  \cdots &  0 &  1 &  a \end{vmatrix} \]
+    a &  1 &  0 &  \cdots &  0  \\
+    1 &  a &  1 &  \ddots &  \vdots  \\
+    0 &  1 &  a &  \ddots &  0  \\
+    \vdots &  \ddots &  \ddots &  \ddots &  1  \\
+0 &  \cdots &  0 &  1 &  a \end{vmatrix} \]
 \begin{enumerate}
 \item Déterminer une relation de récurrence linéaire d'ordre 2 vérifiée par la suite $(Δ_n)$.
 \item On suppose $a = 2\cosθ$ où $θ∈\intO{0,π}$.
@@ -629,10 +629,10 @@ Soit $A$, $B$, $C$, $D$ des matrices carrées de $\MnK$.
 On suppose que $CD = DC$ et que $D$ est inversible.
 \begin{enumerate}
 \item
-En considérant le produit par blocs
-\[ \Matrix{I_n,-BD^{-1};0,I_n} \Matrix{A,B;C,D} \]
-montrer que
-\[ \det \Matrix{A,B;C,D} = \det(AD-BC). \]
+  En considérant le produit par blocs
+  \[ \Matrix{I_n,-BD^{-1};0,I_n} \Matrix{A,B;C,D} \]
+  montrer que
+  \[ \det \Matrix{A,B;C,D} = \det(AD-BC). \]
 \item Montrer que cette dernière formule est encore vraie si l'on ne suppose plus que $D$ est inversible.
 \item Trouver un contre-exemple si l'on ne suppose plus que $C$ et $D$ commutent.
 \end{enumerate}

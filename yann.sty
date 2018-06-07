@@ -1,4 +1,4 @@
-% Time-stamp: <2017-09-26 22:37:31 yann>
+% Time-stamp: <2018-06-07 08:59>
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{yann}
@@ -178,6 +178,11 @@
 \def\biggEnsemble#1#2{\biggl\{#1\biggm|#2\biggr\}}
 \def\BiggEnsemble#1#2{\Biggl\{#1\Biggm|#2\Biggr\}}
 \let\Ensemble=\bigEnsemble
+
+\newcommand\IntO[1]{\left]#1\right[}
+\newcommand\IntF[1]{\left[#1\right]}
+\newcommand\IntOF[1]{\left]#1\right]}
+\newcommand\IntFO[1]{\left[#1\right[}
 
 \newcommand\intO[1]{\mathopen]#1\mathclose[}
 \newcommand\intF[1]{\mathopen[#1\mathclose]}

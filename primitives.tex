@@ -43,54 +43,54 @@ On note $∫ f = F + C^{\text{ste}}$.
 \section{Fonctions usuelles}
 
 \begingroup
-\def\Icos{$\intO{kπ-π/2, kπ+π/2}$ où~$k∈ℤ$}
-\def\Isin{$\intO{kπ, (k+1)π}$ où~$k∈ℤ$}
-\def\IRs{$ℝ^*_-$, $ℝ^*_+$}
-\renewcommand\arraystretch{1.5}
-\begin{tabular}{ccc}
-  \toprule
-  Fonction $f$& Intervalle de définition& Primitive de $f$\cr
-  \midrule
-  $f(x)$& $I$& $∫f(x)\D x = F(x)$\cr
-  $f(αx)$ où $α≠0$& $I$& $\frac1αF(αx)$\cr
-  \midrule
-  $e^x$ & $ℝ$& $e^x$\cr
-  $\ln x$ & $\Rps$ & $x\ln(x)-x$\cr
-  \midrule
-  $x^α$ où $α∈ℂ∖\acco{-1}$& $\Rps$& $\frac{x^{α+1}}{α+1}$\cr
-  $x^n$ où $n∈ℕ$& $ℝ$& $\frac{x^{n+1}}{n+1}$\cr
-  $x^n$ où $n∈ℤ$, $n≤-2$& \IRs& $\frac{x^{n+1}}{n+1}$\cr
-  $x^{-1} = \frac1x$& \IRs& $\ln\Abs{x}$\cr
-  \midrule
-  $\cos x$& $ℝ$& $\sin x$\cr
-  $\sin x$& $ℝ$& $-\cos x$\cr
-  $\ch x$& $ℝ$& $\sh x$\cr
-  $\sh x$& $ℝ$& $\ch x$\cr
-  % $\tan x$& \Icos& $-\ln\abs{\cos x}$\cr
-  % $\cotan x$& \Isin& $\ln\abs{\sin x}$\cr
-  % $\th x$& $ℝ$& $\ln\ch x$\cr
-  % $\coth x$& \IRs& $\ln\abs{\sh x}$\cr
-  % \midrule
-  $\frac{1}{\cos^2 x} = 1 + \tan^2 x$& \Icos& $\tan x$\cr
-  % $\frac{1}{\sin^2 x} = 1 + \cotan^2 x$& \Isin& $-\cotan x$\cr
-  % $\frac{1}{\ch^2 x} = 1 - \th^2 x$& $ℝ$& $\th x$\cr
-  % $\frac{1}{\sh^2 x} = \coth^2 x - 1$& \IRs& $-\coth x$\cr
-  \midrule
-  $\frac{1}{1+x^2}$& $ℝ$& $\arctan x$\cr
-  % $\frac{1}{1-x^2}$& $]-1,1[$& $\argth x$\cr
-  % $\frac{1}{1-x^2}$& $]-∞,-1[$, $]-1,1[$, $]1,+∞[$& $\frac12\ln\Abs{\frac{1+x}{1-x}}$\cr
-  % $\frac{1}{√{1+x^2}}$& $ℝ$& $\argsh x = \ln\Pa{x+√{x^2+1}}$\cr
-  % $\frac{1}{√{1-x^2}}$& $]-1,1[$& $\arcsin x$ ou  $-\arccos x$\cr
-  % $\frac{1}{√{x^2-1}}$& $]1,+∞[$& $\argch x = \ln\Pa{x+√{x^2-1}}$\cr
-  % $\frac{1}{√{x^2-1}}$& $]-∞,-1[$, $]1,+∞[$& $\ln\Abs{x+√{x^2-1}}$\cr
-  % \midrule
-  $\frac{1}{a^2+x^2}$ où $a ∈ℝ^*$& $ℝ$& $\frac1a \arctan\Pafrac xa$\cr
-  % $\frac{1}{a^2-x^2}$ où $a > 0$& $]-∞,-a[$, $]-a,a[$, $]a,+∞[$& $\frac1{2a} \ln\Abs{\frac{a+x}{a-x}}$\cr
-  % $\frac{1}{√{a^2+x^2}}$ où $a ∈\Rs$& $ℝ$& $\argsh\Pafrac xa$\cr
-  % $\frac{1}{√{a^2-x^2}}$ où $a > 0$& $]-a,a[$& $\arcsin\Pafrac xa$ ou $-\arccos\Pafrac xa$\cr
-  % $\frac{1}{√{x^2-a^2}}$ où $a > 0$& $]-∞,-a[$, $]a,+∞[$& $\argch\Pafrac xa$\cr
-  \bottomrule
-\end{tabular}
+  \def\Icos{$\intO{kπ-π/2, kπ+π/2}$ où~$k∈ℤ$}
+  \def\Isin{$\intO{kπ, (k+1)π}$ où~$k∈ℤ$}
+  \def\IRs{$ℝ^*_-$, $ℝ^*_+$}
+  \renewcommand\arraystretch{1.5}
+  \begin{tabular}{ccc}
+    \toprule
+    Fonction $f$& Intervalle de définition& Primitive de $f$\cr
+    \midrule
+    $f(x)$& $I$& $∫f(x)\D x = F(x)$\cr
+    $f(αx)$ où $α≠0$& $I$& $\frac1αF(αx)$\cr
+    \midrule
+    $e^x$ & $ℝ$& $e^x$\cr
+    $\ln x$ & $\Rps$ & $x\ln(x)-x$\cr
+    \midrule
+    $x^α$ où $α∈ℂ∖\acco{-1}$& $\Rps$& $\frac{x^{α+1}}{α+1}$\cr
+    $x^n$ où $n∈ℕ$& $ℝ$& $\frac{x^{n+1}}{n+1}$\cr
+    $x^n$ où $n∈ℤ$, $n≤-2$& \IRs& $\frac{x^{n+1}}{n+1}$\cr
+    $x^{-1} = \frac1x$& \IRs& $\ln\Abs{x}$\cr
+    \midrule
+    $\cos x$& $ℝ$& $\sin x$\cr
+    $\sin x$& $ℝ$& $-\cos x$\cr
+    $\ch x$& $ℝ$& $\sh x$\cr
+    $\sh x$& $ℝ$& $\ch x$\cr
+    % $\tan x$& \Icos& $-\ln\abs{\cos x}$\cr
+    % $\cotan x$& \Isin& $\ln\abs{\sin x}$\cr
+    % $\th x$& $ℝ$& $\ln\ch x$\cr
+    % $\coth x$& \IRs& $\ln\abs{\sh x}$\cr
+    % \midrule
+    $\frac{1}{\cos^2 x} = 1 + \tan^2 x$& \Icos& $\tan x$\cr
+    % $\frac{1}{\sin^2 x} = 1 + \cotan^2 x$& \Isin& $-\cotan x$\cr
+    % $\frac{1}{\ch^2 x} = 1 - \th^2 x$& $ℝ$& $\th x$\cr
+    % $\frac{1}{\sh^2 x} = \coth^2 x - 1$& \IRs& $-\coth x$\cr
+    \midrule
+    $\frac{1}{1+x^2}$& $ℝ$& $\arctan x$\cr
+    % $\frac{1}{1-x^2}$& $]-1,1[$& $\argth x$\cr
+    % $\frac{1}{1-x^2}$& $]-∞,-1[$, $]-1,1[$, $]1,+∞[$& $\frac12\ln\Abs{\frac{1+x}{1-x}}$\cr
+    % $\frac{1}{√{1+x^2}}$& $ℝ$& $\argsh x = \ln\Pa{x+√{x^2+1}}$\cr
+    % $\frac{1}{√{1-x^2}}$& $]-1,1[$& $\arcsin x$ ou  $-\arccos x$\cr
+    % $\frac{1}{√{x^2-1}}$& $]1,+∞[$& $\argch x = \ln\Pa{x+√{x^2-1}}$\cr
+    % $\frac{1}{√{x^2-1}}$& $]-∞,-1[$, $]1,+∞[$& $\ln\Abs{x+√{x^2-1}}$\cr
+    % \midrule
+    $\frac{1}{a^2+x^2}$ où $a ∈ℝ^*$& $ℝ$& $\frac1a \arctan\Pafrac xa$\cr
+    % $\frac{1}{a^2-x^2}$ où $a > 0$& $]-∞,-a[$, $]-a,a[$, $]a,+∞[$& $\frac1{2a} \ln\Abs{\frac{a+x}{a-x}}$\cr
+    % $\frac{1}{√{a^2+x^2}}$ où $a ∈\Rs$& $ℝ$& $\argsh\Pafrac xa$\cr
+    % $\frac{1}{√{a^2-x^2}}$ où $a > 0$& $]-a,a[$& $\arcsin\Pafrac xa$ ou $-\arccos\Pafrac xa$\cr
+    % $\frac{1}{√{x^2-a^2}}$ où $a > 0$& $]-∞,-a[$, $]a,+∞[$& $\argch\Pafrac xa$\cr
+    \bottomrule
+  \end{tabular}
 \endgroup
 
 \yann{displaystyle}
@@ -206,7 +206,7 @@ Ainsi, on a abaissé le degré et donc simplifié le calcul.
 
 \Para{Exemples}[pôles simples réels]
 \[ \frac{1}{X^2-1}, \quad
-\frac{X+1}{X+2}, \quad
+  \frac{X+1}{X+2}, \quad
 \frac{2X+8}{X^2+8X+15}, \]
 \[ \frac{X^4+X+1}{X(X^2-1)}, \quad
 \frac{X^5+6X^4+9X^3+6}{X(X+1)(X+2)(X+3)}. \]
@@ -216,7 +216,7 @@ Ainsi, on a abaissé le degré et donc simplifié le calcul.
 
 \Para{Exemples}[pôles simples complexes]
 \[ \frac{1}{X(X^2+1)}, \quad
-\frac{-X^3+2X^2+1}{X^3+X}, \quad
+  \frac{-X^3+2X^2+1}{X^3+X}, \quad
 \frac{2X^3-4X+2}{X^3+2X}. \]
 
 \Para{Exemple}[pôles multiples complexes]

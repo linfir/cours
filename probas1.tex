@@ -1,8 +1,8 @@
 \documentclass{yann}
 
 \newcommand{\Part}{\mathcal{P}}
-\newcommand{\Pro}{\bigl(\Omega, \Part(\Omega)\bigr)}
-\newcommand{\Prob}{\bigl(\Omega, \Part(\Omega), \P\bigr)}
+\newcommand{\Pro}{\bigl(Ω, \Part(Ω)\bigr)}
+\newcommand{\Prob}{\bigl(Ω, \Part(Ω), ℙ\bigr)}
 
 \begin{document}
 \title{Probabilités finies}
@@ -15,15 +15,15 @@
 
 \begin{itemize}
 \item
-Un \emph{espace probabilisable fini} est un couple $\Pro$
-  où $\Omega$ est un ensemble fini
-  et $\Part(\Omega)$ est l'ensemble des parties de $\Omega$.
+  Un \emph{espace probabilisable fini} est un couple $\Pro$
+  où $Ω$ est un ensemble fini
+  et $\Part(Ω)$ est l'ensemble des parties de $Ω$.
 \item
-$\Omega$ s'appelle l'\emph{univers}.
+  $Ω$ s'appelle l'\emph{univers}.
 \item
-Un élément de $\Omega$ s'appelle un \emph{résultat} ou une \emph{réalisation}.
+  Un élément de $Ω$ s'appelle un \emph{résultat} ou une \emph{réalisation}.
 \item
-Un élément de $\Part(\Omega)$ s'appelle un \emph{événement}.
+  Un élément de $\Part(Ω)$ s'appelle un \emph{événement}.
 \end{itemize}
 
 \Para{Définitions}
@@ -32,34 +32,34 @@ Soit $\Pro$ un espace probabilisable fini.
 Soit $A$ et $B$ deux événements.
 \begin{itemize}
 \item
-L'événement $\emptyset$ est l'événement impossible.
+  L'événement $∅$ est l'événement impossible.
 \item
-L'événement $\Omega$ est l'événement certain.
+  L'événement $Ω$ est l'événement certain.
 \item
-Les événements $\emptyset$ et $\Omega$ sont les événements triviaux.
+  Les événements $∅$ et $Ω$ sont les événements triviaux.
 \item
-Un événement de la forme $\{x\}$ où $x\in\Omega$ s'appelle un \emph{événement élémentaire}.
+  Un événement de la forme $\{x\}$ où $x∈Ω$ s'appelle un \emph{événement élémentaire}.
 \item
-L'événement \og{}non $A$\fg{} est $\bar A =\Omega\setminus A$.
+  L'événement \og{}non $A$\fg{} est $\bar A =Ω∖A$.
 \item
-L'événement \og{}$A$ ou $B$\fg{} est $A\cup B$.
+  L'événement \og{}$A$ ou $B$\fg{} est $A∪B$.
 \item
-L'événement \og{}$A$ et $B$\fg{} est $A\cap B$.
+  L'événement \og{}$A$ et $B$\fg{} est $A∩B$.
 \item
-Les événements $A$ et $B$ sont \emph{incompatibles} s'ils sont disjoints, c.-à-d. si $A\cap B=\emptyset$.
+  Les événements $A$ et $B$ sont \emph{incompatibles} s'ils sont disjoints, c.-à-d. si $A∩B=∅$.
 \end{itemize}
 
 \Para{Définitions}
 
 Soit $\Pro$ un espace probabilisable fini.
 Une \emph{probabilité} sur $\Pro$ est une application
-$\Fn{\P}{\Part(\Omega)}{[0,1]}$ telle que
+$\Fnℙ{\Part(Ω)}{[0,1]}$ telle que
 \begin{itemize}
 \item
-$\P(\Omega)=1$.
+  $ℙ(Ω)=1$.
 \item
-Si $A$ et $B$ sont des événements incompatibles,
-  alors $\P(A\cup B)=\P(A)+\P(B)$.
+  Si $A$ et $B$ sont des événements incompatibles,
+  alors $ℙ(A∪B)=ℙ(A)+ℙ(B)$.
 \end{itemize}
 
 Le triplet $\Prob$ s'appelle un \emph{espace probabilisé fini}.
@@ -68,24 +68,24 @@ Le triplet $\Prob$ s'appelle un \emph{espace probabilisé fini}.
 
 Soit $\Prob$ un espace probabilisé.
 Si $A_1, \dots, A_n$ est une famille d'événements deux à deux incompatibles,
-alors \[ \P\left( \bigcup_{i=1}^n A_i \right) = \sum_{i=1}^n \P(A_i) \]
+alors \[ ℙ\left( ⋃_{i=1}^n A_i \right) = ∑_{i=1}^n ℙ(A_i) \]
 
 \Para{Proposition}
 
 Soit $\Prob$ un espace probabilisé.
 Pour tout événement $A$ on a
-\[ \P(A) = \sum_{x\in A} \P\bigl(\{x\}\bigr) \]
+\[ ℙ(A) = ∑_{x∈A} ℙ\bigl(\{x\}\bigr) \]
 
 \Para{Proposition}
 
 Soit $\Prob$ un espace probabilisé.
 \begin{itemize}
 \item
-Si $A$ est un événement, alors $\P(\bar A) = 1 - \P(A)$.
+  Si $A$ est un événement, alors $ℙ(\bar A) = 1 - ℙ(A)$.
 \item
-Si $A$ et $B$ sont deux événements tels que $A\subset B$, alors $\P(A)\leq\P(B)$.
+  Si $A$ et $B$ sont deux événements tels que $A⊂B$, alors $ℙ(A)≤ℙ(B)$.
 \item
-Si $A$ et $B$ sont deux événements, alors $\P(A\cup B)=\P(A)+\P(B)-\P(A\cap B)$.
+  Si $A$ et $B$ sont deux événements, alors $ℙ(A∪B)=ℙ(A)+ℙ(B)-ℙ(A∩B)$.
 \end{itemize}
 
 \Para{Définition}
@@ -93,21 +93,21 @@ Si $A$ et $B$ sont deux événements, alors $\P(A\cup B)=\P(A)+\P(B)-\P(A\cap B)
 Soit $\Pro$ un espace probabilisable fini.
 Un \emph{système complet d'événements} est une famille $\nUplet A1n$
 d'événements deux à deux incompatibles tels que
-\[ \bigcup_{i=1}^n A_i = \Omega. \]
+\[ ⋃_{i=1}^n A_i = Ω. \]
 
 \Para{Proposition}
 
 Soit $\Prob$ un espace probabilisé.
 Soit $\nUplet A1n$ un système complet d'événements.
 Pour tout événement $B$, on a
-\[ \P(B) = \sum_{i=1}^n \P(B\cap A_i). \]
+\[ ℙ(B) = ∑_{i=1}^n ℙ(B∩A_i). \]
 
 \Para{Proposition-Définition}[probabilité uniforme]
 
 Soit $\Pro$ un espace probabilisable fini.
 Alors l'application
-\[ \Fonction{\P}{\Part(\Omega)}{[0,1]}{A}{\frac{\Card{A}}{\Card{\Omega}}} \]
-est une probabilité appelée \emph{probabilité uniforme sur $\Omega$}.
+\[ \Fonctionℙ{\Part(Ω)}{[0,1]}{A}{\frac{\Card{A}}{\CardΩ}} \]
+est une probabilité appelée \emph{probabilité uniforme sur $Ω$}.
 
 % -----------------------------------------------------------------------------
 \section{Indépendance}
@@ -117,11 +117,11 @@ est une probabilité appelée \emph{probabilité uniforme sur $\Omega$}.
 Soit $\Prob$ un espace probabilisé.
 \begin{itemize}
 \item
-Deux événements $A$ et $B$ sont \emph{indépendants} si $\P(A\cap B)=\P(A)\P(B)$.
+  Deux événements $A$ et $B$ sont \emph{indépendants} si $ℙ(A∩B)=ℙ(A)ℙ(B)$.
 \item
-Une famille $\nUplet A1n$ d'évenements sont \emph{(mutuellement) indépendants}
-  si pour toute partie $I\subset\Dcro{1,n}$, on a
-  \[ \P\left( \bigcap_{i\in I} A_i \right) = \prod_{i\in I} \P(A_i) \]
+  Une famille $\nUplet A1n$ d'évenements sont \emph{(mutuellement) indépendants}
+  si pour toute partie $I⊂\Dcro{1,n}$, on a
+  \[ ℙ\left( ⋂_{i∈I} A_i \right) = ∏_{i∈I} ℙ(A_i) \]
 \end{itemize}
 
 \Para{Attention}
@@ -134,10 +134,10 @@ Soit $\Prob$ un espace probabilisé.
 Soit $\nUplet A1n$ des événements mutuellement indépendants.
 \begin{itemize}
 \item
-Si $I\subset\Dcro{1,n}$,
-  alors $(A_i)_{i\in I}$ sont des événements mutuellement indépendants.
+  Si $I⊂\Dcro{1,n}$,
+  alors $(A_i)_{i∈I}$ sont des événements mutuellement indépendants.
 \item
-Si pour tout $i\in\Dcro{1,n}$, $B_i \in \bigl\{ \emptyset, A_i, \bar A_i,\Omega \bigr\}$,
+  Si pour tout $i∈\Dcro{1,n}$, $B_i ∈ \bigl\{ ∅, A_i, \bar A_i,Ω \bigr\}$,
   alors $\nUplet B1n$ sont des événements mutuellement indépendants.
 \end{itemize}
 
@@ -147,75 +147,75 @@ Si pour tout $i\in\Dcro{1,n}$, $B_i \in \bigl\{ \emptyset, A_i, \bar A_i,\Omega 
 \Para{Proposition-Définition}
 
 Soit $\Prob$ un espace probabilisé.
-Soit $A$ un événement tel que $\P(A)>0$.
+Soit $A$ un événement tel que $ℙ(A)>0$.
 L'application
-\[ \Fonction{\P_A}{\Part(\Omega)}{[0,1]}{B}{\frac{\P(A\cap B)}{\P(A)}} \]
+\[ \Fonction{ℙ_A}{\Part(Ω)}{[0,1]}{B}{\frac{ℙ(A∩B)}{ℙ(A)}} \]
 est une probabilité sur $\Pro$
 appelée \emph{probabilité conditionnellement à $A$},
 ou \emph{probabilité sachant $A$}.
 
-On note $\P(B|A) = \P_A(B)$.
+On note $ℙ(B|A) = ℙ_A(B)$.
 
 \Para{Proposition}[lien avec l'indépendance]
 
 Soit $\Prob$ un espace probabilisé.
 Soit $A$ un événement de probabilité non nulle
 et $B$ un événement quelconque.
-Alors les événements $A$ et $B$ sont indépendants si et seulement si $\P(B|A)=\P(B)$.
+Alors les événements $A$ et $B$ sont indépendants si et seulement si $ℙ(B|A)=ℙ(B)$.
 
 \Para{Formule des probabilités totales}
 
 Soit $\Prob$ un espace probabilisé.
 Soit $\nUplet A1n$ un système complet d'événements de probabilités non nulles.
 Pour tout événement $B$, on a
-\[ \P(B) = \sum_{i=1}^n \P(B|A_i)\P(A_i). \]
+\[ ℙ(B) = ∑_{i=1}^n ℙ(B|A_i)ℙ(A_i). \]
 
 \Para{Cas particulier}
 
 Soit $\Prob$ un espace probabilisé.
-Soit $A$ un événement de probabilité $\P(A) \in \intO{0,1}$.
+Soit $A$ un événement de probabilité $ℙ(A) ∈ \intO{0,1}$.
 Pour tout événement $B$, on a
-\[ \P(B) = \P(B|A)\P(A) + \P(B|\bar A)\P(\bar A) \]
+\[ ℙ(B) = ℙ(B|A)ℙ(A) + ℙ(B|\bar A)ℙ(\bar A) \]
 
 \Para{Formule de Bayes}
 
 Soit $\Prob$ un espace probabilisé.
 Soit $A$ et $B$ deux événements de probabilités non nulles.
 Alors
-\[ \P(A|B) = \frac{ \P(B|A)\P(A) }{ \P(B) } \]
+\[ ℙ(A|B) = \frac{ ℙ(B|A)ℙ(A) }{ ℙ(B) } \]
 
 \Para{Corollaire}[formule de Bayes usuelle]
 
 Soit $\Prob$ un espace probabilisé.
 Soit $\nUplet A1n$ un système complet d'événements de probabilités non nulles.
 Pour tout événement $B$ de probabilité non nulle,
-et pour tout $k\in\Dcro{1,n}$, on a
-\[ \P(A_k|B) = \frac{ \P(B|A_k)\P(A_k) }{ \DS \sum_{i=1}^n \P(B|A_i)\P(A_i) }. \]
+et pour tout $k∈\Dcro{1,n}$, on a
+\[ ℙ(A_k|B) = \frac{ ℙ(B|A_k)ℙ(A_k) }{ \DS ∑_{i=1}^n ℙ(B|A_i)ℙ(A_i) }. \]
 
 % -----------------------------------------------------------------------------
 \section{Exercices}
 
 \Exercice
 
-Soit $A$ et $B$ deux événements tels que $\P(A)=\P(B)=\frac34$.
-Donner un encadrement, le meilleur possible, de $\P(A\cap B)$?
+Soit $A$ et $B$ deux événements tels que $ℙ(A)=ℙ(B)=\frac34$.
+Donner un encadrement, le meilleur possible, de $ℙ(A∩B)$?
 
 \Exercice
 
-Soit $\Omega = \{ 1,2,3,4 \}$ muni de la probabilité uniforme.
+Soit $Ω = \{ 1,2,3,4 \}$ muni de la probabilité uniforme.
 Soit $A = \{ 1,2 \}$, $B = \{ 1,3 \}$ et $C = \{ 1,4 \}$
 Montrer que $A$, $B$ et $C$ sont deux à deux indépendants,
 mais qu'ils ne sont pas mutuellement indépendants.
 
 \Exercice
 
-On jette deux dés (à 6 faces). Expliciter l'univers $\Omega$.
+On jette deux dés (à 6 faces). Expliciter l'univers $Ω$.
 
 Soit $A_0$ l'événement \og{}la somme des points est paire\fg{},
 $A_1$ l'événement \og{}la somme des points est impaire\fg{}
 et $B$ l'événement \og{}la valeur absolue de la différence des points est égale à 4\fg{}.
-Combien comptez-vous d'événements élémentaires dans $A_0\setminus B$,
-dans $A_1\setminus B$?
+Combien comptez-vous d'événements élémentaires dans $A_0∖B$,
+dans $A_1∖B$?
 
 \Exercice
 
@@ -223,10 +223,10 @@ L'irradiation par les rayons $X$ de vers à soie induit certaines anomalies.
 La probabilité d'une anomalie particulière est $p=\frac1{10}$.
 \begin{itemize}
 \item
-Quelle est la probabilité de trouver au moins un embryon présentant
+  Quelle est la probabilité de trouver au moins un embryon présentant
   cette anomalie, sur dix disséqués?
 \item
-Combien faut-il en disséquer pour trouver au moins une anomalie
+  Combien faut-il en disséquer pour trouver au moins une anomalie
   avec une probabilité supérieure à $50\%$? à $95\%$?
 \end{itemize}
 
@@ -260,9 +260,9 @@ Le test s'arrête quand les $2$ transistors défectueux sont trouvés.
 Calculer la probabilité pour que le test:
 \begin{itemize}
 \item
-soit terminé au bout de $2$ opérations?
+  soit terminé au bout de $2$ opérations?
 \item
-nécessite strictement plus de $3$ opérations?
+  nécessite strictement plus de $3$ opérations?
 \end{itemize}
 
 \Exercice
@@ -277,12 +277,12 @@ dans le désordre?
 Au Loto, on doit cocher 6 cases dans une grille comportant 49 numéros.
 \begin{enumerate}
 \item
-Quelle est la probabilité de gagner le gros lot (c'est-à-dire d'avoir les 6 bons numéros)?
+  Quelle est la probabilité de gagner le gros lot (c'est-à-dire d'avoir les 6 bons numéros)?
 \item
-On gagne quelque chose à partir du moment où l'on a au moins 3 bons numéros.
+  On gagne quelque chose à partir du moment où l'on a au moins 3 bons numéros.
   Avec quelle probabilité cela arrive-t-il?
 \item
-En fait, on peut aussi (en payant plus cher) cocher 7, 8, 9 ou même 10 numéros
+  En fait, on peut aussi (en payant plus cher) cocher 7, 8, 9 ou même 10 numéros
   sur la grille. Dans chacun des cas, quelle est la probabilité de gagner le
   gros lot?
 \end{enumerate}
@@ -292,11 +292,11 @@ En fait, on peut aussi (en payant plus cher) cocher 7, 8, 9 ou même 10 numéros
 On choisit au hasard un comité de quatre personnes parmi huit américains, cinq anglais et trois français. Quelle est la probabilité:
 \begin{itemize}
 \item
-qu'il ne se compose que d'américains?
+  qu'il ne se compose que d'américains?
 \item
-qu'aucun américain ne figure dans ce comité?
+  qu'aucun américain ne figure dans ce comité?
 \item
-qu'au moins un membre de chaque nation figure dans le comité?
+  qu'au moins un membre de chaque nation figure dans le comité?
 \end{itemize}
 
 \Exercice[\og{}paradoxe\fg{} des anniversaires]
@@ -358,9 +358,9 @@ coup sûr. S'il perd, il ne partira probablement pas (seulement avec une
 probabilité de $1/10000$).
 \begin{enumerate}
 \item
-Quelle est la probabilité pour que Loïc parte aux Seychelles demain?
+  Quelle est la probabilité pour que Loïc parte aux Seychelles demain?
 \item
-Sachant qu'il est parti aux Seychelles, quelle est la probabilité qu'il ait gagné au Loto?
+  Sachant qu'il est parti aux Seychelles, quelle est la probabilité qu'il ait gagné au Loto?
 \end{enumerate}
 
 \Exercice
@@ -379,9 +379,9 @@ et $20\%$ de la production d'une usine. Les pourcentages de pièces
 défectueuses sont respectivement de $3\%$, $4\%$ et $5\%$.
 \begin{enumerate}
 \item
-Quelle est la probabilité qu'une pièce, prise au hasard dans la production, soit défecteuse?
+  Quelle est la probabilité qu'une pièce, prise au hasard dans la production, soit défecteuse?
 \item
-Quelle est la probabilité pour qu'une pièce défectueuse prise au hasard
+  Quelle est la probabilité pour qu'une pièce défectueuse prise au hasard
   provienne de $A$? de $B$? de $C$?
 \end{enumerate}
 
@@ -414,7 +414,7 @@ A-t-il raison d'agir ainsi?
 
 \Exercice
 
-Soit $\Prob$ un espace probabilisé fini tel que $\Card{\Omega}$ est un nombre premier $p$ et $\P$ est la probabilité uniforme.
+Soit $\Prob$ un espace probabilisé fini tel que $\CardΩ$ est un nombre premier $p$ et $ℙ$ est la probabilité uniforme.
 Soit $A$ et $B$ deux événements non triviaux.
 Montrer que $A$ et $B$ ne sont pas indépendants.
 
@@ -429,20 +429,20 @@ On considère un jeu de $52$ cartes.
 Après avoir mélangé les cartes, quelle est la probabilité que
 \begin{enumerate}
 \item
-l'as de coeur soit placé avant l'as de pique?
+  l'as de coeur soit placé avant l'as de pique?
 \item
-les as de coeur et de pique soient voisins?
+  les as de coeur et de pique soient voisins?
 \end{enumerate}
 
 \Exercice[la chaîne des menteurs]
 
 On suppose qu'un message binaire ($0$ ou $1$) est transmis depuis un emetteur $M_0$ à travers une chaîne $M_1, M_2, \dots, M_n$ de messagers menteurs, qui transmettent correctement le message avec une probabilité $p$, mais qui changent sa valeur avec une probabilité $1-p$.
 
-Si l'on note $a_n$ la probabilité que l'information transmise par $M_n$ soit identique à celle envoyée par $M_0$ (avec comme convention que $a_0=1$), déterminer $a_{n+1}$ en fonction de $a_n$, puis une expression explicite de $a_n$ en fonction de $n$, ainsi que la valeur limite de la suite $(a_n)_{n\in\N}$. Le résultat est-il conforme à ce à quoi l'on pouvait s'attendre?
+Si l'on note $a_n$ la probabilité que l'information transmise par $M_n$ soit identique à celle envoyée par $M_0$ (avec comme convention que $a_0=1$), déterminer $a_{n+1}$ en fonction de $a_n$, puis une expression explicite de $a_n$ en fonction de $n$, ainsi que la valeur limite de la suite $(a_n)_{n∈ℕ}$. Le résultat est-il conforme à ce à quoi l'on pouvait s'attendre?
 
 \Exercice[urne de Polya]
 
-Soit $(a,b,c) \in \N^3$ avec $a+b>0$.
+Soit $(a,b,c) ∈ ℕ^3$ avec $a+b>0$.
 On considère une urne contenant $a$ boules blanches et $b$ boules noires.
 Après chaque tirage, on remet la boule choisie dans l'urne avec $c$ nouvelles boules de la même couleur.
 Déterminer la probabilité que la $n$-ième boule tirée soit blanche.

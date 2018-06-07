@@ -286,11 +286,11 @@ Pour calculer $p_F(x)$, on a en général deux méthodes:
   $∀i∈\Dcro{1,n}$, $\PS{u_i}{p_F(x)-x} = 0$.
   Cela fournit un système de $n$ équations linéaires à $n$ inconnues:
   \[ \rule{-1\labelwidth}{0pt}
-  \left\{ \begin{array}{c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c}
-    α_1 \PS{u_1}{u_1} & {}+{} & α_2 \PS{u_1}{u_2} & {}+{} & \cdots & {}+{} & α_n \PS{u_1}{u_n} & {}={} & \PS{u_1}{x} \\
-    α_1 \PS{u_2}{u_1} & {}+{} & α_2 \PS{u_2}{u_2} & {}+{} & \cdots & {}+{} & α_n \PS{u_2}{u_n} & {}={} & \PS{u_2}{x} \\
-    \cdots            &       & \cdots            &       & \cdots &       & \cdots            &       & \cdots      \\
-    α_1 \PS{u_n}{u_1} & {}+{} & α_2 \PS{u_n}{u_2} & {}+{} & \cdots & {}+{} & α_n \PS{u_n}{u_n} & {}={} & \PS{u_n}{x}
+    \left\{ \begin{array}{c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c}
+      α_1 \PS{u_1}{u_1} & {}+{} & α_2 \PS{u_1}{u_2} & {}+{} & \cdots & {}+{} & α_n \PS{u_1}{u_n} & {}={} & \PS{u_1}{x} \\
+      α_1 \PS{u_2}{u_1} & {}+{} & α_2 \PS{u_2}{u_2} & {}+{} & \cdots & {}+{} & α_n \PS{u_2}{u_n} & {}={} & \PS{u_2}{x} \\
+      \cdots            &       & \cdots            &       & \cdots &       & \cdots            &       & \cdots      \\
+      α_1 \PS{u_n}{u_1} & {}+{} & α_2 \PS{u_n}{u_2} & {}+{} & \cdots & {}+{} & α_n \PS{u_n}{u_n} & {}={} & \PS{u_n}{x}
   \end{array} \right. \]
   Ce système est nécessairement de Cramer.
   Il ne reste plus qu'à le résoudre, ce qui nous donne $\nUpletα1n$ et donc $p_F(x)$.
@@ -394,7 +394,7 @@ $\Pass(\B\to\B')$ est une matrice orthogonale £ssi. $\B'$ est une £bon..
 Soit $u∈\LE$.
 On dit que $u$ est un endomorphisme \emph{orthogonal} si et seulement si
 $∀(x,y)∈E^2$, $\PS{u(x)}{u(y)} = \PS xy$.
-On note $\OE$ l'ensemble des endomorphismes orthogonaux de $E$.
+On note $Œ$ l'ensemble des endomorphismes orthogonaux de $E$.
 Il s'agit d'un sous-groupe de $\GLE$.
 
 \Para{Définition}
@@ -452,19 +452,19 @@ Alors il existe un unique $θ∈[0,π]$ tel que
 et ce $θ$ s'appelle l'\emph{angle géométrique} entre les vecteurs $x$ et $y$.
 
 \Para{Proposition}
-Soit $f∈\OE$. Alors
+Soit $f∈Œ$. Alors
 \begin{itemize}
 \item $\det f =±1$,
 \item $\Sp_ℝf⊂\Acco{-1,1}.$
 \end{itemize}
 
 \Para{Définitions}
-Soit $f∈\OE$.
+Soit $f∈Œ$.
 \begin{itemize}
 \item Si $\det f = 1$,
   on dit que $f$ est une \emph{isométrie directe}.
   L'ensemble des isométries directes de $E$ se note $\mathcal{O}^+(E)$ ou
-  $\mathcal{SO}(E)$; il s'agit d'un sous-groupe de $\OE$.
+  $\mathcal{SO}(E)$; il s'agit d'un sous-groupe de $Œ$.
 \item Si $\det f = -1$,
   on dit que $u$ est une \emph{isométrie indirecte}.
   L'ensemble des isométries directes de $E$ se note $\mathcal{O}^-(E)$.
@@ -723,8 +723,8 @@ On pose, pour $(P,Q)∈E^2$,
 Soit $E$ un espace euclidien et $\B = (e_1,e_2,e_3,e_4)$ une £bon. de $E$.
 On considère le sous-espace vectoriel $F$ d'équations dans $\B$:
 \[ \left\{ \begin{alignedat}{5}
-  x_1 & {}+{} & x_2  & {}+{} & x_3  & {}+{} & x_4  & {}={} & 0 \\
-  x_1 & {}+{} & 2x_2 & {}+{} & 3x_3 & {}+{} & 4x_4 & {}={} & 0
+    x_1 & {}+{} & x_2  & {}+{} & x_3  & {}+{} & x_4  & {}={} & 0 \\
+    x_1 & {}+{} & 2x_2 & {}+{} & 3x_3 & {}+{} & 4x_4 & {}={} & 0
 \end{alignedat} \right. \]
 \begin{enumerate}
 \item Quelle est la dimension de $F$?
@@ -974,7 +974,7 @@ Soit $E$ euclidien, $u∈\LE$.\begin{enumerate}
 
 Soit $E$ euclidien et $u∈\LE$.\begin{enumerate}
 \item Montrer que $u∈\SE$ si et seulement si $u^* = u$.
-\item Montrer que $u∈\OE$ si et seulement si $u$ est inversible d'inverse $u^*$.
+\item Montrer que $u∈Œ$ si et seulement si $u$ est inversible d'inverse $u^*$.
 \end{enumerate}
 
 \subsubsection{Divers}
@@ -1011,7 +1011,7 @@ et décrire la transformation géométrique associée à $A$.
 Reconnaître les endomorphismes de $ℝ^3$ muni de sa structure euclidienne
 usuelle canoniquement associés aux matrices suivantes:
 \[ \frac13\Matrix{-2,-1,2;2,-2,1;1,2,2},
-\frac19\Matrix{-7,-4,4;4,-8,-1;-4,-1,-8},
+  \frac19\Matrix{-7,-4,4;4,-8,-1;-4,-1,-8},
 \Matrix{8,1,4;-4,4,7;1,8,-4}. \]
 
 \Exercice
@@ -1033,25 +1033,25 @@ Déterminer $a,b,c$ de sorte que $f$ soit une isométrie, et la préciser.
 Reconnaître les endomorphismes de $ℝ^3$ définis par
 \begin{enumerate}
 \item $\left\{ \begin{alignedat}{4}
-  3x' & {}={} & 2x  & {}+{} & 2y & {}+{} & z  \\
-  3y' & {}={} & -2x & {}+{} & y  & {}+{} & 2z \\
-  3z' & {}={} & x   & {}-{} & 2y & {}+{} & 2z
-\end{alignedat} \right.$
+      3x' & {}={} & 2x  & {}+{} & 2y & {}+{} & z  \\
+      3y' & {}={} & -2x & {}+{} & y  & {}+{} & 2z \\
+      3z' & {}={} & x   & {}-{} & 2y & {}+{} & 2z
+  \end{alignedat} \right.$
 \item $\left\{ \begin{alignedat}{4}
-  4x' & {}={} & -2x      & {}-{} & y√6 & {}+{} & z√6 \\
-  4y' & {}={} & x√6  & {}+{} & y       & {}+{} & 3z      \\
-  4z' & {}={} & -x√6 & {}+{} & 3y      & {}+{} & z
-\end{alignedat} \right.$
+      4x' & {}={} & -2x      & {}-{} & y√6 & {}+{} & z√6 \\
+      4y' & {}={} & x√6  & {}+{} & y       & {}+{} & 3z      \\
+      4z' & {}={} & -x√6 & {}+{} & 3y      & {}+{} & z
+  \end{alignedat} \right.$
 \item $\left\{ \begin{alignedat}{4}
-  3x' & {}={} & x  & {}+{} & 2y & {}+{} & 2z \\
-  3y' & {}={} & 2x & {}+{} & y  & {}-{} & 2z \\
-  3z' & {}={} & 2x & {}-{} & 2y & {}+{} & z
-\end{alignedat} \right.$
+      3x' & {}={} & x  & {}+{} & 2y & {}+{} & 2z \\
+      3y' & {}={} & 2x & {}+{} & y  & {}-{} & 2z \\
+      3z' & {}={} & 2x & {}-{} & 2y & {}+{} & z
+  \end{alignedat} \right.$
 \item $\left\{ \begin{alignedat}{4}
-  4x' & {}={} & -x      & {}+{} & 3y      & {}-{} & z√6       \\
-  4y' & {}={} & 3x      & {}-{} & y       & {}-{} & z√6        \\
-  4z' & {}={} & x√6 & {}+{} & y√6 & {}+{} & 2z
-\end{alignedat} \right.$
+      4x' & {}={} & -x      & {}+{} & 3y      & {}-{} & z√6       \\
+      4y' & {}={} & 3x      & {}-{} & y       & {}-{} & z√6        \\
+      4z' & {}={} & x√6 & {}+{} & y√6 & {}+{} & 2z
+  \end{alignedat} \right.$
 \end{enumerate}
 
 \Exercice

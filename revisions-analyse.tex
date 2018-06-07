@@ -281,18 +281,18 @@ Soit $f \colon \IntF{a,b} \to E$.
 \item $f$ est dite \emph{en escaliers} sur $\IntF{a,b}$
   si et seulement si il existe une subdivision $\nUpletσ0n$ de $\IntF{a,b}$ telle que
   pour tout $k∈\Dcro{0,n-1}$,
-  $f$ est constante sur $]σ_k,σ_{k+1}[$.
-    \item $f$ est dite \emph{continue par morceaux} sur $\IntF{a,b}$
-      si et seulement si il existe une subdivision $\nUpletσ0n$ de $\IntF{a,b}$ telle que
-      pour tout $k∈\Dcro{0,n-1}$,
-      la restriction de $f$ à $]σ_k,σ_{k+1}[$ est continue
-      \emph{et se prolonge en une fonction continue sur $[σ_k,σ_{k+1}]$}.
-    \item Plus généralement,
-      $f$ est dire \emph{de classe $\CC k$ par morceaux} sur $\IntF{a,b}$
-      si et seulement si il existe une subdivision $\nUpletσ0n$ de $\IntF{a,b}$ telle que
-      pour tout $k∈\Dcro{0,n-1}$,
-      la restriction de $f$ à $]σ_k,σ_{k+1}[$ est de classe $\CC k$
-      \emph{et se prolonge en une fonction de classe $\CC k$ sur $[σ_k,σ_{k+1}]$}.
+  $f$ est constante sur $\intO{σ_k,σ_{k+1}}$.
+\item $f$ est dite \emph{continue par morceaux} sur $\IntF{a,b}$
+  si et seulement si il existe une subdivision $\nUpletσ0n$ de $\IntF{a,b}$ telle que
+  pour tout $k∈\Dcro{0,n-1}$,
+  la restriction de $f$ à $\intO{σ_k,σ_{k+1}}$ est continue
+  \emph{et se prolonge en une fonction continue sur $\intF{σ_k,σ_{k+1}}$}.
+\item Plus généralement,
+  $f$ est dire \emph{de classe $\CC k$ par morceaux} sur $\IntF{a,b}$
+  si et seulement si il existe une subdivision $\nUpletσ0n$ de $\IntF{a,b}$ telle que
+  pour tout $k∈\Dcro{0,n-1}$,
+  la restriction de $f$ à $\intO{σ_k,σ_{k+1}}$ est de classe $\CC k$
+  \emph{et se prolonge en une fonction de classe $\CC k$ sur $\intF{σ_k,σ_{k+1}}$}.
 \end{itemize}
 
 \Para{Théorème}
@@ -377,7 +377,7 @@ Soit $f, g \colon I \to𝕂$ deux fonctions continues par morceaux
 et $(a,b)∈I^2$.
 Alors
 \[\left|∫_a^b f(t) g(t) \D t \right|≤
-√{∫_a^b \Abs{f(t)}^2 \D t}
+  √{∫_a^b \Abs{f(t)}^2 \D t}
 √{∫_a^b \Abs{g(t)}^2 \D t}.\]
 Si l'on suppose en outre que $f$ et $g$ sont continues,
 alors il y a égalité si et seulement si la famille $(f,g)$ est liée.
@@ -499,50 +499,50 @@ Soit $f \colon \Rp \toℝ$ de classe $\CC1$.
 
 \Exercice[égalité des accroissements finis généralisés]
 
-Soit $f, g \colon [a,b] \toℝ$ continues et dérivables sur $]a,b[$
-      telles que $g'$ ne s'annule pas sur $]a,b[$.
-      Montrer qu'il existe $c∈\IntO{a,b}$ tel que
-      \[\frac{f(b)-f(a)}{g(b)-g(a)} = \frac{f'(c)}{g'(c)}\]
+Soit $f, g \colon [a,b] \toℝ$ continues et dérivables sur $\intO{a,b}$
+telles que $g'$ ne s'annule pas sur $\intO{a,b}$.
+Montrer qu'il existe $c∈\IntO{a,b}$ tel que
+\[\frac{f(b)-f(a)}{g(b)-g(a)} = \frac{f'(c)}{g'(c)}\]
 
-      On pourra introduire
-      $φ\colon x \mapsto \bigl(f(b)-f(a) \bigr) g(x) - \bigl( g(b)-g(a) \bigr) f(x)$
-      et utiliser le théorème de Rolle.
+On pourra introduire
+$φ\colon x \mapsto \bigl(f(b)-f(a) \bigr) g(x) - \bigl( g(b)-g(a) \bigr) f(x)$
+et utiliser le théorème de Rolle.
 
-      \paragraph{Exercice 11 (règle de L'Hospital)}
+\paragraph{Exercice 11 (règle de L'Hospital)}
 
-      Soit $f, g \colon I \toℝ$ et $x_0∈I$.
-      On suppose:
-      \begin{itemize}
-      \item $ε> 0$
-      \item $J = [x_0-ε,x_0+ε]⊂I$
-      \item $f(x_0)=g(x_0)=0$
-      \item $f$ et $g$ sont continues en $x_0$
-      \item $f$ et $g$ sont dérivables sur $J∖\Acco{x_0}$
-      \item $g'$ ne s'annule pas sur $J∖\Acco{x_0}$
-      \item $\lim_{x\to x_0} \frac{f'(x)}{g'(x)} =ℓ∈𝕂$
-      \end{itemize}
+Soit $f, g \colon I \toℝ$ et $x_0∈I$.
+On suppose:
+\begin{itemize}
+\item $ε> 0$
+\item $J = [x_0-ε,x_0+ε]⊂I$
+\item $f(x_0)=g(x_0)=0$
+\item $f$ et $g$ sont continues en $x_0$
+\item $f$ et $g$ sont dérivables sur $J∖\Acco{x_0}$
+\item $g'$ ne s'annule pas sur $J∖\Acco{x_0}$
+\item $\lim_{x\to x_0} \frac{f'(x)}{g'(x)} =ℓ∈𝕂$
+\end{itemize}
 
-      Montrer que $\lim_{x\to x_0}\frac{f(x)}{g(x)} =ℓ$.
+Montrer que $\lim_{x\to x_0}\frac{f(x)}{g(x)} =ℓ$.
 
-      \paragraph{Exercice 12}
-      \begin{enumerate}
-      \item Montrer que $∀n∈ℕ$, $∀x∈ℝ$, on a
-        \[\left| e^x - ∑_{k=0}^n \frac{x^k}{k!} \right| ≤\frac{\Abs{x}^{n+1} e^{\Abs x}}{(n+1)!}\]
-        On pourra utiliser les formules de Taylor.
-      \item En déduire que \[∀x∈ℝ\+ e^x = ∑_{k=0}^{+∞} \frac{x^k}{k!}.\]
-      \end{enumerate}
+\paragraph{Exercice 12}
+\begin{enumerate}
+\item Montrer que $∀n∈ℕ$, $∀x∈ℝ$, on a
+  \[\left| e^x - ∑_{k=0}^n \frac{x^k}{k!} \right| ≤\frac{\Abs{x}^{n+1} e^{\Abs x}}{(n+1)!}\]
+  On pourra utiliser les formules de Taylor.
+\item En déduire que \[∀x∈ℝ\+ e^x = ∑_{k=0}^{+∞} \frac{x^k}{k!}.\]
+\end{enumerate}
 
-      \paragraph{Exercice 13}
+\paragraph{Exercice 13}
 
-      Soit $a < 0 < b$ et $f \colon [a,b] \toℝ$ de classe $\CC1$.
-      \begin{enumerate}
-      \item Montrer que l'intégrale $∫_a^b \frac{f(t)}{t} \D t$ converge si et seulement si $f(0) = 0$.
-      \item Montrer que dans tous les cas,
-        \[\lim_{ε\to 0^+} \left[ ∫_a^{-ε} \frac{f(t)}{t} \D t +∫_{ε}^b \frac{f(t)}{t} \D t \right]\]
-        existe.
+Soit $a < 0 < b$ et $f \colon [a,b] \toℝ$ de classe $\CC1$.
+\begin{enumerate}
+\item Montrer que l'intégrale $∫_a^b \frac{f(t)}{t} \D t$ converge si et seulement si $f(0) = 0$.
+\item Montrer que dans tous les cas,
+  \[\lim_{ε\to 0^+} \left[ ∫_a^{-ε} \frac{f(t)}{t} \D t +∫_{ε}^b \frac{f(t)}{t} \D t \right]\]
+  existe.
 
-        \emph{Remarque:} cette limite s'appelle \emph{valeur principale de Cauchy} de l'intégrale
-        (généralement divergente) et se note parfois $ℓ= \mathrm{v.p.}∫_a^b \frac{f(t)}{t} \D t$.
-      \end{enumerate}
+  \emph{Remarque:} cette limite s'appelle \emph{valeur principale de Cauchy} de l'intégrale
+  (généralement divergente) et se note parfois $ℓ= \mathrm{v.p.}∫_a^b \frac{f(t)}{t} \D t$.
+\end{enumerate}
 
 \end{document}

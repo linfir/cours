@@ -30,108 +30,108 @@ Pour plus de clarté, on remplacera
 
 \item
 
-La phrase~(2) n'est jamais vérifiée. En effet, supposons par l'absurde que $f$ vérifie (2).
-On choisit $x = ε = 0$, d'après l'énoncé il existe $η>0$ tel que
-\[ ∀t ∈ℝ\+ \abs{x-t} < η \implies \abs{f(x)-f(t)} < ε. \]
-Pour $t = 0$, on a bien $\abs{x-t} = 0 < η$, mais $\abs{f(x)-f(t)} = 0$ qui n'est pas strictement inférieur à $ε$, ce qui est absurde.
+  La phrase~(2) n'est jamais vérifiée. En effet, supposons par l'absurde que $f$ vérifie (2).
+  On choisit $x = ε = 0$, d'après l'énoncé il existe $η>0$ tel que
+  \[ ∀t ∈ℝ\+ \abs{x-t} < η \implies \abs{f(x)-f(t)} < ε. \]
+  Pour $t = 0$, on a bien $\abs{x-t} = 0 < η$, mais $\abs{f(x)-f(t)} = 0$ qui n'est pas strictement inférieur à $ε$, ce qui est absurde.
 
 \item
 
-La phrase~(3) est toujours vérifiée. En effet, soit $x ∈ℝ$ et $ε> 0$.
-On choisit $η= 0$, et on doit montrer que
-\[ ∀t ∈ℝ\+ \abs{x-t} < η \implies \abs{f(x)-f(t)} < ε. \]
-Comme la partie gauche de l'implication est toujours fausse, l'implication elle-même est toujours vraie, d'où le résultat.
+  La phrase~(3) est toujours vérifiée. En effet, soit $x ∈ℝ$ et $ε> 0$.
+  On choisit $η= 0$, et on doit montrer que
+  \[ ∀t ∈ℝ\+ \abs{x-t} < η \implies \abs{f(x)-f(t)} < ε. \]
+  Comme la partie gauche de l'implication est toujours fausse, l'implication elle-même est toujours vraie, d'où le résultat.
 
 \item
 
-Montrons que (0), (1), (4) et~(5) sont équivalents.
-Pour cela, on va montrer que $(4) \implies (0)$ et $(0) \implies (5)$ sont triviaux,
-que $(5) \implies (1)$ s'obtient avec $ε/2$
-et $(1) \implies (4)$ avec $η/2$.
+  Montrons que (0), (1), (4) et~(5) sont équivalents.
+  Pour cela, on va montrer que $(4) \implies (0)$ et $(0) \implies (5)$ sont triviaux,
+  que $(5) \implies (1)$ s'obtient avec $ε/2$
+  et $(1) \implies (4)$ avec $η/2$.
 
-\medskip
+  \medskip
 
-\begin{itemize}
+  \begin{itemize}
 
-\item[$(4) \Rightarrow (0)$]
+  \item[$(4) \Rightarrow (0)$]
 
-Soit $f$ vérifiant la phrase~(4).
-Montrons que $f$ vérifie la phrase~(0).
-Soit $x ∈ℝ$, $ε> 0$.
-D'après l'hypothèse, il existe $η> 0$ tel que
-\[ ∀t ∈ℝ\+ \abs{x-t} ≤η \implies \abs{f(x)-f(t)} < ε. \]
+    Soit $f$ vérifiant la phrase~(4).
+    Montrons que $f$ vérifie la phrase~(0).
+    Soit $x ∈ℝ$, $ε> 0$.
+    D'après l'hypothèse, il existe $η> 0$ tel que
+    \[ ∀t ∈ℝ\+ \abs{x-t} ≤η \implies \abs{f(x)-f(t)} < ε. \]
 
-Soit $t ∈ℝ$ tel que $\abs{x-t} ≤η$. On a donc $\abs{f(x)-f(t)} < ε$
-et donc a fortiori $\abs{f(x)-f(t)}≤ε$
-donc $f$ vérifie bien la phrase~(0).
+    Soit $t ∈ℝ$ tel que $\abs{x-t} ≤η$. On a donc $\abs{f(x)-f(t)} < ε$
+    et donc a fortiori $\abs{f(x)-f(t)}≤ε$
+    donc $f$ vérifie bien la phrase~(0).
 
-\item[$(0) \Rightarrow (5)$]
+  \item[$(0) \Rightarrow (5)$]
 
-Soit $f$ vérifiant la phrase~(0).
-Soit $x ∈ℝ$, $ε> 0$.
-D'après l'hypothèse, il existe $η> 0$ tel que
-\[ ∀t ∈ℝ\+ \abs{x-t} ≤η \implies \abs{f(x)-f(t)}≤ε. \]
+    Soit $f$ vérifiant la phrase~(0).
+    Soit $x ∈ℝ$, $ε> 0$.
+    D'après l'hypothèse, il existe $η> 0$ tel que
+    \[ ∀t ∈ℝ\+ \abs{x-t} ≤η \implies \abs{f(x)-f(t)}≤ε. \]
 
-Soit $t ∈ℝ$ tel que $\abs{x-t} < η$.
-On peut appliquer l'hypothèse,
-d'où $\abs{f(x)-f(t)}≤ε$
-donc $f$ vérifie bien la phrase~(5).
+    Soit $t ∈ℝ$ tel que $\abs{x-t} < η$.
+    On peut appliquer l'hypothèse,
+    d'où $\abs{f(x)-f(t)}≤ε$
+    donc $f$ vérifie bien la phrase~(5).
 
-\item[$(5) \Rightarrow (1)$]
+  \item[$(5) \Rightarrow (1)$]
 
-Soit $f$ vérifiant la phrase~(5).
-Soit $x ∈ℝ$, $ε> 0$.
-On applique l'hypothèse avec $x$ et $ε/2$, donc il existe $η> 0$ tel que
-\[ ∀t ∈ℝ\+ \abs{x-t} < η \implies \abs{f(x)-f(t)}≤ε/2. \]
+    Soit $f$ vérifiant la phrase~(5).
+    Soit $x ∈ℝ$, $ε> 0$.
+    On applique l'hypothèse avec $x$ et $ε/2$, donc il existe $η> 0$ tel que
+    \[ ∀t ∈ℝ\+ \abs{x-t} < η \implies \abs{f(x)-f(t)}≤ε/2. \]
 
-Soit $t ∈ℝ$ tel que $\abs{x-t} < η$.
-On peut appliquer l'hypothèse,
-d'où $\abs{f(x)-f(t)}≤ε/2 < ε$
-donc $f$ vérifie bien la phrase~(1).
+    Soit $t ∈ℝ$ tel que $\abs{x-t} < η$.
+    On peut appliquer l'hypothèse,
+    d'où $\abs{f(x)-f(t)}≤ε/2 < ε$
+    donc $f$ vérifie bien la phrase~(1).
 
-\item[$(1) \Rightarrow (4)$]
+  \item[$(1) \Rightarrow (4)$]
 
-Soit $f$ vérifiant la phrase~(1).
-Soit $x ∈ℝ$, $ε> 0$.
-On applique l'hypothèse, donc il existe $η' > 0$ tel que
-\[ ∀t ∈ℝ\+ \abs{x-t} < η' \implies \abs{f(x)-f(t)} < ε. \]
+    Soit $f$ vérifiant la phrase~(1).
+    Soit $x ∈ℝ$, $ε> 0$.
+    On applique l'hypothèse, donc il existe $η' > 0$ tel que
+    \[ ∀t ∈ℝ\+ \abs{x-t} < η' \implies \abs{f(x)-f(t)} < ε. \]
 
-On pose $η= η'/2$. Vérifions que
-\[ ∀t ∈ℝ\+ \abs{x-t} ≤η \implies \abs{f(x)-f(t)} < ε. \]
-Soit $t ∈ℝ$ tel que $\abs{x-t} ≤η$.
-On a donc $\abs{x-t} < η'$,
-d'où $\abs{f(x)-f(t)} < ε$
-donc $f$ vérifie bien la phrase~(4).
+    On pose $η= η'/2$. Vérifions que
+    \[ ∀t ∈ℝ\+ \abs{x-t} ≤η \implies \abs{f(x)-f(t)} < ε. \]
+    Soit $t ∈ℝ$ tel que $\abs{x-t} ≤η$.
+    On a donc $\abs{x-t} < η'$,
+    d'où $\abs{f(x)-f(t)} < ε$
+    donc $f$ vérifie bien la phrase~(4).
 
-\end{itemize}
+  \end{itemize}
 
-Ainsi, les phrases (1), (4) et (5) signifient que $f$ est continue sur $ℝ$
+  Ainsi, les phrases (1), (4) et (5) signifient que $f$ est continue sur $ℝ$
 
 \item
 
-La phrase~(6) est sensiblement plus délicate. Montrons que $f$ vérifie (6) £ssi. $f$ est une fonction constante sur $ℝ$. D'abord, remarquons que si $f$ est constante, elle vérifie immédiatement (6). Réciproquement, soit $f$ vérifiant~(6).
-Soit $a < b$ deux réels. Montrons que $f(a) = f(b)$.
+  La phrase~(6) est sensiblement plus délicate. Montrons que $f$ vérifie (6) £ssi. $f$ est une fonction constante sur $ℝ$. D'abord, remarquons que si $f$ est constante, elle vérifie immédiatement (6). Réciproquement, soit $f$ vérifiant~(6).
+  Soit $a < b$ deux réels. Montrons que $f(a) = f(b)$.
 
-Pour tout $x ∈ℝ$, on applique l'hypothèse~(6) avec $ε=0$;
-il existe donc $η_x > 0$ tel que
-\[ ∀t ∈ℝ\+ \abs{x-t} < η_x \implies \abs{f(x)-f(t)}≤ε. \]
-Ainsi, si $t ∈\intO{x-η_x,x+η_x}$, on a donc $\abs{f(x)-f(t)}≤ε= 0$, donc $f(t) = f(x)$.
-Autrement dit, \tcbox{$f$ est constante sur tous les intervalles de la forme $\intO{x-η_x,x+η_x}$.}
+  Pour tout $x ∈ℝ$, on applique l'hypothèse~(6) avec $ε=0$;
+  il existe donc $η_x > 0$ tel que
+  \[ ∀t ∈ℝ\+ \abs{x-t} < η_x \implies \abs{f(x)-f(t)}≤ε. \]
+  Ainsi, si $t ∈\intO{x-η_x,x+η_x}$, on a donc $\abs{f(x)-f(t)}≤ε= 0$, donc $f(t) = f(x)$.
+  Autrement dit, \tcbox{$f$ est constante sur tous les intervalles de la forme $\intO{x-η_x,x+η_x}$.}
 
-Posons $E = \Ensemble{x ∈ℝ}{x ≥a \text{ et $f$ constante sur l'intervalle $\intFO{a,x}$} }$.
-L'ensemble $E$ est une partie de $ℝ$, non vide car $η_a ∈E$.
+  Posons $E = \Ensemble{x ∈ℝ}{x ≥a \text{ et $f$ constante sur l'intervalle $\intFO{a,x}$} }$.
+  L'ensemble $E$ est une partie de $ℝ$, non vide car $η_a ∈E$.
 
-Supposons par l'absurde que $E$ est majoré. Il admet alors une borne supérieure $α$. Par définition, $α-η_α$ n'est pas un majorant de $E$, donc il existe un $x ∈E$ tel que $x > α- η_α$.
-On sait alors que la fonction $f$ est constante sur $\intFO{a,x}$, mais aussi sur $\intO{α-η_α,α+η_α}$. Ces deux intervalles n'étant pas disjoints, $f$ est constante sur l'union des deux: $\intFO{a,α+η_α}$.
-Ainsi, $α+η_α∈E$ ce qui est absurde car $\sup E = α< α+ η_α$.
+  Supposons par l'absurde que $E$ est majoré. Il admet alors une borne supérieure $α$. Par définition, $α-η_α$ n'est pas un majorant de $E$, donc il existe un $x ∈E$ tel que $x > α- η_α$.
+  On sait alors que la fonction $f$ est constante sur $\intFO{a,x}$, mais aussi sur $\intO{α-η_α,α+η_α}$. Ces deux intervalles n'étant pas disjoints, $f$ est constante sur l'union des deux: $\intFO{a,α+η_α}$.
+  Ainsi, $α+η_α∈E$ ce qui est absurde car $\sup E = α< α+ η_α$.
 
-Ainsi, $E$ n'est pas majoré. Il existe donc un $x > b$ tel que $x ∈E$.
-Comme $f$ est alors constante sur $\intFO{a,x}$, on a $f(a) = f(b)$ pour tous $(a,b) \in \R^2$ tels que $a < b$.
-Bref, la fonction $f$ est bien constante.
+  Ainsi, $E$ n'est pas majoré. Il existe donc un $x > b$ tel que $x ∈E$.
+  Comme $f$ est alors constante sur $\intFO{a,x}$, on a $f(a) = f(b)$ pour tous $(a,b) ∈ ℝ^2$ tels que $a < b$.
+  Bref, la fonction $f$ est bien constante.
 
-\medskip
+  \medskip
 
-On a ainsi prouvé que la phrase~(6) est vérifiée £ssi. $f$ est constante.
+  On a ainsi prouvé que la phrase~(6) est vérifiée £ssi. $f$ est constante.
 
 \end{itemize}
 

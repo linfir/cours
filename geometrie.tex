@@ -1,4 +1,4 @@
-% Time-stamp: <2017-02-04 15:33:04 yann>
+% Time-stamp: <2018-06-07 08:54>
 
 \documentclass{yann}
 \usepackage{tikz}
@@ -87,8 +87,8 @@ On note $γ(t) = \bigPa{x(t),y(t)}$.
   par rotation d'angle $\fracπ2$.
 \item Si
   \[ \left\{ \begin{aligned}
-    x(t+17) &= -\frac12 x(t) - \frac{√3}{2} y(t) \\
-    y(t+17) &= \frac{√3}2 x(t) - \frac1{2} y(t)
+      x(t+17) &= -\frac12 x(t) - \frac{√3}{2} y(t) \\
+      y(t+17) &= \frac{√3}2 x(t) - \frac1{2} y(t)
   \end{aligned} \right. \]
   alors la trajectoire de $γ$ est stable
   par la rotation d'angle $2π/3$ et il suffit d'étudier
@@ -104,12 +104,12 @@ Par exemple, pour la strophoïde droite (cf. exercice~1):
 \begin{center}
   \begin{tikzpicture}
     \tkzTabInit
-        {$t$/1, $x'$/1, $x$/1.5, $y$/1.5, $y'$/1}
-        {$0$, $√{√{5}-2}$, $+∞$}
-        \tkzTabLine{z,,-}
-        \tkzTabVar{+/$1$,R,-/$-1$}
-        \tkzTabVar{-/$0$,+/ ,-/$-∞$}
-        \tkzTabLine{$1$, +, z, -}
+    {$t$/1, $x'$/1, $x$/1.5, $y$/1.5, $y'$/1}
+    {$0$, $√{√{5}-2}$, $+∞$}
+    \tkzTabLine{z,,-}
+    \tkzTabVar{+/$1$,R,-/$-1$}
+    \tkzTabVar{-/$0$,+/ ,-/$-∞$}
+    \tkzTabLine{$1$, +, z, -}
   \end{tikzpicture}
 \end{center}
 
@@ -125,8 +125,8 @@ Pour $t ∈I$, on note $M(t) = γ(t)$.
 Soit $t_0 ∈I$. On note $A = A(t_0) = M(t_0)$.
 On dit que \emph{$γ$ admet une demi-tangente en $A(t_0^+)$} £ssi. la limite
 \[
-\vec u = \lim_{t \to t_0^+} \frac{\Vec{AM(t)}}{\Norm{AM(t)}}
-= \lim_{t \to t_0^+} \frac{1}{\Norm{γ(t)-γ(t_0)}} \BigPa{ γ(t) - γ(t_0) }
+  \vec u = \lim_{t \to t_0^+} \frac{\Vec{AM(t)}}{\Norm{AM(t)}}
+  = \lim_{t \to t_0^+} \frac{1}{\Norm{γ(t)-γ(t_0)}} \BigPa{ γ(t) - γ(t_0) }
 \]
 existe.
 Dans ce cas, la \emph{demi-tangente à $γ$ en $A(t_0^+)$} est par définition la droite passant par $A$ de vecteur directeur $\vec u ≠0$.
@@ -175,6 +175,7 @@ La famille $(\vec u,\vec v)$ est alors une base du plan $\EE$, et d'après Taylo
 
 Cette formule montre que l'allure locale de $γ$ au voisinage de $t$ dépend essentiellement de la parité de $p$ et~$q$.
 
+% <noindent>
 \newenvironment{myfig}[2]{
   \begin{center}
     \begin{tikzpicture}[scale=1.5]
@@ -188,6 +189,7 @@ Cette formule montre que l'allure locale de $γ$ au voisinage de $t$ dépend ess
       \draw (60:1) node[gamma q pos] {$\vec v$};
       \draw (0,1.5) node[align=center] {$p$ #1\\$q$ #2};
 }{\end{tikzpicture}\end{center}}
+% </noindent>
 
 \begin{enumerate}
 \item Point à allure normale:
@@ -205,11 +207,11 @@ Cette formule montre que l'allure locale de $γ$ au voisinage de $t$ dépend ess
   \pagebreak[3]
 \item Point de rebroussement de première espèce:
   \begingroup
-  \tikzset{gamma p pos/.style = {below left=1ex}}
-  \begin{myfig}{pair}{impair}
-    \draw[Curve] (2,0.5) .. controls +(-1,-0.5) and +(0.5,0) .. (0,0) .. controls +(1,0) and +(-0.5,0.5) .. (2,-0.75);
-    \draw[Curve name] (2,0.5) node[above] {$Γ$};
-  \end{myfig}
+    \tikzset{gamma p pos/.style = {below left=1ex}}
+    \begin{myfig}{pair}{impair}
+      \draw[Curve] (2,0.5) .. controls +(-1,-0.5) and +(0.5,0) .. (0,0) .. controls +(1,0) and +(-0.5,0.5) .. (2,-0.75);
+      \draw[Curve name] (2,0.5) node[above] {$Γ$};
+    \end{myfig}
   \endgroup
 
 \item Point de rebroussement de seconde espèce:
@@ -356,16 +358,16 @@ Trouver la longueur minimale d'une corde de $\mathscr{P}$ normale à $\mathscr{P
 \Exercice
 Reconnaître la transformation
 \[ \left\{ \begin{alignedat}{5}
-  x' &{}={}&  3x &{}+{}& 4y &{}+{}& 2z &{}-{}& 4 \\
-  y' &{}={}& -2x &{}-{}& 3y &{}-{}& 2z &{}+{}& 4 \\
-  z' &{}={}&  4x &{}+{}& 8y &{}+{}& 5z &{}-{}& 8
+    x' &{}={}&  3x &{}+{}& 4y &{}+{}& 2z &{}-{}& 4 \\
+    y' &{}={}& -2x &{}-{}& 3y &{}-{}& 2z &{}+{}& 4 \\
+    z' &{}={}&  4x &{}+{}& 8y &{}+{}& 5z &{}-{}& 8
 \end{alignedat} \right. \]
 
 
 \Exercice
 Montrer que les droites
 \[ \mathcal{D}  \AccoDeux{x = 2z + 1}{y = z - 1}
-\qquad \text{et} \qquad
+  \qquad \text{et} \qquad
 \mathcal{D}' \AccoDeux{x = z + 2}{y = 3z - 3} \]
 sont coplanaires, et déterminer leur plan.
 

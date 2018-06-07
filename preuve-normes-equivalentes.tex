@@ -10,37 +10,37 @@
 
 On veut montrer le résultat suivant:
 \begin{tcolorbox}
-    Soit $\K$ le corps $\R$ ou $\C$.
-    Si $E$ est un £Kevdf., alors toutes les normes sur $E$ sont équivalentes.
+  Soit $𝕂$ le corps $ℝ$ ou $ℂ$.
+  Si $E$ est un £Kevdf., alors toutes les normes sur $E$ sont équivalentes.
 \end{tcolorbox}
 
 \section{Préliminaires}
 
-\Para{\BW{} sur $\R$}
+\Para{\BW{} sur $ℝ$}
 
 Toute suite réelle bornée admet une sous-suite convergente.
 
-\Para{\BW{} sur $\C$}
+\Para{\BW{} sur $ℂ$}
 
 Toute suite réelle bornée admet une sous-suite convergente.
 
 \emph{Démonstration:}
-si $(z_n)$ est une suite bornée, notons $z_n = x_n + i y_n$ où $(x_n, y_n) \in \R^2$.
+si $(z_n)$ est une suite bornée, notons $z_n = x_n + i y_n$ où $(x_n, y_n) ∈ ℝ^2$.
 Les suites $(x_n)$ et $(y_n)$ sont également bornées.
-D'après \BW, il existe une extractice $\phi$ telle que la suite $(x_{\phi(n)})$ converge.
-On considère alors la suite de terme général $y'_n = y_{\phi(n)}$.
+D'après \BW, il existe une extractice $ϕ$ telle que la suite $(x_{ϕ(n)})$ converge.
+On considère alors la suite de terme général $y'_n = y_{ϕ(n)}$.
 Elle est bornée comme sous-suite d'une suite bornée, donc on peut à nouveau utiliser \BW:
-il existe une extractrice $\psi$ telle que la suite $y'_{\psi(n)}$ converge.
-Notons $\sigma = \phi \circ \psi$.
-La suite $(x_{\sigma(n)})$ converge car c'est une sous-suite de $(x_{\phi(n)})$
-et la suite $(y_{\sigma(n)})$ converge par construction,
-donc la suite $(z_{\sigma(n)})$ converge.
+il existe une extractrice $ψ$ telle que la suite $y'_{ψ(n)}$ converge.
+Notons $σ = ϕ ◦ ψ$.
+La suite $(x_{σ(n)})$ converge car c'est une sous-suite de $(x_{ϕ(n)})$
+et la suite $(y_{σ(n)})$ converge par construction,
+donc la suite $(z_{σ(n)})$ converge.
 
-\Para{Bolzano-Weierstraß sur $\K^p$}
+\Para{Bolzano-Weierstraß sur $𝕂^p$}
 
-Soit $(u_n^1)_{n\in\N}$, $(u_n^2)_{n\in\N}$, $\dots$, $(u_n^p)_{n\in\N}$ des suites numériques bornées.
-Alors il existe une extractrice $\sigma$ telle que
-pour tout $i\in\ccro{1,p}$, la suite $(u_{\sigma(n)}^i)_{n\in\N}$ converge.
+Soit $(u_n^1)_{n∈ℕ}$, $(u_n^2)_{n∈ℕ}$, $\dots$, $(u_n^p)_{n∈ℕ}$ des suites numériques bornées.
+Alors il existe une extractrice $σ$ telle que
+pour tout $i∈\ccro{1,p}$, la suite $(u_{σ(n)}^i)_{n∈ℕ}$ converge.
 
 \emph{Démonstration:}
 On fait une récurrence sur $p$; l'hérédité se démontre avec la même technique que ci-dessus.
@@ -48,47 +48,47 @@ On fait une récurrence sur $p$; l'hérédité se démontre avec la même techni
 \section{Preuve}
 
 Soit $\B = \nUplet e1p$ une base de $E$, fixée dans toute la preuve.
-Pour tout $x\in\E$, on note $(x^1, \dots, x^p)$ les coordonnées de $x$ dans la base $\B$, £cad.
-\[ x = \sum_{i=1}^p x^i e_i. \]
-On note $\DS N(x) = \max_{1\leq i\leq p} \Abs{x^i}$.
+Pour tout $x∈𝔼$, on note $(x^1, \dots, x^p)$ les coordonnées de $x$ dans la base $\B$, £cad.
+\[ x = ∑_{i=1}^p x^i e_i. \]
+On note $\DS N(x) = \max_{1≤i≤p} \Abs{x^i}$.
 On vérifie sans peine que $N$ est bien une norme sur $E$.
 
 Soit $\Norme$ une norme quelconque sur $E$; on va chercher à montrer que $N$ et $\Norme$ sont équivalentes.
 
-Pour tout $x\in E$, on a
+Pour tout $x∈E$, on a
 \begin{align*}
-    \Norm{x} &= \left\| \sum_{i=1}^p x^i e_i \right\|
-    \leq \sum_{i=1}^p \Norm{x^i e_i}
-    = \sum_{i=1}^p \Abs{x^i} \Norm{e_i} \\
-    &\leq \sum_{i=1}^p N(x) \Norm{e_i} = \beta N(x)
+  \Norm{x} &= \left\| ∑_{i=1}^p x^i e_i \right\|
+  ≤ ∑_{i=1}^p \Norm{x^i e_i}
+  = ∑_{i=1}^p \Abs{x^i} \Norm{e_i} \\
+  &≤ ∑_{i=1}^p N(x) \Norm{e_i} = βN(x)
 \end{align*}
-où l'on pose $\beta = \sum_{i=1}^p \Norm{e_i} > 0$.
-On pose également $S = \Ensemble{x\in E}{N(x) = 1}$ et $\DS \alpha = \inf_{x\in S} \Norm{x}$.
+où l'on pose $β = ∑_{i=1}^p \Norm{e_i} > 0$.
+On pose également $S = \Ensemble{x∈E}{N(x) = 1}$ et $\DS α = \inf_{x∈S} \Norm{x}$.
 
-Si $x\in E$, $x\neq0$, on pose $y=x/N(x)$ de sorte que $y\in S$.
-Par définition de $\alpha$, on a donc $\Norm{y} \geq \alpha$
-et donc par homogénéité de la norme $\Norme$, on a $\Norm{x} \geq \alpha N(x)$.
+Si $x∈E$, $x≠0$, on pose $y=x/N(x)$ de sorte que $y∈S$.
+Par définition de $α$, on a donc $\Norm{y} ≥ α$
+et donc par homogénéité de la norme $\Norme$, on a $\Norm{x} ≥ αN(x)$.
 Cette dernière inégalité est encore vraie si $x=0$.
 Ainsi, on a montré que
-\[ \forall x \in E \+ \alpha N(x) \leq \Norm{x} \leq \beta N(x). \]
+\[ ∀x ∈E \+ αN(x) ≤ \Norm{x} ≤ βN(x). \]
 
-Il ne reste plus qu'à prouver que $\alpha > 0$.
-Supposons donc par l'absurde que $\alpha = 0$.
+Il ne reste plus qu'à prouver que $α > 0$.
+Supposons donc par l'absurde que $α = 0$.
 
-Pour tout $n\in\N$, il existe par définition de $\alpha$ un vecteur $u_n$ de $S$ tel que $\Norm{u_n} \leq \frac{1}{n+1}$.
-D'après \BW{} sur $\K^p$, il existe une sous-suite $(v_n)$ de $(u_n)$ telle que
-les suites $(v_n^i)_{n\in\N}$ convergent.
-Notons $\ell = \sum_{i=1}^p \ell^i e_i$ où $\ell^i = \lim_\ninf v_n^i$.
+Pour tout $n∈ℕ$, il existe par définition de $α$ un vecteur $u_n$ de $S$ tel que $\Norm{u_n} ≤ \frac{1}{n+1}$.
+D'après \BW{} sur $𝕂^p$, il existe une sous-suite $(v_n)$ de $(u_n)$ telle que
+les suites $(v_n^i)_{n∈ℕ}$ convergent.
+Notons $ℓ = ∑_{i=1}^p ℓ^i e_i$ où $ℓ^i = \lim_\ninf v_n^i$.
 
-On a $\Norm{\ell} = \Norm{\ell - v_n + v_n} \leq \Norm{\ell - v_n} + \Norm{v_n} \leq \beta N(v_n - \ell) + \Norm{v_n}$.
-Or pour tout $i\in\ccro{1,p}$, on a $\Abs{v_n^i - \ell^i} \Toninf 0$ et donc $N(v_n - \ell) \Toninf 0$.
+On a $\Normℓ = \Norm{ℓ - v_n + v_n} ≤ \Norm{ℓ - v_n} + \Norm{v_n} ≤ βN(v_n - ℓ) + \Norm{v_n}$.
+Or pour tout $i∈\ccro{1,p}$, on a $\Abs{v_n^i - ℓ^i} \Toninf 0$ et donc $N(v_n - ℓ) \Toninf 0$.
 De plus, la suite $(\Norm{v_n})$ étant une sous-suite de $(\Norm{u_n})$, on a $\Norm{v_n} \Toninf 0$.
-Ainsi, $\Norm{\ell} \Toninf 0$ donc $\Norm{\ell} = 0$ donc $\ell = 0$.
+Ainsi, $\Normℓ \Toninf 0$ donc $\Normℓ = 0$ donc $ℓ = 0$.
 
-Pour tout $i\in\ccro{1,p}$, on a $v_n^i \to \ell^i = 0$, donc $\exists n_i\in\N$, $\forall n\geq n_i$, $\Abs{v_n^i} \leq 1/2$.
-Soit $m = \max(n_1,\dots,n_p)$ de sorte que $N(v_m) \leq 1/2$. Ce qui est absurde car $v_m \in S$.
+Pour tout $i∈\ccro{1,p}$, on a $v_n^i \to ℓ^i = 0$, donc $∃n_i∈ℕ$, $∀n≥n_i$, $\Abs{v_n^i} ≤ 1/2$.
+Soit $m = \max(n_1,\dots,n_p)$ de sorte que $N(v_m) ≤ 1/2$. Ce qui est absurde car $v_m ∈S$.
 
-Ainsi $\alpha > 0$ donc les normes $N$ et $\Norme$ sont bien équivalentes.
+Ainsi $α > 0$ donc les normes $N$ et $\Norme$ sont bien équivalentes.
 Bref, toute norme sur $E$ était équivalente à $N$,
 donc toutes les normes sont équivalentes.
 

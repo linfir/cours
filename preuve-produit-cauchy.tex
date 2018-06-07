@@ -19,13 +19,13 @@ On commence par traiter le cas où $(a_n)$ et $(b_n)$ sont à valeurs positives.
 Introduisons quelques notations:
 \begin{itemize}
 \item
-$A_n = ∑_{k=0}^n a_k$, $B_n = ∑_{k=0}^n b_k$ et $C_n = ∑_{k=0}^n c_k$;
+  $A_n = ∑_{k=0}^n a_k$, $B_n = ∑_{k=0}^n b_k$ et $C_n = ∑_{k=0}^n c_k$;
 \item
-$A = ∑_{n=0}^{+∞} a_n$ et $B = ∑_{n=0}^{+∞} b_n$;
+  $A = ∑_{n=0}^{+∞} a_n$ et $B = ∑_{n=0}^{+∞} b_n$;
 \item
-$Δ_n = \Ensemble{(i,j)∈ℕ^2}{i+j≤n}$.
+  $Δ_n = \Ensemble{(i,j)∈ℕ^2}{i+j≤n}$.
 \item
-$□_n = \Ensemble{(i,j)∈ℕ^2}{i≤n \text{ et } j≤n}$
+  $□_n = \Ensemble{(i,j)∈ℕ^2}{i≤n \text{ et } j≤n}$
 \end{itemize}
 
 On vérifie que, pour tout entier $n∈ℕ$, on a:
@@ -69,7 +69,7 @@ La relation~(\ref{eq:square}) vient du fait que
 Enfin, commme \( c_k = ∑_{\substack{(i,j)∈ℕ^2 \\ i+j=k}} a_i b_j \),
 on a la relation~(\ref{eq:triangle}) car
 \[ C_n = ∑_{k=0}^n c_k = ∑_{k≤n} \, ∑_{i+j=k} a_i b_j
-= ∑_{i+j≤n} a_i b_j
+  = ∑_{i+j≤n} a_i b_j
 = ∑_{(i,j)∈Δ_n} a_i b_j. \]
 
 Pour $n∈ℕ$, notons $p=\floor{n/2}$. Comme $□_p ⊂ Δ_n ⊂ □_n$, il vient
@@ -84,11 +84,11 @@ L'absolue convergence de $∑ c_n$ est immédiate car $c_n≥0$ pour tout $n∈�
 On garde les mêmes notations, en ajoutant:
 \begin{itemize}
 \item
-$\tilde a_n = \Abs{a_n}$, $\tilde b_n = \Abs{b_n}$
+  $\tilde a_n = \Abs{a_n}$, $\tilde b_n = \Abs{b_n}$
   et $\tilde c_n = ∑_{k=0}^n \tilde a_k \tilde b_{n-k}$.
   Notons que $\tilde c_n ≠ \Abs{c_n}$ en général;
 \item
-$\tilde A_n = ∑_{k=0}^n \tilde a_k$ et de même pour $\tilde B_n$ et $\tilde C_n$.
+  $\tilde A_n = ∑_{k=0}^n \tilde a_k$ et de même pour $\tilde B_n$ et $\tilde C_n$.
 \end{itemize}
 
 Comme les séries $∑ \Abs{a_n}$ et $∑ \Abs{b_n}$ sont absolument convergentes et positives,
@@ -98,12 +98,12 @@ Or d'après l'inégalité triangulaire, $\Abs{c_n} ≤ \tilde c_n$,
 donc la série $∑ c_n$ est également absolument convergente.
 De plus,
 \[ A_n B_n - C_n
-= ∑_{(i,j)∈□_n} a_i b_j - ∑_{(i,j)∈Δ_n} a_i b_j
+  = ∑_{(i,j)∈□_n} a_i b_j - ∑_{(i,j)∈Δ_n} a_i b_j
 = ∑_{(i,j)∈□_n∖Δ_n} a_i b_j \]
 donc
 \[ \Abs{A_n B_n - C_n}
-≤ ∑_{(i,j)∈□_n∖Δ_n} \Abs{a_i} ⋅ \Abs{b_j}
-= ∑_{(i,j)∈□_n} \Abs{a_i} ⋅ \Abs{b_j} - ∑_{(i,j)∈Δ_n} \Abs{a_i} ⋅ \Abs{b_j}
+  ≤ ∑_{(i,j)∈□_n∖Δ_n} \Abs{a_i} ⋅ \Abs{b_j}
+  = ∑_{(i,j)∈□_n} \Abs{a_i} ⋅ \Abs{b_j} - ∑_{(i,j)∈Δ_n} \Abs{a_i} ⋅ \Abs{b_j}
 = \tilde A_n \tilde B_n - \tilde C_n \]
 
 Or d'après le cas positif, $\tilde A_n \tilde B_n - \tilde C_n \to 0$,
