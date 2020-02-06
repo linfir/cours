@@ -855,28 +855,38 @@ Sur $\K^n$, on pose, pour $p>1$, $\DS \Norm{ \nUplet x1n }_p = \left( \sum_{k=1}
 \hfill{\tiny 4948}%
 \begingroup~
 
-Soit $p > 1$. On note $q = \frac{p}{p-1}$.\begin{enumerate}
-\item Montrer que $q > 1$ et que $\frac{1}{p} + \frac{1}{q} = 1$.
-\item Montrer que $\forall(x,y)\in \R_+^2$, $xy\leq\frac{x^p}{p} + \frac{y^q}{q}$.
-\item Soit $a = \nUplet a1n\in \R_+^n$ et $b = \nUplet b1n\in \R_+^n$.
+Soit $p > 1$.
+On note $q = \frac{p}{p-1}$.
+\begin{enumerate}
+\item
+  Montrer que $q > 1$ et que $\frac{1}{p} + \frac{1}{q} = 1$.
+\item
+  Montrer que $\forall(x,y)\in \R_+^2$, $xy \leq{} \frac{x^p}{p} + \frac{y^q}{q}$.
+\item
+  Soit $a = \nUplet a1n \in{} \R_+^n$ et $b = \nUplet b1n \in{} \R_+^n$.
   \begin{enumerate}
-  \item Montrer que pour tout $\lambda\in\Rps$,
-    \[\sum_{k=1}^n a_k b_k \leq\frac{\lambda^p}{p} \sum_{k=1}^n a_k^p + \frac{1}{q\lambda^q} \sum_{k=1}^n b_k^q.\]
+  \item
+    Montrer que pour tout $\lambda\in\Rps$,
+    \[ \sum_{k=1}^n a_k b_k \leq\frac{\lambda^p}{p} \sum_{k=1}^n a_k^p + \frac{1}{q\lambda^q} \sum_{k=1}^n b_k^q. \]
   \item En d\'eduire l'\emph{in\'egalit\'e de H\"older} :
-    \[\sum_{k=1}^n a_k b_k \leq\left( \sum_{k=1}^n a_k^p \right)^{\frac1p} \left( \sum_{k=1}^n b_k^q \right)^{\frac1q}.\]
+    \[ \sum_{k=1}^n a_k b_k \leq\left( \sum_{k=1}^n a_k^p \right)^{\frac1p} \left( \sum_{k=1}^n b_k^q \right)^{\frac1q}. \]
   \end{enumerate}
-\item Soit $u = \nUplet u1n\in \R_+^n$ et $v = \nUplet v1n\in \R_+^n$. On note $S =\sum_{k=1}^n (u_k+v_k)^p$.
+\item
+  Soit $u = \nUplet u1n\in \R_+^n$ et $v = \nUplet v1n\in \R_+^n$. On note $S =\sum_{k=1}^n (u_k+v_k)^p$.
   \begin{enumerate}
-  \item Montrer que, pour $k\in\Dcro{1,n}$,
-    \[(u_k+v_k)^p = u_k (u_k+v_k)^{\frac{p}{q}} + v_k (u_k+v_k)^{\frac{p}{q}}.\]
-  \item En d\'eduire que
-    \[S \leq\left( \sum_{k=1}^n u_k^p \right)^{\frac1p} S^{\frac1q} + \left( \sum_{k=1}^n v_k^p \right)^{\frac1p} S^{\frac1q}\]
+  \item
+    Montrer que, pour $k\in\Dcro{1,n}$,
+    \[ (u_k+v_k)^p = u_k (u_k+v_k)^{\frac{p}{q}} + v_k (u_k+v_k)^{\frac{p}{q}}. \]
+  \item
+    En d\'eduire que
+    \[ S \leq\left( \sum_{k=1}^n u_k^p \right)^{\frac1p} S^{\frac1q} + \left( \sum_{k=1}^n v_k^p \right)^{\frac1p} S^{\frac1q} \]
     puis que
-    \[\left( \sum_{k=1}^n (u_k+v_k)^p \right)^{\frac1p} \leq\left( \sum_{k=1}^n u_k^p \right)^{\frac1p} + \left( \sum_{k=1}^n v_k^p \right)^{\frac1p}.\]
+    \[ \left( \sum_{k=1}^n (u_k+v_k)^p \right)^{\frac1p} \leq\left( \sum_{k=1}^n u_k^p \right)^{\frac1p} + \left( \sum_{k=1}^n v_k^p \right)^{\frac1p}. \]
   \end{enumerate}
-\item Soit $x = \nUplet x1n\in \K^n$ et $y = \nUplet y1n\in \K^n$.
+\item
+  Soit $x = \nUplet x1n\in \K^n$ et $y = \nUplet y1n\in \K^n$.
   On note $u_k = \Abs{x_k}$ et $v_k = \Abs{y_k}$ pour $k\in\Dcro{1,n}$.
-  Montrer que $\Norm{x+y}_p \leq\Norm{x}_p + \Norm{y}_p$.
+  Montrer que $\Norm{x+y}_p \leq{} \Norm{x}_p + \Norm{y}_p$.
 \end{enumerate}
 \endgroup
 
