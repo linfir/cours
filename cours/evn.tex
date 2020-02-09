@@ -756,11 +756,16 @@ Alors $f$ est born\'ee et ses bornes sont atteintes.
 \hfill{\tiny 7918}%
 \begingroup~
 
-Soit $E=\K^n$ et $\Norme_1$, $\Norme_2$, $\Norme_\infty$ les normes usuelles\begin{enumerate}
+Soit $E=\K^n$ et $\Norme_1$, $\Norme_2$, $\Norme_\infty$ les normes usuelles.
+\begin{enumerate}
 \item Montrer que pour tout $x\in \K^n$, on a
-  $\Norm{x}_1 \leq\sqrt n \Norm{x}_2 \leq n \Norm{x}_\infty\leq n \Norm{x}_1$.
+  \begin{align*}
+    \Norm{x}_1 & \leq{} \sqrt n \, \Norm{x}_2 \\
+    \Norm{x}_2 & \leq{} \sqrt n \, \Norm{x}_\infty{} \\
+    \Norm{x}_\infty{} & \leq{} \Norm{x}_1
+  \end{align*}
+\item En d\'eduire que les normes $\Norme_1$, $\Norme_2$ et $\Norme_\infty$ sont \'equivalentes.
 \item Montrer que les constantes sont optimales.
-\item En d\'eduire que $u_n \to\ell$ a la m\^eme signification pour les trois normes.
 \end{enumerate}
 \endgroup
 
@@ -771,16 +776,17 @@ Soit $E=\K^n$ et $\Norme_1$, $\Norme_2$, $\Norme_\infty$ les normes usuelles\beg
 \begingroup~
 
 Soit $E = \MnK$.
-Pour $A\in E$, $A = \Big( a_{i,j} \Big)_{1\leq i,j\leq n}$, on pose:
+Pour $A\in E$, $A = \BigPa{a_{i,j}}_{1\leq i,j\leq n}$, on pose:
 \begin{itemize}
-\item $\DS\Norm{A}_1 = \sum_{i=1}^n\sum_{j=1}^n \Abs{a_{i,j}}$;
-\item $\DS\Norm{A}_2 = \sqrt{\Tr(\T{\bar A}A)} = \sqrt{\sum_{i=1}^n\sum_{j=1}^n \Abs{a_{i,j}}^2}$;
-\item $\DS\Norm{A}_\infty= \max_{1\leq i,j\leq n} \Abs{a_{i,j}}$;
+\item $\DS N_1(A) = \sum_{i=1}^n\sum_{j=1}^n \Abs{a_{i,j}}$;
+\item $\DS N_2(A) = \sqrt{\Tr(\T{\bar A}A)} = \sqrt{\sum_{i=1}^n\sum_{j=1}^n \Abs{a_{i,j}}^2}$;
+\item $\DS N_\infty(A) = \max_{1\leq i,j\leq n} \Abs{a_{i,j}}$;
 \item $\DS N(A) = \max_{1\leq i\leq n} \sum_{j=1}^n \Abs{a_{i,j}}$.
 \end{itemize}
 \begin{enumerate}
 \item Montrer qu'il s'agit de normes sur $E$.
-\item Montrer que la norme $N$ est une \emph{norme d'alg\`ebre}, c.-\`a-d. que $\forall(A,B)\in E^2$, $N(AB) \leq N(A) N(B)$.
+\item Montrer que la norme $N$ est une \emph{norme d'alg\`ebre}, c.-\`a-d. que
+  \[ \forall(A,B)\in E^2 \+ N(AB) \leq{} N(A) N(B). \]
 \end{enumerate}
 \endgroup
 
@@ -841,7 +847,8 @@ Soit $I$ un intervalle de $\R$.
 \hfill{\tiny 4934}%
 \begingroup~
 
-Sur $\K^n$, on pose, pour $p>1$, $\DS \Norm{ \nUplet x1n }_p = \left( \sum_{k=1}^n \Abs{x_k}^p \right)^{\frac1p}$.
+Sur $\K^n$, on pose, pour $p>1$,
+\[ \Norm{ \nUplet x1n }_p = \Pa{ \sum_{k=1}^n \Abs{x_k}^p }^{\frac1p}. \]
 \begin{enumerate}
 \item Montrer que $\Norme_p$ est une norme;
   (on admettra l'in\'egalit\'e triangulaire, un peu d\'elicate (voir l'exercice suivant).
@@ -851,7 +858,7 @@ Sur $\K^n$, on pose, pour $p>1$, $\DS \Norm{ \nUplet x1n }_p = \left( \sum_{k=1}
 
 % -----------------------------------------------------------------------------
 \par\pagebreak[1]\par
-\paragraph{Exercice 6 (suite: preuve de l'in\'egalit\'e triangulaire)}%
+\paragraph{\href{https://psi.miomio.fr/exo/4948.pdf}{Exercice 6} (suite: preuve de l'in\'egalit\'e triangulaire)}%
 \hfill{\tiny 4948}%
 \begingroup~
 
@@ -872,16 +879,17 @@ On note $q = \frac{p}{p-1}$.
     \[ \sum_{k=1}^n a_k b_k \leq\left( \sum_{k=1}^n a_k^p \right)^{\frac1p} \left( \sum_{k=1}^n b_k^q \right)^{\frac1q}. \]
   \end{enumerate}
 \item
-  Soit $u = \nUplet u1n\in \R_+^n$ et $v = \nUplet v1n\in \R_+^n$. On note $S =\sum_{k=1}^n (u_k+v_k)^p$.
+  Soit $u = \nUplet u1n\in \R_+^n$ et $v = \nUplet v1n\in \R_+^n$.
+  On note $\DS S = \sum_{k=1}^n (u_k+v_k)^p$.
   \begin{enumerate}
   \item
     Montrer que, pour $k\in\Dcro{1,n}$,
     \[ (u_k+v_k)^p = u_k (u_k+v_k)^{\frac{p}{q}} + v_k (u_k+v_k)^{\frac{p}{q}}. \]
   \item
     En d\'eduire que
-    \[ S \leq\left( \sum_{k=1}^n u_k^p \right)^{\frac1p} S^{\frac1q} + \left( \sum_{k=1}^n v_k^p \right)^{\frac1p} S^{\frac1q} \]
+    \[ S \leq{} \Pa{ \sum_{k=1}^n u_k^p }^{\frac1p} S^{\frac1q} + \Pa{ \sum_{k=1}^n v_k^p }^{\frac1p} S^{\frac1q} \]
     puis que
-    \[ \left( \sum_{k=1}^n (u_k+v_k)^p \right)^{\frac1p} \leq\left( \sum_{k=1}^n u_k^p \right)^{\frac1p} + \left( \sum_{k=1}^n v_k^p \right)^{\frac1p}. \]
+    \[ \Pa{ \sum_{k=1}^n (u_k+v_k)^p }^{\frac1p} \leq{} \Pa{ \sum_{k=1}^n u_k^p }^{\frac1p} + \Pa{ \sum_{k=1}^n v_k^p }^{\frac1p}. \]
   \end{enumerate}
 \item
   Soit $x = \nUplet x1n\in \K^n$ et $y = \nUplet y1n\in \K^n$.
@@ -1073,7 +1081,7 @@ Soit $\Fn{f}{\R}{\R}$ telle que $\forall(x,y)\in \R^2$, $f(x+y) = f(x) + f(y)$.\
   \item Montrer que $f$ est born\'ee au voisinage de $0$, c.-\`a-d. qu'il existe $\alpha>0$ tel que $f$ soit born\'ee sur l'intervalle $[-\alpha,\alpha]$.
   \item Montrer que $f$ est continue en $0$.
   \item Montrer que $f$ est continue sur $\R$.
-  \item Montrer que $\exists \alpha\in \R$, $\forall x\in \R$, $f(x) = \alpha x$.
+  \item Montrer que $\exists \lambda\in \R$, $\forall x\in \R$, $f(x) = \lambda x$.
   \end{enumerate}
 \end{enumerate}
 \endgroup
