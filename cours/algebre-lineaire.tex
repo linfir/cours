@@ -940,18 +940,18 @@ On appelle \emph{matrice de l'endomorphisme $u$} la matrice suivante, de type $(
 \[ \Mat(u,\B \to \B') = \Mat_{\B\to\B'}(u) = \bigPa{ a_{i,j} }_{\substack{1\leq i\leq n\\1\leq j\leq p}}. \]
 \begin{center}
   \begin{tikzpicture}[
-      every left delimiter/.style={xshift=0.75em},
-      every right delimiter/.style={xshift=-0.75em},
-      dots/.style={
-        line width=1pt,
-        line cap=round,
-        dash pattern=on 0pt off 5pt,
-        shorten >=.1cm,
+    every left delimiter/.style={xshift=0.75em},
+    every right delimiter/.style={xshift=-0.75em},
+    dots/.style={
+      line width=1pt,
+      line cap=round,
+      dash pattern=on 0pt off 5pt,
+      shorten >=.1cm,
     shorten <=.1cm}]
     \matrix (M) [
-      matrix of nodes,
-      left delimiter=(,
-      right delimiter=),
+    matrix of nodes,
+    left delimiter=(,
+    right delimiter=),
     ]{
       \node (A) {$a_{1,1}$}; &[1.1cm] \node (B) {$a_{1,p}$}; \\[1.1cm]
       \node (C) {$a_{n,1}$}; &        \node (D) {$a_{n,p}$}; \\
@@ -1019,18 +1019,18 @@ Dans ce cas, on a
 Ainsi,
 \begin{center}
   \begin{tikzpicture}[
-      every left delimiter/.style={xshift=0.75em},
-      every right delimiter/.style={xshift=-0.75em},
-      dots/.style={
-        line width=1pt,
-        line cap=round,
-        dash pattern=on 0pt off 5pt,
-        shorten >=.1cm,
+    every left delimiter/.style={xshift=0.75em},
+    every right delimiter/.style={xshift=-0.75em},
+    dots/.style={
+      line width=1pt,
+      line cap=round,
+      dash pattern=on 0pt off 5pt,
+      shorten >=.1cm,
     shorten <=.1cm}]
     \matrix (M) [
-      matrix of nodes,
-      left delimiter=(,
-      right delimiter=),
+    matrix of nodes,
+    left delimiter=(,
+    right delimiter=),
     ]{
       \node (A) {$a_{1,1}$}; &[1.1cm] \node (B) {$a_{1,n}$}; \\[1.1cm]
       \node (C) {$a_{n,1}$}; &        \node (D) {$a_{n,n}$}; \\
@@ -1316,16 +1316,16 @@ Soit $A\in\mathrm{M}_{n,p}(\K) = \bigl( a_{ij} \bigr)_{\substack{1\leq i\leq n \
 Sa d\'ecomposition par blocs suivant le d\'ecoupage $\nUplet n1s$ pour les lignes et $\nUplet p1t$ pour les colonnes est
 \begin{center}
   \begin{tikzpicture}[
-      dots/.style={
-        line width=1pt,
-        line cap=round,
-        dash pattern=on 0pt off 5pt,
-        shorten >=.1cm,
+    dots/.style={
+      line width=1pt,
+      line cap=round,
+      dash pattern=on 0pt off 5pt,
+      shorten >=.1cm,
     shorten <=.1cm}]
     \matrix[
-      matrix of nodes,
-      left delimiter=(,
-      right delimiter=),
+    matrix of nodes,
+    left delimiter=(,
+    right delimiter=),
     ]{
       \node (A) {$A_{1,1}$}; &[1.1cm] \node (B) {$A_{1,t}$}; \\[1.1cm]
       \node (C) {$A_{s,1}$}; &        \node (D) {$A_{s,t}$}; \\
