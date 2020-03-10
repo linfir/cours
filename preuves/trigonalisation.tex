@@ -282,6 +282,33 @@
 \title{Trigonalisation}
 \maketitle
 
+\Para{Proposition}
+
+Soit $E$ un $\K$-espace vectoriel de dimension finie et $u\in\LE$.
+On suppose que $u$ un endomorphisme nilpotent.
+Alors $u$ est trigonalisable.
+
+\demo
+
+Notons, pour tout $k\in \N$, $K_k = \Ker(u^k)$.
+Pour tout $k \in{} \Ns$, on v\'erifie imm\'ediatement que $K_{k-1} \subset{} K_k$.
+On peut donc choisir un suppl\'ementaire $F_k$ de $K_{k-1}$ dans $K_k$,
+de sorte que
+\[ \forall{} k \in{} \Ns \+ F_k \oplus{} K_{k-1} = K_k. \]
+
+On v\'erifie alors que
+\[ \forall{} k \in{} \Ns \+ K_k = \bigoplus_{i=1}^k F_i. \]
+
+Soit $p \in{} \N$ tel que $u^p = \tilde 0$.
+On a donc $K_p = E$, d'o\`u
+\[ E = \bigoplus_{i=1}^p F_i. \]
+
+Soit $\B$ une base adapt\'ee \`a cette d\'ecomposition.
+Comme $u(K_k) \subset{} K_{k-1}$, la matrice de $u$ dans cette base
+est triangulaire par blocs, \`a blocs diagonaux nuls.
+Elle est donc triangulaire sup\'erieure \`a diagonale nulle,
+d'o\`u le r\'esultat.
+
 \Para{Th\'eor\`eme de B\'ezout}
 
 Soit $P$ et $Q$ deux polyn\^omes de $\K[X]$ premiers entre eux.
@@ -384,33 +411,6 @@ Une r\'ecurrence facile \`a partir du lemme des noyaux prouve que
 
 Comme $P$ est un polyn\^ome annulateur de $u$, on a $\Ker P(u) = E$, d'o\`u le r\'esultat.
 
-\Para{Proposition}
-
-Soit $E$ un $\K$-espace vectoriel de dimension finie et $u\in\LE$.
-On suppose que $u$ un endomorphisme nilpotent.
-Alors $u$ est trigonalisable.
-
-\demo
-
-Notons, pour tout $k\in \N$, $K_k = \Ker(u^k)$.
-Pour tout $k \in{} \Ns$, on v\'erifie imm\'ediatement que $K_{k-1} \subset{} K_k$.
-On peut donc choisir un suppl\'ementaire $F_k$ de $K_{k-1}$ dans $K_k$,
-de sorte que
-\[ \forall{} k \in{} \Ns \+ F_k \oplus{} K_{k-1} = K_k. \]
-
-On v\'erifie alors que
-\[ \forall{} k \in{} \Ns \+ K_k = \bigoplus_{i=1}^k F_i. \]
-
-Soit $p \in{} \N$ tel que $u^p = \tilde 0$.
-On a donc $K_p = E$, d'o\`u
-\[ E = \bigoplus_{i=1}^p F_i. \]
-
-Soit $\B$ une base adapt\'ee \`a cette d\'ecomposition.
-Comme $u(K_k) \subset{} K_{k-1}$, la matrice de $u$ dans cette base
-est triangulaire par blocs, \`a blocs diagonaux nuls.
-Elle est donc triangulaire sup\'erieure \`a diagonale nulle,
-d'o\`u le r\'esultat.
-
 \Para{Th\'eor\`eme}
 
 Soit $E$ un $\K$-espace vectoriel de dimension finie et $u\in\LE$.
@@ -430,7 +430,7 @@ Comme $u$ commute avec $(u-\lambda_i \Id_E)^{n_i}$, le sous-espace vectoriel $F_
 Notons $u_i$ l'endomorphisme induit par $u$ sur $F_i$
 et $v_i = u_i - \lambda_i \Id_{F_i}$.
 On v\'erifie facilement que $v_i^{n_i} = \tilde 0$,
-donc $v_i$ est trigonalisable d'apr\`es le proposition pr\'ec\'edente,
+donc $v_i$ est trigonalisable,
 donc $u_i = v_i + \lambda_i \Id_E$ est \'egalement trigonalisable.
 Soit $\B_i$ une base de $F_i$ dans laquelle $\Mat_{\B_i}(u_i)$ est triangulaire.
 La concat\'enation $\B$ de $\B_1, \dots, \B_p$ est alors une base de $E$
